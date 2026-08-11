@@ -1,46 +1,121 @@
-export const MEGA_MENU_DATA = [
+// Головні розділи каталогу (8 основних категорій нерудних матеріалів)
+export const MAIN_SECTIONS = [
   {
     id: "grunty",
     name: "Ґрунти",
-    link: "#catalog-grunty",
-    items: [
-      { name: "Родючий ґрунт (чорнозем)", price: "від 350 грн/т" },
-      { name: "Почвоґрунт рослинний", price: "від 320 грн/т" },
-      { name: "Торф верховий і низинний", price: "від 480 грн/т" },
-      { name: "Торфо-піщана суміш", price: "від 420 грн/т" },
-      { name: "Чорнозем польовий чистий", price: "від 380 грн/т" },
-      { name: "Планувальний ґрунт (суглинок)", price: "від 180 грн/т" },
-      { name: "Ґрунт для газону", price: "від 340 грн/т" },
-      { name: "Ґрунт у Біг-бегах (1 т)", price: "від 750 грн/т" },
-      { name: "Ґрунт для теплиць і саду", price: "від 400 грн/т" },
-      { name: "Котлованний ґрунт на підсипку", price: "від 120 грн/т" }
-    ]
+    price: "від 320 грн/т",
+    priceM3: "від 420 грн/м³",
+    image: "/images/cat-grunty.jpg",
+    itemsCount: 5,
+    description: "Чорнозем, родючий ґрунт, торфосуміші та суглинки на підсипку по Дніпру."
   },
   {
     id: "sheben",
     name: "Щебінь",
-    link: "#catalog",
+    price: "від 240 грн/т",
+    priceM3: "від 320 грн/м³",
+    image: "/images/cat-sheben.jpg",
+    featured: true,
+    itemsCount: 15,
+    description: "Гранітний, шлаковий, гравійний, вапняковий, бут, габіонний та вторинний щебінь."
+  },
+  {
+    id: "pesok",
+    name: "Пісок",
+    price: "від 220 грн/т",
+    priceM3: "від 280 грн/м³",
+    image: "/images/cat-pesok.jpg",
+    itemsCount: 5,
+    description: "Річковий митий пісок із Дніпра, кар'єрний яружний, сіяний та фасований у мішки."
+  },
+  {
+    id: "shps",
+    name: "ЩПС",
+    price: "від 330 грн/т",
+    priceM3: "від 450 грн/м³",
+    image: "/images/cat-shps.jpg",
+    itemsCount: 3,
+    description: "Щебенево-піщані суміші С4, С5, С7 для дорожніх основ та стоянок."
+  },
+  {
+    id: "pgs",
+    name: "ПГС / ОПГС",
+    price: "від 290 грн/т",
+    priceM3: "від 390 грн/м³",
+    image: "/images/cat-pgs.jpg",
+    itemsCount: 2,
+    description: "Піщано-гравійні та збагачені суміші для виготовлення бетону та подушок."
+  },
+  {
+    id: "gravij",
+    name: "Гравій",
+    price: "від 360 грн/т",
+    priceM3: "від 490 грн/м³",
+    image: "/images/cat-gravij.jpg",
+    itemsCount: 4,
+    description: "Природний окатаний та колотий гравій фракцій 5-20, 20-40 та 40-70 мм."
+  },
+  {
+    id: "keramzit",
+    name: "Керамзит",
+    price: "від 1 450 грн/м³",
+    priceM3: "від 1 450 грн/м³",
+    image: "/images/cat-keramzit.jpg",
+    itemsCount: 4,
+    description: "Легкий утеплювач і заповнювач для стяжок, перекриттів та покрівель."
+  },
+  {
+    id: "galka",
+    name: "Галька та камінь",
+    price: "від 550 грн/т",
+    priceM3: "від 750 грн/м³",
+    image: "/images/cat-galka.jpg",
+    itemsCount: 3,
+    description: "Дніпровська річкова та морська окатана галька для ландшафту та декору."
+  }
+];
+
+// Мегаменю сайту (тільки будівельні нерудні матеріали)
+export const MEGA_MENU_DATA = [
+  {
+    id: "sheben",
+    name: "Щебінь",
+    link: "#catalog-items",
     featured: true,
     items: [
-      { name: "Гранітний щебінь", price: "від 380 грн/т", active: true },
-      { name: "Гравійний щебінь", price: "від 360 грн/т", active: true },
-      { name: "Шлаковий щебінь (Дніпро)", price: "від 240 грн/т", active: true },
+      { name: "Гранітний щебінь", price: "від 380 грн/т" },
+      { name: "Гравійний щебінь", price: "від 360 грн/т" },
+      { name: "Шлаковий щебінь (доменний)", price: "від 240 грн/т" },
       { name: "Вапняковий щебінь", price: "від 320 грн/т" },
+      { name: "Баластний щебінь", price: "від 390 грн/т" },
       { name: "Бутовий камінь (бут)", price: "від 450 грн/т" },
       { name: "Вторинний щебінь (дробл. бетон)", price: "від 190 грн/т" },
-      { name: "Гранітний відсів (0-5 мм)", price: "від 220 грн/т" },
       { name: "Габро-діабаз", price: "від 480 грн/т" },
+      { name: "Доломітовий щебінь", price: "від 340 грн/т" },
       { name: "Митий щебінь", price: "від 420 грн/т" },
       { name: "Для габіонів", price: "від 520 грн/т" },
+      { name: "Щебінь у мішках по 25/50 кг", price: "від 65 грн/мішок" },
       { name: "Щебінь у Біг-бегах (1 т)", price: "від 650 грн/т" },
-      { name: "Щебінь по фракціях", price: "від 350 грн/т" },
-      { name: "Мраморний щебінь", price: "від 1 200 грн/т" }
+      { name: "Гранітний відсів (0-5 мм)", price: "від 220 грн/т" },
+      { name: "Мармуровий щебінь (білий)", price: "від 1 200 грн/т" }
+    ]
+  },
+  {
+    id: "grunty",
+    name: "Ґрунти",
+    link: "#catalog-items",
+    items: [
+      { name: "Родючий ґрунт (чорнозем)", price: "від 350 грн/т" },
+      { name: "Почвоґрунт рослинний", price: "від 320 грн/т" },
+      { name: "Торфо-піщана суміш", price: "від 420 грн/т" },
+      { name: "Планувальний ґрунт (суглинок)", price: "від 180 грн/т" },
+      { name: "Ґрунт у Біг-бегах (1 т)", price: "від 750 грн/т" }
     ]
   },
   {
     id: "pesok",
     name: "Пісок",
-    link: "#catalog-pesok",
+    link: "#catalog-items",
     items: [
       { name: "Річковий пісок (Дніпро, митий)", price: "від 280 грн/т" },
       { name: "Кар'єрний пісок (яружний)", price: "від 220 грн/т" },
@@ -52,7 +127,7 @@ export const MEGA_MENU_DATA = [
   {
     id: "shps",
     name: "ЩПС (Щебенево-піщана суміш)",
-    link: "#catalog-shps",
+    link: "#catalog-items",
     items: [
       { name: "ЩПС С5 (0-40 мм)", price: "від 340 грн/т" },
       { name: "ЩПС С7 (0-20 мм)", price: "від 350 грн/т" },
@@ -62,76 +137,51 @@ export const MEGA_MENU_DATA = [
   {
     id: "pgs",
     name: "ПГС / ОПГС",
-    link: "#catalog-pgs",
+    link: "#catalog-items",
     items: [
       { name: "ПГС природна", price: "від 290 грн/т" },
       { name: "ОПГС збагачена", price: "від 360 грн/т" }
     ]
   },
   {
+    id: "gravij",
+    name: "Гравій",
+    link: "#catalog-items",
+    items: [
+      { name: "Гравій 5-20 мм", price: "від 360 грн/т" },
+      { name: "Гравій 20-40 мм", price: "від 350 грн/т" },
+      { name: "Гравій 40-70 мм", price: "від 340 грн/т" }
+    ]
+  },
+  {
     id: "keramzit",
     name: "Керамзит",
-    link: "#catalog-keramzit",
+    link: "#catalog-items",
     items: [
-      { name: "Керамзит фракція 5-10 мм", price: "від 1 650 грн/м3" },
-      { name: "Керамзит фракція 10-20 мм", price: "від 1 550 грн/м3" },
-      { name: "Керамзит фракція 20-40 мм", price: "від 1 450 грн/м3" },
-      { name: "Керамзит у мішках", price: "від 95 грн/мішок" }
+      { name: "Керамзит фракція 5-10 мм", price: "від 1 650 грн/м³" },
+      { name: "Керамзит фракція 10-20 мм", price: "від 1 550 грн/м³" },
+      { name: "Керамзит фракція 20-40 мм", price: "від 1 450 грн/м³" },
+      { name: "Керамзит у мішках (50 л)", price: "від 95 грн/мішок" }
     ]
   },
   {
     id: "galka",
     name: "Галька та камінь",
-    link: "#catalog-galka",
+    link: "#catalog-items",
     items: [
       { name: "Річкова галька (Дніпровська)", price: "від 550 грн/т" },
-      { name: "Морська галька", price: "від 850 грн/т" },
+      { name: "Морська окатана галька", price: "від 850 грн/т" },
       { name: "Декоративний камінь", price: "від 700 грн/т" }
-    ]
-  },
-  {
-    id: "reagents",
-    name: "Протиожеледні матеріали",
-    link: "#catalog-reagents",
-    items: [
-      { name: "Сіль технічна для доріг", price: "від 3 800 грн/т" },
-      { name: "Піщано-сольова суміш (ПСС)", price: "від 1 200 грн/т" },
-      { name: "Гранітна крихта (відсів 2-5 мм)", price: "від 650 грн/т" },
-      { name: "Хлористий кальцій / Бішофіт", price: "від 12 000 грн/т" }
-    ]
-  },
-  {
-    id: "coal",
-    name: "Кам'яне вугілля",
-    link: "#catalog-coal",
-    items: [
-      { name: "Вугілля сортове ДПК", price: "від 5 800 грн/т" },
-      { name: "Антрацит (АК, АО, АС)", price: "від 8 900 грн/т" },
-      { name: "Паливні брикети", price: "від 4 500 грн/т" }
     ]
   }
 ];
 
-export const SHCHEDEN_PRODUCTS = [
+// Усі різновиди та товари за категоріями (Види щебеню та інших матеріалів)
+export const ALL_PRODUCTS = [
+  // --- ЩЕБІНЬ (15 видів як на скріншоті 2) ---
   {
-    id: "granitnyj",
-    category: "granitnyj",
-    name: "Гранітний щебінь",
-    price: 380,
-    priceUnit: "грн/т",
-    priceM3: 530,
-    fractions: ["0-5 мм (відсів)", "2-5 мм", "5-10 мм", "5-20 мм", "20-40 мм", "40-70 мм"],
-    strength: "М1200 - М1400",
-    frost: "F300 - F400",
-    flakiness: "до 10% (1 група кубоподібна)",
-    density: "1.40 т/м3",
-    image: "/images/granitnyj.jpg",
-    popular: true,
-    description: "Видобувається у гранітних кар'єрах Дніпропетровщини. Найміцніший будівельний щебінь для моноліту, високомарочного бетону, мостів та автодоріг вищих категорій."
-  },
-  {
-    id: "gravijnyj",
-    category: "gravijnyj",
+    id: "gravijnyj-shch",
+    sectionId: "sheben",
     name: "Гравійний щебінь",
     price: 360,
     priceUnit: "грн/т",
@@ -139,31 +189,30 @@ export const SHCHEDEN_PRODUCTS = [
     fractions: ["3-10 мм", "5-20 мм", "20-40 мм", "40-70 мм"],
     strength: "М800 - М1000",
     frost: "F150 - F200",
-    flakiness: "до 15% (1-2 група)",
+    flakiness: "до 15%",
     density: "1.36 т/м3",
     image: "/images/gravijnyj.jpg",
-    popular: true,
-    description: "Універсальний природний камінь із низьким радіаційним фоном. Ідеальний для приватного будівництва, фундаментів, стяжок та бетонів М150–М300."
+    description: "Природний колотий камінь із низьким радіаційним фоном. Ідеальний для фундаментів, стяжок та бетонів М150–М300."
   },
   {
-    id: "shlakovyj",
-    category: "promyshlennyj",
-    name: "Шлаковий щебінь (відвальний)",
-    price: 240,
+    id: "granitnyj",
+    sectionId: "sheben",
+    name: "Гранітний щебінь",
+    price: 380,
     priceUnit: "грн/т",
-    priceM3: 320,
-    fractions: ["0-20 мм", "20-40 мм", "40-70 мм", "70-120 мм"],
-    strength: "М800 - М1000",
-    frost: "F100",
-    flakiness: "до 15%",
-    density: "1.35 т/м3",
-    image: "/images/shlakovyj.jpg",
+    priceM3: 530,
+    fractions: ["0-5 мм", "2-5 мм", "5-10 мм", "5-20 мм", "20-40 мм", "40-70 мм"],
+    strength: "М1200 - М1400",
+    frost: "F300 - F400",
+    flakiness: "до 10% (кубоподібна)",
+    density: "1.40 т/м3",
+    image: "/images/granitnyj.jpg",
     popular: true,
-    description: "Оптимальне бюджетне рішення для Дніпра та області. Дроблені доменні та сталеплавильні шлаки з високим зчепленням для подушок доріг та промислових підлог."
+    description: "Найміцніший гранітний щебінь для моноліту, високомарочного бетону, мостів та автодоріг вищих категорій."
   },
   {
     id: "izvestnyakovyj",
-    category: "izvestnyakovyj",
+    sectionId: "sheben",
     name: "Вапняковий щебінь",
     price: 320,
     priceUnit: "грн/т",
@@ -174,12 +223,42 @@ export const SHCHEDEN_PRODUCTS = [
     flakiness: "10-15%",
     density: "1.28 т/м3",
     image: "/images/izvestnyakovyj.jpg",
-    popular: false,
-    description: "Екологічно чистий кальцитовий камінь. Використовується для благоустрою, дренажних систем, дорожнього покриття 2-3 категорії та виробництва вапна."
+    description: "Екологічно чистий кальцитовий камінь для благоустрою, дренажних систем, доріг 2-3 категорії та виробництва вапна."
+  },
+  {
+    id: "domennyj",
+    sectionId: "sheben",
+    name: "Доменний щебінь (шлаковий)",
+    price: 240,
+    priceUnit: "грн/т",
+    priceM3: 320,
+    fractions: ["0-20 мм", "20-40 мм", "40-70 мм", "70-120 мм"],
+    strength: "М800 - М1000",
+    frost: "F100",
+    flakiness: "до 15%",
+    density: "1.35 т/м3",
+    image: "/images/shlakovyj.jpg",
+    popular: true,
+    description: "Дроблені металургійні шлаки заводів Дніпра та Кам'янського з високим зчепленням для дорожніх основ і стоянок."
+  },
+  {
+    id: "ballastnyj",
+    sectionId: "sheben",
+    name: "Баластний щебінь",
+    price: 390,
+    priceUnit: "грн/т",
+    priceM3: 540,
+    fractions: ["25-60 мм", "40-70 мм"],
+    strength: "М1200 - М1400",
+    frost: "F300",
+    flakiness: "до 12%",
+    density: "1.41 т/м3",
+    image: "/images/cat-sheben.jpg",
+    description: "Спеціалізований гранітний щебінь для баластного шару залізничних колій, трамвайних ліній та важких під'їздів."
   },
   {
     id: "butovyj",
-    category: "kamen",
+    sectionId: "sheben",
     name: "Бутовий камінь (бут)",
     price: 450,
     priceUnit: "грн/т",
@@ -187,15 +266,15 @@ export const SHCHEDEN_PRODUCTS = [
     fractions: ["70-150 мм", "100-300 мм", "150-400 мм"],
     strength: "М1000 - М1200",
     frost: "F200 - F300",
-    flakiness: "масивний",
+    flakiness: "масивний колотий",
     density: "1.50 т/м3",
     image: "/images/butovyj.jpg",
     popular: true,
-    description: "Гранітний бут для спорудження підпірних стін, парканів, фундаментів під важкі конструкції, укріплення берегів річки Дніпро та ландшафту."
+    description: "Гранітний бут для підпірних стін, парканів, фундаментів під важкі конструкції та берегоукріплення річки Дніпро."
   },
   {
     id: "vtorichnyj",
-    category: "vtorichnyj",
+    sectionId: "sheben",
     name: "Вторинний щебінь (дробл. бетон)",
     price: 190,
     priceUnit: "грн/т",
@@ -207,27 +286,11 @@ export const SHCHEDEN_PRODUCTS = [
     density: "1.25 т/м3",
     image: "/images/vtorichnyj.jpg",
     popular: true,
-    description: "Дроблений та очищений від арматури бетонний щебінь. Найдешевший варіант для тимчасових під'їзних шляхів, засипки ям та відсипки стоянок."
-  },
-  {
-    id: "otsev",
-    category: "otsev",
-    name: "Гранітний відсів (0-5 мм)",
-    price: 220,
-    priceUnit: "грн/т",
-    priceM3: 310,
-    fractions: ["0-5 мм (сірий, червоний)"],
-    strength: "М1200 - М1400",
-    frost: "F300",
-    flakiness: "до 10%",
-    density: "1.42 т/м3",
-    image: "/images/otsev.jpg",
-    popular: true,
-    description: "Найдрібніша фракція гранітного дроблення для виробництва тротуарної плитки, європарканів, укладання бруківки та посипки доріжок узимку."
+    description: "Дроблений та очищений від арматури бетонний щебінь для відсипання тимчасових доріг, будівельних під'їздів та стоянок."
   },
   {
     id: "gabbro-diabaz",
-    category: "granitnyj",
+    sectionId: "sheben",
     name: "Габро-діабаз",
     price: 480,
     priceUnit: "грн/т",
@@ -238,12 +301,26 @@ export const SHCHEDEN_PRODUCTS = [
     flakiness: "до 7%",
     density: "1.45 т/м3",
     image: "/images/gabbro-diabaz.jpg",
-    popular: false,
-    description: "Надміцна темна вулканічна порода з найвищою зносостійкістю, застосовується для асфальтобетону вищої категорії та бань."
+    description: "Надміцна темна вулканічна порода з найвищою зносостійкістю, застосовується для асфальтобетону та лазень."
+  },
+  {
+    id: "dolomitovyj",
+    sectionId: "sheben",
+    name: "Доломітовий щебінь",
+    price: 340,
+    priceUnit: "грн/т",
+    priceM3: 450,
+    fractions: ["5-20 мм", "20-40 мм", "40-70 мм"],
+    strength: "М800 - М1000",
+    frost: "F150",
+    flakiness: "до 12%",
+    density: "1.32 т/м3",
+    image: "/images/sheben-dolomit.jpg",
+    description: "Міцний осадний камінь із високою адгезією до бітуму для дорожніх асфальтових покриттів та бетонних сумішей."
   },
   {
     id: "mytyj",
-    category: "gravijnyj",
+    sectionId: "sheben",
     name: "Митий щебінь",
     price: 420,
     priceUnit: "грн/т",
@@ -254,12 +331,26 @@ export const SHCHEDEN_PRODUCTS = [
     flakiness: "до 10%",
     density: "1.37 т/м3",
     image: "/images/mytyj.jpg",
-    popular: false,
     description: "Повністю очищений від глини та пилоподібних часток матеріал для відповідальних бетонних розчинів та дренажу."
   },
   {
+    id: "shlakovyj-otval",
+    sectionId: "sheben",
+    name: "Шлаковий щебінь (відвальний)",
+    price: 240,
+    priceUnit: "грн/т",
+    priceM3: 320,
+    fractions: ["0-20 мм", "20-40 мм", "40-70 мм"],
+    strength: "М800 - М1000",
+    frost: "F100",
+    flakiness: "до 15%",
+    density: "1.35 т/м3",
+    image: "/images/shlakovyj.jpg",
+    description: "Бюджетний міцний щебінь для відсипання промислових зон, під'їздів та влаштування жорстких основ."
+  },
+  {
     id: "gabiony",
-    category: "kamen",
+    sectionId: "sheben",
     name: "Щебінь для габіонів",
     price: 520,
     priceUnit: "грн/т",
@@ -270,29 +361,43 @@ export const SHCHEDEN_PRODUCTS = [
     flakiness: "колотий / окатаний",
     density: "1.45 т/м3",
     image: "/images/gabiony.jpg",
-    popular: false,
-    description: "Відбірний гранітний камінь для заповнення сітчастих габіонних конструкцій, терас та берегоукріплення річок Дніпро та Самара."
+    description: "Відбірний гранітний камінь для сітчастих габіонних конструкцій, захисних бар'єрів та берегоукріплення."
+  },
+  {
+    id: "v-meshkah",
+    sectionId: "sheben",
+    name: "Щебінь у мішках (25/50 кг)",
+    price: 65,
+    priceUnit: "грн/мішок",
+    priceM3: 920,
+    fractions: ["5-20 мм", "20-40 мм", "0-5 мм"],
+    strength: "За ДСТУ",
+    frost: "F300",
+    flakiness: "фасований",
+    density: "50 кг/мішок",
+    image: "/images/sheben-meshki.jpg",
+    description: "Фасований у мішки щебінь для зручного ручного занесення у квартири, підвальні приміщення та приватні ділянки."
   },
   {
     id: "bigbeg",
-    category: "fasovka",
+    sectionId: "sheben",
     name: "Щебінь у Біг-бегах (1 т)",
     price: 650,
     priceUnit: "грн/т",
     priceM3: 880,
     fractions: ["5-20 мм", "20-40 мм", "0-5 мм"],
     strength: "За ДСТУ",
-    frost: "F200 - F300",
+    frost: "F300",
     flakiness: "у МКР з ручками",
     density: "1.0 т/мішок",
     image: "/images/bigbeg.jpg",
     popular: true,
-    description: "Зручне фасування у м'які контейнери по 1000 кг для об'єктів з обмеженим заїздом, маніпуляторного або кранового розвантаження."
+    description: "Зручне фасування у м'які контейнери по 1000 кг для об'єктів з обмеженим заїздом і кранового розвантаження."
   },
   {
     id: "mramornyj",
-    category: "dekor",
-    name: "Мармуровий щебінь (крихта)",
+    sectionId: "sheben",
+    name: "Мармуровий щебінь (біла крихта)",
     price: 1200,
     priceUnit: "грн/т",
     priceM3: 1600,
@@ -302,10 +407,408 @@ export const SHCHEDEN_PRODUCTS = [
     flakiness: "декоративний білий",
     density: "1.30 т/м3",
     image: "/images/mramornyj.jpg",
-    popular: false,
     description: "Білосніжний мармуровий камінь для ландшафтного дизайну, клумб, пам'ятників, мозаїчних підлог і декору."
+  },
+
+  // --- ҐРУНТИ (5 видів) ---
+  {
+    id: "grunt-chernozem",
+    sectionId: "grunty",
+    name: "Чорнозем польовий родючий",
+    price: 350,
+    priceUnit: "грн/т",
+    priceM3: 450,
+    fractions: ["родючий шар"],
+    strength: "Гумус > 5%",
+    frost: "F-",
+    flakiness: "чистий",
+    density: "1.20 т/м3",
+    image: "/images/cat-grunty.jpg",
+    popular: true,
+    description: "Добірний верхній польовий чорнозем для газонів, садів, теплиць та озеленення прибудинкових територій у Дніпрі."
+  },
+  {
+    id: "grunt-rastitelnyj",
+    sectionId: "grunty",
+    name: "Почвоґрунт рослинний",
+    price: 320,
+    priceUnit: "грн/т",
+    priceM3: 420,
+    fractions: ["збагачений"],
+    strength: "Нейтральний pH",
+    frost: "F-",
+    flakiness: "просіяний",
+    density: "1.25 т/м3",
+    image: "/images/cat-grunty.jpg",
+    description: "Суміш чорнозему, торфу та піску для посадки кущів, дерев і вирівнювання ландшафту."
+  },
+  {
+    id: "grunt-torf",
+    sectionId: "grunty",
+    name: "Торфо-піщана суміш",
+    price: 420,
+    priceUnit: "грн/т",
+    priceM3: 520,
+    fractions: ["торф 70% / пісок 30%"],
+    strength: "Органіка",
+    frost: "F-",
+    flakiness: "рихлий",
+    density: "1.10 т/м3",
+    image: "/images/cat-grunty.jpg",
+    description: "Живильний субстрат для покращення структури глинистих і важких ґрунтів."
+  },
+  {
+    id: "grunt-planir",
+    sectionId: "grunty",
+    name: "Планувальний ґрунт (суглинок)",
+    price: 180,
+    priceUnit: "грн/т",
+    priceM3: 240,
+    fractions: ["котлованний"],
+    strength: "Підсипка",
+    frost: "F-",
+    flakiness: "масив",
+    density: "1.40 т/м3",
+    image: "/images/cat-grunty.jpg",
+    description: "Ґрунт для зворотного засипання котлованів, вирівнювання рельєфу та підняття рівня ділянки."
+  },
+  {
+    id: "grunt-bigbeg",
+    sectionId: "grunty",
+    name: "Ґрунт родючий у Біг-бегах (1 т)",
+    price: 750,
+    priceUnit: "грн/т",
+    priceM3: 950,
+    fractions: ["1000 кг"],
+    strength: "Гумус > 5%",
+    frost: "F-",
+    flakiness: "чистий",
+    density: "1.0 т/мішок",
+    image: "/images/bigbeg.jpg",
+    description: "Чистий чорнозем у біг-бегах для чистої доставки на готові ландшафтні об'єкти без бруду на плитці."
+  },
+
+  // --- ПІСОК (5 видів) ---
+  {
+    id: "pesok-rechnoj",
+    sectionId: "pesok",
+    name: "Річковий пісок (Дніпро, митий)",
+    price: 280,
+    priceUnit: "грн/т",
+    priceM3: 400,
+    fractions: ["модуль 1.5 - 2.0 мм"],
+    strength: "Чистий",
+    frost: "F-",
+    flakiness: "без глини",
+    density: "1.45 т/м3",
+    image: "/images/cat-pesok.jpg",
+    popular: true,
+    description: "Намивний дніпровський пісок без глини та камінців для бетонних розчинів, стяжки підлоги та штукатурки."
+  },
+  {
+    id: "pesok-karyernyj",
+    sectionId: "pesok",
+    name: "Кар'єрний пісок (яружний)",
+    price: 220,
+    priceUnit: "грн/t",
+    priceM3: 310,
+    fractions: ["модуль 1.2 - 1.8 мм"],
+    strength: "Будівельний",
+    frost: "F-",
+    flakiness: "дрібнозернистий",
+    density: "1.40 т/м3",
+    image: "/images/cat-pesok.jpg",
+    description: "Природний кар'єрний пісок для кладки цегли, дорожніх подушок та зворотного засипання."
+  },
+  {
+    id: "pesok-seyanyj",
+    sectionId: "pesok",
+    name: "Сеяний пісок (модуль 1.8-2.2)",
+    price: 260,
+    priceUnit: "грн/т",
+    priceM3: 370,
+    fractions: ["модуль 2.0 мм"],
+    strength: "Очищений",
+    frost: "F-",
+    flakiness: "без сміття",
+    density: "1.42 т/м3",
+    image: "/images/cat-pesok.jpg",
+    description: "Механічно просіяний пісок без великих включень для фундаментів та тротуарної плитки."
+  },
+  {
+    id: "pesok-grunt",
+    sectionId: "pesok",
+    name: "Піскоґрунт на підсипку",
+    price: 160,
+    priceUnit: "грн/т",
+    priceM3: 220,
+    fractions: ["супісок"],
+    strength: "Підсипка",
+    frost: "F-",
+    flakiness: "масив",
+    density: "1.45 т/м3",
+    image: "/images/cat-pesok.jpg",
+    description: "Недорогий супісок для підсипки траншей, цоколів та формування дорожнього полотна."
+  },
+  {
+    id: "pesok-meshki",
+    sectionId: "pesok",
+    name: "Пісок у мішках по 50 кг",
+    price: 65,
+    priceUnit: "грн/мішок",
+    priceM3: 900,
+    fractions: ["50 кг"],
+    strength: "Митий річковий",
+    frost: "F-",
+    flakiness: "фасований",
+    density: "50 кг/мішок",
+    image: "/images/sheben-meshki.jpg",
+    description: "Митий річковий пісок у поліпропіленових мішках по 50 кг для ремонту та внутрішніх оздоблювальних робіт."
+  },
+
+  // --- ЩПС (3 види) ---
+  {
+    id: "shps-c5",
+    sectionId: "shps",
+    name: "ЩПС С5 (фракція 0-40 мм)",
+    price: 340,
+    priceUnit: "грн/т",
+    priceM3: 480,
+    fractions: ["0-40 мм"],
+    strength: "М1200",
+    frost: "F300",
+    flakiness: "до 15%",
+    density: "1.50 т/м3",
+    image: "/images/cat-shps.jpg",
+    popular: true,
+    description: "Готова гранітна суміш оптимального гранулометричного складу для дорожніх основ під асфальт та бруківку."
+  },
+  {
+    id: "shps-c7",
+    sectionId: "shps",
+    name: "ЩПС С7 (фракція 0-20 мм)",
+    price: 350,
+    priceUnit: "грн/т",
+    priceM3: 500,
+    fractions: ["0-20 мм"],
+    strength: "М1200",
+    frost: "F300",
+    flakiness: "до 12%",
+    density: "1.52 т/м3",
+    image: "/images/cat-shps.jpg",
+    description: "Дрібнозерниста суміш для розклинювання та формування фінішного шару перед укладанням асфальтобетону."
+  },
+  {
+    id: "shps-c4",
+    sectionId: "shps",
+    name: "ЩПС С4 (фракція 0-70 мм)",
+    price: 330,
+    priceUnit: "грн/т",
+    priceM3: 460,
+    fractions: ["0-70 мм"],
+    strength: "М1200",
+    frost: "F300",
+    flakiness: "до 18%",
+    density: "1.55 т/м3",
+    image: "/images/cat-shps.jpg",
+    description: "Великофракційна щебенево-піщана суміш для капітального будівництва автошляхів та стоянок важкої техніки."
+  },
+
+  // --- ПГС (2 види) ---
+  {
+    id: "pgs-prirod",
+    sectionId: "pgs",
+    name: "ПГС природна піщано-гравійна",
+    price: 290,
+    priceUnit: "грн/т",
+    priceM3: 390,
+    fractions: ["гравій 20-30%"],
+    strength: "М800",
+    frost: "F150",
+    flakiness: "природна",
+    density: "1.45 т/м3",
+    image: "/images/cat-pgs.jpg",
+    description: "Природна суміш піску та гравію для зворотного засипання, подушок під фундамент та відсипання доріг."
+  },
+  {
+    id: "opgs-obog",
+    sectionId: "pgs",
+    name: "ОПГС збагачена (гравій 50-70%)",
+    price: 360,
+    priceUnit: "грн/т",
+    priceM3: 490,
+    fractions: ["гравій 50-70%"],
+    strength: "М1000",
+    frost: "F200",
+    flakiness: "збагачена",
+    density: "1.48 т/м3",
+    image: "/images/cat-pgs.jpg",
+    popular: true,
+    description: "Збагачена піщано-гравійна суміш для виготовлення монолітного товарного бетону та фундаментних блоків."
+  },
+
+  // --- ГРАВІЙ (3 види) ---
+  {
+    id: "gravij-5-20",
+    sectionId: "gravij",
+    name: "Гравій природний 5-20 мм",
+    price: 360,
+    priceUnit: "грн/т",
+    priceM3: 490,
+    fractions: ["5-20 мм"],
+    strength: "М1000",
+    frost: "F200",
+    flakiness: "окатаний",
+    density: "1.36 т/м3",
+    image: "/images/cat-gravij.jpg",
+    popular: true,
+    description: "Окатаний річковий та кар'єрний гравій без радіації для фундаментів та ландшафтного благоустрою."
+  },
+  {
+    id: "gravij-20-40",
+    sectionId: "gravij",
+    name: "Гравій природний 20-40 мм",
+    price: 350,
+    priceUnit: "грн/т",
+    priceM3: 480,
+    fractions: ["20-40 мм"],
+    strength: "М1000",
+    frost: "F200",
+    flakiness: "окатаний",
+    density: "1.37 т/м3",
+    image: "/images/cat-gravij.jpg",
+    description: "Середньофракційний гравій для фільтраційних полів, дренажних колодязів та відсипання берегів."
+  },
+  {
+    id: "gravij-40-70",
+    sectionId: "gravij",
+    name: "Гравій крупний 40-70 мм",
+    price: 340,
+    priceUnit: "грн/т",
+    priceM3: 470,
+    fractions: ["40-70 мм"],
+    strength: "М1000",
+    frost: "F150",
+    flakiness: "крупний",
+    density: "1.38 т/м3",
+    image: "/images/cat-gravij.jpg",
+    description: "Крупний гравій для септиків, габіонів та зміцнення схилів і берегових ліній."
+  },
+
+  // --- КЕРАМЗИТ (4 види) ---
+  {
+    id: "keramzit-5-10",
+    sectionId: "keramzit",
+    name: "Керамзитовий гравій 5-10 мм",
+    price: 1650,
+    priceUnit: "грн/м³",
+    priceM3: 1650,
+    fractions: ["5-10 мм"],
+    strength: "П100",
+    frost: "F50",
+    flakiness: "сферичний",
+    density: "0.45 т/м3",
+    image: "/images/cat-keramzit.jpg",
+    popular: true,
+    description: "Дрібний керамзит для вирівнювання та сухої стяжки підлоги, виробництва легких керамзитобетонних блоків."
+  },
+  {
+    id: "keramzit-10-20",
+    sectionId: "keramzit",
+    name: "Керамзитовий гравій 10-20 мм",
+    price: 1550,
+    priceUnit: "грн/м³",
+    priceM3: 1550,
+    fractions: ["10-20 мм"],
+    strength: "П75",
+    frost: "F50",
+    flakiness: "сферичний",
+    density: "0.40 т/м3",
+    image: "/images/cat-keramzit.jpg",
+    description: "Найпопулярніша фракція керамзиту для утеплення підлог, перекриттів горищ і покрівель."
+  },
+  {
+    id: "keramzit-20-40",
+    sectionId: "keramzit",
+    name: "Керамзитовий гравій 20-40 мм",
+    price: 1450,
+    priceUnit: "грн/м³",
+    priceM3: 1450,
+    fractions: ["20-40 мм"],
+    strength: "П50",
+    frost: "F50",
+    flakiness: "легкий",
+    density: "0.35 т/м3",
+    image: "/images/cat-keramzit.jpg",
+    description: "Найдрібніша насипна щільність. Найкращий утеплювач для засипки стін, перекриттів і підвалів."
+  },
+  {
+    id: "keramzit-meshki",
+    sectionId: "keramzit",
+    name: "Керамзит у мішках (50 л)",
+    price: 95,
+    priceUnit: "грн/мішок",
+    priceM3: 1900,
+    fractions: ["50 літрів"],
+    strength: "П75",
+    frost: "F50",
+    flakiness: "фасований",
+    density: "50 л/мішок",
+    image: "/images/sheben-meshki.jpg",
+    description: "Фасований керамзит у мішках для зручного підйому на поверх та утеплення балконів і квартир."
+  },
+
+  // --- ГАЛЬКА ТА КАМІНЬ (3 види) ---
+  {
+    id: "galka-rechnaya",
+    sectionId: "galka",
+    name: "Річкова галька (Дніпровська)",
+    price: 550,
+    priceUnit: "грн/т",
+    priceM3: 750,
+    fractions: ["5-20 мм", "20-40 мм", "40-70 мм"],
+    strength: "М1000",
+    frost: "F200",
+    flakiness: "гладка окатана",
+    density: "1.45 т/м3",
+    image: "/images/cat-galka.jpg",
+    popular: true,
+    description: "Окатана гладка річкова галька для оздоблення басейнів, доріжок, рокаріїв, клумб та зон відпочинку."
+  },
+  {
+    id: "galka-morskaya",
+    sectionId: "galka",
+    name: "Морська окатана галька",
+    price: 850,
+    priceUnit: "грн/т",
+    priceM3: 1150,
+    fractions: ["10-30 мм", "20-50 мм"],
+    strength: "М1000",
+    frost: "F200",
+    flakiness: "плоска округла",
+    density: "1.42 т/м3",
+    image: "/images/cat-galka.jpg",
+    description: "Плоска кругла морська галька для мозаїки, внутрішнього інтер'єрного декору та оформлення фонтанів."
+  },
+  {
+    id: "kamen-dekor",
+    sectionId: "galka",
+    name: "Декоративний камінь для саду",
+    price: 700,
+    priceUnit: "грн/т",
+    priceM3: 980,
+    fractions: ["50-150 мм"],
+    strength: "М1000",
+    frost: "F200",
+    flakiness: "пейзажний",
+    density: "1.48 т/м3",
+    image: "/images/butovyj.jpg",
+    description: "Пейзажні камені різноманітних кольорів для створення альпійських гірок, водоспадів та саду каменів."
   }
 ];
+
+// Для зворотної сумісності зі старими імпортами
+export const SHCHEDEN_PRODUCTS = ALL_PRODUCTS.filter(p => p.sectionId === "sheben");
 
 export const PRICE_TABLES_DATA = {
   granitnyj: {

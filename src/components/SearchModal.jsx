@@ -1,40 +1,33 @@
 import React, { useState, useMemo } from 'react';
 import { Search, X, ArrowRight } from 'lucide-react';
-import { SHCHEDEN_PRODUCTS, MEGA_MENU_DATA } from '../data/catalogData';
+import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 
 export const SearchModal = ({ isOpen, onClose, onSelectProduct }) => {
   const [query, setQuery] = useState('');
 
   const allItems = useMemo(() => {
     const list = [];
-    // Add crushed stone products
-    SHCHEDEN_PRODUCTS.forEach(p => {
+    
+    // Add all products with their sections
+    ALL_PRODUCTS.forEach(p => {
+      const section = MAIN_SECTIONS.find(s => s.id === p.sectionId);
       list.push({
         id: p.id,
         name: p.name,
-        category: 'Щебінь',
-        price: `від ${p.price} грн/т (${p.priceM3} грн/м³)`
+        category: section ? section.name : 'Нерудні матеріали',
+        price: `від ${p.price} ${p.priceUnit}${p.priceM3 ? ` (${p.priceM3} грн/м³)` : ''}`
       });
-      p.fractions.forEach(f => {
-        list.push({
-          id: `${p.id}-${f}`,
-          name: `${p.name} ${f}`,
-          category: 'Фракції щебеню',
-          price: `від ${p.price} грн/т`
-        });
-      });
-    });
 
-    // Add mega menu items
-    MEGA_MENU_DATA.forEach(cat => {
-      cat.items.forEach((item, idx) => {
-        list.push({
-          id: `${cat.id}-${idx}`,
-          name: item.name,
-          category: cat.name,
-          price: item.price
+      if (p.fractions) {
+        p.fractions.forEach(f => {
+          list.push({
+            id: `${p.id}-${f}`,
+            name: `${p.name} (${f})`,
+            category: section ? section.name : 'Фракції',
+            price: `від ${p.price} ${p.priceUnit}`
+          });
         });
-      });
+      }
     });
 
     return list;

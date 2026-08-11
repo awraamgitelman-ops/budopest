@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { CategoryGrid } from './components/CategoryGrid';
 import { CatalogGrid } from './components/CatalogGrid';
 import { Calculator } from './components/Calculator';
 import { PriceTables } from './components/PriceTables';
@@ -17,6 +18,7 @@ import { SearchModal } from './components/SearchModal';
 import { MobileNav } from './components/MobileNav';
 
 export function App() {
+  const [selectedSection, setSelectedSection] = useState('sheben');
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [modalInitialData, setModalInitialData] = useState(null);
@@ -44,7 +46,20 @@ export function App() {
 
       <main>
         <Hero onOpenOrderModal={handleOpenOrder} />
-        <CatalogGrid onOpenOrderModal={handleOpenOrder} />
+        
+        {/* Розділи продукції (Screenshot 1) */}
+        <CategoryGrid
+          selectedSection={selectedSection}
+          onSelectSection={setSelectedSection}
+        />
+
+        {/* Види та різновиди обраного розділу (Screenshot 2) */}
+        <CatalogGrid
+          selectedSection={selectedSection}
+          onSelectSection={setSelectedSection}
+          onOpenOrderModal={handleOpenOrder}
+        />
+
         <Calculator onOpenOrderModal={handleOpenOrder} />
         <PriceTables onOpenOrderModal={handleOpenOrder} />
         <PromoBanner onOpenOrderModal={handleOpenOrder} />
