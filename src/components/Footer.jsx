@@ -15,7 +15,7 @@ export const Footer = () => {
                 <path d="M21.7901 0.387724C22.0879 -0.12856 22.8323 -0.129411 23.1313 0.386193L32.5662 16.654C32.7055 16.8941 32.7059 17.1905 32.5671 17.431L23.1289 33.7903C22.831 34.3066 22.0867 34.3075 21.7876 33.7919L12.3527 17.524C12.2134 17.2839 12.2131 16.9875 12.3518 16.7471L21.7901 0.387724Z" fill="#80A541"/>
               </svg>
               <div className="brand-text">
-                <span className="footer-brand-title">БЕЛСНАБ</span>
+                <span className="footer-brand-title">БЕНГС</span>
                 <span className="footer-brand-sub">НЕРУДНІ МАТЕРІАЛИ • ДНІПРО</span>
               </div>
             </div>
@@ -26,14 +26,14 @@ export const Footer = () => {
                 <span>+380 (67) 686-31-86</span>
               </a>
 
-              <a href="mailto:belsnabzakaz@gmail.com" className="footer-contact-item mail">
+              <a href="mailto:bengs.zakaz@gmail.com" className="footer-contact-item mail">
                 <Mail size={16} />
-                <span>belsnabzakaz@gmail.com</span>
+                <span>bengs.zakaz@gmail.com</span>
               </a>
 
               <div className="footer-contact-item address">
                 <MapPin size={16} />
-                <span>ТОВ "БЕЛСНАБ УКРАЇНА", Україна, м. Дніпро, вул. Журналістів, 9</span>
+                <span>ТОВ "БЕНГС" (ЄДРПОУ 41963896, засн. 2018 р.), Україна, м. Дніпро, вул. Журналістів, 9</span>
               </div>
             </div>
 
@@ -47,11 +47,11 @@ export const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Розділи</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog">Каталог</a></li>
-              <li><a href="#prices">Ціни</a></li>
+              <li><a href="#catalog">Каталог щебеню</a></li>
+              <li><a href="#prices">Прайс-лист</a></li>
               <li><a href="#services">Послуги спецтехніки</a></li>
               <li><a href="#delivery">Доставка та оплата</a></li>
-              <li><a href="#about">Про компанію</a></li>
+              <li><a href="#about">Про ТОВ «БЕНГС»</a></li>
               <li><a href="#articles">Статті</a></li>
               <li><a href="#contacts">Контакти</a></li>
             </ul>
@@ -61,14 +61,14 @@ export const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-heading">Нерудні матеріали</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog">Ґрунти та чорнозем</a></li>
-              <li><a href="#catalog">Щебінь гранітний</a></li>
+              <li><a href="#catalog">Гранітний щебінь</a></li>
               <li><a href="#catalog">Шлаковий щебінь</a></li>
+              <li><a href="#catalog">Гранітний відсів (0-5 мм)</a></li>
+              <li><a href="#catalog">Гравійний щебінь</a></li>
+              <li><a href="#catalog">Бутовий камінь</a></li>
               <li><a href="#catalog">Пісок річковий</a></li>
               <li><a href="#catalog">ЩПС / ПГС</a></li>
-              <li><a href="#catalog">Керамзит</a></li>
-              <li><a href="#catalog">Гравій</a></li>
-              <li><a href="#catalog">Бутовий камінь</a></li>
+              <li><a href="#catalog">Вторинний щебінь</a></li>
             </ul>
           </div>
 
@@ -77,7 +77,7 @@ export const Footer = () => {
             <h4 className="footer-heading">Інші матеріали</h4>
             <ul className="footer-nav-list">
               <li><a href="#catalog">Протиожеледні реагенти</a></li>
-              <li><a href="#catalog">Мінеральні добрива</a></li>
+              <li><a href="#catalog">Родючий ґрунт / Чорнозем</a></li>
               <li><a href="#catalog">Кам'яне вугілля</a></li>
             </ul>
 
@@ -86,7 +86,7 @@ export const Footer = () => {
                 <div className="pb-square"></div>
               </div>
               <div className="pb-text">
-                АКРЕДИТОВАНИЙ ПОСТАЧАЛЬНИК PROZORRO
+                ТОВ «БЕНГС» (ЄДРПОУ 41963896) — ВЕРИФІКОВАНИЙ ПОСТАЧАЛЬНИК PROZORRO
               </div>
             </div>
           </div>
@@ -95,10 +95,10 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div className="fb-copyright">
-            © 2026, «Белснаб Дніпро». Всі права захищені.
+            © 2018–2026, ТОВ «БЕНГС» (ЄДРПОУ 41963896). Всі права захищені.
           </div>
           <div className="fb-privacy">
-            <a href="#">Політика обробки персональних даних</a>
+            <a href="#">Політика конфіденційності</a>
           </div>
         </div>
 
@@ -132,6 +132,7 @@ export const Footer = () => {
         .footer-brand-title {
           font-size: 1.45rem;
           font-weight: 900;
+          letter-spacing: 1px;
           color: #80A541;
           display: block;
           line-height: 1;

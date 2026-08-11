@@ -39,10 +39,10 @@ export const Advantages = () => {
     <section id="advantages" className="section advantages-section">
       <div className="container">
         <div className="section-header text-center">
-          <div className="badge badge-green mb-2">Надійність та якість</div>
-          <h2 className="section-title">Чому обирають компанію «Белснаб Дніпро»</h2>
+          <div className="badge badge-green mb-2">Надійність та якість з 2018 року</div>
+          <h2 className="section-title">Чому обирають компанію «БЕНГС» у Дніпрі</h2>
           <p className="section-subtitle mx-auto">
-            Забезпечуємо безперебійне постачання нерудних будівельних матеріалів для провідних забудовників, дорожніх служб та приватних об'єктів Дніпра та області з 2014 року.
+            ТОВ «БЕНГС» (ЄДРПОУ 41963896) забезпечує безперебійне постачання нерудних будівельних матеріалів для провідних забудовників, дорожніх служб та приватних об'єктів Дніпра та області з 2018 року.
           </p>
         </div>
 

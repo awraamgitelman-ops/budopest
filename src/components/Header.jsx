@@ -31,7 +31,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
             </a>
             
             <a
-              href="https://wa.me/380676863186?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F!%20%D0%A6%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D1%89%D0%B5%D0%B1%D1%96%D0%BD%D1%8C%20%D0%B7%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D1%8E%20%D0%BF%D0%BE%20%D0%94%D0%BD%D1%96%D0%BF%D1%80%D1%83."
+              href="https://wa.me/380676863186?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F!%20%D0%A6%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D1%89%D0%B5%D0%B1%D1%96%D0%BD%D1%8C%20%D0%B2%D1%96%D0%B4%20%D0%A2%D0%9E%D0%92%20%D0%91%D0%95%D0%9D%D0%93%D0%A1%20%D0%B7%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D1%8E%20%D0%BF%D0%BE%20%D0%94%D0%BD%D1%96%D0%BF%D1%80%D1%83."
               target="_blank"
               rel="noopener noreferrer"
               className="ht-whatsapp"
@@ -44,9 +44,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
               <span>WhatsApp / Viber</span>
             </a>
 
-            <a href="mailto:belsnabzakaz@gmail.com" className="ht-email">
+            <a href="mailto:bengs.zakaz@gmail.com" className="ht-email">
               <Mail size={14} className="icon-muted" />
-              <span>belsnabzakaz@gmail.com</span>
+              <span>bengs.zakaz@gmail.com</span>
             </a>
           </div>
 
@@ -81,7 +81,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
               <path d="M21.7901 0.387724C22.0879 -0.12856 22.8323 -0.129411 23.1313 0.386193L32.5662 16.654C32.7055 16.8941 32.7059 17.1905 32.5671 17.431L23.1289 33.7903C22.831 34.3066 22.0867 34.3075 21.7876 33.7919L12.3527 17.524C12.2134 17.2839 12.2131 16.9875 12.3518 16.7471L21.7901 0.387724Z" fill="#528C36"/>
             </svg>
             <div className="brand-text">
-              <span className="brand-title">БЕЛСНАБ</span>
+              <span className="brand-title">БЕНГС</span>
               <span className="brand-sub">НЕРУДНІ МАТЕРІАЛИ • ДНІПРО</span>
             </div>
           </a>
@@ -127,7 +127,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
                 <ChevronDown size={14} className="chevron" />
               </a>
               <div className="submenu">
-                <a href="#about">Про компанію</a>
+                <a href="#about">Про ТОВ «БЕНГС»</a>
                 <a href="#certificates">Сертифікати та ДСТУ</a>
                 <a href="#reviews">Відгуки клієнтів</a>
                 <a href="#warehouses">Кар'єри та перевалки</a>
@@ -141,7 +141,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
           {/* Action Buttons */}
           <div className="header-actions">
             <button
-              onClick={() => onOpenOrderModal({ name: "Запит комерційної пропозиції (КП)" })}
+              onClick={() => onOpenOrderModal({ name: "Запит комерційної пропозиції (КП) від ТОВ БЕНГС" })}
               className="btn btn-outline btn-kp"
             >
               <FileText size={16} />
@@ -168,7 +168,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
                 <Phone size={18} />
                 <span>+380 (67) 686-31-86</span>
               </a>
-              <div className="mobile-worktime">Працюємо 24/7 без вихідних по Дніпру та області</div>
+              <div className="mobile-worktime">ТОВ «БЕНГС» • 24/7 по Дніпру та області</div>
             </div>
 
             <div className="mobile-nav-links">
@@ -182,7 +182,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
                 Прайс-лист / Ціни в грн
               </a>
               <a href="#advantages" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Переваги компанії
+                Переваги ТОВ «БЕНГС»
               </a>
               <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
                 Доставка та самовивіз
@@ -336,7 +336,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
         .brand-title {
           font-size: 1.45rem;
           font-weight: 900;
-          letter-spacing: 0.5px;
+          letter-spacing: 1px;
           color: #80A541;
           line-height: 1;
         }
