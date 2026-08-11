@@ -60,7 +60,7 @@ export const Hero = ({ onOpenOrderModal }) => {
               </div>
               <div className="h-usp">
                 <Clock size={18} className="usp-icon" />
-                <span>Відвантаження 24/7</span>
+                <span>Щоденно 06:00 — 22:00</span>
               </div>
             </div>
           </div>

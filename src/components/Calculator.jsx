@@ -189,7 +189,7 @@ export const Calculator = ({ onOpenOrderModal }) => {
             <div className="calc-summary">
               <div className="summary-header">
                 <span className="summary-title">Підсумок розрахунку</span>
-                <span className="summary-status">В наявності 24/7</span>
+                <span className="summary-status">В наявності</span>
               </div>
 
               <div className="summary-rows">
