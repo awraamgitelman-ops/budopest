@@ -57,7 +57,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
             </div>
             <div className="ht-info-item">
               <Clock size={14} className="icon-green" />
-              <span>Графік: <strong>06:00 — 22:00</strong> (Пн–Нд)</span>
+              <span>Графік: <strong>09:00 — 20:00</strong> (Пн–Нд)</span>
             </div>
             <button
               onClick={onOpenSearchModal}
@@ -168,7 +168,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
                 <Phone size={18} />
                 <span>+380 (67) 686-31-86</span>
               </a>
-              <div className="mobile-worktime">ТОВ «БЕНГС» • Щоденно 06:00 — 22:00 (з урах. комендантської години)</div>
+              <div className="mobile-worktime">ТОВ «БЕНГС» • Щоденно 09:00 — 20:00 (без вихідних)</div>
             </div>
 
             <div className="mobile-nav-links">
