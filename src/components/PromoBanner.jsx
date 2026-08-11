@@ -53,8 +53,8 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
 
             <div className="promo-image-box">
               <img
-                src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=600&q=80"
-                alt="Доставка щебеню самоскидом у Дніпрі"
+                src="/images/quarry-base.jpg"
+                alt="Доставка щебеню самоскидом у Дніпрі — ТОВ БЕНГС"
                 className="promo-img"
               />
               <div className="promo-img-tag">

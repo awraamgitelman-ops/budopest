@@ -104,6 +104,11 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
               </div>
             </div>
 
+            <div className="wh-fleet-preview">
+              <img src="/images/truck-fleet.jpg" alt="Автопарк самоскидів ТОВ БЕНГС" className="wh-fleet-img" />
+              <span className="wh-fleet-tag">Власний автопарк самоскидів 10–40 т</span>
+            </div>
+
             <button
               onClick={() => onOpenOrderModal({ name: `Самовивіз з бази: ${activeWarehouse.name}` })}
               className="btn btn-primary btn-block wh-order-btn"
@@ -349,6 +354,33 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
         .feat-icon {
           color: var(--c-green);
           flex-shrink: 0;
+        }
+
+        .wh-fleet-preview {
+          position: relative;
+          height: 140px;
+          border-radius: var(--radius-sm);
+          overflow: hidden;
+          margin-bottom: 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .wh-fleet-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .wh-fleet-tag {
+          position: absolute;
+          bottom: 8px;
+          left: 8px;
+          background: rgba(15, 23, 42, 0.85);
+          color: #ffffff;
+          padding: 3px 8px;
+          border-radius: 4px;
+          font-size: 0.72rem;
+          font-weight: 600;
         }
 
         .wh-order-btn {

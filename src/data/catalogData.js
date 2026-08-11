@@ -125,7 +125,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F300 - F400",
     flakiness: "до 10% (1 група кубоподібна)",
     density: "1.40 т/м3",
-    image: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80",
+    image: "/images/granitnyj.jpg",
     popular: true,
     description: "Видобувається у гранітних кар'єрах Дніпропетровщини. Найміцніший будівельний щебінь для моноліту, високомарочного бетону, мостів та автодоріг вищих категорій."
   },
@@ -141,7 +141,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F150 - F200",
     flakiness: "до 15% (1-2 група)",
     density: "1.36 т/м3",
-    image: "https://images.unsplash.com/photo-1578885136359-16c8bd4d3a8e?auto=format&fit=crop&w=800&q=80",
+    image: "/images/gravijnyj.jpg",
     popular: true,
     description: "Універсальний природний камінь із низьким радіаційним фоном. Ідеальний для приватного будівництва, фундаментів, стяжок та бетонів М150–М300."
   },
@@ -157,7 +157,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F100",
     flakiness: "до 15%",
     density: "1.35 т/м3",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    image: "/images/shlakovyj.jpg",
     popular: true,
     description: "Оптимальне бюджетне рішення для Дніпра та області. Дроблені доменні та сталеплавильні шлаки з високим зчепленням для подушок доріг та промислових підлог."
   },
@@ -173,7 +173,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F100 - F150",
     flakiness: "10-15%",
     density: "1.28 т/м3",
-    image: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=800&q=80",
+    image: "/images/izvestnyakovyj.jpg",
     popular: false,
     description: "Екологічно чистий кальцитовий камінь. Використовується для благоустрою, дренажних систем, дорожнього покриття 2-3 категорії та виробництва вапна."
   },
@@ -189,7 +189,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F200 - F300",
     flakiness: "масивний",
     density: "1.50 т/м3",
-    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+    image: "/images/butovyj.jpg",
     popular: true,
     description: "Гранітний бут для спорудження підпірних стін, парканів, фундаментів під важкі конструкції, укріплення берегів річки Дніпро та ландшафту."
   },
@@ -205,7 +205,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F50 - F100",
     flakiness: "до 20%",
     density: "1.25 т/м3",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    image: "/images/vtorichnyj.jpg",
     popular: true,
     description: "Дроблений та очищений від арматури бетонний щебінь. Найдешевший варіант для тимчасових під'їзних шляхів, засипки ям та відсипки стоянок."
   },
@@ -221,7 +221,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F300",
     flakiness: "до 10%",
     density: "1.42 т/м3",
-    image: "https://images.unsplash.com/photo-1508873696983-2df5293cb325?auto=format&fit=crop&w=800&q=80",
+    image: "/images/otsev.jpg",
     popular: true,
     description: "Найдрібніша фракція гранітного дроблення для виробництва тротуарної плитки, європарканів, укладання бруківки та посипки доріжок узимку."
   },
@@ -237,7 +237,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F400",
     flakiness: "до 7%",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=800&q=80",
+    image: "/images/gabbro-diabaz.jpg",
     popular: false,
     description: "Надміцна темна вулканічна порода з найвищою зносостійкістю, застосовується для асфальтобетону вищої категорії та бань."
   },
@@ -253,7 +253,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F200",
     flakiness: "до 10%",
     density: "1.37 т/м3",
-    image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+    image: "/images/mytyj.jpg",
     popular: false,
     description: "Повністю очищений від глини та пилоподібних часток матеріал для відповідальних бетонних розчинів та дренажу."
   },
@@ -269,7 +269,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F300",
     flakiness: "колотий / окатаний",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+    image: "/images/gabiony.jpg",
     popular: false,
     description: "Відбірний гранітний камінь для заповнення сітчастих габіонних конструкцій, терас та берегоукріплення річок Дніпро та Самара."
   },
@@ -285,7 +285,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F200 - F300",
     flakiness: "у МКР з ручками",
     density: "1.0 т/мішок",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/bigbeg.jpg",
     popular: true,
     description: "Зручне фасування у м'які контейнери по 1000 кг для об'єктів з обмеженим заїздом, маніпуляторного або кранового розвантаження."
   },
@@ -301,7 +301,7 @@ export const SHCHEDEN_PRODUCTS = [
     frost: "F100",
     flakiness: "декоративний білий",
     density: "1.30 т/м3",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    image: "/images/mramornyj.jpg",
     popular: false,
     description: "Білосніжний мармуровий камінь для ландшафтного дизайну, клумб, пам'ятників, мозаїчних підлог і декору."
   }
