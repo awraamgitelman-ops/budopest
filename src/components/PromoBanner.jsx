@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, ArrowRight } from 'lucide-react';
+import { Phone, ArrowRight, Tag } from 'lucide-react';
 
 export const PromoBanner = ({ onOpenOrderModal }) => {
   const [phone, setPhone] = useState('');
@@ -17,32 +17,49 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
     <section className="promo-banner-section">
       <div className="container">
         <div className="promo-card">
-          <div className="promo-content">
-            <h2 className="promo-title">Допоможемо зробити вигідну покупку</h2>
-            <p className="promo-desc">
-              Отримайте <strong>знижку 10%</strong> на першу пробну машину щебеню, щоб оцінити високу якість граніту та точність ваги вже сьогодні.
-            </p>
+          <div className="promo-grid">
+            <div className="promo-content">
+              <div className="promo-badge">
+                <Tag size={14} />
+                <span>Спеціальна пропозиція</span>
+              </div>
+              <h2 className="promo-title">Допоможемо зробити вигідну покупку</h2>
+              <p className="promo-desc">
+                Отримайте <strong>знижку 10%</strong> на першу пробну машину щебеню, щоб оцінити високу якість матеріалу та точність ваги вже сьогодні.
+              </p>
 
-            <div className="promo-actions">
-              <a href="tel:+380676863186" className="promo-phone-btn">
-                <Phone size={18} />
-                <span>+380 (67) 686-31-86</span>
-              </a>
+              <div className="promo-actions">
+                <a href="tel:+380676863186" className="promo-phone-btn">
+                  <Phone size={18} />
+                  <span>+380 (67) 686-31-86</span>
+                </a>
 
-              <form onSubmit={handleSubmit} className="promo-inline-form">
-                <input
-                  type="tel"
-                  placeholder="+380 (__) ___-__-__"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="promo-input"
-                  required
-                />
-                <button type="submit" className="btn btn-primary promo-submit-btn">
-                  <span>Отримати знижку</span>
-                  <ArrowRight size={16} />
-                </button>
-              </form>
+                <form onSubmit={handleSubmit} className="promo-inline-form">
+                  <input
+                    type="tel"
+                    placeholder="+380 (__) ___-__-__"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="promo-input"
+                    required
+                  />
+                  <button type="submit" className="btn btn-primary promo-submit-btn">
+                    <span>Отримати знижку</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div className="promo-image-box">
+              <img
+                src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=600&q=80"
+                alt="Доставка щебеню самоскидом у Дніпрі"
+                className="promo-img"
+              />
+              <div className="promo-img-tag">
+                <span>Пряме завантаження з кар'єру</span>
+              </div>
             </div>
           </div>
         </div>
@@ -56,10 +73,30 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
         .promo-card {
           background: #f1f5f9;
           border-radius: var(--radius-lg);
-          padding: 44px 50px;
+          padding: 36px 44px;
           position: relative;
           overflow: hidden;
           border: 1px solid #e2e8f0;
+        }
+
+        .promo-grid {
+          display: grid;
+          grid-template-columns: 1.35fr 0.85fr;
+          gap: 36px;
+          align-items: center;
+        }
+
+        .promo-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: var(--c-green-dark);
+          background: var(--c-green-light);
+          padding: 4px 10px;
+          border-radius: 4px;
+          margin-bottom: 12px;
         }
 
         .promo-title {
@@ -71,10 +108,9 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
         }
 
         .promo-desc {
-          font-size: 1.1rem;
+          font-size: 1.05rem;
           color: #334155;
-          margin-bottom: 28px;
-          max-width: 650px;
+          margin-bottom: 24px;
           line-height: 1.5;
         }
 
@@ -86,7 +122,7 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
         .promo-actions {
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 16px;
           flex-wrap: wrap;
         }
 
@@ -96,9 +132,9 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
           gap: 10px;
           background: var(--c-green);
           color: #ffffff;
-          font-size: 1.2rem;
+          font-size: 1.15rem;
           font-weight: 800;
-          padding: 14px 28px;
+          padding: 12px 24px;
           border-radius: 8px;
           box-shadow: 0 4px 12px rgba(133, 180, 42, 0.4);
           transition: all 0.2s;
@@ -114,26 +150,56 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
           align-items: center;
           gap: 8px;
           background: #ffffff;
-          padding: 6px;
+          padding: 5px;
           border-radius: 8px;
           border: 1px solid #cbd5e1;
         }
 
         .promo-input {
-          padding: 10px 14px;
+          padding: 9px 12px;
           border: none;
-          font-size: 0.95rem;
+          font-size: 0.92rem;
           outline: none;
-          min-width: 200px;
+          min-width: 170px;
         }
 
         .promo-submit-btn {
-          padding: 10px 20px;
+          padding: 9px 18px;
         }
 
-        @media (max-width: 860px) {
+        .promo-image-box {
+          position: relative;
+          height: 200px;
+          border-radius: var(--radius-md);
+          overflow: hidden;
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .promo-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .promo-img-tag {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          background: rgba(15, 23, 42, 0.85);
+          backdrop-filter: blur(4px);
+          color: #ffffff;
+          padding: 4px 10px;
+          border-radius: 4px;
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+
+        @media (max-width: 960px) {
+          .promo-grid {
+            grid-template-columns: 1fr;
+          }
           .promo-card {
-            padding: 30px 24px;
+            padding: 28px 20px;
           }
           .promo-title {
             font-size: 1.65rem;
