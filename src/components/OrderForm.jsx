@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle2, ShieldCheck, PhoneCall, Clock } from 'lucide-react';
-import { SHCHEDEN_PRODUCTS } from '../data/catalogData';
 
 export const OrderForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    product: 'Гравийный щебень 5-20 мм',
-    volume: '20 тонн',
+    product: 'Гранітний щебінь 5-20 мм',
+    volume: '25 тонн',
     address: '',
     comment: ''
   });
@@ -24,7 +23,6 @@ export const OrderForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate instant processing
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
@@ -38,29 +36,29 @@ export const OrderForm = () => {
           <div className="of-grid">
             {/* Left Info Column */}
             <div className="of-info">
-              <div className="badge badge-green mb-2">Оперативный расчет</div>
-              <h2 className="of-title">Закажите щебень по выгодной цене с доставкой</h2>
+              <div className="badge badge-green mb-2">Оперативний розрахунок</div>
+              <h2 className="of-title">Замовте щебінь за вигідною ціною з доставкою по Дніпру</h2>
               <p className="of-desc">
-                Заполните форму — наш специалист свяжется с вами в течение <strong>5 минут</strong>, уточнит детали объекта и рассчитает персональную скидку на объем.
+                Заповніть форму — наш фахівець зателефонує вам протягом <strong>5 хвилин</strong>, уточнить деталі об'єкта та розрахує персональну оптову знижку.
               </p>
 
               <div className="of-perks">
                 <div className="of-perk">
                   <div className="op-icon"><Clock size={20} /></div>
                   <div>
-                    <strong>Расчет за 5 минут:</strong> оперативно подберем ближайшую перевалку и нужный тоннаж самосвала.
+                    <strong>Розрахунок за 5 хвилин:</strong> оперативно підберемо найближчий кар'єр і потрібний тоннаж самоскида.
                   </div>
                 </div>
                 <div className="of-perk">
                   <div className="op-icon"><ShieldCheck size={20} /></div>
                   <div>
-                    <strong>Фиксация цены:</strong> гарантируем неизменность стоимости после подтверждения заявки.
+                    <strong>Фіксація ціни:</strong> гарантуємо незмінність вартості після підтвердження замовлення.
                   </div>
                 </div>
                 <div className="of-perk">
                   <div className="op-icon"><PhoneCall size={20} /></div>
                   <div>
-                    <strong>Прямая связь:</strong> или звоните круглосуточно по номеру <a href="tel:+74996863186">+7 (499) 686-31-86</a>.
+                    <strong>Прямий зв'язок:</strong> або телефонуйте цілодобово за номером <a href="tel:+380676863186">+380 (67) 686-31-86</a>.
                   </div>
                 </div>
               </div>
@@ -73,9 +71,9 @@ export const OrderForm = () => {
                   <div className="success-icon-circle">
                     <CheckCircle2 size={44} color="#16a34a" />
                   </div>
-                  <h3 className="success-title">Спасибо за заявку!</h3>
+                  <h3 className="success-title">Дякуємо за заявку!</h3>
                   <p className="success-desc">
-                    Мы получили ваш запрос на <strong>{formData.product}</strong> ({formData.volume}). Менеджер свяжется с вами по номеру <strong>{formData.phone}</strong> в течение 5 минут.
+                    Ми отримали ваш запит на <strong>{formData.product}</strong> ({formData.volume}). Менеджер зв'яжеться з вами за номером <strong>{formData.phone}</strong> протягом 5 хвилин.
                   </p>
                   <button
                     onClick={() => {
@@ -83,29 +81,29 @@ export const OrderForm = () => {
                       setFormData({
                         name: '',
                         phone: '',
-                        product: 'Гравийный щебень 5-20 мм',
-                        volume: '20 тонн',
+                        product: 'Гранітний щебінь 5-20 мм',
+                        volume: '25 тонн',
                         address: '',
                         comment: ''
                       });
                     }}
                     className="btn btn-outline"
                   >
-                    Отправить еще одну заявку
+                    Надіслати ще одну заявку
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="of-form">
-                  <h3 className="form-card-title">Форма быстрого заказа</h3>
+                  <h3 className="form-card-title">Форма швидкого замовлення</h3>
 
                   <div className="form-row-2">
                     <div className="form-group">
-                      <label>Ваше имя</label>
+                      <label>Ваше ім'я</label>
                       <input
                         type="text"
                         name="name"
                         required
-                        placeholder="Алексей"
+                        placeholder="Олександр"
                         value={formData.name}
                         onChange={handleChange}
                         className="form-input"
@@ -118,7 +116,7 @@ export const OrderForm = () => {
                         type="tel"
                         name="phone"
                         required
-                        placeholder="+7 (___) ___-__-__"
+                        placeholder="+380 (__) ___-__-__"
                         value={formData.phone}
                         onChange={handleChange}
                         className="form-input"
@@ -128,11 +126,11 @@ export const OrderForm = () => {
 
                   <div className="form-row-2">
                     <div className="form-group">
-                      <label>Тип и фракция материала</label>
+                      <label>Тип і фракція матеріалу</label>
                       <input
                         type="text"
                         name="product"
-                        placeholder="Например: Гранитный 5-20"
+                        placeholder="Наприклад: Гранітний 5-20 мм"
                         value={formData.product}
                         onChange={handleChange}
                         className="form-input"
@@ -140,11 +138,11 @@ export const OrderForm = () => {
                     </div>
 
                     <div className="form-group">
-                      <label>Объем (т или м³)</label>
+                      <label>Об'єм (т або м³)</label>
                       <input
                         type="text"
                         name="volume"
-                        placeholder="Например: 30 тонн"
+                        placeholder="Наприклад: 30 тонн"
                         value={formData.volume}
                         onChange={handleChange}
                         className="form-input"
@@ -153,11 +151,11 @@ export const OrderForm = () => {
                   </div>
 
                   <div className="form-group">
-                    <label>Адрес объекта / Пункт доставки</label>
+                    <label>Адреса об'єкта / Район доставки</label>
                     <input
                       type="text"
                       name="address"
-                      placeholder="г. Москва, Дмитровское шоссе или район"
+                      placeholder="м. Дніпро, Набережна Перемоги або район"
                       value={formData.address}
                       onChange={handleChange}
                       className="form-input"
@@ -165,11 +163,11 @@ export const OrderForm = () => {
                   </div>
 
                   <div className="form-group">
-                    <label>Комментарий к заказу (необязательно)</label>
+                    <label>Коментар до замовлення (необов'язково)</label>
                     <textarea
                       name="comment"
                       rows="2"
-                      placeholder="Укажите особенности подъезда, форму оплаты (с НДС/без) или желаемое время..."
+                      placeholder="Вкажіть особливості під'їзду, форму оплати (з ПДВ/без) або бажаний час..."
                       value={formData.comment}
                       onChange={handleChange}
                       className="form-textarea"
@@ -182,11 +180,11 @@ export const OrderForm = () => {
                     className="btn btn-primary btn-lg btn-block of-submit-btn"
                   >
                     <Send size={18} />
-                    <span>{isSubmitting ? 'Отправка...' : 'Рассчитать стоимость со скидкой'}</span>
+                    <span>{isSubmitting ? 'Відправка...' : 'Розрахувати вартість зі знижкою'}</span>
                   </button>
 
                   <div className="form-privacy-note">
-                    Нажимая кнопку, вы соглашаетесь с Политикой обработки персональных данных.
+                    Натискаючи кнопку, ви погоджуєтесь з Політикою обробки персональних даних.
                   </div>
                 </form>
               )}

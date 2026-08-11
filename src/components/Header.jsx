@@ -5,7 +5,6 @@ import { MegaMenu } from './MegaMenu';
 export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,23 +25,23 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
       <div className="header-top">
         <div className="container header-top-inner">
           <div className="ht-left">
-            <a href="tel:+74996863186" className="ht-phone">
+            <a href="tel:+380676863186" className="ht-phone">
               <Phone size={15} className="icon-green" />
-              <span>+7 (499) 686-31-86</span>
+              <span>+380 (67) 686-31-86</span>
             </a>
             
             <a
-              href="https://wa.me/79994445634?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D1%89%D0%B5%D0%B1%D0%B5%D0%BD%D1%8C%20%D1%81%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D0%B9."
+              href="https://wa.me/380676863186?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F!%20%D0%A6%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D1%89%D0%B5%D0%B1%D1%96%D0%BD%D1%8C%20%D0%B7%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D1%8E%20%D0%BF%D0%BE%20%D0%94%D0%BD%D1%96%D0%BF%D1%80%D1%83."
               target="_blank"
               rel="noopener noreferrer"
               className="ht-whatsapp"
-              title="Написать в WhatsApp"
+              title="Написати у WhatsApp"
             >
               <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
                 <path d="M16 0C7.16 0 0 7.16 0 16C0 18.84 0.74 21.57 2.14 23.97L0 32L8.23 29.84C10.56 31.14 13.23 31.84 16 31.84C24.84 31.84 32 24.68 32 15.84C32 7 24.84 0 16 0Z" fill="#25D366"/>
                 <path d="M23.9 19.6C23.5 19.4 21.6 18.4 21.2 18.3C20.8 18.1 20.6 18.1 20.3 18.5C20 18.9 19.3 19.8 19 20.1C18.8 20.3 18.5 20.4 18.1 20.2C17.7 20 16.5 19.6 15 18.3C13.8 17.2 13 15.9 12.8 15.5C12.6 15.1 12.8 14.9 13 14.7C13.2 14.5 13.4 14.2 13.6 14C13.8 13.8 13.9 13.6 14 13.4C14.1 13.2 14.1 13 14 12.8C13.9 12.6 13.1 10.7 12.8 9.9C12.5 9.1 12.2 9.2 12 9.2H11.3C11 9.2 10.6 9.3 10.2 9.7C9.8 10.1 8.8 11 8.8 13C8.8 15 10.2 16.9 10.4 17.2C10.6 17.5 13.2 21.6 17.2 23.3C20.6 24.7 21.3 24.4 22 24.3C23.1 24.2 25.3 23 25.8 21.6C26.3 20.2 26.3 19 26.1 18.8C25.9 18.6 25.6 18.5 25.2 18.3L23.9 19.6Z" fill="#FFFFFF"/>
               </svg>
-              <span>WhatsApp</span>
+              <span>WhatsApp / Viber</span>
             </a>
 
             <a href="mailto:belsnabzakaz@gmail.com" className="ht-email">
@@ -54,16 +53,16 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
           <div className="ht-right">
             <div className="ht-info-item">
               <MapPin size={14} className="icon-green" />
-              <span>г. Москва, ул. Вагоноремонтная, 10А</span>
+              <span>м. Дніпро, вул. Журналістів, 9</span>
             </div>
             <div className="ht-info-item">
               <Clock size={14} className="icon-green" />
-              <span>Режим работы: <strong>24/7</strong></span>
+              <span>Графік роботи: <strong>24/7</strong></span>
             </div>
             <button
               onClick={onOpenSearchModal}
               className="ht-search-btn"
-              title="Поиск по сайту"
+              title="Пошук по сайту"
             >
               <Search size={16} />
             </button>
@@ -83,7 +82,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
             </svg>
             <div className="brand-text">
               <span className="brand-title">БЕЛСНАБ</span>
-              <span className="brand-sub">НЕРУДНЫЕ МАТЕРИАЛЫ</span>
+              <span className="brand-sub">НЕРУДНІ МАТЕРІАЛИ • ДНІПРО</span>
             </div>
           </a>
 
@@ -104,49 +103,49 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
               )}
             </div>
 
-            <a href="#prices" className="nav-link">Цены</a>
+            <a href="#prices" className="nav-link">Ціни</a>
             
             <div className="nav-item has-dropdown">
               <a href="#services" className="nav-link">
-                <span>Услуги</span>
+                <span>Послуги</span>
                 <ChevronDown size={14} className="chevron" />
               </a>
               <div className="submenu">
-                <a href="#services">Все услуги</a>
-                <a href="#services">Земляные работы</a>
-                <a href="#services">Вывоз грунта с утилизацией</a>
-                <a href="#services">Уборка и вывоз снега</a>
-                <a href="#services">Погрузка спецтехникой</a>
+                <a href="#services">Всі послуги спецтехніки</a>
+                <a href="#services">Земляні роботи та котловани</a>
+                <a href="#services">Вивіз ґрунту з утилізацією</a>
+                <a href="#services">Прибирання та вивіз снігу</a>
+                <a href="#services">Послуги екскаваторів та навантажувачів</a>
               </div>
             </div>
 
-            <a href="#delivery" className="nav-link">Доставка и оплата</a>
+            <a href="#delivery" className="nav-link">Доставка та оплата</a>
             
             <div className="nav-item has-dropdown">
               <a href="#about" className="nav-link">
-                <span>О компании</span>
+                <span>Про компанію</span>
                 <ChevronDown size={14} className="chevron" />
               </a>
               <div className="submenu">
-                <a href="#about">О компании</a>
-                <a href="#certificates">Сертификаты и ГОСТ</a>
-                <a href="#reviews">Отзывы заказчиков</a>
-                <a href="#warehouses">Наши перевалки</a>
+                <a href="#about">Про компанію</a>
+                <a href="#certificates">Сертифікати та ДСТУ</a>
+                <a href="#reviews">Відгуки клієнтів</a>
+                <a href="#warehouses">Кар'єри та перевалки</a>
               </div>
             </div>
 
-            <a href="#articles" className="nav-link">Статьи</a>
-            <a href="#contacts" className="nav-link">Контакты</a>
+            <a href="#articles" className="nav-link">Статті</a>
+            <a href="#contacts" className="nav-link">Контакти</a>
           </nav>
 
           {/* Action Buttons */}
           <div className="header-actions">
             <button
-              onClick={() => onOpenOrderModal({ name: "Запрос коммерческого предложения" })}
+              onClick={() => onOpenOrderModal({ name: "Запит комерційної пропозиції (КП)" })}
               className="btn btn-outline btn-kp"
             >
               <FileText size={16} />
-              <span>Получить КП</span>
+              <span>Отримати КП</span>
             </button>
 
             <button
@@ -165,40 +164,40 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
         <div className="mobile-drawer animate-fade">
           <div className="mobile-drawer-inner">
             <div className="mobile-phone-block">
-              <a href="tel:+74996863186" className="mobile-phone-link">
+              <a href="tel:+380676863186" className="mobile-phone-link">
                 <Phone size={18} />
-                <span>+7 (499) 686-31-86</span>
+                <span>+380 (67) 686-31-86</span>
               </a>
-              <div className="mobile-worktime">Работаем 24/7 без выходных</div>
+              <div className="mobile-worktime">Працюємо 24/7 без вихідних по Дніпру та області</div>
             </div>
 
             <div className="mobile-nav-links">
               <a href="#catalog" onClick={() => setIsMobileMenuOpen(false)} className="mob-link highlight">
-                Каталог щебня
+                Каталог щебеню
               </a>
               <a href="#calculator" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Калькулятор стоимости
+                Калькулятор вартості
               </a>
               <a href="#prices" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Прайс-лист / Цены
+                Прайс-лист / Ціни в грн
               </a>
               <a href="#advantages" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Преимущества
+                Переваги компанії
               </a>
               <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Доставка и самовывоз
+                Доставка та самовивіз
               </a>
               <a href="#warehouses" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Базы и перевалки
+                Бази та кар'єри (Дніпро)
               </a>
               <a href="#certificates" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Сертификаты ГОСТ
+                Сертифікати ДСТУ
               </a>
               <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Вопросы и ответы
+                Питання та відповіді
               </a>
               <a href="#contacts" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Контакты
+                Контакти
               </a>
             </div>
 
@@ -206,12 +205,12 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  onOpenOrderModal({ name: "Быстрый заказ щебня" });
+                  onOpenOrderModal({ name: "Швидке замовлення щебеню" });
                 }}
                 className="btn btn-primary btn-block"
               >
                 <Send size={16} />
-                <span>Сделать заказ</span>
+                <span>Зробити замовлення</span>
               </button>
             </div>
           </div>
@@ -394,7 +393,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
           position: absolute;
           top: calc(100% + 4px);
           left: 0;
-          min-width: 220px;
+          min-width: 240px;
           background: #ffffff;
           border-radius: var(--radius-sm);
           box-shadow: var(--shadow-lg);

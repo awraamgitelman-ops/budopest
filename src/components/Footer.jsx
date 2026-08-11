@@ -16,14 +16,14 @@ export const Footer = () => {
               </svg>
               <div className="brand-text">
                 <span className="footer-brand-title">БЕЛСНАБ</span>
-                <span className="footer-brand-sub">НЕРУДНЫЕ МАТЕРИАЛЫ</span>
+                <span className="footer-brand-sub">НЕРУДНІ МАТЕРІАЛИ • ДНІПРО</span>
               </div>
             </div>
 
             <div className="footer-contact-list">
-              <a href="tel:+74996863186" className="footer-contact-item phone">
+              <a href="tel:+380676863186" className="footer-contact-item phone">
                 <Phone size={16} />
-                <span>+7 (499) 686-31-86</span>
+                <span>+380 (67) 686-31-86</span>
               </a>
 
               <a href="mailto:belsnabzakaz@gmail.com" className="footer-contact-item mail">
@@ -33,52 +33,52 @@ export const Footer = () => {
 
               <div className="footer-contact-item address">
                 <MapPin size={16} />
-                <span>ООО "БЕЛСНАБ", Россия, г. Москва, ул. Вагоноремонтная, 10А</span>
+                <span>ТОВ "БЕЛСНАБ УКРАЇНА", Україна, м. Дніпро, вул. Журналістів, 9</span>
               </div>
             </div>
 
             <div className="footer-sub-links">
-              <a href="#warehouses">Схема проезда</a>
-              <a href="#catalog">Карта сайта</a>
+              <a href="#warehouses">Схема проїзду</a>
+              <a href="#catalog">Карта сайту</a>
             </div>
           </div>
 
-          {/* Col 2: Разделы */}
+          {/* Col 2: Розділи */}
           <div className="footer-col">
-            <h4 className="footer-heading">Разделы</h4>
+            <h4 className="footer-heading">Розділи</h4>
             <ul className="footer-nav-list">
               <li><a href="#catalog">Каталог</a></li>
-              <li><a href="#prices">Цены</a></li>
-              <li><a href="#services">Услуги</a></li>
-              <li><a href="#delivery">Доставка и оплата</a></li>
-              <li><a href="#about">О компании</a></li>
-              <li><a href="#articles">Статьи</a></li>
-              <li><a href="#contacts">Контакты</a></li>
+              <li><a href="#prices">Ціни</a></li>
+              <li><a href="#services">Послуги спецтехніки</a></li>
+              <li><a href="#delivery">Доставка та оплата</a></li>
+              <li><a href="#about">Про компанію</a></li>
+              <li><a href="#articles">Статті</a></li>
+              <li><a href="#contacts">Контакти</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Нерудные материалы */}
+          {/* Col 3: Нерудні матеріали */}
           <div className="footer-col">
-            <h4 className="footer-heading">Нерудные материалы</h4>
+            <h4 className="footer-heading">Нерудні матеріали</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog">Грунты</a></li>
-              <li><a href="#catalog">Щебень</a></li>
-              <li><a href="#catalog">Песок</a></li>
-              <li><a href="#catalog">ЩПС</a></li>
-              <li><a href="#catalog">ПГС</a></li>
+              <li><a href="#catalog">Ґрунти та чорнозем</a></li>
+              <li><a href="#catalog">Щебінь гранітний</a></li>
+              <li><a href="#catalog">Шлаковий щебінь</a></li>
+              <li><a href="#catalog">Пісок річковий</a></li>
+              <li><a href="#catalog">ЩПС / ПГС</a></li>
               <li><a href="#catalog">Керамзит</a></li>
-              <li><a href="#catalog">Гравий</a></li>
-              <li><a href="#catalog">Галька</a></li>
+              <li><a href="#catalog">Гравій</a></li>
+              <li><a href="#catalog">Бутовий камінь</a></li>
             </ul>
           </div>
 
-          {/* Col 4: Другие материалы & Badge */}
+          {/* Col 4: Інші матеріали & Badge */}
           <div className="footer-col">
-            <h4 className="footer-heading">Другие материалы</h4>
+            <h4 className="footer-heading">Інші матеріали</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog">Противогололедные реагенты</a></li>
-              <li><a href="#catalog">Минеральные удобрения</a></li>
-              <li><a href="#catalog">Уголь</a></li>
+              <li><a href="#catalog">Протиожеледні реагенти</a></li>
+              <li><a href="#catalog">Мінеральні добрива</a></li>
+              <li><a href="#catalog">Кам'яне вугілля</a></li>
             </ul>
 
             <div className="portal-badge-card">
@@ -86,7 +86,7 @@ export const Footer = () => {
                 <div className="pb-square"></div>
               </div>
               <div className="pb-text">
-                Я ЗАРЕГИСТРИРОВАН НА ПОРТАЛЕ ПОСТАВЩИКОВ
+                АКРЕДИТОВАНИЙ ПОСТАЧАЛЬНИК PROZORRO
               </div>
             </div>
           </div>
@@ -95,15 +95,15 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div className="fb-copyright">
-            © 2026, «Белснаб». Все права защищены.
+            © 2026, «Белснаб Дніпро». Всі права захищені.
           </div>
           <div className="fb-privacy">
-            <a href="#">Политика обработки персональных данных</a>
+            <a href="#">Політика обробки персональних даних</a>
           </div>
         </div>
 
         <div className="footer-disclaimer">
-          Информация и цены на сайте не являются публичной офертой, определяемой положениями Статьи 437(2) Гражданского кодекса РФ.
+          Інформація та ціни на сайті мають ознайомчий характер та розраховуються індивідуально відповідно до обсягу та відстані доставки.
         </div>
       </div>
 
@@ -229,7 +229,7 @@ export const Footer = () => {
         .pb-square {
           width: 34px;
           height: 34px;
-          border: 4px solid #e11d48;
+          border: 4px solid #0284c7;
           border-radius: 4px;
         }
 

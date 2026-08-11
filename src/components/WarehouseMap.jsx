@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { WAREHOUSES } from '../data/catalogData';
-import { MapPin, Clock, Scale, Navigation, Phone, CheckCircle2 } from 'lucide-react';
+import { MapPin, Clock, Scale, Phone, CheckCircle2 } from 'lucide-react';
 
 export const WarehouseMap = ({ onOpenOrderModal }) => {
   const [activeWarehouse, setActiveWarehouse] = useState(WAREHOUSES[0]);
@@ -9,10 +9,10 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
     <section id="warehouses" className="section warehouses-section">
       <div className="container">
         <div className="section-header">
-          <div className="badge badge-green mb-2">Логистика и базы</div>
-          <h2 className="section-title">Перевалочные базы и самовывоз в Москве</h2>
+          <div className="badge badge-green mb-2">Логістика та самовивіз</div>
+          <h2 className="section-title">Перевалочні бази та кар'єри у Дніпрі</h2>
           <p className="section-subtitle">
-            4 собственные перевалки и склады нерудных материалов с удобным выездом на МКАД, СЗХ и вылетные магистрали.
+            Власні перевалки та кар'єрні майданчики нерудних матеріалів зі зручним виїздом на ключові магістралі Дніпра та області.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
               </div>
               <a href={`tel:${activeWarehouse.phone}`} className="wh-call-btn">
                 <Phone size={16} />
-                <span>Позвонить</span>
+                <span>Зателефонувати</span>
               </a>
             </div>
 
@@ -70,7 +70,6 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
             <div className="wh-map-preview">
               <div className="map-grid-bg">
                 <div className="map-marker-pin">
-                  <div className="pin-pulse"></div>
                   <div className="pin-head">
                     <MapPin size={24} color="#ffffff" />
                   </div>
@@ -82,7 +81,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
               </div>
 
               <div className="map-badge-bottom">
-                <span>Отгрузка от 1 тонны на самовывоз</span>
+                <span>Відвантаження від 1 тонни на самовивіз</span>
               </div>
             </div>
 
@@ -101,15 +100,15 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
               </div>
               <div className="wh-feature">
                 <CheckCircle2 size={16} className="feat-icon" />
-                <span>Режим работы: {activeWarehouse.hours}</span>
+                <span>Режим роботи: {activeWarehouse.hours}</span>
               </div>
             </div>
 
             <button
-              onClick={() => onOpenOrderModal({ name: `Самовывоз с базы: ${activeWarehouse.name}` })}
+              onClick={() => onOpenOrderModal({ name: `Самовивіз з бази: ${activeWarehouse.name}` })}
               className="btn btn-primary btn-block wh-order-btn"
             >
-              <span>Забронировать объем на самовывоз</span>
+              <span>Забронювати об'єм на самовивіз</span>
             </button>
           </div>
         </div>

@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
 import { PRICE_TABLES_DATA } from '../data/catalogData';
-import { ShoppingBag, FileSpreadsheet, Check, ArrowRight } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 
 export const PriceTables = ({ onOpenOrderModal }) => {
-  const [activeTab, setActiveTab] = useState('gravijnyj');
+  const [activeTab, setActiveTab] = useState('granitnyj');
 
   const tabs = [
-    { id: 'gravijnyj', label: 'Гравийный' },
-    { id: 'granitnyj', label: 'Гранитный' },
-    { id: 'izvestnyakovyj', label: 'Известняковый' },
-    { id: 'vtorichnyj', label: 'Вторичный и Шлак' }
+    { id: 'granitnyj', label: 'Гранітний' },
+    { id: 'shlakovyj', label: 'Шлаковий (Дніпро)' },
+    { id: 'gravijnyj', label: 'Гравійний' },
+    { id: 'vtorichnyj', label: 'Вторинний' }
   ];
 
-  const currentCategory = PRICE_TABLES_DATA[activeTab] || PRICE_TABLES_DATA.gravijnyj;
+  const currentCategory = PRICE_TABLES_DATA[activeTab] || PRICE_TABLES_DATA.granitnyj;
 
   return (
     <section id="prices" className="section price-tables-section">
       <div className="container">
         <div className="section-header">
-          <div className="badge badge-green mb-2">Прайс-лист 2026</div>
-          <h2 className="section-title">Цены на щебень за куб и тонну</h2>
+          <div className="badge badge-green mb-2">Прайс-лист 2026 (Дніпро)</div>
+          <h2 className="section-title">Ціни на щебінь за куб і тонну у гривнях</h2>
           <p className="section-subtitle">
-            Актуальные оптовые и розничные цены с НДС 20%. Доставка рассчитывается индивидуально в зависимости от расстояния.
+            Актуальні оптові та роздрібні ціни з урахуванням ПДВ 20%. Доставка розраховується з найближчого кар'єру або перевалочної бази.
           </p>
         </div>
 
@@ -49,12 +49,12 @@ export const PriceTables = ({ onOpenOrderModal }) => {
             <table className="price-table">
               <thead>
                 <tr>
-                  <th>Наименование</th>
-                  <th>Прочность</th>
-                  <th>Морозостойкость</th>
-                  <th>Цена за м³</th>
-                  <th>Цена за тонну</th>
-                  <th className="text-right">Заказ</th>
+                  <th>Найменування</th>
+                  <th>Міцність</th>
+                  <th>Морозостійкість</th>
+                  <th>Ціна за м³</th>
+                  <th>Ціна за тонну</th>
+                  <th className="text-right">Замовлення</th>
                 </tr>
               </thead>
               <tbody>
@@ -66,22 +66,22 @@ export const PriceTables = ({ onOpenOrderModal }) => {
                     <td><span className="spec-tag">{item.strength}</span></td>
                     <td><span className="spec-tag">{item.frost}</span></td>
                     <td className="price-cell">
-                      <span className="price-val">от {item.priceM3.toLocaleString('ru-RU')} ₽/м³</span>
+                      <span className="price-val">від {item.priceM3.toLocaleString('uk-UA')} грн/м³</span>
                     </td>
                     <td className="price-cell">
-                      <span className="price-val green">от {item.priceTon.toLocaleString('ru-RU')} ₽/т</span>
+                      <span className="price-val green">від {item.priceTon.toLocaleString('uk-UA')} грн/т</span>
                     </td>
                     <td className="action-cell text-right">
                       <button
                         onClick={() => onOpenOrderModal({
                           name: item.name,
-                          priceStr: `от ${item.priceTon} ₽/т`
+                          priceStr: `від ${item.priceTon} грн/т`
                         })}
                         className="btn-table-order"
-                        title="Оформить заказ"
+                        title="Оформити замовлення"
                       >
                         <ShoppingBag size={15} />
-                        <span>Купить</span>
+                        <span>Купити</span>
                       </button>
                     </td>
                   </tr>

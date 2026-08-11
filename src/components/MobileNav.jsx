@@ -11,27 +11,27 @@ export const MobileNav = ({ onOpenOrderModal, onOpenSearchModal }) => {
 
       <a href="#calculator" className="mbn-item">
         <Calculator size={20} />
-        <span>Расчет</span>
+        <span>Розрахунок</span>
       </a>
 
-      <a href="tel:+74996863186" className="mbn-item call-btn">
+      <a href="tel:+380676863186" className="mbn-item call-btn">
         <div className="call-btn-circle">
           <Phone size={20} />
         </div>
-        <span>Звонок</span>
+        <span>Дзвінок</span>
       </a>
 
       <button onClick={onOpenSearchModal} className="mbn-item">
         <Search size={20} />
-        <span>Поиск</span>
+        <span>Пошук</span>
       </button>
 
       <button
-        onClick={() => onOpenOrderModal({ name: "Заказ с мобильного" })}
+        onClick={() => onOpenOrderModal({ name: "Замовлення з мобільного (Дніпро)" })}
         className="mbn-item"
       >
         <ShoppingBag size={20} />
-        <span>Заказать</span>
+        <span>Замовити</span>
       </button>
 
       <style>{`

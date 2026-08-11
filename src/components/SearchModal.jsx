@@ -12,15 +12,15 @@ export const SearchModal = ({ isOpen, onClose, onSelectProduct }) => {
       list.push({
         id: p.id,
         name: p.name,
-        category: 'Щебень',
-        price: `от ${p.price} руб/т (${p.priceM3} руб/м³)`
+        category: 'Щебінь',
+        price: `від ${p.price} грн/т (${p.priceM3} грн/м³)`
       });
       p.fractions.forEach(f => {
         list.push({
           id: `${p.id}-${f}`,
           name: `${p.name} ${f}`,
-          category: 'Фракции щебня',
-          price: `от ${p.price} руб/т`
+          category: 'Фракції щебеню',
+          price: `від ${p.price} грн/т`
         });
       });
     });
@@ -58,12 +58,12 @@ export const SearchModal = ({ isOpen, onClose, onSelectProduct }) => {
           <input
             type="text"
             autoFocus
-            placeholder="Поиск материала, фракции или услуги..."
+            placeholder="Пошук матеріалу, фракції чи послуги у Дніпрі..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="search-main-input"
           />
-          <button onClick={onClose} className="search-close" aria-label="Закрыть">
+          <button onClick={onClose} className="search-close" aria-label="Закрити">
             <X size={20} />
           </button>
         </div>
@@ -91,7 +91,7 @@ export const SearchModal = ({ isOpen, onClose, onSelectProduct }) => {
             ))
           ) : (
             <div className="search-empty">
-              По запросу «{query}» ничего не найдено. Попробуйте изменить формулировку или позвоните нам по телефону <strong>+7 (499) 686-31-86</strong>.
+              За запитом «{query}» нічого не знайдено. Спробуйте змінити запит або зателефонуйте нам за номером <strong>+380 (67) 686-31-86</strong>.
             </div>
           )}
         </div>

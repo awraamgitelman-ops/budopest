@@ -7,48 +7,48 @@ export const Hero = ({ onOpenOrderModal }) => {
       <div className="container">
         {/* Breadcrumbs */}
         <div className="breadcrumbs">
-          <a href="#">Главная</a>
+          <a href="#">Головна</a>
           <span className="bc-sep">•</span>
           <a href="#catalog">Каталог</a>
           <span className="bc-sep">•</span>
-          <span className="bc-current">Щебень</span>
+          <span className="bc-current">Щебінь</span>
         </div>
 
         <div className="hero-grid">
           {/* Left Column: Text & Actions */}
           <div className="hero-content">
             <div className="hero-price-badge">
-              <span>от 1 430 руб/т</span>
+              <span>від 240 грн/т</span>
             </div>
 
             <h1 className="hero-title">
-              Щебень с доставкой по Москве и области
+              Щебінь з доставкою по Дніпру та області
             </h1>
 
             <p className="hero-desc">
-              Продажа щебня всех видов с доставкой по Москве и Московской области. 
-              Поставка щебня напрямую с карьеров и перевалок собственным автопарком от 10 м³.
+              Продаж гранітного, гравійного та шлакового щебеню всіх фракцій. 
+              Прямі поставки з кар'єрів і перевалочних баз Дніпра власними самоскидами від 10 до 40 тонн.
             </p>
 
             <div className="hero-actions">
               <button
-                onClick={() => onOpenOrderModal({ name: "Заказ щебня с доставкой" })}
+                onClick={() => onOpenOrderModal({ name: "Замовлення щебеню з доставкою по Дніпру" })}
                 className="btn btn-primary btn-lg hero-btn-order"
               >
-                <span>Сделать заказ</span>
+                <span>Зробити замовлення</span>
               </button>
 
               <a href="#calculator" className="btn btn-secondary btn-lg hero-btn-calc">
                 <Calculator size={18} />
-                <span>Рассчитать стоимость</span>
+                <span>Розрахувати вартість</span>
               </a>
             </div>
 
-            {/* Yandex Rating Widget */}
+            {/* Rating Widget */}
             <div className="yandex-rating-badge">
               <div className="yr-score">
                 <span className="yr-pin">📍</span>
-                <span className="yr-val">4,3</span>
+                <span className="yr-val">4,9</span>
               </div>
               <div className="yr-stars">
                 {[...Array(5)].map((_, i) => (
@@ -56,7 +56,7 @@ export const Hero = ({ onOpenOrderModal }) => {
                 ))}
               </div>
               <div className="yr-text">
-                Рейтинг организации в Яндекс
+                Рейтинг надійності у Дніпрі
               </div>
             </div>
 
@@ -64,15 +64,15 @@ export const Hero = ({ onOpenOrderModal }) => {
             <div className="hero-usps">
               <div className="h-usp">
                 <Truck size={18} className="usp-icon" />
-                <span>Доставка от 3 часов</span>
+                <span>Доставка від 2 годин</span>
               </div>
               <div className="h-usp">
                 <ShieldCheck size={18} className="usp-icon" />
-                <span>ГОСТ 8267-93</span>
+                <span>ДСТУ Б В.2.7-75-98</span>
               </div>
               <div className="h-usp">
                 <Clock size={18} className="usp-icon" />
-                <span>Отгрузка 24/7</span>
+                <span>Відвантаження 24/7</span>
               </div>
             </div>
           </div>
@@ -82,12 +82,12 @@ export const Hero = ({ onOpenOrderModal }) => {
             <div className="hero-image-wrapper">
               <img
                 src="https://images.unsplash.com/photo-1578885136359-16c8bd4d3a8e?auto=format&fit=crop&w=900&q=85"
-                alt="Щебень строительный с доставкой"
+                alt="Щебінь гранітний будівельний у Дніпрі"
                 className="hero-img"
               />
               <div className="hero-img-overlay">
                 <div className="overlay-tag">
-                  <strong>35+</strong> самосвалов в рейсе
+                  <strong>30+</strong> самоскидів у рейсі по Дніпру
                 </div>
               </div>
             </div>

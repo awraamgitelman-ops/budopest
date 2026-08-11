@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { SHCHEDEN_PRODUCTS, DELIVERY_ZONES } from '../data/catalogData';
-import { Calculator as CalcIcon, Truck, CheckCircle2, ArrowRight, Layers, MapPin } from 'lucide-react';
+import { Calculator as CalcIcon, Truck, CheckCircle2, ArrowRight, MapPin } from 'lucide-react';
 
 export const Calculator = ({ onOpenOrderModal }) => {
   const [selectedProduct, setSelectedProduct] = useState(SHCHEDEN_PRODUCTS[0]);
-  const [selectedFraction, setSelectedFraction] = useState(SHCHEDEN_PRODUCTS[0].fractions[1] || SHCHEDEN_PRODUCTS[0].fractions[0]);
+  const [selectedFraction, setSelectedFraction] = useState(SHCHEDEN_PRODUCTS[0].fractions[3] || SHCHEDEN_PRODUCTS[0].fractions[0]);
   const [unit, setUnit] = useState('tons'); // 'tons' or 'm3'
   const [volume, setVolume] = useState(30);
   const [selectedZone, setSelectedZone] = useState(DELIVERY_ZONES[0]);
@@ -27,11 +27,11 @@ export const Calculator = ({ onOpenOrderModal }) => {
 
   // Truck recommendation
   const getTruckRecommendation = (tons) => {
-    if (tons <= 15) return { name: "Самосвал КАМАЗ (10-12 м³)", capacity: "до 15 т", count: 1 };
-    if (tons <= 25) return { name: "Самосвал 3-осный (16-18 м³)", capacity: "до 25 т", count: 1 };
-    if (tons <= 35) return { name: "Самосвал 4-осный (20-24 м³)", capacity: "до 35 т", count: 1 };
+    if (tons <= 12) return { name: "Самоскид КАМАЗ / МАЗ (8-10 м³)", capacity: "до 12 т", count: 1 };
+    if (tons <= 25) return { name: "Самоскид 3-вісний MAN / Scania (16-18 м³)", capacity: "до 25 т", count: 1 };
+    if (tons <= 35) return { name: "Самоскид 4-вісний Volvo / DAF (20-24 м³)", capacity: "до 35 т", count: 1 };
     const trucksNeeded = Math.ceil(tons / 35);
-    return { name: `Тягач Тонар / Полуприцеп (30-35 м³)`, capacity: `35 т`, count: trucksNeeded };
+    return { name: `Тягач напівпричіп самоскидний (30-35 м³)`, capacity: `35-40 т`, count: trucksNeeded };
   };
 
   const truck = getTruckRecommendation(actualTons);
@@ -50,9 +50,9 @@ export const Calculator = ({ onOpenOrderModal }) => {
         fraction: selectedFraction,
         volume: `${volume} ${unit === 'tons' ? 'т' : 'м³'}`,
         zone: selectedZone.name,
-        materialTotal: `${materialTotal.toLocaleString('ru-RU')} руб`,
-        deliveryTotal: `${deliveryTotal.toLocaleString('ru-RU')} руб`,
-        grandTotal: `${grandTotal.toLocaleString('ru-RU')} руб`,
+        materialTotal: `${materialTotal.toLocaleString('uk-UA')} грн`,
+        deliveryTotal: `${deliveryTotal.toLocaleString('uk-UA')} грн`,
+        grandTotal: `${grandTotal.toLocaleString('uk-UA')} грн`,
         truck: `${truck.name} (${truck.count} маш.)`
       }
     });
@@ -64,11 +64,11 @@ export const Calculator = ({ onOpenOrderModal }) => {
         <div className="section-header text-center">
           <div className="badge badge-green mb-2">
             <CalcIcon size={14} />
-            <span>Онлайн-расчет за 10 секунд</span>
+            <span>Онлайн-розрахунок за 10 секунд</span>
           </div>
-          <h2 className="section-title">Калькулятор стоимости щебня с доставкой</h2>
+          <h2 className="section-title">Калькулятор вартості щебеню з доставкою по Дніпру</h2>
           <p className="section-subtitle mx-auto">
-            Укажите материал, объем и пункт назначения, чтобы мгновенно получить точный расчет цены щебня и доставки по Москве и области.
+            Оберіть тип щебеню, фракцію, об'єм та зону доставки, щоб миттєво дізнатися точну ціну матеріалу і логістики.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export const Calculator = ({ onOpenOrderModal }) => {
             <div className="calc-params">
               {/* Material Select */}
               <div className="calc-group">
-                <label className="calc-label">1. Выберите тип щебня</label>
+                <label className="calc-label">1. Оберіть тип щебеню</label>
                 <div className="product-selector-grid">
                   {SHCHEDEN_PRODUCTS.slice(0, 6).map((prod) => (
                     <button
@@ -88,7 +88,7 @@ export const Calculator = ({ onOpenOrderModal }) => {
                       onClick={() => handleProductChange(prod.id)}
                     >
                       <span className="ps-name">{prod.name}</span>
-                      <span className="ps-price">от {prod.price} ₽/т</span>
+                      <span className="ps-price">від {prod.price} грн/т</span>
                     </button>
                   ))}
                 </div>
@@ -96,7 +96,7 @@ export const Calculator = ({ onOpenOrderModal }) => {
 
               {/* Fraction Select */}
               <div className="calc-group">
-                <label className="calc-label">2. Выберите фракцию</label>
+                <label className="calc-label">2. Оберіть фракцію</label>
                 <div className="fraction-chips">
                   {selectedProduct.fractions.map((frac, idx) => (
                     <button
@@ -114,21 +114,21 @@ export const Calculator = ({ onOpenOrderModal }) => {
               {/* Volume Slider & Units */}
               <div className="calc-group">
                 <div className="calc-label-row">
-                  <label className="calc-label">3. Необходимый объем</label>
+                  <label className="calc-label">3. Потрібний об'єм</label>
                   <div className="unit-switch">
                     <button
                       type="button"
                       className={`unit-btn ${unit === 'tons' ? 'active' : ''}`}
                       onClick={() => setUnit('tons')}
                     >
-                      Тонны (т)
+                      Тонни (т)
                     </button>
                     <button
                       type="button"
                       className={`unit-btn ${unit === 'm3' ? 'active' : ''}`}
                       onClick={() => setUnit('m3')}
                     >
-                      Кубы (м³)
+                      Куби (м³)
                     </button>
                   </div>
                 </div>
@@ -157,8 +157,8 @@ export const Calculator = ({ onOpenOrderModal }) => {
                 </div>
                 <div className="volume-hint">
                   {unit === 'tons'
-                    ? `≈ ${actualM3.toFixed(1)} м³ при насыпной плотности 1.35 т/м³`
-                    : `≈ ${actualTons.toFixed(1)} тонн при насыпной плотности 1.35 т/м³`}
+                    ? `≈ ${actualM3.toFixed(1)} м³ за насипної щільності 1.35 т/м³`
+                    : `≈ ${actualTons.toFixed(1)} тонн за насипної щільності 1.35 т/м³`}
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ export const Calculator = ({ onOpenOrderModal }) => {
               <div className="calc-group">
                 <label className="calc-label">
                   <MapPin size={16} className="inline-icon" />
-                  <span>4. Район или зона доставки</span>
+                  <span>4. Район або зона доставки</span>
                 </label>
                 <select
                   value={selectedZone.id}
@@ -178,7 +178,7 @@ export const Calculator = ({ onOpenOrderModal }) => {
                 >
                   {DELIVERY_ZONES.map(z => (
                     <option key={z.id} value={z.id}>
-                      {z.name} (от {z.baseRate} руб/т)
+                      {z.name} (від {z.baseRate} грн/т)
                     </option>
                   ))}
                 </select>
@@ -188,30 +188,30 @@ export const Calculator = ({ onOpenOrderModal }) => {
             {/* Right Summary Column */}
             <div className="calc-summary">
               <div className="summary-header">
-                <span className="summary-title">Итог расчета</span>
-                <span className="summary-status">В наличии 24/7</span>
+                <span className="summary-title">Підсумок розрахунку</span>
+                <span className="summary-status">В наявності 24/7</span>
               </div>
 
               <div className="summary-rows">
                 <div className="sum-row">
-                  <span className="sr-label">Материал:</span>
+                  <span className="sr-label">Матеріал:</span>
                   <span className="sr-val">{selectedProduct.name}</span>
                 </div>
                 <div className="sum-row">
-                  <span className="sr-label">Фракция:</span>
+                  <span className="sr-label">Фракція:</span>
                   <span className="sr-val">{selectedFraction}</span>
                 </div>
                 <div className="sum-row">
-                  <span className="sr-label">Объем заказа:</span>
+                  <span className="sr-label">Об'єм замовлення:</span>
                   <span className="sr-val">{volume} {unit === 'tons' ? 'т' : 'м³'} ({actualTons.toFixed(0)} т / {actualM3.toFixed(0)} м³)</span>
                 </div>
                 <div className="sum-row">
-                  <span className="sr-label">Стоимость щебня:</span>
-                  <span className="sr-val">{materialTotal.toLocaleString('ru-RU')} ₽</span>
+                  <span className="sr-label">Вартість щебеню:</span>
+                  <span className="sr-val">{materialTotal.toLocaleString('uk-UA')} грн</span>
                 </div>
                 <div className="sum-row">
-                  <span className="sr-label">Доставка ({selectedZone.name}):</span>
-                  <span className="sr-val">{deliveryTotal.toLocaleString('ru-RU')} ₽</span>
+                  <span className="sr-label">Доставка ({selectedZone.name.split('(')[0]}):</span>
+                  <span className="sr-val">{deliveryTotal.toLocaleString('uk-UA')} грн</span>
                 </div>
               </div>
 
@@ -221,7 +221,7 @@ export const Calculator = ({ onOpenOrderModal }) => {
                   <Truck size={24} />
                 </div>
                 <div className="tb-info">
-                  <div className="tb-title">Рекомендуемый транспорт:</div>
+                  <div className="tb-title">Рекомендований транспорт:</div>
                   <div className="tb-desc">
                     {truck.count > 1 ? `${truck.count} × ` : ''}{truck.name}
                   </div>
@@ -230,24 +230,24 @@ export const Calculator = ({ onOpenOrderModal }) => {
 
               {/* Grand Total */}
               <div className="grand-total-box">
-                <div className="gt-label">Итоговая сумма:</div>
+                <div className="gt-label">Підсумкова сума:</div>
                 <div className="gt-value">
-                  {grandTotal.toLocaleString('ru-RU')} <span className="gt-currency">₽</span>
+                  {grandTotal.toLocaleString('uk-UA')} <span className="gt-currency">грн</span>
                 </div>
-                <div className="gt-note">С учетом НДС 20% и разгрузки на объекте</div>
+                <div className="gt-note">З урахуванням ПДВ 20% та розвантаження на об'єкті</div>
               </div>
 
               <button
                 onClick={handleApplyOrder}
                 className="btn btn-primary btn-lg btn-block calc-order-btn"
               >
-                <span>Оформить заказ по расчету</span>
+                <span>Оформити замовлення за розрахунком</span>
                 <ArrowRight size={18} />
               </button>
 
               <div className="calc-guarantee">
                 <CheckCircle2 size={16} className="text-green" />
-                <span>Фиксация цены при отправке заявки</span>
+                <span>Фіксація ціни під час відправки заявки</span>
               </div>
             </div>
           </div>

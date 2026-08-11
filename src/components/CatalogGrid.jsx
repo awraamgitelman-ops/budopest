@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { SHCHEDEN_PRODUCTS } from '../data/catalogData';
-import { Check, ShoppingBag, ArrowRight, Info } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const CatalogGrid = ({ onOpenOrderModal }) => {
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   const filters = [
-    { id: 'all', label: 'Все виды' },
-    { id: 'gravijnyj', label: 'Гравийный' },
-    { id: 'granitnyj', label: 'Гранитный' },
-    { id: 'izvestnyakovyj', label: 'Известняковый' },
-    { id: 'vtorichnyj', label: 'Вторичный' },
-    { id: 'promyshlennyj', label: 'Шлаковый / Доменный' },
-    { id: 'kamen', label: 'Бутовый / Габионы' },
-    { id: 'fasovka', label: 'В Биг-бегах' }
+    { id: 'all', label: 'Всі види' },
+    { id: 'granitnyj', label: 'Гранітний' },
+    { id: 'gravijnyj', label: 'Гравійний' },
+    { id: 'promyshlennyj', label: 'Шлаковий (Дніпро)' },
+    { id: 'izvestnyakovyj', label: 'Вапняковий' },
+    { id: 'vtorichnyj', label: 'Вторинний' },
+    { id: 'kamen', label: 'Бутовий камінь' },
+    { id: 'otsev', label: 'Відсів (0-5 мм)' },
+    { id: 'fasovka', label: 'У Біг-бегах' }
   ];
 
   const filteredProducts = selectedFilter === 'all'
@@ -24,10 +25,10 @@ export const CatalogGrid = ({ onOpenOrderModal }) => {
     <section id="catalog" className="section catalog-section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Виды щебня</h2>
+          <h2 className="section-title">Види щебеню у Дніпрі</h2>
           <p className="section-subtitle">
-            В наличии все фракции и марки прочности по ГОСТ 8267-93. 
-            Прямые поставки с перевалок Москвы и карьеров Московской области.
+            В наявності всі фракції та марки міцності за ДСТУ Б В.2.7-75-98. 
+            Прямі поставки з кар'єрів та перевалочних баз Дніпра та Дніпропетровської області.
           </p>
         </div>
 
@@ -51,7 +52,7 @@ export const CatalogGrid = ({ onOpenOrderModal }) => {
               <div className="pc-image-holder">
                 <img src={product.image} alt={product.name} className="pc-img" loading="lazy" />
                 {product.popular && (
-                  <span className="pc-popular-badge">Популярное</span>
+                  <span className="pc-popular-badge">Популярне</span>
                 )}
               </div>
 
@@ -59,23 +60,23 @@ export const CatalogGrid = ({ onOpenOrderModal }) => {
                 <h3 className="pc-title">{product.name}</h3>
 
                 <div className="pc-price-tag">
-                  <span className="price-prefix">от</span>
-                  <span className="price-num">{product.price.toLocaleString('ru-RU')}</span>
+                  <span className="price-prefix">від</span>
+                  <span className="price-num">{product.price.toLocaleString('uk-UA')}</span>
                   <span className="price-unit">{product.priceUnit}</span>
-                  <span className="price-m3">({product.priceM3} руб/м³)</span>
+                  <span className="price-m3">({product.priceM3} грн/м³)</span>
                 </div>
 
                 <div className="pc-specs">
                   <div className="spec-row">
-                    <span className="spec-label">Прочность:</span>
+                    <span className="spec-label">Міцність:</span>
                     <span className="spec-val">{product.strength}</span>
                   </div>
                   <div className="spec-row">
-                    <span className="spec-label">Морозостойкость:</span>
+                    <span className="spec-label">Морозостійкість:</span>
                     <span className="spec-val">{product.frost}</span>
                   </div>
                   <div className="spec-row">
-                    <span className="spec-label">Фракции:</span>
+                    <span className="spec-label">Фракції:</span>
                     <span className="spec-val">{product.fractions.slice(0, 2).join(', ')}...</span>
                   </div>
                 </div>
@@ -84,7 +85,7 @@ export const CatalogGrid = ({ onOpenOrderModal }) => {
                   onClick={() => onOpenOrderModal(product)}
                   className="btn btn-primary btn-block pc-btn"
                 >
-                  <span>Заказать</span>
+                  <span>Замовити</span>
                   <ArrowRight size={16} />
                 </button>
               </div>

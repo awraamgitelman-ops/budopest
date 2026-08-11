@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
-import { Phone, Gift, ArrowRight, Check } from 'lucide-react';
+import { Phone, ArrowRight } from 'lucide-react';
 
 export const PromoBanner = ({ onOpenOrderModal }) => {
   const [phone, setPhone] = useState('');
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!phone) return;
-    setSubmitted(true);
-    setTimeout(() => {
-      onOpenOrderModal({
-        name: "Скидка 10% на первую машину",
-        phone: phone
-      });
-    }, 400);
+    onOpenOrderModal({
+      name: "Знижка 10% на першу машину щебеню (Дніпро)",
+      phone: phone
+    });
   };
 
   return (
@@ -22,28 +18,28 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
       <div className="container">
         <div className="promo-card">
           <div className="promo-content">
-            <h2 className="promo-title">Поможем сделать выгодную покупку</h2>
+            <h2 className="promo-title">Допоможемо зробити вигідну покупку</h2>
             <p className="promo-desc">
-              Получите <strong>скидку 10%</strong> на первую пробную машину, чтобы оценить качество щебня и точность веса уже сейчас.
+              Отримайте <strong>знижку 10%</strong> на першу пробну машину щебеню, щоб оцінити високу якість граніту та точність ваги вже сьогодні.
             </p>
 
             <div className="promo-actions">
-              <a href="tel:+74996863186" className="promo-phone-btn">
+              <a href="tel:+380676863186" className="promo-phone-btn">
                 <Phone size={18} />
-                <span>+7 (499) 686-31-86</span>
+                <span>+380 (67) 686-31-86</span>
               </a>
 
               <form onSubmit={handleSubmit} className="promo-inline-form">
                 <input
                   type="tel"
-                  placeholder="+7 (___) ___-__-__"
+                  placeholder="+380 (__) ___-__-__"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="promo-input"
                   required
                 />
                 <button type="submit" className="btn btn-primary promo-submit-btn">
-                  <span>Получить скидку</span>
+                  <span>Отримати знижку</span>
                   <ArrowRight size={16} />
                 </button>
               </form>

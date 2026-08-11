@@ -1,6 +1,6 @@
 import React from 'react';
 import { CERTIFICATES_DATA, REVIEWS_DATA } from '../data/reviewsData';
-import { Award, Star, CheckCircle, Shield, FileCheck } from 'lucide-react';
+import { Star, CheckCircle, FileCheck } from 'lucide-react';
 
 export const Certificates = () => {
   return (
@@ -8,10 +8,10 @@ export const Certificates = () => {
       <div className="container">
         {/* Certificates Row */}
         <div className="section-header text-center">
-          <div className="badge badge-green mb-2">Качество и гарантии</div>
-          <h2 className="section-title">Сертификаты и паспорта качества ГОСТ</h2>
+          <div className="badge badge-green mb-2">Якість та гарантії</div>
+          <h2 className="section-title">Сертифікати та паспорти якості ДСТУ</h2>
           <p className="section-subtitle mx-auto">
-            Вся продукция регулярно проходит лабораторные испытания и соответствует строгим требованиям строительных стандартов РФ.
+            Уся продукція регулярно проходить лабораторні випробування та відповідає суворим вимогам ДСТУ Б В.2.7-75-98.
           </p>
         </div>
 
@@ -32,9 +32,9 @@ export const Certificates = () => {
         {/* Client Reviews Section */}
         <div id="reviews" className="reviews-block">
           <div className="section-header text-center">
-            <h2 className="section-title">Отзывы наших заказчиков</h2>
+            <h2 className="section-title">Відгуки наших замовників у Дніпрі</h2>
             <p className="section-subtitle mx-auto">
-              Более 500 строительных компаний, бетонных заводов и частных застройщиков доверяют поставки компании «Белснаб».
+              Понад 400 будівельних підприємств, виробників бетону та приватних забудовників довіряють постачання нерудних матеріалів компанії «Белснаб Дніпро».
             </p>
           </div>
 
@@ -48,7 +48,7 @@ export const Certificates = () => {
                       {rev.verified && (
                         <span className="rev-verified">
                           <CheckCircle size={14} />
-                          <span>Проверенный партнер</span>
+                          <span>Перевірений партнер</span>
                         </span>
                       )}
                     </div>
@@ -65,7 +65,7 @@ export const Certificates = () => {
 
                 <div className="rev-footer">
                   <span className="rev-date">{rev.date}</span>
-                  <span className="rev-volume">Объем поставок: <strong>{rev.volume}</strong></span>
+                  <span className="rev-volume">Обсяг поставок: <strong>{rev.volume}</strong></span>
                 </div>
               </div>
             ))}

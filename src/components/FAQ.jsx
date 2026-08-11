@@ -15,11 +15,11 @@ export const FAQ = () => {
         <div className="section-header text-center">
           <div className="badge badge-green mb-2">
             <HelpCircle size={14} />
-            <span>Частые вопросы</span>
+            <span>Часті запитання</span>
           </div>
-          <h2 className="section-title">Вопросы и ответы</h2>
+          <h2 className="section-title">Питання та відповіді</h2>
           <p className="section-subtitle mx-auto">
-            Собрали полезную информацию об условиях доставки, оплате, сертификатах и расчете щебня.
+            Зібрали всю корисну інформацію про умови доставки по Дніпру, форми оплати, паспорти якості ДСТУ та розрахунок щебеню.
           </p>
         </div>
 
