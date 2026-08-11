@@ -1,30 +1,38 @@
 import React from 'react';
-import { CERTIFICATES_DATA, REVIEWS_DATA } from '../data/reviewsData';
-import { Star, CheckCircle, FileCheck } from 'lucide-react';
+import { QUALITY_STANDARDS, REVIEWS_DATA } from '../data/reviewsData';
+import { CheckCircle, ShieldCheck, Scale, Award, Truck } from 'lucide-react';
 
 export const Certificates = () => {
+  const getIcon = (idx) => {
+    switch (idx) {
+      case 0: return <ShieldCheck size={26} className="qs-icon" />;
+      case 1: return <Award size={26} className="qs-icon" />;
+      case 2: return <CheckCircle size={26} className="qs-icon" />;
+      default: return <Scale size={26} className="qs-icon" />;
+    }
+  };
+
   return (
-    <section id="certificates" className="section cert-reviews-section">
+    <section id="quality" className="section cert-reviews-section">
       <div className="container">
-        {/* Certificates Row */}
+        {/* Quality Standards Row */}
         <div className="section-header text-center">
-          <div className="badge badge-green mb-2">Якість та гарантії</div>
-          <h2 className="section-title">Сертифікати та паспорти якості ДСТУ</h2>
+          <div className="badge badge-green mb-2">Стандарти та контроль</div>
+          <h2 className="section-title">Відповідність державним нормам ДСТУ</h2>
           <p className="section-subtitle mx-auto">
-            Уся продукція ТОВ «БЕНГС» регулярно проходить лабораторні випробування та відповідає суворим вимогам ДСТУ Б В.2.7-75-98.
+            Уся продукція ТОВ «БЕНГС» проходить суворий вхідний та вихідний контроль якості відповідно до вимог ДСТУ Б В.2.7-75-98.
           </p>
         </div>
 
-        <div className="grid-4 certs-grid">
-          {CERTIFICATES_DATA.map((cert) => (
-            <div key={cert.id} className="cert-card">
-              <div className="cert-icon-wrapper">
-                <FileCheck size={28} className="cert-icon" />
+        <div className="grid-4 standards-grid">
+          {QUALITY_STANDARDS.map((std, idx) => (
+            <div key={std.id} className="standard-card">
+              <div className="standard-icon-wrapper">
+                {getIcon(idx)}
               </div>
-              <div className="cert-badge">{cert.number}</div>
-              <h4 className="cert-title">{cert.title}</h4>
-              <p className="cert-sub">{cert.subtitle}</p>
-              <div className="cert-issuer">{cert.issuer}</div>
+              <div className="standard-tag">{std.tag}</div>
+              <h4 className="standard-title">{std.title}</h4>
+              <p className="standard-sub">{std.subtitle}</p>
             </div>
           ))}
         </div>
@@ -34,7 +42,7 @@ export const Certificates = () => {
           <div className="section-header text-center">
             <h2 className="section-title">Відгуки наших замовників у Дніпрі</h2>
             <p className="section-subtitle mx-auto">
-              Понад 400 будівельних підприємств, виробників бетону та приватних забудовників довіряють постачання нерудних матеріалів компанії «БЕНГС».
+              Будівельні підприємства, виробники бетону та приватні забудовники обирають ТОВ «БЕНГС» за стабільні та надійні поставки щебеню.
             </p>
           </div>
 
@@ -42,23 +50,16 @@ export const Certificates = () => {
             {REVIEWS_DATA.map((rev) => (
               <div key={rev.id} className="review-card">
                 <div className="rev-header">
-                  <div>
-                    <div className="rev-author-row">
-                      <strong className="rev-author">{rev.author}</strong>
-                      {rev.verified && (
-                        <span className="rev-verified">
-                          <CheckCircle size={14} />
-                          <span>Перевірений партнер</span>
-                        </span>
-                      )}
-                    </div>
-                    <div className="rev-role">{rev.role}</div>
+                  <div className="rev-author-row">
+                    <strong className="rev-author">{rev.author}</strong>
+                    {rev.verified && (
+                      <span className="rev-verified">
+                        <CheckCircle size={14} />
+                        <span>Перевірений партнер</span>
+                      </span>
+                    )}
                   </div>
-                  <div className="rev-stars">
-                    {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} size={15} fill="#f59e0b" color="#f59e0b" />
-                    ))}
-                  </div>
+                  <div className="rev-role">{rev.role}</div>
                 </div>
 
                 <p className="rev-text">«{rev.text}»</p>
@@ -78,11 +79,11 @@ export const Certificates = () => {
           background-color: #ffffff;
         }
 
-        .certs-grid {
+        .standards-grid {
           margin-bottom: 64px;
         }
 
-        .cert-card {
+        .standard-card {
           padding: 24px 20px;
           border: 1px solid #e2e8f0;
           border-radius: var(--radius-md);
@@ -94,16 +95,16 @@ export const Certificates = () => {
           transition: all 0.2s;
         }
 
-        .cert-card:hover {
+        .standard-card:hover {
           border-color: var(--c-green);
           background: #ffffff;
           transform: translateY(-3px);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
         }
 
-        .cert-icon-wrapper {
-          width: 54px;
-          height: 54px;
+        .standard-icon-wrapper {
+          width: 52px;
+          height: 52px;
           border-radius: 50%;
           background: var(--c-green-light);
           color: var(--c-green-dark);
@@ -113,7 +114,7 @@ export const Certificates = () => {
           margin-bottom: 12px;
         }
 
-        .cert-badge {
+        .standard-tag {
           font-size: 0.72rem;
           font-weight: 700;
           color: var(--c-green-dark);
@@ -123,27 +124,18 @@ export const Certificates = () => {
           margin-bottom: 8px;
         }
 
-        .cert-title {
-          font-size: 0.95rem;
+        .standard-title {
+          font-size: 1rem;
           font-weight: 800;
           color: #0f172a;
           margin-bottom: 6px;
           line-height: 1.3;
         }
 
-        .cert-sub {
-          font-size: 0.82rem;
+        .standard-sub {
+          font-size: 0.85rem;
           color: #475569;
-          margin-bottom: 10px;
-          flex: 1;
-        }
-
-        .cert-issuer {
-          font-size: 0.72rem;
-          color: #94a3b8;
-          border-top: 1px solid #e2e8f0;
-          padding-top: 8px;
-          width: 100%;
+          line-height: 1.5;
         }
 
         /* Reviews */
@@ -172,10 +164,7 @@ export const Certificates = () => {
         }
 
         .rev-header {
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
-          margin-bottom: 16px;
+          margin-bottom: 14px;
         }
 
         .rev-author-row {
@@ -206,11 +195,6 @@ export const Certificates = () => {
           font-size: 0.82rem;
           color: #64748b;
           margin-top: 2px;
-        }
-
-        .rev-stars {
-          display: flex;
-          gap: 2px;
         }
 
         .rev-text {

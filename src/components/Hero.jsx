@@ -1,5 +1,5 @@
 import React from 'react';
-import { Star, Truck, ShieldCheck, Clock, Calculator, ArrowDown } from 'lucide-react';
+import { Truck, ShieldCheck, Clock, Calculator, Scale } from 'lucide-react';
 
 export const Hero = ({ onOpenOrderModal }) => {
   return (
@@ -44,22 +44,6 @@ export const Hero = ({ onOpenOrderModal }) => {
               </a>
             </div>
 
-            {/* Rating Widget */}
-            <div className="yandex-rating-badge">
-              <div className="yr-score">
-                <span className="yr-pin">📍</span>
-                <span className="yr-val">4,9</span>
-              </div>
-              <div className="yr-stars">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} className="star-filled" fill="#f59e0b" color="#f59e0b" />
-                ))}
-              </div>
-              <div className="yr-text">
-                Рейтинг надійності у Дніпрі
-              </div>
-            </div>
-
             {/* Micro USP list */}
             <div className="hero-usps">
               <div className="h-usp">
@@ -68,7 +52,11 @@ export const Hero = ({ onOpenOrderModal }) => {
               </div>
               <div className="h-usp">
                 <ShieldCheck size={18} className="usp-icon" />
-                <span>ДСТУ Б В.2.7-75-98</span>
+                <span>Відповідність нормам ДСТУ</span>
+              </div>
+              <div className="h-usp">
+                <Scale size={18} className="usp-icon" />
+                <span>Точна вага з ТТН</span>
               </div>
               <div className="h-usp">
                 <Clock size={18} className="usp-icon" />
@@ -166,7 +154,7 @@ export const Hero = ({ onOpenOrderModal }) => {
           display: flex;
           align-items: center;
           gap: 16px;
-          margin-bottom: 26px;
+          margin-bottom: 30px;
           flex-wrap: wrap;
         }
 
@@ -187,40 +175,10 @@ export const Hero = ({ onOpenOrderModal }) => {
           background-color: #e5e7eb;
         }
 
-        .yandex-rating-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          background: #1e293b;
-          color: #ffffff;
-          padding: 8px 16px;
-          border-radius: 8px;
-          margin-bottom: 28px;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-        }
-
-        .yr-score {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-          font-weight: 800;
-          font-size: 0.95rem;
-        }
-
-        .yr-stars {
-          display: flex;
-          gap: 2px;
-        }
-
-        .yr-text {
-          font-size: 0.78rem;
-          color: #cbd5e1;
-        }
-
         .hero-usps {
           display: flex;
-          gap: 24px;
-          padding-top: 16px;
+          gap: 20px;
+          padding-top: 20px;
           border-top: 1px solid #e5e7eb;
           flex-wrap: wrap;
         }

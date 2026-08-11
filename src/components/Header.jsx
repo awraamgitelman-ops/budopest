@@ -128,7 +128,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
               </a>
               <div className="submenu">
                 <a href="#about">Про ТОВ «БЕНГС»</a>
-                <a href="#certificates">Сертифікати та ДСТУ</a>
+                <a href="#quality">Якість та ДСТУ</a>
                 <a href="#reviews">Відгуки клієнтів</a>
                 <a href="#warehouses">Кар'єри та перевалки</a>
               </div>
@@ -190,8 +190,8 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal }) => {
               <a href="#warehouses" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
                 Бази та кар'єри (Дніпро)
               </a>
-              <a href="#certificates" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Сертифікати ДСТУ
+              <a href="#quality" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
+                Якість за ДСТУ
               </a>
               <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
                 Питання та відповіді
