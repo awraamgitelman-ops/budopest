@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ShieldCheck, PhoneCall, Clock, AlertCircle } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, PhoneCall, Clock, AlertCircle, MapPin, Navigation, Minus, Plus, Map } from 'lucide-react';
 import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 
 export const OrderForm = () => {
@@ -7,14 +7,53 @@ export const OrderForm = () => {
     name: '',
     phone: '',
     product: 'Гранітний щебінь 5-20 мм',
-    volume: '25 тонн',
     address: '',
     comment: ''
   });
 
+  const [tonnage, setTonnage] = useState(25);
   const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLocating, setIsLocating] = useState(false);
+  const [showMapPicker, setShowMapPicker] = useState(false);
+
+  const POPULAR_MATERIALS = [
+    "Гранітний щебінь 5-20 мм",
+    "Гранітний щебінь 20-40 мм",
+    "Гранітний щебінь 40-70 мм",
+    "Відсів 0-5 мм",
+    "Річковий пісок (митий)",
+    "Шлаковий щебінь 20-40 мм",
+    "Бутовий камінь (бут)",
+    "Дорожня суміш С5 / С7"
+  ];
+
+  const TONNAGE_PRESETS = [
+    { num: 10, label: "10 т (ЗІЛ)" },
+    { num: 15, label: "15 т (КамАЗ)" },
+    { num: 25, label: "25 т (3-вісний)" },
+    { num: 40, label: "40 т (Тягач)" }
+  ];
+
+  const DISTRICT_PRESETS = [
+    "📍 Лівий берег",
+    "📍 Правий берег",
+    "📍 Підгородне",
+    "📍 Новоолександрівка",
+    "📍 Слобожанське",
+    "📍 Кам'янське",
+    "📍 Обухівка"
+  ];
+
+  const MAP_ZONES = [
+    { id: 'left', name: 'Лівий берег (вул. Журналістів)', address: 'м. Дніпро, Лівий берег (вул. Журналістів)' },
+    { id: 'right', name: 'Правий берег (Набережна Заводська)', address: 'м. Дніпро, Правий берег (Набережна Заводська)' },
+    { id: 'podgorod', name: 'м. Підгородне (Північний виїзд)', address: 'м. Підгородне, Дніпровський район' },
+    { id: 'novool', name: 'смт Новоолександрівка', address: 'смт Новоолександрівка' },
+    { id: 'slobozhan', name: 'смт Слобожанське', address: 'смт Слобожанське' },
+    { id: 'kamyanske', name: 'м. Кам\'янське', address: 'м. Кам\'янське, Дніпропетровська обл.' }
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,10 +63,44 @@ export const OrderForm = () => {
     }
     setFormData(prev => ({ ...prev, [name]: formattedVal }));
 
-    // Clear error on user edit
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: null }));
     }
+  };
+
+  const handleGetLocation = () => {
+    if (!navigator.geolocation) {
+      alert("Геолокація не підтримується у вашому браузері. Оберіть район зі списку нижче.");
+      return;
+    }
+    setIsLocating(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        try {
+          const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`);
+          const data = await resp.json();
+          if (data && data.address) {
+            const city = data.address.city || data.address.town || data.address.village || 'Дніпро';
+            const road = data.address.road || '';
+            const house = data.address.house_number || '';
+            const fullAddr = [city, road, house].filter(Boolean).join(', ');
+            setFormData(prev => ({ ...prev, address: fullAddr || `м. Дніпро (${latitude.toFixed(4)}, ${longitude.toFixed(4)})` }));
+          } else {
+            setFormData(prev => ({ ...prev, address: `м. Дніпро (${latitude.toFixed(4)}, ${longitude.toFixed(4)})` }));
+          }
+        } catch (e) {
+          setFormData(prev => ({ ...prev, address: `м. Дніпро (Координати: ${latitude.toFixed(3)}, ${longitude.toFixed(3)})` }));
+        } finally {
+          setIsLocating(false);
+        }
+      },
+      () => {
+        setFormData(prev => ({ ...prev, address: 'м. Дніпро — Дніпропетровська обл.' }));
+        setIsLocating(false);
+      },
+      { timeout: 6000 }
+    );
   };
 
   const handleSubmit = async (e) => {
@@ -54,8 +127,8 @@ export const OrderForm = () => {
           name: formData.name,
           phone: formData.phone,
           product: formData.product,
-          quantity: formData.volume,
-          address: formData.address,
+          quantity: `${tonnage} тонн`,
+          address: formData.address || 'м. Дніпро (уточнюється)',
           comment: formData.comment,
           page: window.location.hash || 'Форма розрахунку на сторінці',
           source: 'Головна форма розрахунку вартості'
@@ -113,7 +186,7 @@ export const OrderForm = () => {
                   </div>
                   <h3 className="success-title">Дякуємо за заявку!</h3>
                   <p className="success-desc">
-                    Ми отримали ваш запит на <strong>{formData.product}</strong> ({formData.volume}). Менеджер зв'яжеться з вами за номером <strong>{formData.phone}</strong> протягом 5 хвилин.
+                    Ми отримали ваш запит на <strong>{formData.product}</strong> ({tonnage} тонн). Менеджер зв'яжеться з вами за номером <strong>{formData.phone}</strong> протягом 5 хвилин.
                   </p>
                   <button
                     onClick={() => {
@@ -122,10 +195,10 @@ export const OrderForm = () => {
                         name: '',
                         phone: '',
                         product: 'Гранітний щебінь 5-20 мм',
-                        volume: '25 тонн',
                         address: '',
                         comment: ''
                       });
+                      setTonnage(25);
                     }}
                     className="btn btn-outline"
                   >
@@ -172,42 +245,148 @@ export const OrderForm = () => {
                     </div>
                   </div>
 
+                  {/* Material & Tonnage Selectors */}
                   <div className="form-row-2">
                     <div className="form-group">
-                      <label>Тип і фракція матеріалу</label>
-                      <input
-                        type="text"
+                      <label>Матеріал</label>
+                      <select
                         name="product"
-                        placeholder="Наприклад: Гранітний 5-20 мм"
                         value={formData.product}
                         onChange={handleChange}
-                        className="form-input"
-                      />
+                        className="form-input modal-select"
+                      >
+                        {POPULAR_MATERIALS.map((mat, idx) => (
+                          <option key={idx} value={mat}>{mat}</option>
+                        ))}
+                      </select>
                     </div>
 
+                    {/* Tonnage Stepper */}
                     <div className="form-group">
-                      <label>Об'єм (т або м³)</label>
-                      <input
-                        type="text"
-                        name="volume"
-                        placeholder="Наприклад: 30 тонн"
-                        value={formData.volume}
-                        onChange={handleChange}
-                        className="form-input"
-                      />
+                      <div className="field-label-row">
+                        <label>Об'єм</label>
+                        <span className="tonnage-badge">{tonnage} тонн</span>
+                      </div>
+
+                      <div className="tonnage-control-bar">
+                        <button
+                          type="button"
+                          className="ton-btn"
+                          onClick={() => setTonnage(prev => Math.max(5, prev - 5))}
+                        >
+                          <Minus size={16} />
+                        </button>
+                        <div className="ton-display">
+                          <input
+                            type="number"
+                            min="5"
+                            max="200"
+                            value={tonnage}
+                            onChange={(e) => setTonnage(Math.max(1, parseInt(e.target.value) || 0))}
+                            className="ton-input"
+                          />
+                          <span className="ton-unit">т</span>
+                        </div>
+                        <button
+                          type="button"
+                          className="ton-btn"
+                          onClick={() => setTonnage(prev => Math.min(150, prev + 5))}
+                        >
+                          <Plus size={16} />
+                        </button>
+                      </div>
                     </div>
                   </div>
 
+                  {/* Tonnage Quick Presets Chips */}
                   <div className="form-group">
-                    <label>Адреса об'єкта / Район доставки</label>
-                    <input
-                      type="text"
-                      name="address"
-                      placeholder="м. Дніпро, Набережна Перемоги або район"
-                      value={formData.address}
-                      onChange={handleChange}
-                      className="form-input"
-                    />
+                    <div className="quick-chips-row">
+                      {TONNAGE_PRESETS.map((p) => (
+                        <button
+                          key={p.num}
+                          type="button"
+                          className={`chip-btn ${tonnage === p.num ? 'active' : ''}`}
+                          onClick={() => setTonnage(p.num)}
+                        >
+                          {p.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Address & Interactive Map */}
+                  <div className="form-group">
+                    <div className="field-label-row">
+                      <label>Адреса об'єкта / Район доставки</label>
+                      <div className="address-actions-row">
+                        <button
+                          type="button"
+                          className="addr-geo-btn"
+                          onClick={handleGetLocation}
+                          disabled={isLocating}
+                        >
+                          <Navigation size={13} className={isLocating ? 'spin-icon' : ''} />
+                          <span>{isLocating ? 'Визначаємо...' : 'Моє GPS'}</span>
+                        </button>
+                        <button
+                          type="button"
+                          className="addr-geo-btn alt"
+                          onClick={() => setShowMapPicker(!showMapPicker)}
+                        >
+                          <Map size={13} />
+                          <span>{showMapPicker ? 'Сховати карту' : 'Карта Дніпра'}</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="input-with-icon">
+                      <MapPin size={16} className="input-left-icon" />
+                      <input
+                        type="text"
+                        name="address"
+                        placeholder="Оберіть район нижче або вкажіть адресу"
+                        value={formData.address}
+                        onChange={handleChange}
+                        className="form-input pl-10"
+                      />
+                    </div>
+
+                    {/* District Presets */}
+                    <div className="quick-chips-row mt-2">
+                      {DISTRICT_PRESETS.map((dist, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          className={`chip-btn ${formData.address === dist.replace('📍 ', '') ? 'active' : ''}`}
+                          onClick={() => setFormData(prev => ({ ...prev, address: dist.replace('📍 ', '') }))}
+                        >
+                          {dist}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Interactive Map Selector Box */}
+                    {showMapPicker && (
+                      <div className="interactive-map-box animate-fade">
+                        <div className="imb-header">Оберіть район відвантаження на карті Дніпра:</div>
+                        <div className="imb-zones-grid">
+                          {MAP_ZONES.map((z) => (
+                            <button
+                              key={z.id}
+                              type="button"
+                              className="imb-zone-card"
+                              onClick={() => {
+                                setFormData(prev => ({ ...prev, address: z.address }));
+                                setShowMapPicker(false);
+                              }}
+                            >
+                              <MapPin size={14} className="icon-green" />
+                              <span>{z.name}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   <div className="form-group">
@@ -229,203 +408,12 @@ export const OrderForm = () => {
                   >
                     <span>{isSubmitting ? 'Відправка...' : 'Розрахувати вартість зі знижкою'}</span>
                   </button>
-
-                  <div className="form-privacy-note">
-                    Натискаючи кнопку, ви погоджуєтесь з Політикою обробки персональних даних.
-                  </div>
                 </form>
               )}
             </div>
           </div>
         </div>
       </div>
-
-      <style>{`
-        .order-form-section {
-          background-color: #ffffff;
-        }
-
-        .order-form-wrapper {
-          background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-          border-radius: var(--radius-xl);
-          padding: 50px;
-          color: #ffffff;
-          box-shadow: 0 20px 45px rgba(15, 23, 42, 0.2);
-        }
-
-        .of-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 48px;
-          align-items: center;
-        }
-
-        .of-title {
-          font-size: 2.2rem;
-          font-weight: 900;
-          line-height: 1.2;
-          color: #ffffff;
-          margin-bottom: 16px;
-        }
-
-        .of-desc {
-          font-size: 1.05rem;
-          color: #cbd5e1;
-          line-height: 1.6;
-          margin-bottom: 32px;
-        }
-
-        .of-desc strong {
-          color: var(--c-green);
-        }
-
-        .of-perks {
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-        }
-
-        .of-perk {
-          display: flex;
-          align-items: flex-start;
-          gap: 14px;
-          font-size: 0.92rem;
-          color: #94a3b8;
-          line-height: 1.5;
-        }
-
-        .of-perk strong {
-          color: #f1f5f9;
-        }
-
-        .of-perk a {
-          color: var(--c-green);
-          font-weight: 700;
-        }
-
-        .op-icon {
-          width: 36px;
-          height: 36px;
-          border-radius: 8px;
-          background: rgba(133, 180, 42, 0.15);
-          color: var(--c-green);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-shrink: 0;
-        }
-
-        .of-form-card {
-          background: #ffffff;
-          border-radius: var(--radius-lg);
-          padding: 36px;
-          color: #1f2937;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .form-card-title {
-          font-size: 1.35rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin-bottom: 20px;
-        }
-
-        .form-row-2 {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 14px;
-        }
-
-        .form-group {
-          margin-bottom: 14px;
-        }
-
-        .form-group label {
-          display: block;
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: #374151;
-          margin-bottom: 6px;
-        }
-
-        .req {
-          color: #ef4444;
-        }
-
-        .form-input, .form-textarea {
-          width: 100%;
-          padding: 10px 14px;
-          border: 1.5px solid #d1d5db;
-          border-radius: 6px;
-          font-size: 0.95rem;
-          font-family: inherit;
-          color: #111827;
-          outline: none;
-          transition: border-color 0.15s;
-        }
-
-        .form-input:focus, .form-textarea:focus {
-          border-color: var(--c-green);
-        }
-
-        .of-submit-btn {
-          margin-top: 8px;
-          padding: 14px;
-        }
-
-        .form-privacy-note {
-          font-size: 0.75rem;
-          color: #9ca3af;
-          text-align: center;
-          margin-top: 12px;
-        }
-
-        .of-success-state {
-          text-align: center;
-          padding: 20px 0;
-        }
-
-        .success-icon-circle {
-          display: inline-flex;
-          margin-bottom: 16px;
-        }
-
-        .success-title {
-          font-size: 1.5rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin-bottom: 10px;
-        }
-
-        .success-desc {
-          font-size: 0.95rem;
-          color: #475569;
-          line-height: 1.5;
-          margin-bottom: 24px;
-        }
-
-        @media (max-width: 1024px) {
-          .order-form-wrapper {
-            padding: 36px 24px;
-          }
-          .of-grid {
-            grid-template-columns: 1fr;
-            gap: 32px;
-          }
-          .of-title {
-            font-size: 1.8rem;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .form-row-2 {
-            grid-template-columns: 1fr;
-          }
-          .of-form-card {
-            padding: 24px 18px;
-          }
-        }
-      `}</style>
     </section>
   );
 };
