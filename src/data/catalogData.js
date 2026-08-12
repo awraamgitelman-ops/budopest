@@ -14,7 +14,7 @@ export const MAIN_SECTIONS = [
     name: "Щебінь",
     price: "від 240 грн/т",
     priceM3: "від 320 грн/м³",
-    image: "https://images.unsplash.com/photo-1620914695139-9507be60a425?auto=format&fit=crop&w=800&q=80",
+    image: "https://mybud.com.ua/images/bm_img/temp/1681721871shchebin-3.jpg",
     featured: true,
     itemsCount: 15,
     description: "Гранітний, шлаковий, гравійний, вапняковий, бут, габіонний та вторинний щебінь."
@@ -191,7 +191,7 @@ export const ALL_PRODUCTS = [
     frost: "F150 - F200",
     flakiness: "до 15%",
     density: "1.36 т/м3",
-    image: "https://images.unsplash.com/photo-1578885136359-16c8bd4d3a8e?auto=format&fit=crop&w=800&q=80",
+    image: "https://estone.pro/wp-content/uploads/2018/07/15099461_shheben_granitnyj_frakcziya_dorozhnyj_kamen_40_70_mm-scaled.jpeg",
     description: "Природний колотий камінь із низьким радіаційним фоном. Ідеальний для фундаментів, стяжок та бетонів М150–М300."
   },
   {
@@ -206,7 +206,7 @@ export const ALL_PRODUCTS = [
     frost: "F300 - F400",
     flakiness: "до 10% (кубоподібна)",
     density: "1.40 т/м3",
-    image: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80",
+    image: "https://mybud.com.ua/images/bm_img/temp/1681721871shchebin-3.jpg",
     popular: true,
     description: "Найміцніший гранітний щебінь для моноліту, високомарочного бетону, мостів та автодоріг вищих категорій."
   },
@@ -222,7 +222,7 @@ export const ALL_PRODUCTS = [
     frost: "F100 - F150",
     flakiness: "10-15%",
     density: "1.28 т/м3",
-    image: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=800&q=80",
+    image: "https://www.bosstechnology.com.ua/wp-content/uploads/2021/03/izvestnyakoviy-sheben.jpg",
     description: "Екологічно чистий кальцитовий камінь для благоустрою, дренажних систем, доріг 2-3 категорії та виробництва вапна."
   },
   {
@@ -237,7 +237,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "до 15%",
     density: "1.35 т/м3",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    image: "https://www.bauschnell.de/media/image/product/21865/lg/ardennensplitt-schotter-grau-8-16mm.jpg",
     popular: true,
     description: "Дроблені металургійні шлаки заводів Дніпра та Кам'янського з високим зчепленням для дорожніх основ і стоянок."
   },
@@ -345,7 +345,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "до 15%",
     density: "1.35 т/м3",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    image: "https://www.bauschnell.de/media/image/product/21865/lg/ardennensplitt-schotter-grau-8-16mm.jpg",
     description: "Бюджетний міцний щебінь для відсипання промислових зон, під'їздів та влаштування жорстких основ."
   },
   {
