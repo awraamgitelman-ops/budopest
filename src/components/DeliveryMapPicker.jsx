@@ -240,19 +240,20 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     }).addTo(map);
     tileLayerRef.current = tileLayer;
 
-    // Draw Office Marker (Informational slate SVG badge)
+    // Draw Office Marker (Informational slate SVG badge on вул. Журналістів, 3)
     const officeIcon = L.divIcon({
       className: 'custom-office-marker',
-      html: `<div style="background: #334155; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: 700; font-size: 13px;">Офіс</div>`,
-      iconSize: [32, 32],
-      iconAnchor: [16, 16]
+      html: `<div style="background: #1e293b; color: #ffffff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.45); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em;">Офіс</div>`,
+      iconSize: [38, 38],
+      iconAnchor: [19, 19]
     });
-    const officeMarker = L.marker([OFFICE_COORDS.lat, OFFICE_COORDS.lng], { icon: officeIcon }).addTo(map);
+    const officeMarker = L.marker([OFFICE_COORDS.lat, OFFICE_COORDS.lng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
     officeMarker.bindPopup(`
       <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
-        <strong style="color: #334155; font-size: 14px;">${OFFICE_COORDS.name}</strong><br/>
-        <span style="color: #64748b;">${OFFICE_COORDS.address}</span><br/>
-        <small style="color: #94a3b8;">Розрахунок доставки здійснюється від найближчого кар'єра</small>
+        <strong style="color: #1e293b; font-size: 14px;">🏢 Головний офіс ТОВ «БЕНГС»</strong><br/>
+        <b>м. Дніпро, вул. Журналістів, 3</b><br/>
+        <span style="color: #64748b;">(бухгалтерія та кабінети)</span><br/>
+        <small style="color: #94a3b8;">Розрахунок доставки здійснюється від кар'єрів/баз</small>
       </div>
     `);
 
