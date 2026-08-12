@@ -754,7 +754,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "фасований",
     density: "50 л/мішок",
-    image: "/images/img_1a5f65b7d5.jpg",
+    image: "/images/img_keramzyt_meshki.jpg",
     description: "Фасований керамзит у мішках для зручного підйому на поверх та утеплення балконів і квартир."
   },
 
