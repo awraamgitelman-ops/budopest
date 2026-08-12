@@ -5,8 +5,8 @@ import { Search, MapPin, Navigation, CheckCircle2, ExternalLink, Layers, Buildin
 export const BENGS_HUBS = [
   {
     id: 'auto',
-    name: '⚡ Автовибір найближчої бази/кар\'єра (Найдешевша доставка)',
-    shortName: 'Найближча база відвантаження',
+    name: '⚡ Автовибір найближчого кар\'єра/бази (Найдешевша доставка)',
+    shortName: 'Найближчий кар\'єр / база',
     lat: 48.4890,
     lng: 34.9850,
     isAuto: true
@@ -14,14 +14,14 @@ export const BENGS_HUBS = [
   {
     id: 'liubymivka',
     name: '🪨 Любимівський гранітний кар\'єр (Південний напрямок)',
-    shortName: 'Любимівський кар\'єр',
+    shortName: 'Любимівський гранітний кар\'єр',
     lat: 48.3750,
     lng: 35.1850,
-    address: 'с. Любимівка (пряме відвантаження самоскидів 10-40т)'
+    address: 'с. Любимівка (пряме видобування та відвантаження)'
   },
   {
     id: 'naberezhna',
-    name: '🏗️ Термінал «Набережна Заводська» (Правий берег)',
+    name: '🏗️ Термінал «Набережна Заводська» (Правий берег / Дніпро)',
     shortName: 'Термінал Набережна Заводська',
     lat: 48.4890,
     lng: 34.9850,
@@ -29,21 +29,20 @@ export const BENGS_HUBS = [
   },
   {
     id: 'kamianske',
-    name: '🚚 Кам\'янський перевальний термінал',
+    name: '🚚 Кам\'янський перевальний термінал (Західний напрямок)',
     shortName: 'Кам\'янський термінал',
     lat: 48.5173,
     lng: 34.6063,
-    address: 'м. Кам\'янське (західний склад)'
-  },
-  {
-    id: 'journalists',
-    name: '🏢 Головний офіс ТОВ «БЕНГС» (вул. Журналістів, 3)',
-    shortName: 'Головний офіс (вул. Журналістів, 3)',
-    lat: 48.5135,
-    lng: 35.0850,
-    address: 'м. Дніпро, вул. Журналістів, 3 (бухгалтерія та відділ продажів)'
+    address: 'м. Кам\'янське (перевальний склад)'
   }
 ];
+
+const OFFICE_COORDS = {
+  lat: 48.5135,
+  lng: 35.0850,
+  name: '🏢 Головний офіс ТОВ «БЕНГС»',
+  address: 'м. Дніпро, вул. Журналістів, 3 (бухгалтерія та кабінети)'
+};
 
 const REAL_HUBS = BENGS_HUBS.filter(h => !h.isAuto);
 
@@ -100,7 +99,7 @@ const resolveZoneByCoords = (lat, lng, distKm) => {
   }
 };
 
-// Find closest hub among REAL_HUBS for given target lat, lng
+// Find closest hub among REAL_HUBS (quarries only) for given target lat, lng
 const getClosestHub = (targetLat, targetLng) => {
   let minDistance = Infinity;
   let closest = REAL_HUBS[0];
@@ -177,7 +176,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     };
   }, []);
 
-  // Recalculate distance and zone based on active hub selection
+  // Recalculate distance and zone strictly from quarry hubs (excluding office)
   const updateLocation = (lat, lng, addressName = '', targetHubId = selectedHubId) => {
     let effectiveHub = REAL_HUBS[0];
     let dist = 0;
@@ -215,7 +214,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
             <strong style="color: #15803d; font-size: 14px;">📍 Точка доставки:</strong><br/>
             <b>${finalName}</b><br/>
-            <span style="color: #64748b;">Відстань від бази (${effectiveHub.shortName}): <b>${dist} км</b></span>
+            <span style="color: #64748b;">Відстань від кар'єра/бази (${effectiveHub.shortName}): <b>${dist} км</b></span>
           </div>
         `;
         const popup = userMarkerRef.current.getPopup();
@@ -257,12 +256,27 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     }).addTo(map);
     tileLayerRef.current = tileLayer;
 
-    // Draw all 4 Hub Markers on Map
+    // Draw Office Marker (Informational only)
+    const officeIcon = L.divIcon({
+      className: 'custom-office-marker',
+      html: `<div style="background: #475569; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">🏢</div>`,
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
+    });
+    const officeMarker = L.marker([OFFICE_COORDS.lat, OFFICE_COORDS.lng], { icon: officeIcon }).addTo(map);
+    officeMarker.bindPopup(`
+      <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
+        <strong style="color: #334155; font-size: 14px;">${OFFICE_COORDS.name}</strong><br/>
+        <span style="color: #64748b;">${OFFICE_COORDS.address}</span><br/>
+        <small style="color: #94a3b8;">Розрахунок доставки здійснюється від кар'єрів/баз</small>
+      </div>
+    `);
+
+    // Draw Quarry & Terminal Hub Markers on Map
     hubMarkersRef.current = REAL_HUBS.map(hub => {
-      const isMainOffice = hub.id === 'journalists';
       const hubIcon = L.divIcon({
         className: 'custom-hub-marker',
-        html: `<div style="background: ${isMainOffice ? '#15803d' : '#0284c7'}; color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.35); cursor: pointer;">${isMainOffice ? '🏢' : '🪨'}</div>`,
+        html: `<div style="background: #15803d; color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.35); cursor: pointer;">🪨</div>`,
         iconSize: [34, 34],
         iconAnchor: [17, 17]
       });
@@ -270,7 +284,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       const marker = L.marker([hub.lat, hub.lng], { icon: hubIcon }).addTo(map);
       marker.bindPopup(`
         <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
-          <strong style="color: ${isMainOffice ? '#15803d' : '#0284c7'}; font-size: 14px;">${hub.name}</strong><br/>
+          <strong style="color: #15803d; font-size: 14px;">${hub.name}</strong><br/>
           <span style="color: #64748b;">${hub.address}</span><br/>
           <small style="color: #15803d; font-weight: 600;">Клікніть для розрахунку від цієї бази</small>
         </div>
@@ -401,7 +415,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           <Building2 size={18} style={{ color: '#15803d', flexShrink: 0 }} />
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              База / Кар'єр відвантаження:
+              Кар'єр / База відвантаження (Звідки рахувати доставку):
             </div>
             <select
               value={selectedHubId}
@@ -488,7 +502,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           <div>
             <div className="mc-address">{currentAddressName}</div>
             <div className="mc-details">
-              Відстань від бази (<strong>{activeHub.shortName}</strong>): <strong>{calculatedDistance} км</strong> • Зона: <strong className="text-green">{selectedZone.name.split('(')[0]}</strong>
+              Відстань від кар'єра/бази (<strong>{activeHub.shortName}</strong>): <strong>{calculatedDistance} км</strong> • Зона: <strong className="text-green">{selectedZone.name.split('(')[0]}</strong>
             </div>
           </div>
         </div>
