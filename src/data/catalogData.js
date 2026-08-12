@@ -390,7 +390,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "у МКР з ручками",
     density: "1.0 т/мішок",
-    image: "/images/img_1a5f65b7d5.jpg",
+    image: "/images/img_sheben_bigbeg.webp",
     popular: true,
     description: "Зручне фасування у м'які контейнери по 1000 кг для об'єктів з обмеженим заїздом і кранового розвантаження."
   },
@@ -406,7 +406,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "декоративний білий",
     density: "1.30 т/м3",
-    image: "/images/img_1d0bb6fa0e.jpg",
+    image: "/images/img_mramor_tasos.jpg",
     description: "Білосніжний мармуровий камінь для ландшафтного дизайну, клумб, пам'ятників, мозаїчних підлог і декору."
   },
 
