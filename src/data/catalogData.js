@@ -724,7 +724,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "сферичний",
     density: "0.40 т/м3",
-    image: "https://images.unsplash.com/photo-1545396872-4292fea7a151?auto=format&fit=crop&w=800&q=80",
+    image: "https://domovoy.ua/site/img/products/4116/4116_937d9efa3a0b8afaa61a5eb11b9e3adb.webp",
     description: "Найпопулярніша фракція керамзиту для утеплення підлог, перекриттів горищ і покрівель."
   },
   {
