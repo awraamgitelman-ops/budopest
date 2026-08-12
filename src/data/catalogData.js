@@ -42,7 +42,7 @@ export const MAIN_SECTIONS = [
     name: "ПГС / ОПГС",
     price: "від 290 грн/т",
     priceM3: "від 390 грн/м³",
-    image: "https://images.unsplash.com/photo-1578885136359-16c8bd4d3a8e?auto=format&fit=crop&w=800&q=80",
+    image: "https://estone.pro/wp-content/uploads/2019/11/pgs.jpeg",
     itemsCount: 2,
     description: "Піщано-гравійні та збагачені суміші для виготовлення бетону та подушок."
   },
@@ -484,7 +484,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "чистий",
     density: "1.0 т/мішок",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    image: "https://ektabud.in.ua/image/cache/catalog/SYPU4IE/4ORNOZEM/4ornozem-1000x1000.jpg",
     description: "Чистий чорнозем у біг-бегах для чистої доставки на готові ландшафтні об'єкти без бруду на плитці."
   },
 
@@ -627,7 +627,7 @@ export const ALL_PRODUCTS = [
     frost: "F150",
     flakiness: "природна",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1578885136359-16c8bd4d3a8e?auto=format&fit=crop&w=800&q=80",
+    image: "https://estone.pro/wp-content/uploads/2019/11/pgs.jpeg",
     description: "Природна суміш піску та гравію для зворотного засипання, подушок під фундамент та відсипання доріг."
   },
   {
