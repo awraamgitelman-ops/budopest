@@ -98,12 +98,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           </div>
 
           <div className="ht-right">
-            <div
-              className="ht-info-item clickable"
-              onClick={() => navigate('#/warehouses')}
-            >
+            <div className="ht-item">
               <MapPin size={15} className="icon-green" />
-              <span>м. Дніпро, вул. Чаплинська, 1А</span>
+              <span>м. Дніпро, вул. Журналістів, 3</span>
             </div>
             <div className="ht-info-item">
               <Clock size={14} className="icon-green" />
