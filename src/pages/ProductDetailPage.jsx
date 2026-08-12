@@ -36,7 +36,6 @@ export const ProductDetailPage = ({ onOpenOrderModal }) => {
           <div className="prod-gallery-col">
             <div className="prod-img-box">
               <img src={product.image} alt={product.name} className="prod-main-img" />
-              {product.popular && <span className="prod-badge-top">Хіт продажу</span>}
               <div className="prod-stock-badge">
                 <span className="live-dot"></span>
                 <span>В наявності на 4 перевалках Дніпра</span>

@@ -128,7 +128,6 @@ export const CatalogSectionPage = ({ onOpenOrderModal }) => {
                 onClick={() => navigate(`#/product/${prod.id}`)}
               >
                 <img src={prod.image} alt={prod.name} className="cpc-img" loading="lazy" />
-                {prod.popular && <span className="cpc-badge">Хіт продажу</span>}
                 <div className="cpc-stock-tag">В наявності</div>
               </div>
 

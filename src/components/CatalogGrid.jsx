@@ -56,9 +56,6 @@ export const CatalogGrid = ({ selectedSection, onSelectSection, onOpenOrderModal
                   className="pc-v2-img"
                   loading="lazy"
                 />
-                {product.popular && (
-                  <span className="pc-v2-pop-badge">Популярне</span>
-                )}
               </div>
 
               <div className="pc-v2-body">

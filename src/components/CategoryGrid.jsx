@@ -41,9 +41,6 @@ export const CategoryGrid = ({ selectedSection, onSelectSection }) => {
                     className="cat-card-img"
                     loading="lazy"
                   />
-                  {sec.featured && (
-                    <span className="cat-featured-badge">Хіт продажів</span>
-                  )}
                   <span className="cat-count-badge">{sec.itemsCount} видів</span>
                 </div>
 
