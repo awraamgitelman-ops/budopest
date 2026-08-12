@@ -1,19 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DELIVERY_ZONES } from '../data/catalogData';
-import { Search, MapPin, Navigation, CheckCircle2, ExternalLink, Layers, Building2 } from 'lucide-react';
+import { Search, MapPin, CheckCircle2, ExternalLink, Layers, Building2, Warehouse } from 'lucide-react';
 
 export const BENGS_HUBS = [
   {
-    id: 'auto',
-    name: '⚡ Автовибір найближчого кар\'єра/бази (Найдешевша доставка)',
-    shortName: 'Найближчий кар\'єр / база',
-    lat: 48.4890,
-    lng: 34.9850,
-    isAuto: true
-  },
-  {
     id: 'liubymivka',
-    name: '🪨 Любимівський гранітний кар\'єр (Південний напрямок)',
+    name: 'Любимівський гранітний кар\'єр (Південний напрямок)',
     shortName: 'Любимівський гранітний кар\'єр',
     lat: 48.3750,
     lng: 35.1850,
@@ -21,7 +13,7 @@ export const BENGS_HUBS = [
   },
   {
     id: 'naberezhna',
-    name: '🏗️ Термінал «Набережна Заводська» (Правий берег / Дніпро)',
+    name: 'Термінал «Набережна Заводська» (Правий берег / Дніпро)',
     shortName: 'Термінал Набережна Заводська',
     lat: 48.4890,
     lng: 34.9850,
@@ -29,7 +21,7 @@ export const BENGS_HUBS = [
   },
   {
     id: 'kamianske',
-    name: '🚚 Кам\'янський перевальний термінал (Західний напрямок)',
+    name: 'Кам\'янський перевальний термінал (Західний напрямок)',
     shortName: 'Кам\'янський термінал',
     lat: 48.5173,
     lng: 34.6063,
@@ -40,22 +32,9 @@ export const BENGS_HUBS = [
 const OFFICE_COORDS = {
   lat: 48.5135,
   lng: 35.0850,
-  name: '🏢 Головний офіс ТОВ «БЕНГС»',
+  name: 'Головний офіс ТОВ «БЕНГС»',
   address: 'м. Дніпро, вул. Журналістів, 3 (бухгалтерія та кабінети)'
 };
-
-const REAL_HUBS = BENGS_HUBS.filter(h => !h.isAuto);
-
-const PRESET_LOCATIONS = [
-  { name: 'Дніпро (Правий берег: Центр / Соборний)', lat: 48.4647, lng: 35.0462 },
-  { name: 'Дніпро (Лівий берег: АНД / Індустріальний)', lat: 48.5080, lng: 35.0710 },
-  { name: 'Підгородне / Слобожанське', lat: 48.5772, lng: 35.1075 },
-  { name: 'смт Обухівка / Горянівське', lat: 48.5430, lng: 34.8690 },
-  { name: 'Кам\'янське (Лівобережжя / Центр)', lat: 48.5173, lng: 34.6063 },
-  { name: 'Новомосковськ / Піщанка', lat: 48.6369, lng: 35.2285 },
-  { name: 'м. Синельникове', lat: 48.3512, lng: 35.5202 },
-  { name: 'м. Павлоград', lat: 48.5262, lng: 35.8672 }
-];
 
 // Haversine formula to compute distance in km
 const calculateDistanceKm = (lat1, lon1, lat2, lon2) => {
@@ -99,22 +78,6 @@ const resolveZoneByCoords = (lat, lng, distKm) => {
   }
 };
 
-// Find closest hub among REAL_HUBS (quarries only) for given target lat, lng
-const getClosestHub = (targetLat, targetLng) => {
-  let minDistance = Infinity;
-  let closest = REAL_HUBS[0];
-
-  REAL_HUBS.forEach(hub => {
-    const dist = calculateDistanceKm(hub.lat, hub.lng, targetLat, targetLng);
-    if (dist < minDistance) {
-      minDistance = dist;
-      closest = hub;
-    }
-  });
-
-  return { hub: closest, distance: minDistance };
-};
-
 export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
@@ -123,8 +86,8 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
   const tileLayerRef = useRef(null);
   const hubMarkersRef = useRef([]);
 
-  const [selectedHubId, setSelectedHubId] = useState('auto');
-  const [activeHub, setActiveHub] = useState(REAL_HUBS[0]);
+  const [selectedHubId, setSelectedHubId] = useState(BENGS_HUBS[0].id);
+  const [activeHub, setActiveHub] = useState(BENGS_HUBS[0]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
   const [activeCoords, setActiveCoords] = useState({ lat: 48.4647, lng: 35.0462 });
@@ -178,20 +141,10 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
 
   // Recalculate distance and zone strictly from quarry hubs (excluding office)
   const updateLocation = (lat, lng, addressName = '', targetHubId = selectedHubId) => {
-    let effectiveHub = REAL_HUBS[0];
-    let dist = 0;
+    const found = BENGS_HUBS.find(h => h.id === targetHubId) || BENGS_HUBS[0];
+    const dist = calculateDistanceKm(found.lat, found.lng, lat, lng);
 
-    if (targetHubId === 'auto') {
-      const closest = getClosestHub(lat, lng);
-      effectiveHub = closest.hub;
-      dist = closest.distance;
-    } else {
-      const found = REAL_HUBS.find(h => h.id === targetHubId) || REAL_HUBS[0];
-      effectiveHub = found;
-      dist = calculateDistanceKm(found.lat, found.lng, lat, lng);
-    }
-
-    setActiveHub(effectiveHub);
+    setActiveHub(found);
     setActiveCoords({ lat, lng });
     setCalculatedDistance(dist);
     const finalName = addressName || `Точка на карті (${lat.toFixed(4)}, ${lng.toFixed(4)})`;
@@ -204,7 +157,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       addressName: finalName,
       lat,
       lng,
-      hubName: effectiveHub.shortName
+      hubName: found.shortName
     });
 
     if (mapInstanceRef.current && window.L) {
@@ -212,9 +165,9 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
         userMarkerRef.current.setLatLng([lat, lng]);
         const popupContent = `
           <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
-            <strong style="color: #15803d; font-size: 14px;">📍 Точка доставки:</strong><br/>
+            <strong style="color: #15803d; font-size: 14px;">Точка доставки:</strong><br/>
             <b>${finalName}</b><br/>
-            <span style="color: #64748b;">Відстань від кар'єра/бази (${effectiveHub.shortName}): <b>${dist} км</b></span>
+            <span style="color: #64748b;">Відстань від кар'єра/бази (${found.shortName}): <b>${dist} км</b></span>
           </div>
         `;
         const popup = userMarkerRef.current.getPopup();
@@ -227,7 +180,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
 
       if (lineRef.current) {
         lineRef.current.setLatLngs([
-          [effectiveHub.lat, effectiveHub.lng],
+          [found.lat, found.lng],
           [lat, lng]
         ]);
       }
@@ -256,10 +209,10 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     }).addTo(map);
     tileLayerRef.current = tileLayer;
 
-    // Draw Office Marker (Informational only)
+    // Draw Office Marker (Informational slate SVG badge)
     const officeIcon = L.divIcon({
       className: 'custom-office-marker',
-      html: `<div style="background: #475569; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">🏢</div>`,
+      html: `<div style="background: #334155; color: #ffffff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: 700; font-size: 13px;">Офіс</div>`,
       iconSize: [32, 32],
       iconAnchor: [16, 16]
     });
@@ -272,11 +225,11 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       </div>
     `);
 
-    // Draw Quarry & Terminal Hub Markers on Map
-    hubMarkersRef.current = REAL_HUBS.map(hub => {
+    // Draw Quarry & Terminal Hub Markers on Map (Green SVG Badges)
+    hubMarkersRef.current = BENGS_HUBS.map((hub, idx) => {
       const hubIcon = L.divIcon({
         className: 'custom-hub-marker',
-        html: `<div style="background: #15803d; color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 17px; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.35); cursor: pointer;">🪨</div>`,
+        html: `<div style="background: #15803d; color: #fff; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.35); cursor: pointer;">К${idx + 1}</div>`,
         iconSize: [34, 34],
         iconAnchor: [17, 17]
       });
@@ -298,10 +251,10 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       return marker;
     });
 
-    // Customer Destination Marker (Red Google Pin)
+    // Customer Destination Marker (Red Location Pin)
     const userIcon = L.divIcon({
       className: 'custom-user-marker',
-      html: `<div style="background: #ef4444; color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.35);">📍</div>`,
+      html: `<div style="background: #ef4444; color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.35);">Ціль</div>`,
       iconSize: [36, 36],
       iconAnchor: [18, 18]
     });
@@ -328,14 +281,14 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     // Dashed green delivery polyline
     const line = L.polyline(
       [
-        [REAL_HUBS[0].lat, REAL_HUBS[0].lng],
+        [BENGS_HUBS[0].lat, BENGS_HUBS[0].lng],
         [initialLat, initialLng]
       ],
       { color: '#22c55e', weight: 4, dashArray: '6, 8', opacity: 0.9 }
     ).addTo(map);
     lineRef.current = line;
 
-    updateLocation(initialLat, initialLng, currentAddressName, 'auto');
+    updateLocation(initialLat, initialLng, currentAddressName, BENGS_HUBS[0].id);
 
     return () => {
       map.remove();
@@ -396,7 +349,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           mapInstanceRef.current.panTo([lat, lng]);
         }
       } else {
-        alert('Адресу не знайдено. Будь ласка, оберіть точку кліком на Google Карті або скористайтесь швидкими кнопками.');
+        alert('Адресу не знайдено. Будь ласка, оберіть точку кліком на Google Карті.');
       }
     } catch (err) {
       console.error('Geocoding error:', err);
@@ -409,39 +362,31 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
 
   return (
     <div className="delivery-map-picker-box">
-      {/* Quarry / Hub Selector & Search Bar */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '12px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: '#f8fafc', padding: '10px 14px', borderRadius: '10px', border: '1px solid #e2e8f0' }}>
-          <Building2 size={18} style={{ color: '#15803d', flexShrink: 0 }} />
-          <div style={{ flex: 1 }}>
-            <div style={{ fontSize: '0.78rem', color: '#64748b', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-              Кар'єр / База відвантаження (Звідки рахувати доставку):
-            </div>
-            <select
-              value={selectedHubId}
-              onChange={handleHubSelectChange}
-              style={{
-                width: '100%',
-                background: 'transparent',
-                border: 'none',
-                fontWeight: 700,
-                fontSize: '0.92rem',
-                color: '#0f172a',
-                cursor: 'pointer',
-                outline: 'none',
-                padding: '2px 0 0 0'
-              }}
-            >
-              {BENGS_HUBS.map(hub => (
-                <option key={hub.id} value={hub.id}>
-                  {hub.name}
-                </option>
-              ))}
-            </select>
-          </div>
+      {/* Sleek Custom Quarry / Hub Selector Card */}
+      <div className="quarry-select-card">
+        <div className="qsc-header">
+          <Warehouse size={16} className="text-green" />
+          <span className="qsc-title">Кар'єр / База відвантаження (звідки рахувати доставку):</span>
         </div>
+        <div className="qsc-select-wrapper">
+          <select
+            value={selectedHubId}
+            onChange={handleHubSelectChange}
+            className="qsc-select"
+          >
+            {BENGS_HUBS.map(hub => (
+              <option key={hub.id} value={hub.id}>
+                {hub.name}
+              </option>
+            ))}
+          </select>
+          <div className="qsc-arrow">▼</div>
+        </div>
+      </div>
 
-        <form onSubmit={handleSearchSubmit} className="map-search-form">
+      {/* Search Input & Satellite Toggle Bar */}
+      <div className="map-search-bar-row">
+        <form onSubmit={handleSearchSubmit} className="map-search-form flex-1">
           <div className="map-search-input-wrap">
             <Search size={18} className="map-search-icon" />
             <input
@@ -456,35 +401,16 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
             </button>
           </div>
         </form>
-      </div>
 
-      {/* Quick Preset Buttons */}
-      <div className="map-presets-bar">
-        <div className="presets-header">
-          <span className="presets-label">Швидкі райони Дніпра та області:</span>
-          <button type="button" onClick={toggleMapType} className="map-type-toggle-btn">
-            <Layers size={13} />
-            <span>{mapType === 'roadmap' ? 'Google Супутник' : 'Google Схема'}</span>
-          </button>
-        </div>
-        <div className="presets-chips">
-          {PRESET_LOCATIONS.map((loc, idx) => (
-            <button
-              key={idx}
-              type="button"
-              className="preset-chip"
-              onClick={() => updateLocation(loc.lat, loc.lng, loc.name)}
-            >
-              <Navigation size={12} />
-              <span>{loc.name.split('(')[0]}</span>
-            </button>
-          ))}
-        </div>
+        <button type="button" onClick={toggleMapType} className="map-type-toggle-btn">
+          <Layers size={14} />
+          <span>{mapType === 'roadmap' ? 'Google Супутник' : 'Google Схема'}</span>
+        </button>
       </div>
 
       {/* Google Maps Container */}
       <div className="leaflet-map-wrapper">
-        <div ref={mapContainerRef} className="leaflet-map-container" style={{ height: '340px', width: '100%' }} />
+        <div ref={mapContainerRef} className="leaflet-map-container" style={{ height: '360px', width: '100%' }} />
         {!mapLoaded && (
           <div className="map-loading-overlay">
             <span>Завантаження Google Карт Дніпра...</span>
@@ -522,6 +448,85 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           </a>
         </div>
       </div>
+
+      <style>{`
+        .quarry-select-card {
+          background: #ffffff;
+          border: 1px solid #e2e8f0;
+          border-radius: 12px;
+          padding: 12px 16px;
+          margin-bottom: 12px;
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+        }
+        .qsc-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 8px;
+        }
+        .qsc-title {
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: #475569;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+        }
+        .qsc-select-wrapper {
+          position: relative;
+          width: 100%;
+        }
+        .qsc-select {
+          width: 100%;
+          appearance: none;
+          -webkit-appearance: none;
+          background: #f8fafc;
+          border: 1.5px solid #cbd5e1;
+          border-radius: 10px;
+          padding: 11px 40px 11px 14px;
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #0f172a;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          outline: none;
+        }
+        .qsc-select:hover {
+          border-color: #16a34a;
+          background: #ffffff;
+        }
+        .qsc-select:focus {
+          border-color: #16a34a;
+          box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+          background: #ffffff;
+        }
+        .qsc-arrow {
+          position: absolute;
+          right: 14px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 0.75rem;
+          color: #64748b;
+          pointer-events: none;
+        }
+        .map-search-bar-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 12px;
+        }
+        @media (max-width: 640px) {
+          .map-search-bar-row {
+            flex-direction: column;
+          }
+          .map-search-bar-row .map-search-form {
+            width: 100%;
+          }
+          .map-type-toggle-btn {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </div>
   );
 };
