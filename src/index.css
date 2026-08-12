@@ -767,3 +767,135 @@ span.req {
   color: var(--c-green-dark) !important;
 }
 
+/* Google Map Picker Overlay & Window */
+.gmap-picker-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background-color: rgba(15, 23, 42, 0.8) !important;
+  backdrop-filter: blur(6px) !important;
+  z-index: 100005 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+}
+
+.gmap-picker-window {
+  position: relative !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+  width: 100% !important;
+  max-width: 680px !important;
+  height: 540px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  z-index: 100010 !important;
+}
+
+.gmap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.gmap-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gmap-title h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.gmap-title p {
+  margin: 2px 0 0 0;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.gmap-close-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.gmap-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  background: #e2e8f0;
+}
+
+.gmap-locate-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.gmap-footer {
+  padding: 14px 20px;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.gmap-address-display {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.gmap-addr-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.gmap-addr-val {
+  font-size: 0.92rem;
+  color: #0f172a;
+}
+
+.gmap-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
