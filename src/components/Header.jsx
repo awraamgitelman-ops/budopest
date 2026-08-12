@@ -318,16 +318,16 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           position: sticky;
           top: 0;
           z-index: 990;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
           background-color: #ffffff;
         }
 
         .header-top {
           background-color: #f8fafc;
           border-bottom: 1px solid #e2e8f0;
-          font-size: 0.8rem;
+          font-size: 0.83rem;
           color: #475569;
-          padding: 6px 0;
+          padding: 8px 0;
         }
 
         .header-top-inner {
@@ -339,16 +339,18 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         .ht-left, .ht-right {
           display: flex;
           align-items: center;
-          gap: 16px;
+          gap: 20px;
         }
 
         .ht-phone {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 7px;
+          font-size: 0.88rem;
           font-weight: 700;
           color: #0f172a;
           text-decoration: none;
+          transition: color 0.15s;
         }
 
         .ht-phone:hover {
@@ -358,13 +360,15 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         .ht-whatsapp {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 7px;
           font-weight: 600;
+          font-size: 0.8rem;
           color: #15803d;
           background: #dcfce7;
-          padding: 2px 8px;
-          border-radius: 4px;
+          padding: 4px 10px;
+          border-radius: 6px;
           text-decoration: none;
+          transition: background 0.15s;
         }
 
         .ht-whatsapp:hover {
@@ -374,9 +378,10 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         .ht-email, .ht-info-item {
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 7px;
           text-decoration: none;
           color: inherit;
+          transition: color 0.15s;
         }
 
         .ht-info-item.clickable {
@@ -403,11 +408,11 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 28px;
-          height: 28px;
+          width: 32px;
+          height: 32px;
           border-radius: 50%;
-          background: #e2e8f0;
-          border: none;
+          background: #f1f5f9;
+          border: 1px solid #cbd5e1;
           color: #334155;
           cursor: pointer;
           transition: all 0.2s;
@@ -416,12 +421,18 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         .ht-search-btn:hover {
           background: var(--c-green);
           color: #ffffff;
+          border-color: var(--c-green);
         }
 
         .header-main {
           background-color: #ffffff;
-          padding: 10px 0;
+          padding: 16px 0;
           transition: all 0.2s ease;
+        }
+
+        .header-main.header-scrolled {
+          padding: 10px 0;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         .header-main-inner {
@@ -433,7 +444,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         .brand-logo {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 12px;
           text-decoration: none;
         }
 
@@ -447,25 +458,25 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         }
 
         .brand-title {
-          font-size: 1.45rem;
+          font-size: 1.5rem;
           font-weight: 900;
           color: #0f172a;
           line-height: 1;
-          letter-spacing: -0.5px;
+          letter-spacing: -0.4px;
         }
 
         .brand-sub {
-          font-size: 0.65rem;
+          font-size: 0.68rem;
           font-weight: 700;
           color: var(--c-green-dark);
           letter-spacing: 0.6px;
-          margin-top: 2px;
+          margin-top: 3px;
         }
 
         .desktop-nav {
           display: flex;
           align-items: center;
-          gap: 4px;
+          gap: 6px;
         }
 
         .nav-item {
@@ -477,12 +488,12 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         .nav-link {
           display: flex;
           align-items: center;
-          gap: 4px;
-          padding: 8px 14px;
-          font-size: 0.92rem;
+          gap: 5px;
+          padding: 9px 14px;
+          font-size: 0.93rem;
           font-weight: 600;
           color: #334155;
-          border-radius: var(--radius-sm);
+          border-radius: 8px;
           transition: all 0.15s;
           text-decoration: none;
           border: none;
@@ -572,8 +583,10 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         }
 
         .btn-kp {
-          padding: 9px 18px;
-          font-size: 0.9rem;
+          padding: 10px 20px;
+          font-size: 0.92rem;
+          font-weight: 700;
+          border-radius: 8px;
         }
 
         .mobile-menu-toggle {
