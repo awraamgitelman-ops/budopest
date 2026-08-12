@@ -375,7 +375,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "фасований",
     density: "50 кг/мішок",
-    image: "/images/img_1a5f65b7d5.jpg",
+    image: "/images/img_sheben_v_meshkah.jpg",
     description: "Фасований у мішки щебінь для зручного ручного занесення у квартири, підвальні приміщення та приватні ділянки."
   },
   {
