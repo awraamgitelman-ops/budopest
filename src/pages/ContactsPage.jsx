@@ -75,7 +75,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                 <MapPin size={18} className="icon-green" />
                 <div>
                   <strong>Головна перевалка (Лівий берег):</strong>
-                  <p className="cic-addr">м. Дніпро, вул. Журналістів, 3 (ваговий контроль, самовивіз)</p>
+                  <p className="cic-addr">м. Дніпро, вул. Чаплинська, 1А (ваговий контроль, самовивіз)</p>
                 </div>
               </div>
 
