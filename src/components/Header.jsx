@@ -63,7 +63,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               </a>
 
               <a
-                href="https://t.me/bengs_zakaz"
+                href="https://t.me/rudmonolit"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="msg-btn msg-telegram"
@@ -78,8 +78,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
 
               <a
                 href="viber://chat?number=%2B380988612938"
-                target="_blank"
-                rel="noopener noreferrer"
                 className="msg-btn msg-viber"
                 title="Написати у Viber"
               >

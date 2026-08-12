@@ -36,15 +36,36 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
               <div className="cic-item">
                 <MessageSquare size={18} className="icon-green" />
                 <div>
-                  <span className="cic-label">Месенджери (WhatsApp / Viber):</span>
-                  <a
-                    href="https://wa.me/380988612938"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="cic-link"
-                  >
-                    Написати у WhatsApp / Viber
-                  </a>
+                  <span className="cic-label">Месенджери для швидкого замовлення:</span>
+                  <div style={{ display: 'flex', gap: '10px', marginTop: '6px', flexWrap: 'wrap' }}>
+                    <a
+                      href="https://t.me/rudmonolit"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cic-link"
+                      style={{ color: '#0284c7', fontWeight: 600 }}
+                    >
+                      Telegram (@rudmonolit)
+                    </a>
+                    <span>•</span>
+                    <a
+                      href="viber://chat?number=%2B380988612938"
+                      className="cic-link"
+                      style={{ color: '#7360f2', fontWeight: 600 }}
+                    >
+                      Viber (+380988612938)
+                    </a>
+                    <span>•</span>
+                    <a
+                      href="https://wa.me/380988612938"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cic-link"
+                      style={{ color: '#16a34a', fontWeight: 600 }}
+                    >
+                      WhatsApp
+                    </a>
+                  </div>
                 </div>
               </div>
 
