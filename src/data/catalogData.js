@@ -119,7 +119,7 @@ export const MEGA_MENU_DATA = [
     items: [
       { name: "Річковий пісок (Дніпро, митий)", price: "від 280 грн/т" },
       { name: "Кар'єрний пісок (яружний)", price: "від 220 грн/т" },
-      { name: "Сеяний пісок", price: "від 260 грн/т" },
+      { name: "Сіяний пісок (модуль 1.8-2.2)", price: "від 260 грн/т" },
       { name: "Піскоґрунт на підсипку", price: "від 160 грн/т" },
       { name: "Пісок у мішках по 50 кг", price: "від 65 грн/мішок" }
     ]
@@ -523,17 +523,17 @@ export const ALL_PRODUCTS = [
   {
     id: "pesok-seyanyj",
     sectionId: "pesok",
-    name: "Сеяний пісок (модуль 1.8-2.2)",
+    name: "Сіяний пісок (модуль 1.8-2.2)",
     price: 260,
     priceUnit: "грн/т",
     priceM3: 370,
-    fractions: ["модуль 2.0 мм"],
+    fractions: ["модуль 1.8-2.2 мм"],
     strength: "Очищений",
     frost: "F-",
-    flakiness: "без сміття",
+    flakiness: "без домішок",
     density: "1.42 т/м3",
-    image: "/images/img_b2b26d3108.jpg",
-    description: "Механічно просіяний пісок без великих включень для фундаментів та тротуарної плитки."
+    image: "/images/img_siyanyj_pisok.jpg",
+    description: "Механічно просіяний річковий пісок без великих зерен та глинистих включень (модуль 1.8-2.2 мм) для монолітного бетону, штукатурки та укладання тротуарної плитки."
   },
   {
     id: "pesok-grunt",
@@ -842,7 +842,7 @@ export const PRICE_TABLES_DATA = {
     badge: "ДСТУ Б В.2.7-32-01",
     items: [
       { name: "Річковий пісок (митий, Дніпро)", priceM3: 270, priceTon: 180, strength: "Мк 1.8-2.2", frost: "F-" },
-      { name: "Кар'єрний пісок сіяний", priceM3: 240, priceTon: 160, strength: "Мк 1.5-1.8", frost: "F-" },
+      { name: "Сіяний пісок (модуль 1.8-2.2)", priceM3: 370, priceTon: 260, strength: "Мк 1.8-2.2", frost: "F-" },
       { name: "Пісок у мішках (50 кг)", priceM3: 450, priceTon: 45, strength: "Фасований", frost: "F-" },
       { name: "Пісок у Біг-бегах (1 т)", priceM3: 550, priceTon: 420, strength: "МКР", frost: "F-" }
     ]
