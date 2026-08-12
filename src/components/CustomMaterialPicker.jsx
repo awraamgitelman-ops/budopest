@@ -23,12 +23,12 @@ export const CustomMaterialPicker = ({ selectedProductId, onSelectProduct }) => 
 
   const CATEGORY_TABS = [
     { id: 'all', label: 'Усі матеріали' },
-    { id: 'sheben', label: '🪨 Щебінь' },
-    { id: 'shps', label: '🏗️ Шлак & ЩПС' },
-    { id: 'pesok', label: '⏳ Пісок' },
-    { id: 'otsiv', label: '🌾 Відсів' },
-    { id: 'keramzit', label: '🧱 Керамзит' },
-    { id: 'grunty', label: '🌱 Ґрунти' }
+    { id: 'sheben', label: 'Щебінь' },
+    { id: 'shps', label: 'Шлак & ЩПС' },
+    { id: 'pesok', label: 'Пісок' },
+    { id: 'otsiv', label: 'Відсів' },
+    { id: 'keramzit', label: 'Керамзит' },
+    { id: 'grunty', label: 'Ґрунти' }
   ];
 
   const filteredProducts = ALL_PRODUCTS.filter((p) => {

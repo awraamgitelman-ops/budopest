@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, AlertCircle, MapPin, Minus, Plus, Map, Layers } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, MapPin, Minus, Plus, Map, Layers, ExternalLink } from 'lucide-react';
 import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from './GoogleMapPicker';
@@ -133,9 +133,31 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
     <>
       <div className="modal-backdrop animate-fade" onClick={onClose}>
         <div className="modal-window animate-slide" onClick={(e) => e.stopPropagation()}>
-          <button onClick={onClose} className="modal-close-btn" aria-label="Закрити">
-            <X size={20} />
-          </button>
+          {/* Unified Top Control Bar */}
+          <div className="modal-top-row">
+            <span className="modal-tag">Швидке замовлення</span>
+
+            <div className="modal-top-actions">
+              <a
+                href="#/order"
+                onClick={onClose}
+                className="modal-full-screen-link"
+                title="Відкрити замовлення на окремій сторінці"
+              >
+                <ExternalLink size={13} />
+                <span>На окремій сторінці</span>
+              </a>
+
+              <button
+                onClick={onClose}
+                className="modal-close-btn-inline"
+                aria-label="Закрити вікно"
+                title="Закрити"
+              >
+                <X size={18} />
+              </button>
+            </div>
+          </div>
 
           {isSuccess ? (
             <div className="modal-success">
@@ -153,16 +175,6 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
           ) : (
             <div>
               <div className="modal-header">
-                <div className="modal-header-top-bar">
-                  <span className="modal-tag">Швидке замовлення</span>
-                  <a
-                    href="#/order"
-                    onClick={onClose}
-                    className="modal-full-screen-link"
-                  >
-                    ↗️ На окремій сторінці
-                  </a>
-                </div>
                 <h3 className="modal-title">Оформлення заявки</h3>
                 <p className="modal-subtitle">
                   {initialData?.calcDetails
