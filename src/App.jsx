@@ -28,6 +28,18 @@ function AppContent() {
   const { pageType, navigate } = useRouter();
   const [selectedSection, setSelectedSection] = useState('sheben');
   const [orderModalOpen, setOrderModalOpen] = useState(false);
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [modalInitialData, setModalInitialData] = useState(null);
+
+  const handleOpenOrder = (productData = {}) => {
+    setModalInitialData(productData);
+    setOrderModalOpen(true);
+  };
+
+  const handleOpenSearch = () => {
+    setSearchModalOpen(true);
+  };
+
   const handleOpenLegal = (tab = 'requisites') => {
     navigate(`#/legal/${tab}`);
   };
@@ -121,12 +133,10 @@ function AppContent() {
   );
 }
 
-export function App() {
+export default function App() {
   return (
     <RouterProvider>
       <AppContent />
     </RouterProvider>
   );
 }
-
-export default App;
