@@ -87,7 +87,7 @@ export const AboutPage = ({ onOpenOrderModal, onOpenLegalModal }) => {
           <div className="as-img-col">
             <div className="as-img-wrap">
               <img
-                src="https://images.unsplash.com/photo-1585110587043-36d457f3e803?auto=format&fit=crop&w=1000&q=85"
+                src="/images/img_75f6f6ee6a.jpg"
                 alt="Кар'єр Любимівка ТОВ БЕНГС"
                 className="as-img"
               />

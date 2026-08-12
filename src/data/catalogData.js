@@ -5,7 +5,7 @@ export const MAIN_SECTIONS = [
     name: "Ґрунти",
     price: "від 320 грн/т",
     priceM3: "від 420 грн/м³",
-    image: "https://images.unsplash.com/photo-1613036582025-ba1d4ccb3226?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_87e8a19108.jpg",
     itemsCount: 5,
     description: "Чорнозем, родючий ґрунт, торфосуміші та суглинки на підсипку по Дніпру."
   },
@@ -14,7 +14,7 @@ export const MAIN_SECTIONS = [
     name: "Щебінь",
     price: "від 240 грн/т",
     priceM3: "від 320 грн/м³",
-    image: "https://mybud.com.ua/images/bm_img/temp/1681721871shchebin-3.jpg",
+    image: "/images/img_c77ba3b87a.jpg",
     featured: true,
     itemsCount: 15,
     description: "Гранітний, шлаковий, гравійний, вапняковий, бут, габіонний та вторинний щебінь."
@@ -24,7 +24,7 @@ export const MAIN_SECTIONS = [
     name: "Пісок",
     price: "від 220 грн/т",
     priceM3: "від 280 грн/м³",
-    image: "https://images.unsplash.com/photo-1601727096707-d035697f4d8f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_6800c51194.jpg",
     itemsCount: 5,
     description: "Річковий митий пісок із Дніпра, кар'єрний яружний, сіяний та фасований у мішки."
   },
@@ -33,7 +33,7 @@ export const MAIN_SECTIONS = [
     name: "ЩПС",
     price: "від 330 грн/т",
     priceM3: "від 450 грн/м³",
-    image: "https://images.unsplash.com/photo-1664341564940-fe22abdcd656?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_3294613207.jpg",
     itemsCount: 3,
     description: "Щебенево-піщані суміші С4, С5, С7 для дорожніх основ та стоянок."
   },
@@ -42,7 +42,7 @@ export const MAIN_SECTIONS = [
     name: "ПГС / ОПГС",
     price: "від 290 грн/т",
     priceM3: "від 390 грн/м³",
-    image: "https://estone.pro/wp-content/uploads/2019/11/pgs.jpeg",
+    image: "/images/img_d28205a208.jpg",
     itemsCount: 2,
     description: "Піщано-гравійні та збагачені суміші для виготовлення бетону та подушок."
   },
@@ -51,7 +51,7 @@ export const MAIN_SECTIONS = [
     name: "Гравій",
     price: "від 360 грн/т",
     priceM3: "від 490 грн/м³",
-    image: "https://images.unsplash.com/photo-1632199670702-3ea3f70909cb?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_28fb203bd8.jpg",
     itemsCount: 4,
     description: "Природний окатаний та колотий гравій фракцій 5-20, 20-40 та 40-70 мм."
   },
@@ -60,7 +60,7 @@ export const MAIN_SECTIONS = [
     name: "Керамзит",
     price: "від 1 450 грн/м³",
     priceM3: "від 1 450 грн/м³",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqXEjn_loksOi3dcySfi-H0srFDHKhB01IhBZcAFD2gkFSbBnAD9d7bcg&s=10",
+    image: "/images/img_ad97ca335b.jpg",
     itemsCount: 4,
     description: "Легкий утеплювач і заповнювач для стяжок, перекриттів та покрівель."
   },
@@ -69,7 +69,7 @@ export const MAIN_SECTIONS = [
     name: "Галька та камінь",
     price: "від 550 грн/т",
     priceM3: "від 750 грн/м³",
-    image: "https://ua.all.biz/img/ua/catalog/2558834.jpeg",
+    image: "/images/img_8d143bea68.jpg",
     itemsCount: 3,
     description: "Дніпровська річкова та морська окатана галька для ландшафту та декору."
   }
@@ -191,7 +191,7 @@ export const ALL_PRODUCTS = [
     frost: "F150 - F200",
     flakiness: "до 15%",
     density: "1.36 т/м3",
-    image: "https://estone.pro/wp-content/uploads/2018/07/15099461_shheben_granitnyj_frakcziya_dorozhnyj_kamen_40_70_mm-scaled.jpeg",
+    image: "/images/img_652b10eb9d.jpg",
     description: "Природний колотий камінь із низьким радіаційним фоном. Ідеальний для фундаментів, стяжок та бетонів М150–М300."
   },
   {
@@ -206,7 +206,7 @@ export const ALL_PRODUCTS = [
     frost: "F300 - F400",
     flakiness: "до 10% (кубоподібна)",
     density: "1.40 т/м3",
-    image: "https://mybud.com.ua/images/bm_img/temp/1681721871shchebin-3.jpg",
+    image: "/images/img_c77ba3b87a.jpg",
     popular: true,
     description: "Найміцніший гранітний щебінь для моноліту, високомарочного бетону, мостів та автодоріг вищих категорій."
   },
@@ -222,7 +222,7 @@ export const ALL_PRODUCTS = [
     frost: "F100 - F150",
     flakiness: "10-15%",
     density: "1.28 т/м3",
-    image: "https://www.bosstechnology.com.ua/wp-content/uploads/2021/03/izvestnyakoviy-sheben.jpg",
+    image: "/images/img_aaa702bf24.jpg",
     description: "Екологічно чистий кальцитовий камінь для благоустрою, дренажних систем, доріг 2-3 категорії та виробництва вапна."
   },
   {
@@ -237,7 +237,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "до 15%",
     density: "1.35 т/м3",
-    image: "https://www.bauschnell.de/media/image/product/21865/lg/ardennensplitt-schotter-grau-8-16mm.jpg",
+    image: "/images/img_22019a8ff1.jpg",
     popular: true,
     description: "Дроблені металургійні шлаки заводів Дніпра та Кам'янського з високим зчепленням для дорожніх основ і стоянок."
   },
@@ -253,7 +253,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "до 12%",
     density: "1.41 т/м3",
-    image: "https://images.unsplash.com/photo-1620914695139-9507be60a425?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_876ab9729b.jpg",
     description: "Спеціалізований гранітний щебінь для баластного шару залізничних колій, трамвайних ліній та важких під'їздів."
   },
   {
@@ -268,7 +268,7 @@ export const ALL_PRODUCTS = [
     frost: "F200 - F300",
     flakiness: "масивний колотий",
     density: "1.50 т/м3",
-    image: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_e529d5b12f.jpg",
     popular: true,
     description: "Гранітний бут для підпірних стін, парканів, фундаментів під важкі конструкції та берегоукріплення річки Дніпро."
   },
@@ -284,7 +284,7 @@ export const ALL_PRODUCTS = [
     frost: "F50 - F100",
     flakiness: "до 20%",
     density: "1.25 т/м3",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_bd8d86a069.jpg",
     popular: true,
     description: "Дроблений та очищений від арматури бетонний щебінь для відсипання тимчасових доріг, будівельних під'їздів та стоянок."
   },
@@ -300,7 +300,7 @@ export const ALL_PRODUCTS = [
     frost: "F400",
     flakiness: "до 7%",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_85c3c84034.jpg",
     description: "Надміцна темна вулканічна порода з найвищою зносостійкістю, застосовується для асфальтобетону та лазень."
   },
   {
@@ -315,7 +315,7 @@ export const ALL_PRODUCTS = [
     frost: "F150",
     flakiness: "до 12%",
     density: "1.32 т/м3",
-    image: "https://images.unsplash.com/photo-1604176857921-ddddcbbee64e?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_2c89c07202.jpg",
     description: "Міцний осадний камінь із високою адгезією до бітуму для дорожніх асфальтових покриттів та бетонних сумішей."
   },
   {
@@ -330,7 +330,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "до 10%",
     density: "1.37 т/м3",
-    image: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_e55fdaa58f.jpg",
     description: "Повністю очищений від глини та пилоподібних часток матеріал для відповідальних бетонних розчинів та дренажу."
   },
   {
@@ -345,7 +345,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "до 15%",
     density: "1.35 т/м3",
-    image: "https://www.bauschnell.de/media/image/product/21865/lg/ardennensplitt-schotter-grau-8-16mm.jpg",
+    image: "/images/img_22019a8ff1.jpg",
     description: "Бюджетний міцний щебінь для відсипання промислових зон, під'їздів та влаштування жорстких основ."
   },
   {
@@ -360,7 +360,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "колотий / окатаний",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_ed6040e4c2.jpg",
     description: "Відбірний гранітний камінь для сітчастих габіонних конструкцій, захисних бар'єрів та берегоукріплення."
   },
   {
@@ -375,7 +375,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "фасований",
     density: "50 кг/мішок",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_1a5f65b7d5.jpg",
     description: "Фасований у мішки щебінь для зручного ручного занесення у квартири, підвальні приміщення та приватні ділянки."
   },
   {
@@ -390,7 +390,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "у МКР з ручками",
     density: "1.0 т/мішок",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_1a5f65b7d5.jpg",
     popular: true,
     description: "Зручне фасування у м'які контейнери по 1000 кг для об'єктів з обмеженим заїздом і кранового розвантаження."
   },
@@ -406,7 +406,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "декоративний білий",
     density: "1.30 т/м3",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_1d0bb6fa0e.jpg",
     description: "Білосніжний мармуровий камінь для ландшафтного дизайну, клумб, пам'ятників, мозаїчних підлог і декору."
   },
 
@@ -423,7 +423,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "чистий",
     density: "1.20 т/м3",
-    image: "https://images.unsplash.com/photo-1613036582025-ba1d4ccb3226?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_87e8a19108.jpg",
     popular: true,
     description: "Добірний верхній польовий чорнозем для газонів, садів, теплиць та озеленення прибудинкових територій у Дніпрі."
   },
@@ -439,7 +439,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "просіяний",
     density: "1.25 т/м3",
-    image: "https://images.unsplash.com/photo-1578730170523-5b38283b0951?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_5c6383924a.jpg",
     description: "Суміш чорнозему, торфу та піску для посадки кущів, дерев і вирівнювання ландшафту."
   },
   {
@@ -454,7 +454,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "рихлий",
     density: "1.10 т/м3",
-    image: "https://images.unsplash.com/photo-1563117063-ad38230557bc?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_6785e1ced4.jpg",
     description: "Живильний субстрат для покращення структури глинистих і важких ґрунтів."
   },
   {
@@ -469,7 +469,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "масив",
     density: "1.40 т/м3",
-    image: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_91fe97e7af.jpg",
     description: "Ґрунт для зворотного засипання котлованів, вирівнювання рельєфу та підняття рівня ділянки."
   },
   {
@@ -484,7 +484,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "чистий",
     density: "1.0 т/мішок",
-    image: "https://ektabud.in.ua/image/cache/catalog/SYPU4IE/4ORNOZEM/4ornozem-1000x1000.jpg",
+    image: "/images/img_1006ce9b6a.jpg",
     description: "Чистий чорнозем у біг-бегах для чистої доставки на готові ландшафтні об'єкти без бруду на плитці."
   },
 
@@ -501,7 +501,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "без глини",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1601727096707-d035697f4d8f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_6800c51194.jpg",
     popular: true,
     description: "Намивний дніпровський пісок без глини та камінців для бетонних розчинів, стяжки підлоги та штукатурки."
   },
@@ -517,7 +517,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "дрібнозернистий",
     density: "1.40 т/м3",
-    image: "https://images.unsplash.com/photo-1566997257669-fc1fc97aa6e5?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_8455bc1f6d.jpg",
     description: "Природний кар'єрний пісок для кладки цегли, дорожніх подушок та зворотного засипання."
   },
   {
@@ -532,7 +532,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "без сміття",
     density: "1.42 т/м3",
-    image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_b2b26d3108.jpg",
     description: "Механічно просіяний пісок без великих включень для фундаментів та тротуарної плитки."
   },
   {
@@ -547,7 +547,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "масив",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1461598198498-686a2c168484?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_22d5bc782d.jpg",
     description: "Недорогий супісок для підсипки траншей, цоколів та формування дорожнього полотна."
   },
   {
@@ -562,7 +562,7 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "фасований",
     density: "50 кг/мішок",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_1a5f65b7d5.jpg",
     description: "Митий річковий пісок у поліпропіленових мішках по 50 кг для ремонту та внутрішніх оздоблювальних робіт."
   },
 
@@ -579,7 +579,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "до 15%",
     density: "1.50 т/м3",
-    image: "https://images.unsplash.com/photo-1664341564940-fe22abdcd656?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_3294613207.jpg",
     popular: true,
     description: "Готова гранітна суміш оптимального гранулометричного складу для дорожніх основ під асфальт та бруківку."
   },
@@ -595,7 +595,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "до 12%",
     density: "1.52 т/м3",
-    image: "https://images.unsplash.com/photo-1508873696983-2df5293cb325?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_bf17f8fa9d.jpg",
     description: "Дрібнозерниста суміш для розклинювання та формування фінішного шару перед укладанням асфальтобетону."
   },
   {
@@ -610,7 +610,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "до 18%",
     density: "1.55 т/м3",
-    image: "https://images.unsplash.com/photo-1620914695139-9507be60a425?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_876ab9729b.jpg",
     description: "Великофракційна щебенево-піщана суміш для капітального будівництва автошляхів та стоянок важкої техніки."
   },
 
@@ -627,7 +627,7 @@ export const ALL_PRODUCTS = [
     frost: "F150",
     flakiness: "природна",
     density: "1.45 т/м3",
-    image: "https://estone.pro/wp-content/uploads/2019/11/pgs.jpeg",
+    image: "/images/img_d28205a208.jpg",
     description: "Природна суміш піску та гравію для зворотного засипання, подушок під фундамент та відсипання доріг."
   },
   {
@@ -642,7 +642,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "збагачена",
     density: "1.48 т/м3",
-    image: "https://images.unsplash.com/photo-1632199670702-3ea3f70909cb?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_28fb203bd8.jpg",
     popular: true,
     description: "Збагачена піщано-гравійна суміш для виготовлення монолітного товарного бетону та фундаментних блоків."
   },
@@ -660,7 +660,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "окатаний",
     density: "1.36 т/м3",
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_3d336eb210.jpg",
     popular: true,
     description: "Окатаний річковий та кар'єрний гравій без радіації для фундаментів та ландшафтного благоустрою."
   },
@@ -676,7 +676,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "окатаний",
     density: "1.37 т/м3",
-    image: "https://images.unsplash.com/photo-1632199670702-3ea3f70909cb?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_28fb203bd8.jpg",
     description: "Середньофракційний гравій для фільтраційних полів, дренажних колодязів та відсипання берегів."
   },
   {
@@ -691,7 +691,7 @@ export const ALL_PRODUCTS = [
     frost: "F150",
     flakiness: "крупний",
     density: "1.38 т/м3",
-    image: "https://images.unsplash.com/photo-1578885136359-16c8bd4d3a8e?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_243f4237a6.jpg",
     description: "Крупний гравій для септиків, габіонів та зміцнення схилів і берегових ліній."
   },
 
@@ -708,7 +708,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "сферичний",
     density: "0.45 т/м3",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqXEjn_loksOi3dcySfi-H0srFDHKhB01IhBZcAFD2gkFSbBnAD9d7bcg&s=10",
+    image: "/images/img_ad97ca335b.jpg",
     popular: true,
     description: "Дрібний керамзит для вирівнювання та сухої стяжки підлоги, виробництва легких керамзитобетонних блоків."
   },
@@ -724,7 +724,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "сферичний",
     density: "0.40 т/м3",
-    image: "https://domovoy.ua/site/img/products/4116/4116_937d9efa3a0b8afaa61a5eb11b9e3adb.webp",
+    image: "/images/img_9d6f273547.webp",
     description: "Найпопулярніша фракція керамзиту для утеплення підлог, перекриттів горищ і покрівель."
   },
   {
@@ -739,7 +739,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "легкий",
     density: "0.35 т/м3",
-    image: "https://images.unsplash.com/photo-1617791160536-598cf32026fb?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_e850e60075.jpg",
     description: "Найдрібніша насипна щільність. Найкращий утеплювач для засипки стін, перекриттів і підвалів."
   },
   {
@@ -754,7 +754,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "фасований",
     density: "50 л/мішок",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_1a5f65b7d5.jpg",
     description: "Фасований керамзит у мішках для зручного підйому на поверх та утеплення балконів і квартир."
   },
 
@@ -771,7 +771,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "гладка окатана",
     density: "1.45 т/м3",
-    image: "https://ua.all.biz/img/ua/catalog/2558834.jpeg",
+    image: "/images/img_8d143bea68.jpg",
     popular: true,
     description: "Окатана гладка річкова галька для оздоблення басейнів, доріжок, рокаріїв, клумб та зон відпочинку."
   },
@@ -787,7 +787,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "плоска округла",
     density: "1.42 т/м3",
-    image: "https://images.unsplash.com/photo-1616068715241-c0073b5cf58a?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_893193156e.jpg",
     description: "Плоска кругла морська галька для мозаїки, внутрішнього інтер'єрного декору та оформлення фонтанів."
   },
   {
@@ -802,7 +802,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "пейзажний",
     density: "1.48 т/м3",
-    image: "https://images.unsplash.com/photo-1552920206-29263d9b2a1c?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_f899aa9a2d.jpg",
     description: "Пейзажні камені різноманітних кольорів для створення альпійських гірок, водоспадів та саду каменів."
   }
 ];

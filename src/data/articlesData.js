@@ -6,7 +6,7 @@ export const ARTICLES_DATA = [
     date: "10 серпня 2026",
     author: "Інженерно-технічний відділ ТОВ «БЕНГС»",
     readTime: "6 хв читання",
-    image: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_f896eecbfa.jpg",
     category: "Практичні поради",
     summary: "Покрокова інструкція розрахунку кубатури та маси гранітного щебеню 5-20 мм та митого річкового піску для влаштування надійного фундаменту приватного або комерційного будинку.",
     content: `
@@ -46,7 +46,7 @@ export const ARTICLES_DATA = [
     date: "04 серпня 2026",
     author: "Лабораторія контролю якості ТОВ «БЕНГС»",
     readTime: "5 хв читання",
-    image: "https://www.bauschnell.de/media/image/product/21865/lg/ardennensplitt-schotter-grau-8-16mm.jpg",
+    image: "/images/img_22019a8ff1.jpg",
     category: "Технічний аналіз",
     summary: "Детальний порівняльний аналіз гранітного та доменного шлакового щебеню за міцністю, морозостійкістю, ціною за тонну та сферами застосування у Дніпровському регіоні.",
     content: `
@@ -90,7 +90,7 @@ export const ARTICLES_DATA = [
     date: "26 липня 2026",
     author: "Відділ дорожнього будівництва ТОВ «БЕНГС»",
     readTime: "7 хв читання",
-    image: "https://images.unsplash.com/photo-1664341564940-fe22abdcd656?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_3294613207.jpg",
     category: "Дорожнє будівництво",
     summary: "Чому готова щебенево-піщана суміш оптимального гранулометричного складу набагато краща за роздільне засипання щебеню та піску. Технологія ущільнення та норми витрати.",
     content: `
@@ -125,7 +125,7 @@ export const ARTICLES_DATA = [
     date: "18 липня 2026",
     author: "Агротехнічний консультант ТОВ «БЕНГС»",
     readTime: "5 хв читання",
-    image: "https://ektabud.in.ua/image/cache/catalog/SYPU4IE/4ORNOZEM/4ornozem-1000x1000.jpg",
+    image: "/images/img_1006ce9b6a.jpg",
     category: "Ландшафт та ґрунти",
     summary: "Як не купити мертву глину під виглядом чорнозему. Перевірка вмісту гумусу, кислотності pH та відмінності між рослинним ґрунтом і луговим чорноземом Дніпропетровщини.",
     content: `
@@ -155,7 +155,7 @@ export const ARTICLES_DATA = [
     date: "02 липня 2026",
     author: "Служба вагового контролю ТОВ «БЕНГС»",
     readTime: "4 хв читання",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_67b86fad2a.jpg",
     category: "Контроль та безпека",
     summary: "Як організовано подвійний ваговий контроль (брутто/тара) на 80-тонних автовагах та як замовнику перевірити відповідність ваги щебеню при прийомі на будівельному майданчику.",
     content: `

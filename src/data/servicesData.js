@@ -4,7 +4,7 @@ export const SERVICES_DATA = [
     slug: "poslugy-samoskydiv-dnipro",
     title: "Оренда самоскидів та доставка вантажів (10–40 т)",
     shortDesc: "Оперативна доставка щебеню, піску та ґрунту власним автопарком із понад 30 самоскидів по Дніпру та області.",
-    image: "https://images.unsplash.com/photo-1585110587043-36d457f3e803?auto=format&fit=crop&w=1000&q=85",
+    image: "/images/img_75f6f6ee6a.jpg",
     price: "від 1 200 грн/год або від 80 грн/т",
     fleetCount: "Понад 30 одиниць (MAN, Scania, DAF, КамАЗ, МАЗ)",
     specs: [
@@ -24,7 +24,7 @@ export const SERVICES_DATA = [
     slug: "zemlyani-roboty-kotlovany-dnipro",
     title: "Земляні роботи та розробка котлованів",
     shortDesc: "Комплексне копання котлованів під фундаменти, планування ділянок та зняття рослинного шару спецтехнікою.",
-    image: "https://images.unsplash.com/photo-1653924333410-0dda83ae490c?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_cf03a89dfc.jpg",
     price: "від 90 грн/м³",
     fleetCount: "Гусеничні та колісні екскаватори (ковші 0.8–1.8 м³), бульдозери",
     specs: [
@@ -43,7 +43,7 @@ export const SERVICES_DATA = [
     slug: "vyviz-gruntu-ta-smittya-dnipro",
     title: "Вивіз ґрунту з утилізацією на офіційні полігони",
     shortDesc: "Швидке вивезення зайвого ґрунту після копання котлованів, глини та будівельного сміття з оформленням талонів.",
-    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_67b86fad2a.jpg",
     price: "від 110 грн/м³ (з урахуванням утилізації)",
     fleetCount: "Самоскиди вантажністю 20–40 тонн",
     specs: [
@@ -62,7 +62,7 @@ export const SERVICES_DATA = [
     slug: "materialy-dlya-ukriplen-ta-fortyfikacij",
     title: "Матеріали та техніка для фортифікацій та захисних споруд",
     shortDesc: "Спеціалізоване постачання крупного бутового каменю, шлакового щебеню 70-120 мм, піску та габіонів для захисних конструкцій.",
-    image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+    image: "/images/img_ed6040e4c2.jpg",
     price: "Договірна (спецціни для підрядників)",
     fleetCount: "Повнопривідні самоскиди підвищеної прохідності",
     specs: [

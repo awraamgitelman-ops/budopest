@@ -126,7 +126,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
 
             <div className="wh-fleet-preview">
               <img
-                src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80"
+                src="/images/img_67b86fad2a.jpg"
                 alt="Автопарк самоскидів ТОВ БЕНГС"
                 className="wh-fleet-img"
               />

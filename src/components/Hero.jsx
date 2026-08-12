@@ -69,7 +69,7 @@ export const Hero = ({ onOpenOrderModal }) => {
           <div className="hero-visual">
             <div className="hero-image-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1585110587043-36d457f3e803?auto=format&fit=crop&w=1000&q=85"
+                src="/images/img_75f6f6ee6a.jpg"
                 alt="Щебінь гранітний будівельний у Дніпрі — ТОВ БЕНГС"
                 className="hero-img"
               />
