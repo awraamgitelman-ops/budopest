@@ -69,7 +69,7 @@ export const MAIN_SECTIONS = [
     name: "Галька та камінь",
     price: "від 550 грн/т",
     priceM3: "від 750 грн/м³",
-    image: "https://images.unsplash.com/photo-1689247040228-e34797e4ae30?auto=format&fit=crop&w=800&q=80",
+    image: "https://ua.all.biz/img/ua/catalog/2558834.jpeg",
     itemsCount: 3,
     description: "Дніпровська річкова та морська окатана галька для ландшафту та декору."
   }
@@ -771,7 +771,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "гладка окатана",
     density: "1.45 т/м3",
-    image: "https://images.unsplash.com/photo-1689247040228-e34797e4ae30?auto=format&fit=crop&w=800&q=80",
+    image: "https://ua.all.biz/img/ua/catalog/2558834.jpeg",
     popular: true,
     description: "Окатана гладка річкова галька для оздоблення басейнів, доріжок, рокаріїв, клумб та зон відпочинку."
   },
