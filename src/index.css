@@ -2274,7 +2274,7 @@ input.modal-input.addr-input-with-button,
   margin: 0 !important;
 }
 
-/* Header Top Messengers Row (WhatsApp, Telegram, Viber) */
+/* Header Top Messengers Row (Subtle Grey Style) */
 .ht-messengers {
   display: inline-flex !important;
   align-items: center !important;
@@ -2285,46 +2285,47 @@ input.modal-input.addr-input-with-button,
   display: inline-flex !important;
   align-items: center !important;
   gap: 5px !important;
-  font-size: 0.78rem !important;
-  font-weight: 700 !important;
-  padding: 4px 10px !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 3px 10px !important;
   border-radius: 14px !important;
   text-decoration: none !important;
   transition: all 0.15s ease !important;
   white-space: nowrap !important;
 }
 
-.msg-whatsapp {
-  background: rgba(37, 211, 102, 0.12) !important;
-  color: #15803d !important;
-  border: 1px solid rgba(37, 211, 102, 0.3) !important;
+.msg-btn:hover {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06) !important;
 }
 
-.msg-whatsapp:hover {
-  background: #25D366 !important;
-  color: #ffffff !important;
+.msg-whatsapp svg path:first-child {
+  fill: #64748b !important;
+  transition: fill 0.15s ease !important;
+}
+.msg-whatsapp:hover svg path:first-child {
+  fill: #25D366 !important;
 }
 
-.msg-telegram {
-  background: rgba(41, 182, 246, 0.12) !important;
-  color: #0369a1 !important;
-  border: 1px solid rgba(41, 182, 246, 0.3) !important;
+.msg-telegram svg circle {
+  fill: #64748b !important;
+  transition: fill 0.15s ease !important;
+}
+.msg-telegram:hover svg circle {
+  fill: #29B6F6 !important;
 }
 
-.msg-telegram:hover {
-  background: #29B6F6 !important;
-  color: #ffffff !important;
+.msg-viber svg rect {
+  fill: #64748b !important;
+  transition: fill 0.15s ease !important;
 }
-
-.msg-viber {
-  background: rgba(115, 96, 242, 0.12) !important;
-  color: #6d28d9 !important;
-  border: 1px solid rgba(115, 96, 242, 0.3) !important;
-}
-
-.msg-viber:hover {
-  background: #7360F2 !important;
-  color: #ffffff !important;
+.msg-viber:hover svg rect {
+  fill: #7360F2 !important;
 }
 
 /* Delivery Map Picker & Geocoding Styling */
