@@ -54,8 +54,12 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
                 key={idx}
                 className="mega-sub-card"
                 onClick={() => {
-                  onSelectProduct({ name: item.name, priceStr: item.price });
-                  onClose();
+                  if (item.id) {
+                    navigate(`#/product/${item.id}`);
+                  } else {
+                    navigate(`#/catalog/${activeCategory.id}`);
+                  }
+                  onClose && onClose();
                 }}
               >
                 <span className="sub-name">{item.name}</span>
