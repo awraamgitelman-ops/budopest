@@ -74,6 +74,8 @@ export const RouterProvider = ({ children }) => {
     }
   } else if (pathSegments[0] === 'contacts') {
     pageType = 'contacts';
+  } else if (pathSegments[0] === 'order' || pathSegments[0] === 'checkout') {
+    pageType = 'order';
   } else if (pathSegments[0] === 'certificates' || pathSegments[0] === 'quality') {
     pageType = 'certificates';
   }

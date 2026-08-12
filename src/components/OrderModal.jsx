@@ -153,7 +153,16 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
           ) : (
             <div>
               <div className="modal-header">
-                <span className="modal-tag">Швидке замовлення</span>
+                <div className="modal-header-top-bar">
+                  <span className="modal-tag">Швидке замовлення</span>
+                  <a
+                    href="#/order"
+                    onClick={onClose}
+                    className="modal-full-screen-link"
+                  >
+                    ↗️ На окремій сторінці
+                  </a>
+                </div>
                 <h3 className="modal-title">Оформлення заявки</h3>
                 <p className="modal-subtitle">
                   {initialData?.calcDetails
