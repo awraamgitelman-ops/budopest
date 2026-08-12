@@ -50,22 +50,27 @@ export const sendTelegramOrderNotification = async (orderData) => {
       if (stored) chatIds = JSON.parse(stored);
     } catch (e) {}
 
-    // First poll updates to discover any recently started chats
-    const updatesRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`);
-    if (updatesRes.ok) {
-      const updatesData = await updatesRes.json();
-      if (updatesData.ok && Array.isArray(updatesData.result)) {
-        for (const update of updatesData.result) {
-          const msg = update.message || update.channel_post;
-          const chat = msg && msg.chat;
-          if (chat && chat.id) {
-            const idStr = String(chat.id);
-            if (!chatIds.includes(idStr)) chatIds.push(idStr);
+    // First poll updates to discover any recently added groups or started chats
+    try {
+      const updatesRes = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`);
+      if (updatesRes.ok) {
+        const updatesData = await updatesRes.json();
+        if (updatesData.ok && Array.isArray(updatesData.result)) {
+          for (const update of updatesData.result) {
+            const msg = update.message || update.channel_post;
+            const myMember = update.my_chat_member;
+            const chat = (msg && msg.chat) || (myMember && myMember.chat);
+            if (chat && chat.id) {
+              const idStr = String(chat.id);
+              if (!chatIds.includes(idStr)) chatIds.push(idStr);
+            }
+          }
+          if (chatIds.length > 0) {
+            localStorage.setItem('bengs_tg_chat_ids', JSON.stringify(chatIds));
           }
         }
-        localStorage.setItem('bengs_tg_chat_ids', JSON.stringify(chatIds));
       }
-    }
+    } catch (e) {}
 
     // Always include Chat ID 8298199477
     if (!chatIds.includes('8298199477')) {
