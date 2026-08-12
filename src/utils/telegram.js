@@ -1,5 +1,5 @@
 // Telegram Bot Token & Client-Side Direct Dispatch Helper
-const TELEGRAM_BOT_TOKEN = '8855934222:AAE7urD82jvaYIf8cJddxnesQwuKVRyw4lY';
+const TELEGRAM_BOT_TOKEN = '8986924734:AAE5TIbbb7BFEgWfyaHFov2aoKDA52UIBo8';
 
 export const sendTelegramOrderNotification = async (orderData) => {
   const { name, phone, product, quantity, address, comment, details, page, source } = orderData || {};

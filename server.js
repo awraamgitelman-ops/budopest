@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 // ==========================================
 // TELEGRAM BOT INTEGRATION & ENGINE
 // ==========================================
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8855934222:AAE7urD82jvaYIf8cJddxnesQwuKVRyw4lY';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8986924734:AAE5TIbbb7BFEgWfyaHFov2aoKDA52UIBo8';
 const CONFIG_FILE = path.join(__dirname, 'telegram_config.json');
 
 // Load or Initialize Telegram Config
