@@ -113,7 +113,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
 
           {/* Right Column: Order & Callback Form */}
           <div className="contacts-form-col">
-            <OrderForm />
+            <OrderForm compact={true} />
           </div>
         </div>
       </div>
