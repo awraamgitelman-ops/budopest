@@ -307,7 +307,6 @@ export const OrderForm = ({ compact = false }) => {
               <div className="of-grid">
                 {/* Left Info Column */}
                 <div className="of-info">
-                  <div className="badge badge-green mb-2">Оперативний розрахунок</div>
                   <h2 className="of-title">Замовте щебінь за вигідною ціною з доставкою по Дніпру</h2>
                   <p className="of-desc">
                     Заповніть форму — наш фахівець зателефонує вам протягом <strong>5 хвилин</strong>, уточнить деталі об'єкта та розрахує персональну оптову знижку.
