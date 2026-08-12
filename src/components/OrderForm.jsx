@@ -3,6 +3,7 @@ import { CheckCircle2, ShieldCheck, PhoneCall, Clock, AlertCircle, MapPin, Minus
 import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from './GoogleMapPicker';
+import { CustomMaterialPicker } from './CustomMaterialPicker';
 
 export const OrderForm = ({ compact = false }) => {
   const [formData, setFormData] = useState({
@@ -169,28 +170,13 @@ export const OrderForm = ({ compact = false }) => {
             </div>
           </div>
 
-          {/* Step 1: Clean Material Dropdown */}
+          {/* Step 1: Custom Material Picker */}
           <div className="form-group">
             <label>Оберіть матеріал</label>
-            <select
-              value={selectedProductId}
-              onChange={handleProductSelectChange}
-              className="form-input modal-select"
-            >
-              {MAIN_SECTIONS.map((sec) => {
-                const secProducts = ALL_PRODUCTS.filter(p => p.sectionId === sec.id);
-                if (secProducts.length === 0) return null;
-                return (
-                  <optgroup key={sec.id} label={`── ${sec.name.toUpperCase()} ──`}>
-                    {secProducts.map((p) => (
-                      <option key={p.id} value={p.id}>
-                        {p.name} — від {p.price} {p.priceUnit || 'грн/т'}
-                      </option>
-                    ))}
-                  </optgroup>
-                );
-              })}
-            </select>
+            <CustomMaterialPicker
+              selectedProductId={selectedProductId}
+              onSelectProduct={(id) => handleProductSelectChange({ target: { value: id } })}
+            />
           </div>
 
           {/* Step 2: Interactive Fraction Pill Chips */}
