@@ -300,7 +300,7 @@ export const ALL_PRODUCTS = [
     frost: "F400",
     flakiness: "до 7%",
     density: "1.45 т/м3",
-    image: "/images/img_85c3c84034.jpg",
+    image: "/images/img_gabbro_diabaz.png",
     description: "Надміцна темна вулканічна порода з найвищою зносостійкістю, застосовується для асфальтобетону та лазень."
   },
   {
