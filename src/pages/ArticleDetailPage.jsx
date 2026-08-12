@@ -220,7 +220,7 @@ export const ArticleDetailPage = ({ onOpenOrderModal }) => {
 
             {/* In-article CTA block */}
             <div className="art-cta-card mt-8">
-              <h3>Потрібна консультація інженера ТОВ «БЕНГС»?</h3>
+              <h3>Потрібна консультація інженера «РУД МОНОЛІТ»?</h3>
               <p>Допоможемо розрахувати точну кількість матеріалів та підберемо правильну фракцію під ваш проект у Дніпрі.</p>
               <button
                 onClick={() => onOpenOrderModal({ name: `Консультація за статтею: ${article.title}` })}

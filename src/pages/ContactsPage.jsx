@@ -8,9 +8,9 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
       <div className="contacts-hero">
         <div className="container">
           <div className="badge badge-green mb-2">Зв'яжіться з нами</div>
-          <h1 className="contacts-hero-title">Контакти ТОВ «БЕНГС» у Дніпрі</h1>
+          <h1 className="contacts-hero-title">Контакти «РУД МОНОЛІТ» у Дніпрі</h1>
           <p className="contacts-hero-subtitle">
-            Офіс оптових продажів, відділ логістики, контакти диспетчерів перевалок та чергового вагового контролю.
+            Офіс оптових продажів, відділ логістики, контакти диспетчерів перевалок та чергового вагового контролю підприємства ТОВ «БЕНГС».
           </p>
         </div>
       </div>
@@ -52,8 +52,8 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                 <Mail size={18} className="icon-green" />
                 <div>
                   <span className="cic-label">Електронна пошта для заявок та рахунків:</span>
-                  <a href="mailto:bengs.zakaz@gmail.com" className="cic-link">
-                    bengs.zakaz@gmail.com
+                  <a href="mailto:zakaz@rud-monolit.com" className="cic-link">
+                    zakaz@rud-monolit.com
                   </a>
                 </div>
               </div>
@@ -74,7 +74,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
               <div className="cic-item">
                 <Building2 size={18} className="icon-green" />
                 <div>
-                  <strong>Головний офіс (бухгалтерія та кабінети):</strong>
+                  <strong>Головний офіс «РУД МОНОЛІТ» (ТОВ «БЕНГС»):</strong>
                   <p className="cic-addr">м. Дніпро, вул. Журналістів, 3 (відділ продажів, договори)</p>
                 </div>
               </div>

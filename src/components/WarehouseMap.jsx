@@ -127,7 +127,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
             <div className="wh-fleet-preview">
               <img
                 src="/images/img_67b86fad2a.jpg"
-                alt="Автопарк самоскидів ТОВ БЕНГС"
+                alt="Автопарк самоскидів «РУД МОНОЛІТ»"
                 className="wh-fleet-img"
               />
               <span className="wh-fleet-tag">Власний автопарк самоскидів 10–40 т</span>

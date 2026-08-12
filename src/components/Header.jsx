@@ -91,9 +91,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               </a>
             </div>
 
-            <a href="mailto:bengs.zakaz@gmail.com" className="ht-email">
+            <a href="mailto:zakaz@rud-monolit.com" className="ht-email">
               <Mail size={14} className="icon-muted" />
-              <span>bengs.zakaz@gmail.com</span>
+              <span>zakaz@rud-monolit.com</span>
             </a>
           </div>
 
@@ -135,7 +135,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               <path d="M21.7901 0.387724C22.0879 -0.12856 22.8323 -0.129411 23.1313 0.386193L32.5662 16.654C32.7055 16.8941 32.7059 17.1905 32.5671 17.431L23.1289 33.7903C22.831 34.3066 22.0867 34.3075 21.7876 33.7919L12.3527 17.524C12.2134 17.2839 12.2131 16.9875 12.3518 16.7471L21.7901 0.387724Z" fill="#528C36"/>
             </svg>
             <div className="brand-text">
-              <span className="brand-title">БЕНГС</span>
+              <span className="brand-title">РУД МОНОЛІТ</span>
               <span className="brand-sub">НЕРУДНІ МАТЕРІАЛИ • ДНІПРО</span>
             </div>
           </a>

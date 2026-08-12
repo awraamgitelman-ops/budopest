@@ -54,7 +54,7 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
             <div className="promo-image-box">
               <img
                 src="/images/img_cf03a89dfc.jpg"
-                alt="Доставка щебеню самоскидом у Дніпрі — ТОВ БЕНГС"
+                alt="Доставка щебеню самоскидом у Дніпрі — РУД МОНОЛІТ"
                 className="promo-img"
               />
               <div className="promo-img-tag">

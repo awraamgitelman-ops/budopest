@@ -32,7 +32,7 @@ export const BENGS_HUBS = [
 const OFFICE_COORDS = {
   lat: 48.50605934737478,
   lng: 35.09528947686363,
-  name: 'Головний офіс ТОВ «БЕНГС»',
+  name: 'Головний офіс «РУД МОНОЛІТ» (ТОВ «БЕНГС»)',
   address: 'м. Дніпро, вул. Журналістів, 3 (бухгалтерія та кабінети)'
 };
 
@@ -250,7 +250,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     const officeMarker = L.marker([OFFICE_COORDS.lat, OFFICE_COORDS.lng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
     officeMarker.bindPopup(`
       <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
-        <strong style="color: #1e293b; font-size: 14px;">🏢 Головний офіс ТОВ «БЕНГС»</strong><br/>
+        <strong style="color: #1e293b; font-size: 14px;">🏢 Головний офіс «РУД МОНОЛІТ» (ТОВ «БЕНГС»)</strong><br/>
         <b>м. Дніпро, вул. Журналістів, 3</b><br/>
         <span style="color: #64748b;">(бухгалтерія та кабінети)</span><br/>
         <small style="color: #94a3b8;">Розрахунок доставки здійснюється від кар'єрів/баз</small>

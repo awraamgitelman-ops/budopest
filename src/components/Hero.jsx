@@ -70,7 +70,7 @@ export const Hero = ({ onOpenOrderModal }) => {
             <div className="hero-image-wrapper">
               <img
                 src="/images/hero_dump_truck.jpg"
-                alt="Доставка щебеню самоскидами ТОВ БЕНГС у Дніпрі"
+                alt="Доставка щебеню самоскидами РУД МОНОЛІТ у Дніпрі"
                 className="hero-img"
               />
               <div className="hero-img-overlay">

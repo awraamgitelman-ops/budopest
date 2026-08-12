@@ -31,10 +31,10 @@ export const LegalPage = ({ onOpenOrderModal }) => {
       {/* Page Hero */}
       <div className="legal-page-hero">
         <div className="container">
-          <div className="badge badge-green mb-2">Офіційний правовий портал ТОВ «БЕНГС»</div>
+          <div className="badge badge-green mb-2">Офіційний правовий портал «РУД МОНОЛІТ» (ТОВ «БЕНГС»)</div>
           <h1 className="legal-page-hero-title">Правова інформація, реквізити та договірна документація</h1>
           <p className="legal-page-hero-subtitle">
-            Повний пакет документів підприємства ТОВ "БЕНГС" (ЄДРПОУ 41963896). Прозорі умови поставки нерудних матеріалів у Дніпрі.
+            Повний пакет документів підприємства ТОВ "БЕНГС" (ЄДРПОУ 41963896) та сайту rud-monolit.com. Прозорі умови поставки нерудних матеріалів у Дніпрі.
           </p>
         </div>
       </div>

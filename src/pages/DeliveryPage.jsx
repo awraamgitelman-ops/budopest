@@ -65,7 +65,7 @@ export const DeliveryPage = ({ onOpenOrderModal }) => {
 
       <div className="container py-10">
         {/* Fleet Section */}
-        <h2 className="section-title mb-2">Автопарк самоскидів ТОВ «БЕНГС»</h2>
+        <h2 className="section-title mb-2">Автопарк самоскидів «РУД МОНОЛІТ»</h2>
         <p className="section-subtitle mb-8">
           Підбираємо оптимальний тоннаж машини під можливості заїзду на вашу ділянку:
         </p>

@@ -21,7 +21,7 @@ export const Footer = ({ onOpenLegalModal }) => {
                 <path d="M21.7901 0.387724C22.0879 -0.12856 22.8323 -0.129411 23.1313 0.386193L32.5662 16.654C32.7055 16.8941 32.7059 17.1905 32.5671 17.431L23.1289 33.7903C22.831 34.3066 22.0867 34.3075 21.7876 33.7919L12.3527 17.524C12.2134 17.2839 12.2131 16.9875 12.3518 16.7471L21.7901 0.387724Z" fill="#80A541"/>
               </svg>
               <div className="brand-text">
-                <span className="footer-brand-title">БЕНГС</span>
+                <span className="footer-brand-title">РУД МОНОЛІТ</span>
                 <span className="footer-brand-sub">НЕРУДНІ МАТЕРІАЛИ • ДНІПРО</span>
               </div>
             </div>
@@ -36,9 +36,9 @@ export const Footer = ({ onOpenLegalModal }) => {
                 <span>+380 (67) 686-31-86</span>
               </a>
 
-              <a href="mailto:bengs.zakaz@gmail.com" className="footer-contact-item mail">
+              <a href="mailto:zakaz@rud-monolit.com" className="footer-contact-item mail">
                 <Mail size={15} />
-                <span>bengs.zakaz@gmail.com</span>
+                <span>zakaz@rud-monolit.com</span>
               </a>
 
               <div className="footer-contact-item">
@@ -182,7 +182,7 @@ export const Footer = ({ onOpenLegalModal }) => {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div className="fb-copyright">
-            © 2026 ТОВ «БЕНГС». Всі права захищені.
+            © 2026 РУД МОНОЛІТ (ТОВ «БЕНГС»). Всі права захищені.
           </div>
           <div className="fb-privacy-links">
             <a href="#/legal/offer" className="footer-mini-link">

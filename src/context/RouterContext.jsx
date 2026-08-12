@@ -115,7 +115,7 @@ export const RouterProvider = ({ children }) => {
     breadcrumbs.push({ label: 'Послуги спецтехніки', path: '#/services' });
     breadcrumbs.push({ label: serv ? serv.title : 'Послуга', path: `#/services/${routeParams.serviceId}` });
   } else if (pageType === 'about') {
-    breadcrumbs.push({ label: 'Про компанію ТОВ «БЕНГС»', path: '#/about' });
+    breadcrumbs.push({ label: 'Про компанію «РУД МОНОЛІТ»', path: '#/about' });
   } else if (pageType === 'warehouses') {
     breadcrumbs.push({ label: 'Кар\'єри та перевалки', path: '#/warehouses' });
   } else if (pageType === 'articles') {
@@ -134,9 +134,9 @@ export const RouterProvider = ({ children }) => {
   useEffect(() => {
     const lastCrumb = breadcrumbs[breadcrumbs.length - 1];
     if (pageType === 'home') {
-      document.title = 'ТОВ «БЕНГС» — Купити щебінь, пісок, ґрунти у Дніпрі з доставкою';
+      document.title = 'РУД МОНОЛІТ — Купити щебінь, пісок, ґрунти у Дніпрі з доставкою | rud-monolit.com';
     } else if (lastCrumb && lastCrumb.label) {
-      document.title = `${lastCrumb.label} — ТОВ «БЕНГС» (Дніпро)`;
+      document.title = `${lastCrumb.label} — РУД МОНОЛІТ (Дніпро)`;
     }
   }, [pageType, hash]);
 
