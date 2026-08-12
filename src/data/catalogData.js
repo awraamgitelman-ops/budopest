@@ -60,7 +60,7 @@ export const MAIN_SECTIONS = [
     name: "Керамзит",
     price: "від 1 450 грн/м³",
     priceM3: "від 1 450 грн/м³",
-    image: "https://images.unsplash.com/photo-1678019991450-1832a5cef360?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqXEjn_loksOi3dcySfi-H0srFDHKhB01IhBZcAFD2gkFSbBnAD9d7bcg&s=10",
     itemsCount: 4,
     description: "Легкий утеплювач і заповнювач для стяжок, перекриттів та покрівель."
   },
@@ -708,7 +708,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "сферичний",
     density: "0.45 т/м3",
-    image: "https://images.unsplash.com/photo-1678019991450-1832a5cef360?auto=format&fit=crop&w=800&q=80",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqXEjn_loksOi3dcySfi-H0srFDHKhB01IhBZcAFD2gkFSbBnAD9d7bcg&s=10",
     popular: true,
     description: "Дрібний керамзит для вирівнювання та сухої стяжки підлоги, виробництва легких керамзитобетонних блоків."
   },
