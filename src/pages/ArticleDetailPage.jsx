@@ -120,27 +120,56 @@ const renderArticleContent = (content) => {
       );
     }
 
-    // 6. Unordered Lists (* or -)
-    if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
-      const items = trimmed.split('\n').map(l => l.replace(/^[\*\-]\s*/, '').trim()).filter(Boolean);
-      return (
-        <ul key={idx} className="art-ul">
-          {items.map((item, i) => (
-            <li key={i}>{formatInline(item)}</li>
-          ))}
-        </ul>
-      );
-    }
+    // 6. Handle blocks containing intro text + list items (* or 1.)
+    const lines = trimmed.split('\n');
+    const hasListItems = lines.some(l => /^[\*\-]\s/.test(l.trim()) || /^\d+\.\s/.test(l.trim()));
 
-    // 7. Ordered Lists (1., 2., etc.)
-    if (/^\d+\.\s/.test(trimmed)) {
-      const items = trimmed.split('\n').map(l => l.replace(/^\d+\.\s*/, '').trim()).filter(Boolean);
+    if (hasListItems) {
+      const elements = [];
+      let currentList = null;
+
+      lines.forEach((line) => {
+        const lTrim = line.trim();
+        if (/^[\*\-]\s/.test(lTrim)) {
+          const itemText = lTrim.replace(/^[\*\-]\s*/, '');
+          if (!currentList || currentList.type !== 'ul') {
+            currentList = { type: 'ul', items: [] };
+            elements.push(currentList);
+          }
+          currentList.items.push(itemText);
+        } else if (/^\d+\.\s/.test(lTrim)) {
+          const itemText = lTrim.replace(/^\d+\.\s*/, '');
+          if (!currentList || currentList.type !== 'ol') {
+            currentList = { type: 'ol', items: [] };
+            elements.push(currentList);
+          }
+          currentList.items.push(itemText);
+        } else if (lTrim.length > 0) {
+          currentList = null;
+          elements.push({ type: 'p', text: lTrim });
+        }
+      });
+
       return (
-        <ol key={idx} className="art-ol">
-          {items.map((item, i) => (
-            <li key={i}>{formatInline(item)}</li>
-          ))}
-        </ol>
+        <React.Fragment key={idx}>
+          {elements.map((el, eIdx) => {
+            if (el.type === 'ul') {
+              return (
+                <ul key={eIdx} className="art-ul">
+                  {el.items.map((it, iIdx) => <li key={iIdx}>{formatInline(it)}</li>)}
+                </ul>
+              );
+            }
+            if (el.type === 'ol') {
+              return (
+                <ol key={eIdx} className="art-ol">
+                  {el.items.map((it, iIdx) => <li key={iIdx}>{formatInline(it)}</li>)}
+                </ol>
+              );
+            }
+            return <p key={eIdx} className="art-p">{formatInline(el.text)}</p>;
+          })}
+        </React.Fragment>
       );
     }
 
