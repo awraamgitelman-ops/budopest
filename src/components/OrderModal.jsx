@@ -24,13 +24,31 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      await fetch('/api/send-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          product: product || initialData?.name || 'Нерудні матеріали',
+          quantity: volume,
+          address: address,
+          details: initialData?.details || null,
+          page: window.location.hash || 'Модальне вікно замовлення',
+          source: initialData?.name ? `Швидке замовлення (${initialData.name})` : 'Швидке замовлення на сайті'
+        })
+      });
+    } catch (err) {
+      console.error('Modal order send error:', err);
+    } finally {
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 500);
+    }
   };
 
   return (

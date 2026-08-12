@@ -19,14 +19,31 @@ export const OrderForm = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      await fetch('/api/send-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          product: formData.product,
+          quantity: formData.volume,
+          address: formData.address,
+          comment: formData.comment,
+          page: window.location.hash || 'Форма розрахунку на сторінці',
+          source: 'Головна форма розрахунку вартості'
+        })
+      });
+    } catch (err) {
+      console.error('Order send error:', err);
+    } finally {
       setIsSubmitting(false);
       setIsSuccess(true);
-    }, 600);
+    }
   };
 
   return (
