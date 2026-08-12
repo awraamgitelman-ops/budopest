@@ -176,7 +176,9 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     setActiveHub(effectiveHub);
     setActiveCoords({ lat, lng });
     setCalculatedDistance(dist);
-    const finalName = addressName || `Точка на карті (${lat.toFixed(4)}, ${lng.toFixed(4)})`;
+    const finalName = addressName && !addressName.includes('Обрана точка') && !addressName.includes('Точка на карті')
+      ? addressName
+      : '';
     setCurrentAddressName(finalName);
 
     const matchedZone = resolveZoneByCoords(lat, lng, dist);
@@ -453,7 +455,9 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
         <div className="mc-info-left">
           <CheckCircle2 size={22} className="text-green flex-shrink-0" />
           <div>
-            <div className="mc-address">{currentAddressName}</div>
+            {currentAddressName && !currentAddressName.includes('Обрана точка') && !currentAddressName.includes('Точка на карті') && (
+              <div className="mc-address">{currentAddressName}</div>
+            )}
             <div className="mc-details">
               Відстань від найближчого кар'єра (<strong>{activeHub.shortName}</strong>): <strong>{calculatedDistance} км</strong> • Зона: <strong className="text-green">{selectedZone.name.split('(')[0]}</strong>
             </div>
