@@ -108,8 +108,8 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
                   <span className="req-val">Україна, 49051, Дніпропетровська обл., м. Дніпро, вул. Калинова, буд. 1</span>
                 </div>
                 <div className="req-item">
-                  <span className="req-label">Фактична адреса головної перевалки:</span>
-                  <span className="req-val">Україна, 49051, м. Дніпро, вул. Журналістів, 9</span>
+                  <span className="req-label">Фактична адреса:</span>
+                  <span className="req-val">Україна, 49051, м. Дніпро, вул. Німецька, 283</span>
                 </div>
                 <div className="req-item">
                   <span className="req-label">Контактний телефон:</span>

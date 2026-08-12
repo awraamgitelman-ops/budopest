@@ -41,12 +41,9 @@ export const Footer = ({ onOpenLegalModal }) => {
                 <span>bengs.zakaz@gmail.com</span>
               </a>
 
-              <div
-                className="footer-contact-item clickable"
-                onClick={() => navigate('#/warehouses')}
-              >
+              <div className="footer-contact-item">
                 <MapPin size={15} />
-                <span>м. Дніпро, вул. Журналістів, 9</span>
+                <span>м. Дніпро, вул. Німецька, 283</span>
               </div>
 
               <div className="footer-contact-item">
