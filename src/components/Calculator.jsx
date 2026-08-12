@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SHCHEDEN_PRODUCTS, DELIVERY_ZONES } from '../data/catalogData';
-import { Calculator as CalcIcon, Truck, CheckCircle2, ArrowRight, MapPin } from 'lucide-react';
+import { Calculator as CalcIcon, Truck, CheckCircle2, ArrowRight, MapPin, Map, ListFilter } from 'lucide-react';
+import { DeliveryMapPicker } from './DeliveryMapPicker';
 
 export const Calculator = ({ onOpenOrderModal }) => {
   const [selectedProduct, setSelectedProduct] = useState(SHCHEDEN_PRODUCTS[0]);
@@ -8,6 +9,18 @@ export const Calculator = ({ onOpenOrderModal }) => {
   const [unit, setUnit] = useState('tons'); // 'tons' or 'm3'
   const [volume, setVolume] = useState(30);
   const [selectedZone, setSelectedZone] = useState(DELIVERY_ZONES[0]);
+  const [deliveryMode, setDeliveryMode] = useState('map'); // 'map' or 'dropdown'
+  const [deliveryAddressDetails, setDeliveryAddressDetails] = useState({
+    distanceKm: 7.5,
+    addressName: 'м. Дніпро (Правий берег / Центр)'
+  });
+
+  const handleMapZoneSelect = (zone, details) => {
+    setSelectedZone(zone);
+    if (details) {
+      setDeliveryAddressDetails(details);
+    }
+  };
 
   // Density factor (approx 1.35)
   const density = 1.35;
@@ -162,26 +175,54 @@ export const Calculator = ({ onOpenOrderModal }) => {
                 </div>
               </div>
 
-              {/* Delivery Zone Select */}
+              {/* Delivery Zone Select / Map Picker */}
               <div className="calc-group">
-                <label className="calc-label">
-                  <MapPin size={16} className="inline-icon" />
-                  <span>4. Район або зона доставки</span>
-                </label>
-                <select
-                  value={selectedZone.id}
-                  onChange={(e) => {
-                    const z = DELIVERY_ZONES.find(zone => zone.id === e.target.value);
-                    if (z) setSelectedZone(z);
-                  }}
-                  className="calc-select"
-                >
-                  {DELIVERY_ZONES.map(z => (
-                    <option key={z.id} value={z.id}>
-                      {z.name} (від {z.baseRate} грн/т)
-                    </option>
-                  ))}
-                </select>
+                <div className="calc-label-row mb-3">
+                  <label className="calc-label mb-0">
+                    <MapPin size={16} className="inline-icon icon-green" />
+                    <span>4. Район або зона доставки</span>
+                  </label>
+                  <div className="unit-switch">
+                    <button
+                      type="button"
+                      className={`unit-btn ${deliveryMode === 'map' ? 'active' : ''}`}
+                      onClick={() => setDeliveryMode('map')}
+                    >
+                      <Map size={13} style={{ marginRight: 4, display: 'inline-block', verticalAlign: 'middle' }} />
+                      <span>На карті / Адреса</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`unit-btn ${deliveryMode === 'dropdown' ? 'active' : ''}`}
+                      onClick={() => setDeliveryMode('dropdown')}
+                    >
+                      <ListFilter size={13} style={{ marginRight: 4, display: 'inline-block', verticalAlign: 'middle' }} />
+                      <span>Зі списку</span>
+                    </button>
+                  </div>
+                </div>
+
+                {deliveryMode === 'map' ? (
+                  <DeliveryMapPicker
+                    selectedZone={selectedZone}
+                    onSelectZone={handleMapZoneSelect}
+                  />
+                ) : (
+                  <select
+                    value={selectedZone.id}
+                    onChange={(e) => {
+                      const z = DELIVERY_ZONES.find(zone => zone.id === e.target.value);
+                      if (z) setSelectedZone(z);
+                    }}
+                    className="calc-select"
+                  >
+                    {DELIVERY_ZONES.map(z => (
+                      <option key={z.id} value={z.id}>
+                        {z.name} (від {z.baseRate} грн/т)
+                      </option>
+                    ))}
+                  </select>
+                )}
               </div>
             </div>
 
