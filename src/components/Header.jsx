@@ -184,7 +184,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                 <button onClick={() => navigate('#/services/samoskydy')} className="submenu-btn-item">Оренда самоскидів 10–40 т</button>
                 <button onClick={() => navigate('#/services/zemlyani-roboty')} className="submenu-btn-item">Земляні роботи та котловани</button>
                 <button onClick={() => navigate('#/services/vyviz-gruntu')} className="submenu-btn-item">Вивіз ґрунту з утилізацією</button>
-                <button onClick={() => navigate('#/services/fortyfikaciyi')} className="submenu-btn-item">Матеріали для фортифікацій</button>
               </div>
             </div>
 
