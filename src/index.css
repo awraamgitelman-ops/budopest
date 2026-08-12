@@ -899,3 +899,56 @@ span.req {
   flex-shrink: 0;
 }
 
+/* Embedded Address Input Bar & Map Button */
+.address-input-bar-embedded {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.addr-left-pin-icon {
+  position: absolute !important;
+  left: 12px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: var(--c-green-dark) !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+}
+
+.addr-input-with-button {
+  padding-left: 38px !important;
+  padding-right: 96px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.addr-embedded-map-btn {
+  position: absolute !important;
+  right: 6px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: var(--c-green-light) !important;
+  color: var(--c-green-dark) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  z-index: 3 !important;
+}
+
+.addr-embedded-map-btn:hover {
+  background: var(--c-green) !important;
+  color: #ffffff !important;
+  border-color: var(--c-green) !important;
+}
+

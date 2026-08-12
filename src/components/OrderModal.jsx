@@ -260,29 +260,28 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                   </div>
                 </div>
 
-                {/* Address & Google Map Picker Button */}
+                {/* Address Input with Embedded Google Map Button */}
                 <div className="form-group">
-                  <div className="field-label-row">
-                    <label>Адреса об'єкта / Пункт доставки</label>
-                    <button
-                      type="button"
-                      className="addr-geo-btn alt"
-                      onClick={() => setShowMapPicker(true)}
-                    >
-                      <Map size={13} />
-                      <span>📍 Поставити мітку на Карті</span>
-                    </button>
-                  </div>
+                  <label>Адреса об'єкта / Пункт доставки</label>
 
-                  <div className="input-with-icon">
-                    <MapPin size={16} className="input-left-icon" />
+                  <div className="address-input-bar-embedded">
+                    <MapPin size={18} className="addr-left-pin-icon" />
                     <input
                       type="text"
-                      placeholder="Введіть адресу або вкажіть точну точку на карті"
+                      placeholder="Введіть адресу або виберіть на карті..."
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      className="modal-input pl-10"
+                      className="modal-input addr-input-with-button"
                     />
+                    <button
+                      type="button"
+                      className="addr-embedded-map-btn"
+                      onClick={() => setShowMapPicker(true)}
+                      title="Відкрити Google Карту для вибору будинку"
+                    >
+                      <Map size={14} />
+                      <span>Карта</span>
+                    </button>
                   </div>
                 </div>
 

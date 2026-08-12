@@ -33,10 +33,10 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
 
       const L = window.L;
 
-      // Initial center: Dnipro
+      // Initial center: Dnipro, Zoom 15 for house visibility
       const map = L.map(mapRef.current, {
         center: [48.4647, 35.0462],
-        zoom: 12,
+        zoom: 15,
         zoomControl: true
       });
 
@@ -50,9 +50,9 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
       // Custom Red Pin Icon
       const redIcon = L.divIcon({
         className: 'custom-leaflet-pin',
-        html: `<div style="background-color: #ef4444; width: 32px; height: 32px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; border: 3px solid #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.4); margin-left: -16px; margin-top: -32px;"><div style="width: 10px; height: 10px; background: #ffffff; border-radius: 50%;"></div></div>`,
-        iconSize: [32, 32],
-        iconAnchor: [16, 32]
+        html: `<div style="background-color: #ef4444; width: 34px; height: 34px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); display: flex; align-items: center; justify-content: center; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.45); margin-left: -17px; margin-top: -34px;"><div style="width: 12px; height: 12px; background: #ffffff; border-radius: 50%;"></div></div>`,
+        iconSize: [34, 34],
+        iconAnchor: [17, 34]
       });
 
       const marker = L.marker([48.4647, 35.0462], {
@@ -63,20 +63,29 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
       mapInstanceRef.current = map;
       markerInstanceRef.current = marker;
 
-      // Reverse geocoding helper
+      // Reverse geocoding in Ukrainian with exact house numbers
       const updateAddressFromCoords = async (lat, lng) => {
         setIsLoadingAddr(true);
         try {
-          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=16&addressdetails=1`);
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1&accept-language=uk`);
           const data = await res.json();
           if (data && data.address) {
-            const city = data.address.city || data.address.town || data.address.village || 'м. Дніпро';
-            const road = data.address.road || '';
-            const house = data.address.house_number || '';
-            const suburb = data.address.suburb || data.address.neighbourhood || '';
+            const addr = data.address;
+            const city = addr.city || addr.town || addr.village || 'м. Дніпро';
+            const road = addr.road || addr.street || addr.avenue || addr.pedestrian || '';
+            const house = addr.house_number || addr.building || '';
+            const suburb = addr.suburb || addr.neighbourhood || addr.city_district || '';
             
-            const parts = [city, suburb, road, house].filter(Boolean);
-            const fullAddr = parts.length > 0 ? parts.join(', ') : data.display_name;
+            let fullAddr = '';
+            if (road && house) {
+              fullAddr = `${city}, ${road}, буд. ${house}`;
+            } else if (road) {
+              fullAddr = `${city}, ${road}`;
+            } else if (suburb) {
+              fullAddr = `${city}, ${suburb}`;
+            } else {
+              fullAddr = city;
+            }
             setSelectedAddress(fullAddr);
           } else {
             setSelectedAddress(`м. Дніпро (${lat.toFixed(4)}, ${lng.toFixed(4)})`);
@@ -122,7 +131,7 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
     if (navigator.geolocation && mapInstanceRef.current && markerInstanceRef.current) {
       navigator.geolocation.getCurrentPosition((pos) => {
         const { latitude, longitude } = pos.coords;
-        mapInstanceRef.current.setView([latitude, longitude], 15);
+        mapInstanceRef.current.setView([latitude, longitude], 17);
         markerInstanceRef.current.setLatLng([latitude, longitude]);
         mapInstanceRef.current.fire('click', { latlng: { lat: latitude, lng: longitude } });
       });
@@ -136,8 +145,8 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
           <div className="gmap-title">
             <MapPin size={22} className="icon-green" />
             <div>
-              <h4>Вкажіть точну точку на карті Дніпра</h4>
-              <p>Клацніть у будь-яке місце на карті, щоб поставити мітку 📍</p>
+              <h4>Вкажіть потрібний будинок / точку на Google Карті</h4>
+              <p>Натисніть точно на потрібну будівлю, щоб встановити адреси доставки 📍</p>
             </div>
           </div>
           <button type="button" onClick={onClose} className="gmap-close-btn">
@@ -145,7 +154,7 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
           </button>
         </div>
 
-        {/* Interactive Map Box */}
+        {/* Google Map Interactive Canvas */}
         <div className="gmap-container">
           <div ref={mapRef} style={{ width: '100%', height: '100%' }} />
 
@@ -163,9 +172,9 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
         {/* Selected Address Display & Confirmation */}
         <div className="gmap-footer">
           <div className="gmap-address-display">
-            <span className="gmap-addr-label">Вказана точка на карті:</span>
+            <span className="gmap-addr-label">Вибрана адреса з номером будинку:</span>
             <strong className="gmap-addr-val">
-              {isLoadingAddr ? 'Отримання адреси...' : selectedAddress}
+              {isLoadingAddr ? 'Визначення будинку за міткою...' : selectedAddress}
             </strong>
           </div>
 
@@ -175,7 +184,7 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
             </button>
             <button type="button" onClick={handleConfirm} className="btn btn-primary">
               <Check size={16} />
-              <span>Встановити цю адресу</span>
+              <span>Обрати цю адресу</span>
             </button>
           </div>
         </div>
