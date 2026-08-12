@@ -10,7 +10,6 @@ import { Description } from '../components/Description';
 import { WarehouseMap } from '../components/WarehouseMap';
 import { Certificates } from '../components/Certificates';
 import { FAQ } from '../components/FAQ';
-import { OrderForm } from '../components/OrderForm';
 
 export const HomePage = ({ selectedSection, onSelectSection, onOpenOrderModal }) => {
   return (
@@ -38,7 +37,6 @@ export const HomePage = ({ selectedSection, onSelectSection, onOpenOrderModal })
       <WarehouseMap onOpenOrderModal={onOpenOrderModal} />
       <Certificates />
       <FAQ />
-      <OrderForm />
     </>
   );
 
