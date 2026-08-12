@@ -2657,3 +2657,14 @@ input.modal-input.addr-input-with-button,
   font-weight: 800 !important;
 }
 
+.footer-mini-link {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.footer-mini-link:hover {
+  color: #22c55e;
+  text-decoration: underline;
+}
+

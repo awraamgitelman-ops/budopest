@@ -6,7 +6,6 @@ import { Footer } from './components/Footer';
 import { MobileNav } from './components/MobileNav';
 import { OrderModal } from './components/OrderModal';
 import { SearchModal } from './components/SearchModal';
-import { LegalModal } from './components/LegalModal';
 
 // Pages
 import { HomePage } from './pages/HomePage';
@@ -29,23 +28,8 @@ function AppContent() {
   const { pageType, navigate } = useRouter();
   const [selectedSection, setSelectedSection] = useState('sheben');
   const [orderModalOpen, setOrderModalOpen] = useState(false);
-  const [searchModalOpen, setSearchModalOpen] = useState(false);
-  const [legalModalOpen, setLegalModalOpen] = useState(false);
-  const [legalTab, setLegalTab] = useState('requisites');
-  const [modalInitialData, setModalInitialData] = useState(null);
-
-  const handleOpenOrder = (productData = {}) => {
-    setModalInitialData(productData);
-    setOrderModalOpen(true);
-  };
-
-  const handleOpenSearch = () => {
-    setSearchModalOpen(true);
-  };
-
   const handleOpenLegal = (tab = 'requisites') => {
-    setLegalTab(tab);
-    setLegalModalOpen(true);
+    navigate(`#/legal/${tab}`);
   };
 
   const handleSelectProductFromSearch = (product) => {
@@ -132,12 +116,6 @@ function AppContent() {
         isOpen={searchModalOpen}
         onClose={() => setSearchModalOpen(false)}
         onSelectProduct={handleSelectProductFromSearch}
-      />
-
-      <LegalModal
-        isOpen={legalModalOpen}
-        onClose={() => setLegalModalOpen(false)}
-        initialTab={legalTab}
       />
     </div>
   );

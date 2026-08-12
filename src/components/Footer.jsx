@@ -185,17 +185,21 @@ export const Footer = ({ onOpenLegalModal }) => {
             © 2026 ТОВ «БЕНГС». Всі права захищені.
           </div>
           <div className="fb-privacy-links">
-            <button onClick={() => onOpenLegalModal && onOpenLegalModal('offer')} className="footer-mini-btn">
+            <a href="#/legal/offer" className="footer-mini-link">
               Публічна оферта
-            </button>
+            </a>
             <span className="sep">•</span>
-            <button onClick={() => onOpenLegalModal && onOpenLegalModal('privacy')} className="footer-mini-btn">
+            <a href="#/legal/privacy" className="footer-mini-link">
               Конфіденційність
-            </button>
+            </a>
             <span className="sep">•</span>
-            <button onClick={() => onOpenLegalModal && onOpenLegalModal('requisites')} className="footer-mini-btn">
+            <a href="#/legal/requisites" className="footer-mini-link">
               Реквізити
-            </button>
+            </a>
+            <span className="sep">•</span>
+            <a href="#/legal/delivery" className="footer-mini-link">
+              Правила відвантаження та ТТН
+            </a>
           </div>
         </div>
 
