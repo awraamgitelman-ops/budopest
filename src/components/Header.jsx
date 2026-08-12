@@ -580,6 +580,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           display: flex;
           align-items: center;
           gap: 12px;
+          margin-left: 24px;
         }
 
         .btn-kp {
