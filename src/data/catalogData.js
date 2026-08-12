@@ -268,7 +268,7 @@ export const ALL_PRODUCTS = [
     frost: "F200 - F300",
     flakiness: "масивний колотий",
     density: "1.50 т/м3",
-    image: "/images/img_e529d5b12f.jpg",
+    image: "/images/img_butovyj_kamin.webp",
     popular: true,
     description: "Гранітний бут для підпірних стін, парканів, фундаментів під важкі конструкції та берегоукріплення річки Дніпро."
   },
