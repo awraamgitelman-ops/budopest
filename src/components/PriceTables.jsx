@@ -81,7 +81,7 @@ export const PriceTables = ({ onOpenOrderModal }) => {
                         title="Оформити замовлення"
                       >
                         <ShoppingBag size={15} />
-                        <span>Купити</span>
+                        <span>Замовити</span>
                       </button>
                     </td>
                   </tr>
