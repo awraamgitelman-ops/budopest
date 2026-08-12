@@ -237,7 +237,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "до 15%",
     density: "1.35 т/м3",
-    image: "/images/img_22019a8ff1.jpg",
+    image: "/images/img_domennyj_shlak.jpg",
     popular: true,
     description: "Дроблені металургійні шлаки заводів Дніпра та Кам'янського з високим зчепленням для дорожніх основ і стоянок."
   },
@@ -345,7 +345,7 @@ export const ALL_PRODUCTS = [
     frost: "F100",
     flakiness: "до 15%",
     density: "1.35 т/м3",
-    image: "/images/img_22019a8ff1.jpg",
+    image: "/images/img_domennyj_shlak.jpg",
     description: "Бюджетний міцний щебінь для відсипання промислових зон, під'їздів та влаштування жорстких основ."
   },
   {
