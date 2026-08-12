@@ -2562,3 +2562,98 @@ input.modal-input.addr-input-with-button,
   text-decoration: underline !important;
 }
 
+/* Order Form Section & 2-Column Grid Layout */
+.order-form-section {
+  background: #f8fafc !important;
+  padding: 60px 0 !important;
+}
+
+.order-form-wrapper {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 40px !important;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04) !important;
+}
+
+@media (max-width: 640px) {
+  .order-form-wrapper {
+    padding: 24px 20px !important;
+  }
+}
+
+.of-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1.1fr !important;
+  gap: 40px !important;
+  align-items: start !important;
+}
+
+@media (max-width: 992px) {
+  .of-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+}
+
+.of-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+.of-title {
+  font-size: 1.85rem !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+}
+
+.of-desc {
+  font-size: 1rem !important;
+  color: #475569 !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+.of-perks {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  margin-top: 12px !important;
+}
+
+.of-perk {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+}
+
+.op-icon {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+  background: #f0fdf4 !important;
+  color: var(--c-green-dark) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.of-perk div {
+  font-size: 0.94rem !important;
+  color: #334155 !important;
+  line-height: 1.5 !important;
+}
+
+.of-perk strong {
+  color: #0f172a !important;
+  font-weight: 800 !important;
+}
+
