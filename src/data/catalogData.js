@@ -797,13 +797,13 @@ export const ALL_PRODUCTS = [
     price: 700,
     priceUnit: "грн/т",
     priceM3: 980,
-    fractions: ["50-150 мм"],
-    strength: "М1000",
-    frost: "F200",
-    flakiness: "пейзажний",
+    fractions: ["20-40 мм", "40-70 мм"],
+    strength: "М1200",
+    frost: "F300",
+    flakiness: "біла мармурова галька",
     density: "1.48 т/м3",
-    image: "/images/img_f899aa9a2d.jpg",
-    description: "Пейзажні камені різноманітних кольорів для створення альпійських гірок, водоспадів та саду каменів."
+    image: "/images/img_dekoratyvnyi_kamin.png",
+    description: "Білосніжна окатана мармурова галька (декоративний камінь) для ландшафтного дизайну, альпійських гірок, оформлення клумб, стежок та водойм."
   }
 ];
 
