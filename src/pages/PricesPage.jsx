@@ -42,18 +42,20 @@ export const PricesPage = ({ onOpenOrderModal }) => {
         </div>
       </div>
 
-      <div className="container py-10">
+      <div className="container py-8 prices-content-area">
         {/* Category Tabs */}
-        <div className="price-cat-tabs">
-          {tableList.map((t) => (
-            <button
-              key={t.category}
-              className={`price-tab-btn ${t.category === activeCategory ? 'active' : ''}`}
-              onClick={() => setActiveCategory(t.category)}
-            >
-              {t.title.replace('Ціни на категорію: ', '')}
-            </button>
-          ))}
+        <div className="price-cat-tabs-wrapper">
+          <div className="price-cat-tabs">
+            {tableList.map((t) => (
+              <button
+                key={t.category}
+                className={`price-tab-btn ${t.category === activeCategory ? 'active' : ''}`}
+                onClick={() => setActiveCategory(t.category)}
+              >
+                {t.title.replace('Ціни на категорію: ', '')}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Active Price Table Card */}
@@ -225,30 +227,50 @@ export const PricesPage = ({ onOpenOrderModal }) => {
           border-color: var(--c-green);
         }
 
+        .prices-content-area {
+          padding-top: 36px;
+          padding-bottom: 64px;
+        }
+
+        .price-cat-tabs-wrapper {
+          margin-bottom: 32px;
+        }
+
         .price-cat-tabs {
           display: flex;
-          gap: 8px;
+          gap: 10px;
           overflow-x: auto;
-          margin-bottom: 24px;
-          padding-bottom: 4px;
+          padding: 4px 4px 12px;
+          scrollbar-width: thin;
+        }
+
+        .price-cat-tabs::-webkit-scrollbar {
+          height: 6px;
+        }
+
+        .price-cat-tabs::-webkit-scrollbar-thumb {
+          background: #cbd5e1;
+          border-radius: 4px;
         }
 
         .price-tab-btn {
-          padding: 10px 20px;
+          padding: 11px 22px;
           border: 1.5px solid #cbd5e1;
-          border-radius: 8px;
+          border-radius: 10px;
           font-size: 0.92rem;
           font-weight: 700;
           color: #334155;
           background: #ffffff;
           cursor: pointer;
           white-space: nowrap;
-          transition: all 0.15s;
+          transition: all 0.2s ease;
+          flex-shrink: 0;
         }
 
         .price-tab-btn:hover {
           border-color: var(--c-green);
           color: #0f172a;
+          transform: translateY(-1px);
         }
 
         .price-tab-btn.active {
