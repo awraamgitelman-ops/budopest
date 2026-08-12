@@ -866,7 +866,9 @@ export const WAREHOUSES = [
     volume: "Запас понад 45 000 т",
     tracks: "Власна залізнична гілка + генератор",
     scales: "Електронні автоваги 80 т",
-    phone: "+380 (67) 686-31-86"
+    phone: "+380 (67) 686-31-86",
+    mapQuery: "вулиця Журналістів, 9, Дніпро",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=вулиця+Журналістів,+9,+Дніпро"
   },
   {
     id: 2,
@@ -877,7 +879,9 @@ export const WAREHOUSES = [
     volume: "Пряме видобування від 100 000 т",
     tracks: "Пряме кар'єрне навантаження",
     scales: "Автоваги 80 т",
-    phone: "+380 (67) 686-31-86"
+    phone: "+380 (67) 686-31-86",
+    mapQuery: "Любимівка, Дніпропетровська область",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Любимівка,+Дніпропетровська+область"
   },
   {
     id: 3,
@@ -888,7 +892,9 @@ export const WAREHOUSES = [
     volume: "Запас 30 000 т",
     tracks: "Швидкий виїзд на Набережну + генератор",
     scales: "Автоваги 60 т",
-    phone: "+380 (67) 686-31-86"
+    phone: "+380 (67) 686-31-86",
+    mapQuery: "вулиця Набережна Заводська, 82, Дніпро",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=вулиця+Набережна+Заводська,+82,+Дніпро"
   },
   {
     id: 4,
@@ -899,7 +905,9 @@ export const WAREHOUSES = [
     volume: "Запас 25 000 т",
     tracks: "Зручний виїзд на трасу Н-08",
     scales: "Автоваги 80 т",
-    phone: "+380 (67) 686-31-86"
+    phone: "+380 (67) 686-31-86",
+    mapQuery: "вулиця Баглійська, 14, Кам'янське",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=вулиця+Баглійська,+14,+Кам'янське"
   }
 ];
 

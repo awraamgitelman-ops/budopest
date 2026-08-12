@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { WAREHOUSES } from '../data/catalogData';
-import { MapPin, Clock, Scale, Phone, CheckCircle2 } from 'lucide-react';
+import { MapPin, Clock, Scale, Phone, CheckCircle2, Navigation, ExternalLink } from 'lucide-react';
 
 export const WarehouseMap = ({ onOpenOrderModal }) => {
   const [activeWarehouse, setActiveWarehouse] = useState(WAREHOUSES[0]);
+
+  // Construct standard Google Maps Embed URL (no API key required, reliable & responsive)
+  const embedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(
+    activeWarehouse.mapQuery || activeWarehouse.address
+  )}&t=m&z=14&ie=UTF8&iwloc=&output=embed`;
 
   return (
     <section id="warehouses" className="section warehouses-section">
@@ -52,7 +57,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
             })}
           </div>
 
-          {/* Active Warehouse Details & Map Preview */}
+          {/* Active Warehouse Details & Live Google Map */}
           <div className="wh-details-card">
             <div className="wh-details-header">
               <div>
@@ -60,29 +65,44 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
                 <h3 className="wh-detail-name">{activeWarehouse.name}</h3>
                 <p className="wh-detail-address">{activeWarehouse.address}</p>
               </div>
-              <a href={`tel:${activeWarehouse.phone}`} className="wh-call-btn">
-                <Phone size={16} />
-                <span>Зателефонувати</span>
-              </a>
+              <div className="wh-header-actions">
+                <a href={`tel:${activeWarehouse.phone}`} className="wh-call-btn">
+                  <Phone size={16} />
+                  <span>Зателефонувати</span>
+                </a>
+              </div>
             </div>
 
-            {/* Interactive Mock Map View */}
+            {/* Live Interactive Google Map Frame */}
             <div className="wh-map-preview">
-              <div className="map-grid-bg">
-                <div className="map-marker-pin">
-                  <div className="pin-head">
-                    <MapPin size={24} color="#ffffff" />
-                  </div>
-                  <div className="pin-tooltip">
-                    <strong>{activeWarehouse.name}</strong>
-                    <span>{activeWarehouse.address}</span>
-                  </div>
-                </div>
-              </div>
+              <iframe
+                title={`Google Map - ${activeWarehouse.name}`}
+                src={embedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="wh-google-iframe"
+              />
 
               <div className="map-badge-bottom">
-                <span>Відвантаження від 1 тонни на самовивіз</span>
+                <MapPin size={13} className="map-badge-icon" />
+                <span>{activeWarehouse.address}</span>
               </div>
+
+              <a
+                href={activeWarehouse.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="map-nav-float-btn"
+                title="Відкрити в додатку Google Maps"
+              >
+                <Navigation size={14} />
+                <span>Маршрут в Google Maps</span>
+                <ExternalLink size={12} />
+              </a>
             </div>
 
             <div className="wh-features-list">
@@ -105,7 +125,11 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
             </div>
 
             <div className="wh-fleet-preview">
-              <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80" alt="Автопарк самоскидів ТОВ БЕНГС" className="wh-fleet-img" />
+              <img
+                src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=800&q=80"
+                alt="Автопарк самоскидів ТОВ БЕНГС"
+                className="wh-fleet-img"
+              />
               <span className="wh-fleet-tag">Власний автопарк самоскидів 10–40 т</span>
             </div>
 
@@ -213,7 +237,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
           background: #f8fafc;
           border: 1px solid #e2e8f0;
           border-radius: var(--radius-lg);
-          padding: 30px;
+          padding: 28px;
           display: flex;
           flex-direction: column;
         }
@@ -222,7 +246,8 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
           display: flex;
           align-items: flex-start;
           justify-content: space-between;
-          margin-bottom: 20px;
+          margin-bottom: 18px;
+          gap: 12px;
         }
 
         .wh-detail-zone {
@@ -241,8 +266,13 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
         }
 
         .wh-detail-address {
-          font-size: 0.95rem;
+          font-size: 0.92rem;
           color: #475569;
+        }
+
+        .wh-header-actions {
+          display: flex;
+          gap: 8px;
         }
 
         .wh-call-btn {
@@ -257,6 +287,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
           padding: 8px 16px;
           border-radius: 6px;
           transition: all 0.15s;
+          white-space: nowrap;
         }
 
         .wh-call-btn:hover {
@@ -266,81 +297,77 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
 
         .wh-map-preview {
           position: relative;
-          height: 220px;
+          height: 260px;
           border-radius: var(--radius-md);
           overflow: hidden;
           margin-bottom: 20px;
-          border: 1px solid #cbd5e1;
+          border: 1.5px solid #cbd5e1;
           background: #e2e8f0;
+          box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
-        .map-grid-bg {
+        .wh-google-iframe {
           width: 100%;
           height: 100%;
-          background: 
-            linear-gradient(90deg, rgba(203, 213, 225, 0.4) 1px, transparent 1px),
-            linear-gradient(rgba(203, 213, 225, 0.4) 1px, #f1f5f9 1px);
-          background-size: 24px 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;
-        }
-
-        .map-marker-pin {
-          position: relative;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .pin-head {
-          width: 44px;
-          height: 44px;
-          border-radius: 50% 50% 50% 0;
-          background: var(--c-green);
-          transform: rotate(-45deg);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 12px rgba(133, 180, 42, 0.5);
-        }
-
-        .pin-head svg {
-          transform: rotate(45deg);
-        }
-
-        .pin-tooltip {
-          background: rgba(15, 23, 42, 0.9);
-          backdrop-filter: blur(4px);
-          color: #ffffff;
-          padding: 6px 12px;
-          border-radius: 6px;
-          font-size: 0.78rem;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-top: 8px;
-          white-space: nowrap;
+          border: 0;
+          display: block;
         }
 
         .map-badge-bottom {
           position: absolute;
-          bottom: 10px;
-          left: 10px;
-          background: rgba(255, 255, 255, 0.95);
-          padding: 4px 10px;
-          border-radius: 4px;
-          font-size: 0.75rem;
+          bottom: 12px;
+          left: 12px;
+          background: rgba(15, 23, 42, 0.9);
+          backdrop-filter: blur(6px);
+          color: #ffffff;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 0.78rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          max-width: calc(100% - 24px);
+          box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+          pointer-events: none;
+        }
+
+        .map-badge-icon {
+          color: var(--c-green);
+          flex-shrink: 0;
+        }
+
+        .map-nav-float-btn {
+          position: absolute;
+          top: 12px;
+          right: 12px;
+          background: #ffffff;
+          color: #0f172a;
+          border: 1px solid #cbd5e1;
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-size: 0.78rem;
           font-weight: 700;
-          color: #334155;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+          transition: all 0.2s;
+          text-decoration: none;
+        }
+
+        .map-nav-float-btn:hover {
+          background: var(--c-green);
+          color: #ffffff;
+          border-color: var(--c-green);
+          transform: translateY(-1px);
         }
 
         .wh-features-list {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 12px;
-          margin-bottom: 24px;
+          margin-bottom: 20px;
         }
 
         .wh-feature {
@@ -348,6 +375,7 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
           align-items: center;
           gap: 8px;
           font-size: 0.88rem;
+          font-weight: 600;
           color: #334155;
         }
 
@@ -358,11 +386,10 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
 
         .wh-fleet-preview {
           position: relative;
-          height: 140px;
-          border-radius: var(--radius-sm);
+          height: 90px;
+          border-radius: var(--radius-md);
           overflow: hidden;
           margin-bottom: 20px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
         .wh-fleet-img {
@@ -377,14 +404,14 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
           left: 8px;
           background: rgba(15, 23, 42, 0.85);
           color: #ffffff;
-          padding: 3px 8px;
+          padding: 4px 10px;
           border-radius: 4px;
-          font-size: 0.72rem;
-          font-weight: 600;
+          font-size: 0.75rem;
+          font-weight: 700;
         }
 
         .wh-order-btn {
-          padding: 12px;
+          height: 48px;
           font-size: 0.95rem;
         }
 
@@ -392,8 +419,17 @@ export const WarehouseMap = ({ onOpenOrderModal }) => {
           .wh-grid {
             grid-template-columns: 1fr;
           }
+        }
+
+        @media (max-width: 640px) {
+          .wh-details-header {
+            flex-direction: column;
+          }
           .wh-features-list {
             grid-template-columns: 1fr;
+          }
+          .wh-map-preview {
+            height: 220px;
           }
         }
       `}</style>
