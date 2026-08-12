@@ -2274,3 +2274,56 @@ input.modal-input.addr-input-with-button,
   margin: 0 !important;
 }
 
+/* Header Top Messengers Row (WhatsApp, Telegram, Viber) */
+.ht-messengers {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.msg-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  padding: 4px 10px !important;
+  border-radius: 14px !important;
+  text-decoration: none !important;
+  transition: all 0.15s ease !important;
+  white-space: nowrap !important;
+}
+
+.msg-whatsapp {
+  background: rgba(37, 211, 102, 0.12) !important;
+  color: #15803d !important;
+  border: 1px solid rgba(37, 211, 102, 0.3) !important;
+}
+
+.msg-whatsapp:hover {
+  background: #25D366 !important;
+  color: #ffffff !important;
+}
+
+.msg-telegram {
+  background: rgba(41, 182, 246, 0.12) !important;
+  color: #0369a1 !important;
+  border: 1px solid rgba(41, 182, 246, 0.3) !important;
+}
+
+.msg-telegram:hover {
+  background: #29B6F6 !important;
+  color: #ffffff !important;
+}
+
+.msg-viber {
+  background: rgba(115, 96, 242, 0.12) !important;
+  color: #6d28d9 !important;
+  border: 1px solid rgba(115, 96, 242, 0.3) !important;
+}
+
+.msg-viber:hover {
+  background: #7360F2 !important;
+  color: #ffffff !important;
+}
+
