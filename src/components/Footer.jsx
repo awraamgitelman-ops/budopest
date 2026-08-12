@@ -43,7 +43,7 @@ export const Footer = ({ onOpenLegalModal }) => {
 
               <div className="footer-contact-item">
                 <MapPin size={15} />
-                <span>м. Дніпро, вул. Німецька, 283</span>
+                <span>м. Дніпро, вул. Журналістів, 3</span>
               </div>
 
               <div className="footer-contact-item">

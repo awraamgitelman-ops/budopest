@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { DELIVERY_ZONES } from '../data/catalogData';
 import { Search, MapPin, Navigation, CheckCircle2, ExternalLink, Layers } from 'lucide-react';
 
-const HUB_COORDS = { lat: 48.4682, lng: 35.1485, name: 'Перевалка ТОВ «БЕНГС» (вул. Німецька, 283)' };
+const HUB_COORDS = { lat: 48.5135, lng: 35.0850, name: 'Перевалка ТОВ «БЕНГС» (вул. Журналістів, 3)' };
 
 const PRESET_LOCATIONS = [
   { name: 'Дніпро (Правий берег: Центр / Соборний)', lat: 48.4647, lng: 35.0462 },
@@ -190,7 +190,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     hubMarker.bindPopup(`
       <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
         <strong style="color: #15803d; font-size: 14px;">🏢 ТОВ «БЕНГС» (Перевалка №1)</strong><br/>
-        м. Дніпро, вул. Німецька, 283<br/>
+        м. Дніпро, вул. Журналістів, 3<br/>
         <small style="color: #64748b;">Пункт відправки самоскидів 10–40 т</small>
       </div>
     `);
