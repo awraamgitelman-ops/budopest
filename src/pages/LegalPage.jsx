@@ -133,11 +133,11 @@ export const LegalPage = ({ onOpenOrderModal }) => {
                     </div>
                     <div className="data-row">
                       <span className="data-label">Контактний телефон:</span>
-                      <strong className="data-val">+380 (67) 686-31-86</strong>
+                      <strong className="data-val">+380 (98) 861-29-38</strong>
                     </div>
                     <div className="data-row">
                       <span className="data-label">Електронна пошта (Email):</span>
-                      <strong className="data-val">bengs.zakaz@gmail.com</strong>
+                      <strong className="data-val">rudmonolit@gmail.com</strong>
                     </div>
                     <div className="data-row">
                       <span className="data-label">Режим роботи перевалки:</span>

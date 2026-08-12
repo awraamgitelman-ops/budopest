@@ -41,15 +41,15 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
       <div className="header-top">
         <div className="container header-top-inner">
           <div className="ht-left">
-            <a href="tel:+380676863186" className="ht-phone">
+            <a href="tel:+380988612938" className="ht-phone">
               <Phone size={15} className="icon-green" />
-              <span>+380 (67) 686-31-86</span>
+              <span>+380 (98) 861-29-38</span>
             </a>
             
             {/* Messengers Row: WhatsApp, Telegram, Viber */}
             <div className="ht-messengers">
               <a
-                href="https://wa.me/380676863186?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F!%20%D0%A6%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D1%89%D0%B5%D0%B1%D1%96%D0%BD%D1%8C%20%D0%B2%D1%96%D0%B4%20%D0%A2%D0%9E%D0%92%20%D0%91%D0%95%D0%9D%D0%93%D0%A1%20%D0%B7%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D1%8E%20%D0%BF%D0%BE%20%D0%94%D0%BD%D1%96%D0%BF%D1%80%D1%83."
+                href="https://wa.me/380988612938?text=%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B3%D0%BE%20%D0%B4%D0%BD%D1%8F!%20%D0%A6%D1%96%D0%BA%D0%B0%D0%B2%D0%B8%D1%82%D1%8C%20%D1%89%D0%B5%D0%B1%D1%96%D0%BD%D1%8C%20%D0%B2%D1%96%D0%B4%20%D0%A0%D0%A3%D0%94%20%D0%9C%D0%9E%D0%9D%D0%9E%D0%9B%D0%86%D0%A2%20%D0%B7%20%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%BE%D1%8E%20%D0%BF%D0%BE%20%D0%94%D0%BD%D1%96%D0%BF%D1%80%D1%83."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="msg-btn msg-whatsapp"
@@ -77,7 +77,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               </a>
 
               <a
-                href="viber://chat?number=%2B380676863186"
+                href="viber://chat?number=%2B380988612938"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="msg-btn msg-viber"
@@ -91,9 +91,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               </a>
             </div>
 
-            <a href="mailto:zakaz@rud-monolit.com" className="ht-email">
+            <a href="mailto:rudmonolit@gmail.com" className="ht-email">
               <Mail size={14} className="icon-muted" />
-              <span>zakaz@rud-monolit.com</span>
+              <span>rudmonolit@gmail.com</span>
             </a>
           </div>
 
@@ -237,9 +237,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
       {isMobileMenuOpen && (
         <div className="mobile-drawer animate-slide">
           <div className="mobile-phone-block">
-            <a href="tel:+380676863186" className="mobile-phone-link">
+            <a href="tel:+380988612938" className="mobile-phone-link">
               <Phone size={18} />
-              <span>+380 (67) 686-31-86</span>
+              <span>+380 (98) 861-29-38</span>
             </a>
             <div className="mobile-worktime">09:00 — 20:00 (Щоденно)</div>
           </div>

@@ -159,9 +159,9 @@ export const DeliveryPage = ({ onOpenOrderModal }) => {
             >
               Розрахувати доставку
             </button>
-            <a href="tel:+380676863186" className="btn btn-outline btn-lg">
+            <a href="tel:+380988612938" className="btn btn-outline btn-lg">
               <Phone size={16} />
-              <span>+380 (67) 686-31-86</span>
+              <span>+380 (98) 861-29-38</span>
             </a>
           </div>
         </div>

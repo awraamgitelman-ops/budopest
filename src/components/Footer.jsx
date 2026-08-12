@@ -31,14 +31,14 @@ export const Footer = ({ onOpenLegalModal }) => {
             </p>
 
             <div className="footer-contact-list">
-              <a href="tel:+380676863186" className="footer-contact-item phone">
+              <a href="tel:+380988612938" className="footer-contact-item phone">
                 <Phone size={15} />
-                <span>+380 (67) 686-31-86</span>
+                <span>+380 (98) 861-29-38</span>
               </a>
 
-              <a href="mailto:zakaz@rud-monolit.com" className="footer-contact-item mail">
+              <a href="mailto:rudmonolit@gmail.com" className="footer-contact-item mail">
                 <Mail size={15} />
-                <span>zakaz@rud-monolit.com</span>
+                <span>rudmonolit@gmail.com</span>
               </a>
 
               <div className="footer-contact-item">

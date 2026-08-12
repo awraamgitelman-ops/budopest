@@ -113,11 +113,11 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
                 </div>
                 <div className="req-item">
                   <span className="req-label">Контактний телефон:</span>
-                  <span className="req-val">+380 (67) 686-31-86</span>
+                  <span className="req-val">+380 (98) 861-29-38</span>
                 </div>
                 <div className="req-item">
-                  <span className="req-label">Електронна пошта:</span>
-                  <span className="req-val">bengs.zakaz@gmail.com</span>
+                  <span className="req-lbl">Електронна пошта (Email):</span>
+                  <span className="req-val">rudmonolit@gmail.com</span>
                 </div>
                 <div className="req-item">
                   <span className="req-label">Графік роботи:</span>

@@ -390,7 +390,7 @@ export const OrderPage = ({ onOpenLegalModal }) => {
                 <div>
                   <strong>Потрібна консультація диспетчера?</strong>
                   <p>Телефонуйте щоденно з 09:00 до 20:00:</p>
-                  <a href="tel:+380676863186" className="op-phone-link">+380 (67) 686-31-86</a>
+                  <a href="tel:+380988612938" className="op-phone-link">+380 (98) 861-29-38</a>
                 </div>
               </div>
             </div>

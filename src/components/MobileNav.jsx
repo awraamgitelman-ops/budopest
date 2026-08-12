@@ -17,7 +17,7 @@ export const MobileNav = ({ onOpenOrderModal, onOpenSearchModal }) => {
         <span>Розрахунок</span>
       </button>
 
-      <a href="tel:+380676863186" className="mbn-item call-btn">
+      <a href="tel:+380988612938" className="mbn-item call-btn">
         <div className="call-btn-circle">
           <Phone size={20} />
         </div>

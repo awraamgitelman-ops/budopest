@@ -84,7 +84,7 @@ export const SearchModal = ({ isOpen, onClose, onSelectProduct }) => {
             ))
           ) : (
             <div className="search-empty">
-              За запитом «{query}» нічого не знайдено. Спробуйте змінити запит або зателефонуйте нам за номером <strong>+380 (67) 686-31-86</strong>.
+              За запитом «{query}» нічого не знайдено. Спробуйте змінити запит або зателефонуйте нам за номером <strong>+380 (98) 861-29-38</strong>.
             </div>
           )}
         </div>

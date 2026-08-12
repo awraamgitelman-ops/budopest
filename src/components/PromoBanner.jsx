@@ -29,9 +29,9 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
               </p>
 
               <div className="promo-actions">
-                <a href="tel:+380676863186" className="promo-phone-btn">
+                <a href="tel:+380988612938" className="promo-phone-btn">
                   <Phone size={18} />
-                  <span>+380 (67) 686-31-86</span>
+                  <span>+380 (98) 861-29-38</span>
                 </a>
 
                 <form onSubmit={handleSubmit} className="promo-inline-form">

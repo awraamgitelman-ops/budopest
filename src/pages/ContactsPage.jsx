@@ -26,8 +26,8 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                 <Phone size={18} className="icon-green" />
                 <div>
                   <span className="cic-label">Багатоканальний телефон:</span>
-                  <a href="tel:+380676863186" className="cic-link phone">
-                    +380 (67) 686-31-86
+                  <a href="tel:+380988612938" className="cic-link phone">
+                    +380 (98) 861-29-38
                   </a>
                   <span className="cic-sub">Щоденно з 09:00 до 20:00</span>
                 </div>
@@ -38,7 +38,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                 <div>
                   <span className="cic-label">Месенджери (WhatsApp / Viber):</span>
                   <a
-                    href="https://wa.me/380676863186"
+                    href="https://wa.me/380988612938"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="cic-link"
@@ -52,8 +52,8 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                 <Mail size={18} className="icon-green" />
                 <div>
                   <span className="cic-label">Електронна пошта для заявок та рахунків:</span>
-                  <a href="mailto:zakaz@rud-monolit.com" className="cic-link">
-                    zakaz@rud-monolit.com
+                  <a href="mailto:rudmonolit@gmail.com" className="cic-link">
+                    rudmonolit@gmail.com
                   </a>
                 </div>
               </div>

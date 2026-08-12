@@ -328,7 +328,7 @@ export const OrderForm = ({ compact = false }) => {
                     <div className="of-perk">
                       <div className="op-icon"><PhoneCall size={20} /></div>
                       <div>
-                        <strong>Прямий зв'язок:</strong> або телефонуйте щоденно з 09:00 до 20:00 за номером <a href="tel:+380676863186">+380 (67) 686-31-86</a>.
+                        <strong>Прямий зв'язок:</strong> або телефонуйте щоденно з 09:00 до 20:00 за номером <a href="tel:+380988612938">+380 (98) 861-29-38</a>.
                       </div>
                     </div>
                   </div>

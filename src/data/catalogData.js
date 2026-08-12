@@ -910,7 +910,7 @@ export const WAREHOUSES = [
     volume: "Бухгалтерія та відділ продажів",
     tracks: "Укладання договорів та консультування",
     scales: "Прийом замовлень (без відвантаження)",
-    phone: "+380 (67) 686-31-86",
+    phone: "+380 (98) 861-29-38",
     mapQuery: "вулиця Журналістів, 3, Дніпро",
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=вулиця+Журналістів,+3,+Дніпро"
   },
@@ -923,7 +923,7 @@ export const WAREHOUSES = [
     volume: "Пряме видобування від 100 000 т",
     tracks: "Пряме кар'єрне навантаження",
     scales: "Автоваги 80 т",
-    phone: "+380 (67) 686-31-86",
+    phone: "+380 (98) 861-29-38",
     mapQuery: "Любимівка, Дніпропетровська область",
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Любимівка,+Дніпропетровська+область"
   },
@@ -936,7 +936,7 @@ export const WAREHOUSES = [
     volume: "Запас 30 000 т",
     tracks: "Швидкий виїзд на Набережну + генератор",
     scales: "Автоваги 60 т",
-    phone: "+380 (67) 686-31-86",
+    phone: "+380 (98) 861-29-38",
     mapQuery: "вулиця Набережна Заводська, 82, Дніпро",
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=вулиця+Набережна+Заводська,+82,+Дніпро"
   },
@@ -949,7 +949,7 @@ export const WAREHOUSES = [
     volume: "Запас 25 000 т",
     tracks: "Зручний виїзд на трасу Н-08",
     scales: "Автоваги 80 т",
-    phone: "+380 (67) 686-31-86",
+    phone: "+380 (98) 861-29-38",
     mapQuery: "вулиця Баглійська, 14, Кам'янське",
     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=вулиця+Баглійська,+14,+Кам'янське"
   }
