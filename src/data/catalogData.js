@@ -284,7 +284,7 @@ export const ALL_PRODUCTS = [
     frost: "F50 - F100",
     flakiness: "до 20%",
     density: "1.25 т/м3",
-    image: "/images/img_bd8d86a069.jpg",
+    image: "/images/img_vtorichnyj_beton.png",
     popular: true,
     description: "Дроблений та очищений від арматури бетонний щебінь для відсипання тимчасових доріг, будівельних під'їздів та стоянок."
   },
