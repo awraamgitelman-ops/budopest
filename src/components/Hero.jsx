@@ -69,8 +69,8 @@ export const Hero = ({ onOpenOrderModal }) => {
           <div className="hero-visual">
             <div className="hero-image-wrapper">
               <img
-                src="/images/img_75f6f6ee6a.jpg"
-                alt="Щебінь гранітний будівельний у Дніпрі — ТОВ БЕНГС"
+                src="/images/hero_dump_truck.jpg"
+                alt="Доставка щебеню самоскидами ТОВ БЕНГС у Дніпрі"
                 className="hero-img"
               />
               <div className="hero-img-overlay">
