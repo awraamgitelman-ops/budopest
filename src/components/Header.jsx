@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from '../context/RouterContext';
-import { Phone, Mail, MapPin, Clock, Search, ChevronDown, Menu, X, FileText } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Search, ChevronDown, Menu, X, FileText, MessageCircle } from 'lucide-react';
 import { MegaMenu } from './MegaMenu';
 
 export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }) => {
@@ -188,11 +188,11 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           {/* Action Buttons */}
           <div className="header-actions">
             <button
-              onClick={() => onOpenOrderModal({ name: "Запит комерційної пропозиції (КП) від ТОВ БЕНГС" })}
+              onClick={() => onOpenOrderModal({ name: "Запит безкоштовної консультації фахівця" })}
               className="btn btn-outline btn-kp"
             >
-              <FileText size={16} />
-              <span>Отримати КП</span>
+              <MessageCircle size={16} />
+              <span>Консультація</span>
             </button>
 
             <button
