@@ -812,6 +812,7 @@ export const SHCHEDEN_PRODUCTS = ALL_PRODUCTS.filter(p => p.sectionId === "shebe
 
 export const PRICE_TABLES_DATA = {
   granitnyj: {
+    category: "granitnyj",
     title: "Ціни на категорію: Гранітний щебінь",
     badge: "ДСТУ Б В.2.7-75-98",
     items: [
@@ -825,6 +826,7 @@ export const PRICE_TABLES_DATA = {
     ]
   },
   shlakovyj: {
+    category: "shlakovyj",
     title: "Ціни на категорію: Шлаковий щебінь (Дніпро)",
     badge: "ТУ / ДСТУ",
     items: [
@@ -834,24 +836,66 @@ export const PRICE_TABLES_DATA = {
       { name: "Шлаковий щебінь 70-120 мм (великий)", priceM3: 340, priceTon: 250, strength: "М800-1000", frost: "F100" }
     ]
   },
+  pesok: {
+    category: "pesok",
+    title: "Ціни на категорію: Пісок будівельний",
+    badge: "ДСТУ Б В.2.7-32-01",
+    items: [
+      { name: "Річковий пісок (митий, Дніпро)", priceM3: 270, priceTon: 180, strength: "Мк 1.8-2.2", frost: "F-" },
+      { name: "Кар'єрний пісок сіяний", priceM3: 240, priceTon: 160, strength: "Мк 1.5-1.8", frost: "F-" },
+      { name: "Пісок у мішках (50 кг)", priceM3: 450, priceTon: 45, strength: "Фасований", frost: "F-" },
+      { name: "Пісок у Біг-бегах (1 т)", priceM3: 550, priceTon: 420, strength: "МКР", frost: "F-" }
+    ]
+  },
+  shps: {
+    category: "shps",
+    title: "Ціни на категорію: Дорожні суміші ЩПС",
+    badge: "ДСТУ Б В.2.7-30:2013",
+    items: [
+      { name: "ЩПС С5 (фракція 0-70 мм)", priceM3: 490, priceTon: 340, strength: "М1200", frost: "F300" },
+      { name: "ЩПС С7 (фракція 0-40 мм)", priceM3: 510, priceTon: 350, strength: "М1200", frost: "F300" },
+      { name: "ЩПС С4 (фракція 0-20 мм)", priceM3: 470, priceTon: 330, strength: "М1200", frost: "F300" }
+    ]
+  },
+  pgs: {
+    category: "pgs",
+    title: "Ціни на категорію: Піщано-гравійні суміші",
+    badge: "ДСТУ ГОСТ 23735-2014",
+    items: [
+      { name: "ПГС природна (гравій 20-30%)", priceM3: 390, priceTon: 260, strength: "М800", frost: "F150" },
+      { name: "ОПГС збагачена (гравій 50-70%)", priceM3: 460, priceTon: 310, strength: "М1000", frost: "F200" }
+    ]
+  },
+  grunty: {
+    category: "grunty",
+    title: "Ціни на категорію: Ґрунти та чорнозем",
+    badge: "Сертифікат родючості",
+    items: [
+      { name: "Чорнозем польовий родючий", priceM3: 450, priceTon: 350, strength: "Гумус > 5%", frost: "F-" },
+      { name: "Рослинний ґрунт збагачений", priceM3: 400, priceTon: 310, strength: "Органіка", frost: "F-" },
+      { name: "Ґрунт на підсипку / вирівнювання", priceM3: 200, priceTon: 150, strength: "Супісок", frost: "F-" },
+      { name: "Ґрунт родючий у Біг-бегах (1 т)", priceM3: 950, priceTon: 750, strength: "У біг-бегах", frost: "F-" }
+    ]
+  },
   gravijnyj: {
-    title: "Ціни на категорію: Гравійний щебінь",
+    category: "gravijnyj",
+    title: "Ціни на категорію: Гравій та галька",
     badge: "ДСТУ Б В.2.7-75-98",
     items: [
-      { name: "Щебінь гравійний 3-10 мм", priceM3: 450, priceTon: 330, strength: "М800-1000", frost: "F150" },
-      { name: "Щебінь гравійний 5-20 мм", priceM3: 490, priceTon: 360, strength: "М1000", frost: "F200" },
-      { name: "Щебінь гравійний 20-40 мм", priceM3: 480, priceTon: 350, strength: "М1000", frost: "F200" },
-      { name: "Щебінь гравійний 40-70 мм", priceM3: 470, priceTon: 340, strength: "М1000", frost: "F150" }
+      { name: "Гравій річковий 5-20 мм", priceM3: 490, priceTon: 360, strength: "М1000", frost: "F200" },
+      { name: "Гравій річковий 20-40 мм", priceM3: 480, priceTon: 350, strength: "М1000", frost: "F200" },
+      { name: "Річкова галька (Дніпровська)", priceM3: 780, priceTon: 580, strength: "М1000", frost: "F200" }
     ]
   },
   vtorichnyj: {
-    title: "Ціни на категорію: Вторинний щебінь",
+    category: "vtorichnyj",
+    title: "Ціни на категорію: Вторинні матеріали",
     badge: "ТУ Будівельний",
     items: [
       { name: "Вторинний бетонний щебінь 0-40 мм", priceM3: 220, priceTon: 180, strength: "М300-400", frost: "F50" },
       { name: "Вторинний бетонний щебінь 20-40 мм", priceM3: 240, priceTon: 190, strength: "М400-600", frost: "F50" },
       { name: "Вторинний бетонний щебінь 40-70 мм", priceM3: 240, priceTon: 190, strength: "М400-600", frost: "F50" },
-      { name: "Асфальтна крихта (з-під фрези)", priceM3: 350, priceTon: 280, strength: "Битумна", frost: "F100" }
+      { name: "Асфальтна крихта (з-під фрези)", priceM3: 350, priceTon: 280, strength: "Бітумна", frost: "F100" }
     ]
   }
 };

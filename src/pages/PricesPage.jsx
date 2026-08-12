@@ -5,10 +5,11 @@ import { FileText, Download, Phone, ShieldCheck, CheckCircle2, ArrowRight } from
 
 export const PricesPage = ({ onOpenOrderModal }) => {
   const { navigate } = useRouter();
-  const [activeCategory, setActiveCategory] = useState('granit');
+  const [activeCategory, setActiveCategory] = useState('granitnyj');
   const [vatMode, setVatMode] = useState('with-vat'); // 'with-vat' or 'no-vat'
 
-  const activeTable = PRICE_TABLES_DATA.find((t) => t.category === activeCategory) || PRICE_TABLES_DATA[0];
+  const tableList = Object.values(PRICE_TABLES_DATA || {});
+  const activeTable = (PRICE_TABLES_DATA && PRICE_TABLES_DATA[activeCategory]) || tableList[0] || { title: 'Прайс-лист', items: [] };
 
   return (
     <div className="prices-page-wrapper">
@@ -44,7 +45,7 @@ export const PricesPage = ({ onOpenOrderModal }) => {
       <div className="container py-10">
         {/* Category Tabs */}
         <div className="price-cat-tabs">
-          {PRICE_TABLES_DATA.map((t) => (
+          {tableList.map((t) => (
             <button
               key={t.category}
               className={`price-tab-btn ${t.category === activeCategory ? 'active' : ''}`}
