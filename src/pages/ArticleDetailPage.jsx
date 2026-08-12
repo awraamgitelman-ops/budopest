@@ -3,6 +3,152 @@ import { useRouter } from '../context/RouterContext';
 import { ARTICLES_DATA } from '../data/articlesData';
 import { ArrowLeft, Clock, User, Calendar, Share2, ArrowRight } from 'lucide-react';
 
+// Helper to format inline markdown elements (**bold**, `code`, $math$)
+const formatInline = (text) => {
+  if (!text) return '';
+
+  const parts = [];
+  const regex = /(\*\*[^*]+\*\*|`[^`]+`|\$[^$]+\$)/g;
+  let match;
+  let lastIndex = 0;
+  let keyIdx = 0;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index));
+    }
+    const token = match[0];
+    if (token.startsWith('**') && token.endsWith('**')) {
+      parts.push(<strong key={keyIdx++}>{token.slice(2, -2)}</strong>);
+    } else if (token.startsWith('`') && token.endsWith('`')) {
+      parts.push(<code key={keyIdx++} className="art-inline-code">{token.slice(1, -1)}</code>);
+    } else if (token.startsWith('$') && token.endsWith('$')) {
+      parts.push(<span key={keyIdx++} className="art-inline-math">{token.slice(1, -1)}</span>);
+    } else {
+      parts.push(token);
+    }
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+
+  return parts.length > 0 ? parts : text;
+};
+
+// Comprehensive Article Body Renderer
+const renderArticleContent = (content) => {
+  if (!content) return null;
+
+  const blocks = content.split(/\n\s*\n/);
+
+  return blocks.map((block, idx) => {
+    const trimmed = block.trim();
+    if (!trimmed) return null;
+
+    // 1. Tables (| col | col |)
+    if (trimmed.startsWith('|') && trimmed.includes('|')) {
+      const lines = trimmed.split('\n').map(l => l.trim()).filter(l => l.length > 0 && l.startsWith('|'));
+      if (lines.length >= 2) {
+        const parseRow = (rowStr) => rowStr.split('|').slice(1, -1).map(cell => cell.trim());
+        const headers = parseRow(lines[0]);
+        const isDivider = (line) => line.includes('---') || line.includes(':---');
+        const dataLines = lines.slice(1).filter(l => !isDivider(l));
+        const dataRows = dataLines.map(parseRow);
+
+        return (
+          <div key={idx} className="art-table-container">
+            <table className="art-table">
+              <thead>
+                <tr>
+                  {headers.map((h, i) => (
+                    <th key={i}>{formatInline(h)}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {dataRows.map((row, rIdx) => (
+                  <tr key={rIdx}>
+                    {row.map((cell, cIdx) => (
+                      <td key={cIdx}>{formatInline(cell)}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+    }
+
+    // 2. Math Formula Blocks ($$ ... $$)
+    if (trimmed.startsWith('$$') && trimmed.endsWith('$$')) {
+      const formulaText = trimmed.slice(2, -2).trim();
+      return (
+        <div key={idx} className="art-formula-card">
+          <div className="art-formula-header">
+            <span className="art-formula-badge">🧮 Формула розрахунку</span>
+          </div>
+          <div className="art-formula-content">
+            <code>{formulaText}</code>
+          </div>
+        </div>
+      );
+    }
+
+    // 3. Headings
+    if (trimmed.startsWith('### ')) {
+      return <h3 key={idx} className="art-h3">{formatInline(trimmed.replace('### ', ''))}</h3>;
+    }
+    if (trimmed.startsWith('## ')) {
+      return <h2 key={idx} className="art-h2">{formatInline(trimmed.replace('## ', ''))}</h2>;
+    }
+
+    // 4. Horizontal Rules
+    if (trimmed === '---') {
+      return <hr key={idx} className="art-hr" />;
+    }
+
+    // 5. Blockquotes
+    if (trimmed.startsWith('> ')) {
+      const quoteText = trimmed.replace(/^>\s*/gm, '');
+      return (
+        <blockquote key={idx} className="art-quote">
+          {formatInline(quoteText)}
+        </blockquote>
+      );
+    }
+
+    // 6. Unordered Lists (* or -)
+    if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
+      const items = trimmed.split('\n').map(l => l.replace(/^[\*\-]\s*/, '').trim()).filter(Boolean);
+      return (
+        <ul key={idx} className="art-ul">
+          {items.map((item, i) => (
+            <li key={i}>{formatInline(item)}</li>
+          ))}
+        </ul>
+      );
+    }
+
+    // 7. Ordered Lists (1., 2., etc.)
+    if (/^\d+\.\s/.test(trimmed)) {
+      const items = trimmed.split('\n').map(l => l.replace(/^\d+\.\s*/, '').trim()).filter(Boolean);
+      return (
+        <ol key={idx} className="art-ol">
+          {items.map((item, i) => (
+            <li key={i}>{formatInline(item)}</li>
+          ))}
+        </ol>
+      );
+    }
+
+    // Default Paragraph
+    return <p key={idx} className="art-p">{formatInline(trimmed)}</p>;
+  });
+};
+
 export const ArticleDetailPage = ({ onOpenOrderModal }) => {
   const { routeParams, navigate } = useRouter();
   const articleId = routeParams.articleId;
@@ -40,19 +186,7 @@ export const ArticleDetailPage = ({ onOpenOrderModal }) => {
             </div>
 
             <div className="art-body-text">
-              {article.content.split('\n\n').map((paragraph, idx) => {
-                if (paragraph.startsWith('### ')) {
-                  return <h3 key={idx} className="art-h3">{paragraph.replace('### ', '')}</h3>;
-                }
-                if (paragraph.startsWith('> ')) {
-                  return (
-                    <blockquote key={idx} className="art-quote">
-                      {paragraph.replace('> ', '')}
-                    </blockquote>
-                  );
-                }
-                return <p key={idx} className="art-p">{paragraph}</p>;
-              })}
+              {renderArticleContent(article.content)}
             </div>
 
             {/* In-article CTA block */}
@@ -102,220 +236,6 @@ export const ArticleDetailPage = ({ onOpenOrderModal }) => {
           </aside>
         </div>
       </div>
-
-      <style>{`
-        .article-detail-page {
-          background: #ffffff;
-          padding-bottom: 60px;
-        }
-
-        .back-btn {
-          display: inline-flex;
-          align-items: center;
-          gap: 6px;
-          background: transparent;
-          border: none;
-          color: #64748b;
-          font-size: 0.9rem;
-          font-weight: 700;
-          cursor: pointer;
-          transition: color 0.15s;
-          padding: 0;
-        }
-
-        .back-btn:hover {
-          color: var(--c-green-dark);
-        }
-
-        .art-detail-grid {
-          display: grid;
-          grid-template-columns: 1.3fr 0.7fr;
-          gap: 40px;
-          align-items: start;
-        }
-
-        .art-single-title {
-          font-size: 2.2rem;
-          font-weight: 900;
-          color: #0f172a;
-          line-height: 1.25;
-          margin-bottom: 14px;
-        }
-
-        .art-single-meta {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-size: 0.85rem;
-          color: #64748b;
-          margin-bottom: 24px;
-          flex-wrap: wrap;
-        }
-
-        .art-single-meta span {
-          display: flex;
-          align-items: center;
-          gap: 4px;
-        }
-
-        .art-featured-img-wrap {
-          height: 380px;
-          border-radius: var(--radius-lg);
-          overflow: hidden;
-          margin-bottom: 28px;
-          box-shadow: 0 12px 30px rgba(0,0,0,0.1);
-        }
-
-        .art-featured-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .art-body-text {
-          font-size: 1.02rem;
-          line-height: 1.7;
-          color: #334155;
-        }
-
-        .art-h3 {
-          font-size: 1.4rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 28px 0 12px;
-        }
-
-        .art-p {
-          margin-bottom: 16px;
-        }
-
-        .art-quote {
-          background: #f8fafc;
-          border-left: 4px solid var(--c-green);
-          padding: 16px 20px;
-          border-radius: 0 8px 8px 0;
-          font-size: 0.95rem;
-          font-style: italic;
-          color: #1e293b;
-          margin: 20px 0;
-        }
-
-        .art-cta-card {
-          background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-          border-radius: var(--radius-md);
-          padding: 28px;
-          color: #ffffff;
-        }
-
-        .art-cta-card h3 {
-          font-size: 1.25rem;
-          font-weight: 800;
-          margin: 0 0 6px;
-        }
-
-        .art-cta-card p {
-          font-size: 0.88rem;
-          color: #cbd5e1;
-          margin: 0 0 16px;
-        }
-
-        .art-sidebar {
-          display: flex;
-          flex-direction: column;
-          gap: 24px;
-          position: sticky;
-          top: 80px;
-        }
-
-        .art-sidebar-card {
-          background: #f8fafc;
-          border: 1px solid #e2e8f0;
-          border-radius: var(--radius-md);
-          padding: 24px;
-        }
-
-        .sidebar-heading {
-          font-size: 1.05rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 0 0 16px;
-          border-bottom: 1px solid #e2e8f0;
-          padding-bottom: 10px;
-        }
-
-        .sidebar-art-list {
-          display: flex;
-          flex-direction: column;
-          gap: 14px;
-        }
-
-        .side-art-item {
-          display: flex;
-          gap: 12px;
-          cursor: pointer;
-          transition: transform 0.15s;
-        }
-
-        .side-art-item:hover {
-          transform: translateX(4px);
-        }
-
-        .side-art-img {
-          width: 80px;
-          height: 64px;
-          border-radius: 6px;
-          object-fit: cover;
-          flex-shrink: 0;
-        }
-
-        .side-art-cat {
-          font-size: 0.7rem;
-          font-weight: 800;
-          color: var(--c-green-dark);
-          text-transform: uppercase;
-        }
-
-        .side-art-title {
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: #0f172a;
-          margin: 2px 0 0;
-          line-height: 1.3;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .art-sidebar-calc-promo {
-          background: var(--c-green-light);
-          border: 1px solid rgba(133, 180, 42, 0.3);
-          border-radius: var(--radius-md);
-          padding: 20px;
-        }
-
-        .art-sidebar-calc-promo h4 {
-          font-size: 1rem;
-          font-weight: 800;
-          color: #0f172a;
-          margin: 0 0 4px;
-        }
-
-        .art-sidebar-calc-promo p {
-          font-size: 0.82rem;
-          color: #475569;
-          margin: 0 0 12px;
-        }
-
-        @media (max-width: 900px) {
-          .art-detail-grid {
-            grid-template-columns: 1fr;
-          }
-          .art-sidebar {
-            position: static;
-          }
-        }
-      `}</style>
     </div>
   );
 };
