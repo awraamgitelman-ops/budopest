@@ -116,33 +116,59 @@ export const OrderPage = ({ onOpenLegalModal }) => {
 
       <div className="container py-12">
         {isSuccess ? (
-          <div className="order-page-success-card animate-fade">
-            <div className="success-icon-circle-lg">
-              <CheckCircle2 size={64} color="#16a34a" />
-            </div>
-            <h2 className="op-success-title">Вашу заявку успішно прийнято!</h2>
-            <p className="op-success-desc">
-              Ми отримали ваше замовлення на <strong>{fullProductNameDisplay}</strong> в об'ємі <strong>{tonnage} тонн</strong>.
-              <br />
-              Черговий диспетчер логістики зателефонує вам за номером <strong>{formData.phone}</strong> протягом 5 хвилин для підтвердження часу виїзду самоскида.
-            </p>
-
-            <div className="op-success-info-box">
-              <div><strong>Пункт доставки:</strong> {formData.address || 'м. Дніпро'}</div>
-              <div><strong>Матеріал:</strong> {fullProductNameDisplay}</div>
-              <div><strong>Об'єм:</strong> {tonnage} тонн</div>
+          <div className="order-success-banner animate-fade">
+            {/* Left Side: Checkmark Badge */}
+            <div className="os-banner-left">
+              <div className="os-check-badge">
+                <CheckCircle2 size={44} className="os-check-icon" />
+              </div>
+              <span className="os-status-tag">Заявку прийнято</span>
             </div>
 
-            <button
-              onClick={() => {
-                setIsSuccess(false);
-                setFormData({ name: '', phone: '', address: '', comment: '' });
-                setTonnage(25);
-              }}
-              className="btn btn-primary btn-lg"
-            >
-              Нове замовлення
-            </button>
+            {/* Right Side: Details & Actions */}
+            <div className="os-banner-right">
+              <h2 className="os-title">Заявку на доставку успішно прийнято!</h2>
+              <p className="os-subtitle">
+                Дякуємо{formData.name ? `, ${formData.name}` : ''}! Ми отримали ваші дані. Черговий диспетчер логістики зателефонує за номером <strong>{formData.phone}</strong> протягом 5 хвилин для підтвердження часу виїзду самоскида.
+              </p>
+
+              <div className="os-details-grid">
+                <div className="os-detail-item">
+                  <span className="os-detail-label">Матеріал:</span>
+                  <strong className="os-detail-val">{fullProductNameDisplay}</strong>
+                </div>
+                <div className="os-detail-item">
+                  <span className="os-detail-label">Об'єм:</span>
+                  <strong className="os-detail-val">{tonnage} тонн</strong>
+                </div>
+                <div className="os-detail-item full-width">
+                  <span className="os-detail-label">Пункт доставки:</span>
+                  <strong className="os-detail-val">{formData.address || 'м. Дніпро (уточнюється з диспетчером)'}</strong>
+                </div>
+                {formData.comment && (
+                  <div className="os-detail-item full-width">
+                    <span className="os-detail-label">Примітка:</span>
+                    <span className="os-detail-val">{formData.comment}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="os-actions-row">
+                <button
+                  onClick={() => {
+                    setIsSuccess(false);
+                    setFormData({ name: '', phone: '', address: '', comment: '' });
+                    setTonnage(25);
+                  }}
+                  className="btn btn-primary"
+                >
+                  Нове замовлення
+                </button>
+                <a href="#/" className="btn btn-outline">
+                  На головну сторінку
+                </a>
+              </div>
+            </div>
           </div>
         ) : (
           <div className="order-page-grid">

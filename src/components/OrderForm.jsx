@@ -103,31 +103,34 @@ export const OrderForm = ({ compact = false }) => {
   const renderFormContent = () => (
     <div className="of-form-card">
       {isSuccess ? (
-        <div className="of-success-state animate-fade">
-          <div className="success-icon-circle">
-            <CheckCircle2 size={44} color="#16a34a" />
+        <div className="order-success-banner inline-mode animate-fade">
+          <div className="os-banner-left">
+            <div className="os-check-badge">
+              <CheckCircle2 size={38} className="os-check-icon" />
+            </div>
+            <span className="os-status-tag">Заявку прийнято</span>
           </div>
-          <h3 className="success-title">Дякуємо за заявку!</h3>
-          <p className="success-desc">
-            Ми отримали ваш запит на <strong>{fullProductNameDisplay}</strong> ({tonnage} тонн). Менеджер зв'яжеться з вами за номером <strong>{formData.phone}</strong> протягом 5 хвилин.
-          </p>
-          <button
-            onClick={() => {
-              setIsSuccess(false);
-              setFormData({
-                name: '',
-                phone: '',
-                address: '',
-                comment: ''
-              });
-              setSelectedProductId('granitnyj');
-              setSelectedFraction('5-20 мм');
-              setTonnage(25);
-            }}
-            className="btn btn-outline"
-          >
-            Надіслати ще одну заявку
-          </button>
+
+          <div className="os-banner-right">
+            <h3 className="os-title">Дякуємо за заявку!</h3>
+            <p className="os-subtitle">
+              Ми отримали ваш запит на <strong>{fullProductNameDisplay}</strong> ({tonnage} тонн). Менеджер зв'яжеться з вами за номером <strong>{formData.phone}</strong> протягом 5 хвилин.
+            </p>
+            <div className="os-actions-row">
+              <button
+                onClick={() => {
+                  setIsSuccess(false);
+                  setFormData({ name: '', phone: '', address: '', comment: '' });
+                  setSelectedProductId('granitnyj');
+                  setSelectedFraction('5-20 мм');
+                  setTonnage(25);
+                }}
+                className="btn btn-outline"
+              >
+                Надіслати ще одну заявку
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="of-form">

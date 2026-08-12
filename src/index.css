@@ -1570,3 +1570,163 @@ input.modal-input.addr-input-with-button,
   padding-right: 100px !important;
 }
 
+/* Horizontal Order Success Banner with Side Checkmark */
+.order-success-banner {
+  background: #ffffff !important;
+  border: 1.5px solid #bbf7d0 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px -15px rgba(22, 163, 74, 0.12) !important;
+  padding: 36px 40px !important;
+  display: grid !important;
+  grid-template-columns: 130px 1fr !important;
+  gap: 32px !important;
+  align-items: start !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+}
+
+.order-success-banner.modal-mode,
+.order-success-banner.inline-mode {
+  padding: 24px 28px !important;
+  grid-template-columns: 100px 1fr !important;
+  gap: 20px !important;
+  border-radius: 16px !important;
+}
+
+@media (max-width: 768px) {
+  .order-success-banner {
+    grid-template-columns: 1fr !important;
+    padding: 24px !important;
+    gap: 20px !important;
+  }
+}
+
+.os-banner-left {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding-top: 4px !important;
+}
+
+.os-check-badge {
+  width: 76px !important;
+  height: 76px !important;
+  border-radius: 50% !important;
+  background: #dcfce7 !important;
+  border: 2px solid #86efac !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 10px 20px rgba(22, 163, 74, 0.15) !important;
+}
+
+.order-success-banner.modal-mode .os-check-badge,
+.order-success-banner.inline-mode .os-check-badge {
+  width: 64px !important;
+  height: 64px !important;
+}
+
+.os-check-icon {
+  color: #15803d !important;
+}
+
+.os-status-tag {
+  font-size: 0.75rem !important;
+  font-weight: 800 !important;
+  color: #15803d !important;
+  background: #f0fdf4 !important;
+  border: 1px solid #bbf7d0 !important;
+  padding: 4px 10px !important;
+  border-radius: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.4px !important;
+  white-space: nowrap !important;
+}
+
+.os-banner-right {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+}
+
+.os-title {
+  font-size: 1.55rem !important;
+  font-weight: 900 !important;
+  color: #0f172a !important;
+  margin: 0 !important;
+  line-height: 1.25 !important;
+}
+
+.order-success-banner.modal-mode .os-title,
+.order-success-banner.inline-mode .os-title {
+  font-size: 1.35rem !important;
+}
+
+.os-subtitle {
+  font-size: 0.96rem !important;
+  color: #334155 !important;
+  line-height: 1.55 !important;
+  margin: 0 !important;
+}
+
+.os-details-grid {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 12px !important;
+  padding: 16px 18px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px !important;
+  margin: 2px 0 !important;
+}
+
+@media (max-width: 640px) {
+  .os-details-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.os-detail-item {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+
+.os-detail-item.full-width {
+  grid-column: 1 / -1 !important;
+}
+
+.os-detail-label {
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;
+}
+
+.os-detail-val {
+  font-size: 0.95rem !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+.os-actions-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-top: 6px !important;
+}
+
+@media (max-width: 520px) {
+  .os-actions-row {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  .os-actions-row button,
+  .os-actions-row a {
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+

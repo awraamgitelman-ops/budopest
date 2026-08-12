@@ -160,17 +160,25 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
           </div>
 
           {isSuccess ? (
-            <div className="modal-success">
-              <div className="success-circle">
-                <CheckCircle2 size={54} color="#16a34a" />
+            <div className="order-success-banner modal-mode animate-fade">
+              <div className="os-banner-left">
+                <div className="os-check-badge">
+                  <CheckCircle2 size={40} className="os-check-icon" />
+                </div>
+                <span className="os-status-tag">Заявку прийнято</span>
               </div>
-              <h3 className="modal-title">Заявку прийнято!</h3>
-              <p className="modal-subtitle">
-                Ми зв'яжемося з вами за номером <strong>{phone}</strong> протягом 5 хвилин для підтвердження часу доставки ({tonnage} тонн {fullProductNameDisplay}).
-              </p>
-              <button onClick={onClose} className="btn btn-primary btn-block">
-                Зрозуміло, дякую
-              </button>
+
+              <div className="os-banner-right">
+                <h3 className="os-title">Заявку на доставку успішно прийнято!</h3>
+                <p className="os-subtitle">
+                  Дякуємо{name ? `, ${name}` : ''}! Ми отримали ваші дані. Черговий диспетчер зв'яжеться з вами за номером <strong>{phone}</strong> протягом 5 хвилин для підтвердження виїзду ({tonnage} тонн {fullProductNameDisplay}).
+                </p>
+                <div className="os-actions-row">
+                  <button onClick={onClose} className="btn btn-primary btn-block">
+                    Зрозуміло, дякую
+                  </button>
+                </div>
+              </div>
             </div>
           ) : (
             <div>
