@@ -185,7 +185,7 @@ export const Footer = ({ onOpenLegalModal }) => {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div className="fb-copyright">
-            © 2018–2026 ТОВ «БЕНГС». Всі права захищені.
+            © 2026 ТОВ «БЕНГС». Всі права захищені.
           </div>
           <div className="fb-privacy-links">
             <button onClick={() => onOpenLegalModal && onOpenLegalModal('offer')} className="footer-mini-btn">

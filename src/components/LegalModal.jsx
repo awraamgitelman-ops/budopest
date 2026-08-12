@@ -78,7 +78,7 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
                 </div>
                 <div className="req-item">
                   <span className="req-label">Дата державної реєстрації:</span>
-                  <span className="req-val">26.02.2018 (Працюємо понад 8 років)</span>
+                  <span className="req-val">26.02.2018</span>
                 </div>
                 <div className="req-item">
                   <span className="req-label">Керівник (Директор):</span>
