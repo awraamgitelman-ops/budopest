@@ -165,16 +165,11 @@ export const CatalogSectionPage = ({ onOpenOrderModal }) => {
 
                 <div className="cpc-actions">
                   <button
-                    onClick={() => onOpenOrderModal({ name: prod.name, priceStr: `${prod.price} ${prod.priceUnit}` })}
-                    className="btn btn-primary btn-sm cpc-btn"
-                  >
-                    <span>Замовити</span>
-                  </button>
-                  <button
                     onClick={() => navigate(`#/product/${prod.id}`)}
-                    className="btn btn-outline btn-sm"
+                    className="btn btn-outline btn-block"
                   >
                     <span>Детальніше</span>
+                    <ArrowRight size={15} />
                   </button>
                 </div>
               </div>
@@ -572,9 +567,22 @@ export const CatalogSectionPage = ({ onOpenOrderModal }) => {
         }
 
         .cpc-actions {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 8px;
+          display: flex;
+          width: 100%;
+        }
+
+        .cpc-actions .btn {
+          width: 100%;
+          justify-content: center;
+          gap: 6px;
+          border-color: var(--c-green);
+          color: var(--c-green-dark);
+          font-weight: 700;
+        }
+
+        .cpc-actions .btn:hover {
+          background: var(--c-green);
+          color: #ffffff;
         }
 
         .sec-tech-specs-card {

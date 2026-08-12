@@ -90,28 +90,14 @@ export const CatalogGrid = ({ selectedSection, onSelectSection, onOpenOrderModal
                   )}
                 </div>
 
-                <p className="pc-v2-desc">{product.description}</p>
-
                 <div className="pc-v2-actions">
                   <button
                     type="button"
-                    className="pc-v2-order-btn"
-                    onClick={() => onOpenOrderModal({
-                      id: product.id,
-                      name: `${product.name} (${currentSection.name})`,
-                      price: product.price,
-                      priceUnit: product.priceUnit
-                    })}
-                  >
-                    <span>Замовити</span>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline btn-sm"
+                    className="pc-v2-detail-btn"
                     onClick={() => navigate(`#/product/${product.id}`)}
                   >
                     <span>Детальніше</span>
-                    <ArrowRight size={14} />
+                    <ArrowRight size={15} />
                   </button>
                 </div>
               </div>
@@ -315,27 +301,27 @@ export const CatalogGrid = ({ selectedSection, onSelectSection, onOpenOrderModal
           margin-top: auto;
         }
 
-        .pc-v2-order-btn {
+        .pc-v2-detail-btn {
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 8px;
           width: 100%;
-          padding: 9px 12px;
-          background: #e6f4d0;
-          color: #446e16;
-          border: 1px solid #cde8a5;
+          padding: 10px 14px;
+          background: #ffffff;
+          color: var(--c-green-dark);
+          border: 1.5px solid var(--c-green);
           border-radius: 8px;
-          font-size: 0.88rem;
+          font-size: 0.9rem;
           font-weight: 700;
           cursor: pointer;
-          transition: all 0.18s;
+          transition: all 0.2s ease;
         }
 
-        .pc-v2-order-btn:hover {
+        .pc-v2-detail-btn:hover {
           background: var(--c-green);
           color: #ffffff;
-          border-color: var(--c-green);
+          box-shadow: 0 4px 12px rgba(133, 180, 42, 0.25);
         }
 
         .catalog-bottom-note {
