@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, Send } from 'lucide-react';
+import { X, CheckCircle2 } from 'lucide-react';
 
 export const OrderModal = ({ isOpen, onClose, initialData }) => {
   const [name, setName] = useState('');
@@ -141,7 +141,6 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                 disabled={isSubmitting}
                 className="btn btn-primary btn-lg btn-block modal-submit-btn"
               >
-                <Send size={18} />
                 <span>{isSubmitting ? 'Відправка...' : 'Надіслати заявку'}</span>
               </button>
 

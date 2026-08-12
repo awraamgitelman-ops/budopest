@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, ShieldCheck, PhoneCall, Clock } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, PhoneCall, Clock } from 'lucide-react';
 
 export const OrderForm = () => {
   const [formData, setFormData] = useState({
@@ -179,7 +179,6 @@ export const OrderForm = () => {
                     disabled={isSubmitting}
                     className="btn btn-primary btn-lg btn-block of-submit-btn"
                   >
-                    <Send size={18} />
                     <span>{isSubmitting ? 'Відправка...' : 'Розрахувати вартість зі знижкою'}</span>
                   </button>
 
