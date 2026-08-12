@@ -69,29 +69,29 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
 
             {/* Addresses Card */}
             <div className="contact-info-card">
-              <h3 className="cic-title">Адреси перевалок та офісу у Дніпрі</h3>
+              <h3 className="cic-title">Адреса офісу та майданчиків відвантаження</h3>
 
               <div className="cic-item">
-                <MapPin size={18} className="icon-green" />
+                <Building2 size={18} className="icon-green" />
                 <div>
-                  <strong>Головна перевалка (Лівий берег):</strong>
-                  <p className="cic-addr">м. Дніпро, вул. Журналістів, 3 (ваговий контроль, самовивіз)</p>
+                  <strong>Головний офіс (бухгалтерія та кабінети):</strong>
+                  <p className="cic-addr">м. Дніпро, вул. Журналістів, 3 (відділ продажів, договори)</p>
                 </div>
               </div>
 
               <div className="cic-item">
                 <MapPin size={18} className="icon-green" />
                 <div>
-                  <strong>База «Правий берег»:</strong>
-                  <p className="cic-addr">м. Дніпро, вул. Набережна Заводська, 82</p>
+                  <strong>Термінал «Правий берег» (автоваги 80т, самовивіз):</strong>
+                  <p className="cic-addr">м. Дніпро, вул. Набережна Заводська, 82 (стоянка самоскидів)</p>
                 </div>
               </div>
 
               <div className="cic-item">
                 <MapPin size={18} className="icon-green" />
                 <div>
-                  <strong>Кар'єрний майданчик:</strong>
-                  <p className="cic-addr">Дніпропетровська обл., с. Любимівка</p>
+                  <strong>Любимівський гранітний кар'єр:</strong>
+                  <p className="cic-addr">Дніпропетровська обл., с. Любимівка (пряме кар'єрне навантаження)</p>
                 </div>
               </div>
 
