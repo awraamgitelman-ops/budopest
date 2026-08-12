@@ -547,8 +547,8 @@ export const ALL_PRODUCTS = [
     frost: "F-",
     flakiness: "масив",
     density: "1.45 т/м3",
-    image: "/images/img_22d5bc782d.jpg",
-    description: "Недорогий супісок для підсипки траншей, цоколів та формування дорожнього полотна."
+    image: "/images/img_piskohrunt.png",
+    description: "Недорогий супісок (піскоґрунт) для планування ділянок, підсипки траншей, цоколів та формування високих насипів."
   },
   {
     id: "pesok-meshki",
