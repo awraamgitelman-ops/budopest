@@ -1,14 +1,20 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, Building2, Briefcase, FileText, Shield, CheckCircle2 } from 'lucide-react';
+import { useRouter } from '../context/RouterContext';
+import { Phone, Mail, MapPin, Clock, Building2, FileText, Shield, CheckCircle2 } from 'lucide-react';
 
 export const Footer = ({ onOpenLegalModal }) => {
+  const { navigate } = useRouter();
+
   return (
     <footer id="contacts" className="site-footer">
       <div className="container">
         <div className="footer-main-grid">
           {/* Col 1: Brand & Contacts */}
           <div className="footer-col footer-brand-col">
-            <div className="footer-logo">
+            <div
+              className="footer-logo clickable"
+              onClick={() => navigate('#/')}
+            >
               <svg width="36" height="30" viewBox="0 0 45 38" fill="none">
                 <path d="M33.7105 19.777C34.0088 19.26 34.7544 19.26 35.0527 19.777L44.895 36.8368C45.1933 37.3538 44.8205 38 44.224 38H24.5392C23.9427 38 23.5699 37.3538 23.8681 36.8368L33.7105 19.777Z" fill="#80A541"/>
                 <path d="M9.94734 19.777C10.2456 19.26 10.9912 19.26 11.2895 19.777L21.1319 36.8368C21.4301 37.3538 21.0573 38 20.4608 38H0.776042C0.179535 38 -0.193283 37.3538 0.104971 36.8368L9.94734 19.777Z" fill="#80A541"/>
@@ -35,7 +41,10 @@ export const Footer = ({ onOpenLegalModal }) => {
                 <span>bengs.zakaz@gmail.com</span>
               </a>
 
-              <div className="footer-contact-item">
+              <div
+                className="footer-contact-item clickable"
+                onClick={() => navigate('#/warehouses')}
+              >
                 <MapPin size={15} />
                 <span>м. Дніпро, вул. Журналістів, 9</span>
               </div>
@@ -51,14 +60,46 @@ export const Footer = ({ onOpenLegalModal }) => {
           <div className="footer-col">
             <h4 className="footer-heading">Каталог матеріалів</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog-items">Гранітний щебінь (5-20, 20-40)</a></li>
-              <li><a href="#catalog-items">Шлаковий щебінь (доменний)</a></li>
-              <li><a href="#catalog-items">Річковий пісок (Дніпро, митий)</a></li>
-              <li><a href="#catalog-items">ЩПС (С4, С5, С7) для доріг</a></li>
-              <li><a href="#catalog-items">ПГС та ОПГС для бетону</a></li>
-              <li><a href="#catalog-items">Чорнозем та родючий ґрунт</a></li>
-              <li><a href="#catalog-items">Керамзит та гравій</a></li>
-              <li><a href="#catalog-items">Річкова галька та бутовий камінь</a></li>
+              <li>
+                <button onClick={() => navigate('#/catalog/sheben')} className="footer-nav-btn">
+                  Гранітний щебінь (5-20, 20-40)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/catalog/sheben')} className="footer-nav-btn">
+                  Шлаковий щебінь (доменний)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/catalog/pesok')} className="footer-nav-btn">
+                  Річковий пісок (Дніпро, митий)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/catalog/shps')} className="footer-nav-btn">
+                  ЩПС (С4, С5, С7) для доріг
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/catalog/pgs')} className="footer-nav-btn">
+                  ПГС та ОПГС для бетону
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/catalog/grunty')} className="footer-nav-btn">
+                  Чорнозем та родючий ґрунт
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/catalog/keramzit')} className="footer-nav-btn">
+                  Керамзит та гравій
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/catalog/galka')} className="footer-nav-btn">
+                  Річкова галька та бутовий камінь
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -66,12 +107,41 @@ export const Footer = ({ onOpenLegalModal }) => {
           <div className="footer-col">
             <h4 className="footer-heading">Клієнтам</h4>
             <ul className="footer-nav-list">
-              <li><a href="#prices">Прайс-лист за тонну та м³</a></li>
-              <li><a href="#calculator">Калькулятор об'єму та доставки</a></li>
-              <li><a href="#delivery">Доставка самоскидами 10–40 т</a></li>
-              <li><a href="#warehouses">Перевалки та автоваги у Дніпрі</a></li>
-              <li><a href="#quality">Відповідність нормам ДСТУ</a></li>
-              <li><a href="#faq">Часті запитання (FAQ)</a></li>
+              <li>
+                <button onClick={() => navigate('#/prices')} className="footer-nav-btn">
+                  Прайс-лист за тонну та м³
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/calculator')} className="footer-nav-btn">
+                  Калькулятор об'єму та доставки
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/delivery')} className="footer-nav-btn">
+                  Доставка самоскидами 10–40 т
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/services')} className="footer-nav-btn">
+                  Послуги спецтехніки
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/warehouses')} className="footer-nav-btn">
+                  Перевалки та автоваги у Дніпрі
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/certificates')} className="footer-nav-btn">
+                  Відповідність нормам ДСТУ
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/articles')} className="footer-nav-btn">
+                  Статті та база знань
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -101,6 +171,11 @@ export const Footer = ({ onOpenLegalModal }) => {
                 <button onClick={() => onOpenLegalModal && onOpenLegalModal('privacy')} className="footer-nav-btn">
                   <Shield size={14} className="f-icon" />
                   <span>Політика конфіденційності</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={() => navigate('#/contacts')} className="footer-nav-btn">
+                  <span>Контакти та офіс</span>
                 </button>
               </li>
             </ul>
@@ -159,6 +234,10 @@ export const Footer = ({ onOpenLegalModal }) => {
           margin-bottom: 14px;
         }
 
+        .footer-logo.clickable {
+          cursor: pointer;
+        }
+
         .brand-text {
           display: flex;
           flex-direction: column;
@@ -201,6 +280,14 @@ export const Footer = ({ onOpenLegalModal }) => {
           color: #cbd5e1;
           text-decoration: none;
           transition: color 0.15s;
+        }
+
+        .footer-contact-item.clickable {
+          cursor: pointer;
+        }
+
+        .footer-contact-item.clickable:hover {
+          color: var(--c-green);
         }
 
         .footer-contact-item.phone {
@@ -247,19 +334,6 @@ export const Footer = ({ onOpenLegalModal }) => {
           display: flex;
           flex-direction: column;
           gap: 9px;
-        }
-
-        .footer-nav-list a {
-          color: #94a3b8;
-          font-size: 0.84rem;
-          text-decoration: none;
-          transition: all 0.15s;
-          display: block;
-        }
-
-        .footer-nav-list a:hover {
-          color: #ffffff;
-          transform: translateX(2px);
         }
 
         .footer-nav-btn {

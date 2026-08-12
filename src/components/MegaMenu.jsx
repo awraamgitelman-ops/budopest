@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useRouter } from '../context/RouterContext';
 import { MEGA_MENU_DATA } from '../data/catalogData';
 import { ChevronRight, ArrowRight } from 'lucide-react';
 
 export const MegaMenu = ({ onClose, onSelectProduct }) => {
+  const { navigate } = useRouter();
   const [activeCategory, setActiveCategory] = useState(MEGA_MENU_DATA[1] || MEGA_MENU_DATA[0]);
 
   return (
@@ -17,7 +19,11 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
                 key={cat.id}
                 className={`mega-category-btn ${isActive ? 'active' : ''}`}
                 onMouseEnter={() => setActiveCategory(cat)}
-                onClick={() => setActiveCategory(cat)}
+                onClick={() => {
+                  setActiveCategory(cat);
+                  navigate(`#/catalog/${cat.id}`);
+                  onClose && onClose();
+                }}
               >
                 <span>{cat.name}</span>
                 <ChevronRight size={15} className="cat-arrow" />
@@ -30,14 +36,16 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
         <div className="mega-items-content">
           <div className="mega-header">
             <h3 className="mega-cat-title">{activeCategory.name}</h3>
-            <a
-              href="#catalog-items"
-              onClick={onClose}
-              className="mega-view-all"
+            <button
+              onClick={() => {
+                navigate(`#/catalog/${activeCategory.id}`);
+                onClose && onClose();
+              }}
+              className="mega-view-all btn-link-reset"
             >
-              <span>Переглянути весь розділ</span>
+              <span>Переглянути весь розділ ({activeCategory.name})</span>
               <ArrowRight size={14} />
-            </a>
+            </button>
           </div>
 
           <div className="mega-subgrid">

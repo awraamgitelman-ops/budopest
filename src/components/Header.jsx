@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Phone, Mail, MapPin, Clock, Search, ChevronDown, Menu, X, FileText, Send } from 'lucide-react';
+import { useRouter } from '../context/RouterContext';
+import { Phone, Mail, MapPin, Clock, Search, ChevronDown, Menu, X, FileText } from 'lucide-react';
 import { MegaMenu } from './MegaMenu';
 
 export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }) => {
+  const { navigate } = useRouter();
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,7 +32,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
   const handleMouseLeaveMega = () => {
     megaMenuTimerRef.current = setTimeout(() => {
       setIsMegaMenuOpen(false);
-    }, 250); // 250ms smooth grace period
+    }, 250);
   };
 
   return (
@@ -65,7 +67,10 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           </div>
 
           <div className="ht-right">
-            <div className="ht-info-item">
+            <div
+              className="ht-info-item clickable"
+              onClick={() => navigate('#/warehouses')}
+            >
               <MapPin size={14} className="icon-green" />
               <span>м. Дніпро, вул. Журналістів, 9</span>
             </div>
@@ -88,7 +93,14 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
       <div className={`header-main ${isScrolled ? 'header-scrolled' : ''}`}>
         <div className="container header-main-inner">
           {/* Brand Logo */}
-          <a href="#" className="brand-logo">
+          <a
+            href="#/"
+            className="brand-logo"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('#/');
+            }}
+          >
             <svg width="40" height="34" viewBox="0 0 45 38" fill="none" className="logo-svg">
               <path d="M33.7105 19.777C34.0088 19.26 34.7544 19.26 35.0527 19.777L44.895 36.8368C45.1933 37.3538 44.8205 38 44.224 38H24.5392C23.9427 38 23.5699 37.3538 23.8681 36.8368L33.7105 19.777Z" fill="#80A541"/>
               <path d="M9.94734 19.777C10.2456 19.26 10.9912 19.26 11.2895 19.777L21.1319 36.8368C21.4301 37.3538 21.0573 38 20.4608 38H0.776042C0.179535 38 -0.193283 37.3538 0.104971 36.8368L9.94734 19.777Z" fill="#4F2B19"/>
@@ -107,52 +119,70 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               onMouseEnter={handleMouseEnterMega}
               onMouseLeave={handleMouseLeaveMega}
             >
-              <button className={`nav-link catalog-trigger ${isMegaMenuOpen ? 'active' : ''}`}>
+              <button
+                className={`nav-link catalog-trigger ${isMegaMenuOpen ? 'active' : ''}`}
+                onClick={() => navigate('#/catalog/sheben')}
+              >
                 <span>Каталог</span>
                 <ChevronDown size={15} className={`chevron ${isMegaMenuOpen ? 'rotate' : ''}`} />
               </button>
 
               {isMegaMenuOpen && (
-                <MegaMenu onClose={() => setIsMegaMenuOpen(false)} onSelectProduct={(item) => onOpenOrderModal(item)} />
+                <MegaMenu
+                  onClose={() => setIsMegaMenuOpen(false)}
+                  onSelectProduct={(item) => onOpenOrderModal(item)}
+                />
               )}
             </div>
 
-            <a href="#prices" className="nav-link">Ціни</a>
+            <button onClick={() => navigate('#/prices')} className="nav-link">
+              Ціни
+            </button>
+
+            <button onClick={() => navigate('#/calculator')} className="nav-link">
+              Калькулятор
+            </button>
             
             <div className="nav-item has-dropdown">
-              <a href="#services" className="nav-link">
+              <button onClick={() => navigate('#/services')} className="nav-link">
                 <span>Послуги</span>
                 <ChevronDown size={14} className="chevron" />
-              </a>
+              </button>
               <div className="submenu">
-                <a href="#services">Всі послуги спецтехніки</a>
-                <a href="#services">Земляні роботи та котловани</a>
-                <a href="#services">Вивіз ґрунту з утилізацією</a>
-                <a href="#services">Матеріали для укріплень та фортифікацій</a>
-                <a href="#services">Послуги екскаваторів та навантажувачів</a>
+                <button onClick={() => navigate('#/services')} className="submenu-btn-item">Всі послуги спецтехніки</button>
+                <button onClick={() => navigate('#/services/samoskydy')} className="submenu-btn-item">Оренда самоскидів 10–40 т</button>
+                <button onClick={() => navigate('#/services/zemlyani-roboty')} className="submenu-btn-item">Земляні роботи та котловани</button>
+                <button onClick={() => navigate('#/services/vyviz-gruntu')} className="submenu-btn-item">Вивіз ґрунту з утилізацією</button>
+                <button onClick={() => navigate('#/services/fortyfikaciyi')} className="submenu-btn-item">Матеріали для фортифікацій</button>
               </div>
             </div>
 
-            <a href="#delivery" className="nav-link">Доставка та оплата</a>
+            <button onClick={() => navigate('#/delivery')} className="nav-link">
+              Доставка
+            </button>
             
             <div className="nav-item has-dropdown">
-              <a href="#about" className="nav-link">
+              <button onClick={() => navigate('#/about')} className="nav-link">
                 <span>Про компанію</span>
                 <ChevronDown size={14} className="chevron" />
-              </a>
+              </button>
               <div className="submenu">
-                <a href="#about">Про ТОВ «БЕНГС»</a>
+                <button onClick={() => navigate('#/about')} className="submenu-btn-item">Про ТОВ «БЕНГС»</button>
                 <button onClick={() => onOpenLegalModal && onOpenLegalModal('requisites')} className="submenu-btn-item">
-                  Реквізити компанії
+                  Реквізити (ЄДРПОУ 41963896)
                 </button>
-                <a href="#quality">Якість та ДСТУ</a>
-                <a href="#reviews">Відгуки клієнтів</a>
-                <a href="#warehouses">Кар'єри та перевалки</a>
+                <button onClick={() => navigate('#/certificates')} className="submenu-btn-item">Якість та ДСТУ</button>
+                <button onClick={() => navigate('#/warehouses')} className="submenu-btn-item">Кар'єри та перевалки</button>
               </div>
             </div>
 
-            <a href="#articles" className="nav-link">Статті</a>
-            <a href="#contacts" className="nav-link">Контакти</a>
+            <button onClick={() => navigate('#/articles')} className="nav-link">
+              Статті
+            </button>
+
+            <button onClick={() => navigate('#/contacts')} className="nav-link">
+              Контакти
+            </button>
           </nav>
 
           {/* Action Buttons */}
@@ -188,41 +218,69 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           </div>
 
           <nav className="mobile-nav-links">
-            <a
-              href="#catalog-items"
+            <button
               className="mob-link highlight"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/catalog/sheben');
+              }}
             >
               📦 Каталог нерудних матеріалів
-            </a>
-            <a
-              href="#prices"
+            </button>
+            <button
               className="mob-link"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/prices');
+              }}
             >
               💰 Прайс-лист
-            </a>
-            <a
-              href="#calculator"
+            </button>
+            <button
               className="mob-link"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/calculator');
+              }}
             >
               🧮 Калькулятор доставки
-            </a>
-            <a
-              href="#delivery"
+            </button>
+            <button
               className="mob-link"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/delivery');
+              }}
             >
-              🚚 Доставка самоскидами
-            </a>
-            <a
-              href="#warehouses"
+              🚚 Доставка самоскидами 10–40 т
+            </button>
+            <button
               className="mob-link"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/services');
+              }}
+            >
+              🚜 Послуги спецтехніки
+            </button>
+            <button
+              className="mob-link"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/warehouses');
+              }}
             >
               📍 Бази та кар'єри у Дніпрі
-            </a>
+            </button>
+            <button
+              className="mob-link"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/articles');
+              }}
+            >
+              📚 Статті та база знань
+            </button>
             <button
               className="mob-link text-left"
               onClick={() => {
@@ -232,13 +290,15 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
             >
               🏛️ Реквізити ТОВ "БЕНГС"
             </button>
-            <a
-              href="#contacts"
+            <button
               className="mob-link"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                navigate('#/contacts');
+              }}
             >
               📞 Контакти
-            </a>
+            </button>
           </nav>
 
           <button
@@ -317,6 +377,14 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           gap: 6px;
           text-decoration: none;
           color: inherit;
+        }
+
+        .ht-info-item.clickable {
+          cursor: pointer;
+        }
+
+        .ht-info-item.clickable:hover {
+          color: var(--c-green-dark);
         }
 
         .ht-email:hover {
@@ -445,7 +513,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           position: absolute;
           top: 100%;
           left: 0;
-          min-width: 250px;
+          min-width: 260px;
           background: #ffffff;
           border-radius: var(--radius-sm);
           box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
@@ -456,7 +524,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           z-index: 100;
         }
 
-        /* Continuous hover bridge */
         .submenu::before {
           content: '';
           position: absolute;
@@ -477,7 +544,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           to { opacity: 1; transform: translateY(0); }
         }
 
-        .submenu a, .submenu-btn-item {
+        .submenu-btn-item {
           padding: 10px 18px;
           font-size: 0.88rem;
           color: #334155;
@@ -492,7 +559,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           text-decoration: none;
         }
 
-        .submenu a:hover, .submenu-btn-item:hover {
+        .submenu-btn-item:hover {
           background-color: var(--c-green-light);
           color: var(--c-green-dark);
           padding-left: 22px;

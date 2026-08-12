@@ -1,14 +1,13 @@
 import React from 'react';
+import { useRouter } from '../context/RouterContext';
 import { MAIN_SECTIONS } from '../data/catalogData';
 import { ArrowRight, Layers } from 'lucide-react';
 
 export const CategoryGrid = ({ selectedSection, onSelectSection }) => {
+  const { navigate } = useRouter();
+
   const handleSectionClick = (sectionId) => {
-    onSelectSection(sectionId);
-    const target = document.getElementById('catalog-items');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    navigate(`#/catalog/${sectionId}`);
   };
 
   return (

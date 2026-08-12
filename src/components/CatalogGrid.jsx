@@ -1,8 +1,10 @@
 import React from 'react';
+import { useRouter } from '../context/RouterContext';
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { CheckCircle, ShieldCheck, ArrowRight, Truck } from 'lucide-react';
 
 export const CatalogGrid = ({ selectedSection, onSelectSection, onOpenOrderModal }) => {
+  const { navigate } = useRouter();
   // Filter products by selected section (defaults to 'sheben' or all)
   const currentSection = MAIN_SECTIONS.find(s => s.id === selectedSection) || MAIN_SECTIONS[1];
   const filteredProducts = ALL_PRODUCTS.filter(p => p.sectionId === selectedSection);
@@ -43,7 +45,11 @@ export const CatalogGrid = ({ selectedSection, onSelectSection, onOpenOrderModal
         <div className="catalog-products-grid">
           {filteredProducts.map((product) => (
             <div key={product.id} className="product-card-v2">
-              <div className="pc-v2-img-wrap">
+              <div
+                className="pc-v2-img-wrap"
+                onClick={() => navigate(`#/product/${product.id}`)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img
                   src={product.image}
                   alt={product.name}
@@ -56,7 +62,13 @@ export const CatalogGrid = ({ selectedSection, onSelectSection, onOpenOrderModal
               </div>
 
               <div className="pc-v2-body">
-                <h3 className="pc-v2-title">{product.name}</h3>
+                <h3
+                  className="pc-v2-title"
+                  onClick={() => navigate(`#/product/${product.id}`)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {product.name}
+                </h3>
 
                 <div className="pc-v2-pricing">
                   <span className="pc-v2-price-val">від {product.price} {product.priceUnit}</span>
@@ -94,8 +106,15 @@ export const CatalogGrid = ({ selectedSection, onSelectSection, onOpenOrderModal
                       priceUnit: product.priceUnit
                     })}
                   >
-                    <span>Замовити / Перейти</span>
-                    <ArrowRight size={15} />
+                    <span>Замовити</span>
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-outline btn-sm"
+                    onClick={() => navigate(`#/product/${product.id}`)}
+                  >
+                    <span>Детальніше</span>
+                    <ArrowRight size={14} />
                   </button>
                 </div>
               </div>

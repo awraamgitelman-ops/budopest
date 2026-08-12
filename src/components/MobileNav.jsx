@@ -1,18 +1,21 @@
 import React from 'react';
+import { useRouter } from '../context/RouterContext';
 import { Layers, Calculator, Phone, ShoppingBag, Search } from 'lucide-react';
 
 export const MobileNav = ({ onOpenOrderModal, onOpenSearchModal }) => {
+  const { navigate } = useRouter();
+
   return (
     <div className="mobile-bottom-nav">
-      <a href="#catalog" className="mbn-item">
+      <button onClick={() => navigate('#/catalog/sheben')} className="mbn-item btn-link-reset">
         <Layers size={20} />
         <span>Каталог</span>
-      </a>
+      </button>
 
-      <a href="#calculator" className="mbn-item">
+      <button onClick={() => navigate('#/calculator')} className="mbn-item btn-link-reset">
         <Calculator size={20} />
         <span>Розрахунок</span>
-      </a>
+      </button>
 
       <a href="tel:+380676863186" className="mbn-item call-btn">
         <div className="call-btn-circle">
