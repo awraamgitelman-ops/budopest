@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, Clock, Search, ChevronDown, Menu, X, FileText, Send } from 'lucide-react';
 import { MegaMenu } from './MegaMenu';
 
@@ -6,6 +6,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const megaMenuTimerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +19,19 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleMouseEnterMega = () => {
+    if (megaMenuTimerRef.current) {
+      clearTimeout(megaMenuTimerRef.current);
+    }
+    setIsMegaMenuOpen(true);
+  };
+
+  const handleMouseLeaveMega = () => {
+    megaMenuTimerRef.current = setTimeout(() => {
+      setIsMegaMenuOpen(false);
+    }, 250); // 250ms smooth grace period
+  };
 
   return (
     <header className="site-header">
@@ -89,9 +103,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
           {/* Desktop Nav */}
           <nav className="desktop-nav">
             <div
-              className="nav-item has-dropdown"
-              onMouseEnter={() => setIsMegaMenuOpen(true)}
-              onMouseLeave={() => setIsMegaMenuOpen(false)}
+              className="nav-item has-dropdown mega-trigger-wrapper"
+              onMouseEnter={handleMouseEnterMega}
+              onMouseLeave={handleMouseLeaveMega}
             >
               <button className={`nav-link catalog-trigger ${isMegaMenuOpen ? 'active' : ''}`}>
                 <span>Каталог</span>
@@ -165,61 +179,89 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Navigation Drawer */}
       {isMobileMenuOpen && (
-        <div className="mobile-drawer animate-fade">
-          <div className="mobile-drawer-inner">
-            <div className="mobile-phone-block">
-              <a href="tel:+380676863186" className="mobile-phone-link">
-                <Phone size={18} />
-                <span>+380 (67) 686-31-86</span>
-              </a>
-              <div className="mobile-worktime">ТОВ «БЕНГС» • Щоденно 09:00 — 20:00 (без вихідних)</div>
-            </div>
-
-            <div className="mobile-nav-links">
-              <a href="#catalog" onClick={() => setIsMobileMenuOpen(false)} className="mob-link highlight">
-                Каталог щебеню
-              </a>
-              <a href="#calculator" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Калькулятор вартості
-              </a>
-              <a href="#prices" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Прайс-лист / Ціни в грн
-              </a>
-              <a href="#advantages" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Переваги ТОВ «БЕНГС»
-              </a>
-              <a href="#delivery" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Доставка та самовивіз
-              </a>
-              <a href="#warehouses" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Бази та кар'єри (Дніпро)
-              </a>
-              <a href="#quality" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Якість за ДСТУ
-              </a>
-              <a href="#faq" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Питання та відповіді
-              </a>
-              <a href="#contacts" onClick={() => setIsMobileMenuOpen(false)} className="mob-link">
-                Контакти
-              </a>
-            </div>
-
-            <div className="mobile-actions">
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  onOpenOrderModal({ name: "Швидке замовлення щебеню" });
-                }}
-                className="btn btn-primary btn-block"
-              >
-                <Send size={16} />
-                <span>Зробити замовлення</span>
-              </button>
-            </div>
+        <div className="mobile-drawer animate-slide">
+          <div className="mobile-phone-block">
+            <a href="tel:+380676863186" className="mobile-phone-link">
+              <Phone size={18} />
+              <span>+380 (67) 686-31-86</span>
+            </a>
+            <div className="mobile-worktime">09:00 — 20:00 (Щоденно)</div>
           </div>
+
+          <nav className="mobile-nav-links">
+            <a
+              href="#catalog-items"
+              className="mob-link highlight"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              📦 Каталог нерудних матеріалів
+            </a>
+            <a
+              href="#prices"
+              className="mob-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              💰 Прайс-лист
+            </a>
+            <a
+              href="#calculator"
+              className="mob-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              🧮 Калькулятор доставки
+            </a>
+            <a
+              href="#delivery"
+              className="mob-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              🚚 Доставка самоскидами
+            </a>
+            <a
+              href="#warehouses"
+              className="mob-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              📍 Бази та кар'єри у Дніпрі
+            </a>
+            <button
+              className="mob-link text-left"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                onOpenLegalModal && onOpenLegalModal('requisites');
+              }}
+            >
+              🏛️ Реквізити ТОВ "БЕНГС"
+            </button>
+            <button
+              className="mob-link text-left"
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                onOpenCareerModal && onOpenCareerModal();
+              }}
+            >
+              💼 Вакансії (робота у Дніпрі)
+            </button>
+            <a
+              href="#contacts"
+              className="mob-link"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              📞 Контакти
+            </a>
+          </nav>
+
+          <button
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              onOpenOrderModal({ name: "Запит розрахунку вартості щебеню" });
+            }}
+            className="btn btn-primary btn-block"
+          >
+            <span>Розрахувати вартість з доставкою</span>
+          </button>
         </div>
       )}
 
@@ -227,68 +269,70 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         .site-header {
           position: sticky;
           top: 0;
-          z-index: 1000;
-          background: #ffffff;
+          z-index: 990;
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+          background-color: #ffffff;
         }
 
         .header-top {
-          background-color: #f7f9fa;
-          border-bottom: 1px solid #ebedf0;
-          font-size: 0.84rem;
-          color: #4b5563;
+          background-color: #f8fafc;
+          border-bottom: 1px solid #e2e8f0;
+          font-size: 0.8rem;
+          color: #475569;
           padding: 6px 0;
         }
 
         .header-top-inner {
           display: flex;
-          justify-content: space-between;
           align-items: center;
+          justify-content: space-between;
         }
 
         .ht-left, .ht-right {
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 16px;
         }
 
         .ht-phone {
-          font-weight: 700;
-          color: #1f2937;
           display: flex;
           align-items: center;
           gap: 6px;
-          transition: color 0.2s;
+          font-weight: 700;
+          color: #0f172a;
+          text-decoration: none;
         }
 
         .ht-phone:hover {
-          color: var(--c-green);
+          color: var(--c-green-dark);
         }
 
         .ht-whatsapp {
           display: flex;
           align-items: center;
-          gap: 5px;
-          color: #128c7e;
+          gap: 6px;
           font-weight: 600;
-          background: #e8f7ee;
+          color: #15803d;
+          background: #dcfce7;
           padding: 2px 8px;
           border-radius: 4px;
-          transition: transform 0.15s;
+          text-decoration: none;
         }
 
         .ht-whatsapp:hover {
-          transform: scale(1.03);
+          background: #bbf7d0;
         }
 
         .ht-email, .ht-info-item {
           display: flex;
           align-items: center;
           gap: 6px;
+          text-decoration: none;
+          color: inherit;
         }
 
         .ht-email:hover {
-          color: var(--c-green);
+          color: var(--c-green-dark);
         }
 
         .icon-green {
@@ -296,7 +340,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         }
 
         .icon-muted {
-          color: #9ca3af;
+          color: #94a3b8;
         }
 
         .ht-search-btn {
@@ -306,8 +350,10 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
           width: 28px;
           height: 28px;
           border-radius: 50%;
-          background: #e5e7eb;
-          color: #374151;
+          background: #e2e8f0;
+          border: none;
+          color: #334155;
+          cursor: pointer;
           transition: all 0.2s;
         }
 
@@ -318,7 +364,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
 
         .header-main {
           background-color: #ffffff;
-          padding: 12px 0;
+          padding: 10px 0;
           transition: all 0.2s ease;
         }
 
@@ -331,7 +377,12 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         .brand-logo {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 10px;
+          text-decoration: none;
+        }
+
+        .logo-svg {
+          flex-shrink: 0;
         }
 
         .brand-text {
@@ -342,16 +393,16 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         .brand-title {
           font-size: 1.45rem;
           font-weight: 900;
-          letter-spacing: 1px;
-          color: #80A541;
+          color: #0f172a;
           line-height: 1;
+          letter-spacing: -0.5px;
         }
 
         .brand-sub {
           font-size: 0.65rem;
           font-weight: 700;
-          letter-spacing: 1.5px;
-          color: #4F2B19;
+          color: var(--c-green-dark);
+          letter-spacing: 0.6px;
           margin-top: 2px;
         }
 
@@ -363,6 +414,8 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
 
         .nav-item {
           position: relative;
+          padding-bottom: 10px;
+          margin-bottom: -10px;
         }
 
         .nav-link {
@@ -372,9 +425,13 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
           padding: 8px 14px;
           font-size: 0.92rem;
           font-weight: 600;
-          color: #374151;
+          color: #334155;
           border-radius: var(--radius-sm);
           transition: all 0.15s;
+          text-decoration: none;
+          border: none;
+          background: transparent;
+          cursor: pointer;
         }
 
         .nav-link:hover, .nav-link.active {
@@ -383,8 +440,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         }
 
         .catalog-trigger {
-          background-color: #f3f4f6;
-          color: #111827;
+          background-color: #f1f5f9;
+          color: #0f172a;
+          font-weight: 700;
         }
 
         .chevron {
@@ -397,28 +455,44 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
 
         .submenu {
           position: absolute;
-          top: calc(100% + 4px);
+          top: 100%;
           left: 0;
-          min-width: 240px;
+          min-width: 250px;
           background: #ffffff;
           border-radius: var(--radius-sm);
-          box-shadow: var(--shadow-lg);
-          border: 1px solid #e5e7eb;
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+          border: 1px solid #e2e8f0;
           padding: 8px 0;
           display: none;
           flex-direction: column;
           z-index: 100;
         }
 
+        /* Continuous hover bridge */
+        .submenu::before {
+          content: '';
+          position: absolute;
+          top: -14px;
+          left: 0;
+          right: 0;
+          height: 14px;
+          background: transparent;
+        }
+
         .has-dropdown:hover .submenu {
           display: flex;
-          animation: slideDown 0.2s ease-out;
+          animation: slideDown 0.15s ease-out;
+        }
+
+        @keyframes slideDown {
+          from { opacity: 0; transform: translateY(-4px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
         .submenu a, .submenu-btn-item {
-          padding: 9px 16px;
+          padding: 10px 18px;
           font-size: 0.88rem;
-          color: #4b5563;
+          color: #334155;
           font-weight: 500;
           transition: all 0.15s;
           text-align: left;
@@ -427,12 +501,13 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
           cursor: pointer;
           width: 100%;
           display: block;
+          text-decoration: none;
         }
 
         .submenu a:hover, .submenu-btn-item:hover {
           background-color: var(--c-green-light);
           color: var(--c-green-dark);
-          padding-left: 20px;
+          padding-left: 22px;
         }
 
         .header-actions {
@@ -450,6 +525,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
           display: none;
           color: #1f2937;
           padding: 6px;
+          background: transparent;
+          border: none;
+          cursor: pointer;
         }
 
         .mobile-drawer {
@@ -460,7 +538,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         }
 
         .mobile-phone-block {
-          background: var(--c-gray-bg);
+          background: #f8fafc;
           padding: 14px;
           border-radius: var(--radius-sm);
           margin-bottom: 16px;
@@ -474,11 +552,12 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
           font-size: 1.15rem;
           font-weight: 700;
           color: var(--c-green-dark);
+          text-decoration: none;
         }
 
         .mobile-worktime {
           font-size: 0.8rem;
-          color: #6b7280;
+          color: #64748b;
           margin-top: 4px;
         }
 
@@ -493,9 +572,15 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
           padding: 12px 14px;
           font-size: 0.95rem;
           font-weight: 600;
-          color: #374151;
-          border-bottom: 1px solid #f3f4f6;
+          color: #334155;
+          border-bottom: 1px solid #f1f5f9;
           transition: background 0.15s;
+          text-decoration: none;
+          background: transparent;
+          border: none;
+          text-align: left;
+          cursor: pointer;
+          width: 100%;
         }
 
         .mob-link.highlight {
@@ -506,7 +591,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
         }
 
         .mob-link:hover {
-          background: #f9fafb;
+          background: #f8fafc;
           color: var(--c-green);
         }
 

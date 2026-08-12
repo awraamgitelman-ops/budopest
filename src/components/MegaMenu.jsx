@@ -31,11 +31,11 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
           <div className="mega-header">
             <h3 className="mega-cat-title">{activeCategory.name}</h3>
             <a
-              href="#catalog"
+              href="#catalog-items"
               onClick={onClose}
               className="mega-view-all"
             >
-              <span>Смотреть весь раздел</span>
+              <span>Переглянути весь розділ</span>
               <ArrowRight size={14} />
             </a>
           </div>
@@ -61,20 +61,34 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
       <style>{`
         .mega-menu-container {
           position: absolute;
-          top: calc(100% + 8px);
-          left: -80px;
+          top: 100%;
+          left: -40px;
+          margin-top: 4px;
           width: 920px;
           background: #ffffff;
           border-radius: var(--radius-md);
-          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
-          border: 1px solid #e5e7eb;
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.05);
+          border: 1px solid #e2e8f0;
           z-index: 1000;
-          overflow: hidden;
+          overflow: visible;
+        }
+
+        /* Invisible bridge above menu to keep hover alive when moving cursor */
+        .mega-menu-container::before {
+          content: '';
+          position: absolute;
+          top: -16px;
+          left: 0;
+          right: 0;
+          height: 16px;
+          background: transparent;
         }
 
         .mega-menu-inner {
           display: flex;
           min-height: 480px;
+          border-radius: var(--radius-md);
+          overflow: hidden;
         }
 
         .mega-categories-list {
@@ -98,6 +112,9 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
           border-radius: 6px;
           text-align: left;
           transition: all 0.15s;
+          border: none;
+          background: transparent;
+          cursor: pointer;
         }
 
         .mega-category-btn:hover, .mega-category-btn.active {
@@ -138,6 +155,7 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
           font-size: 0.88rem;
           font-weight: 600;
           color: var(--c-green-dark);
+          text-decoration: none;
           transition: color 0.15s;
         }
 
@@ -152,13 +170,13 @@ export const MegaMenu = ({ onClose, onSelectProduct }) => {
         }
 
         .mega-sub-card {
-          padding: 10px 14px;
-          border: 1px solid #f1f5f9;
+          padding: 12px 14px;
+          border: 1px solid #e2e8f0;
           border-radius: 6px;
           background: #ffffff;
           display: flex;
           flex-direction: column;
-          gap: 3px;
+          gap: 4px;
           cursor: pointer;
           transition: all 0.15s;
         }
