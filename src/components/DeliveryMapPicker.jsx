@@ -51,6 +51,22 @@ const calculateDistanceKm = (lat1, lon1, lat2, lon2) => {
   return Math.round(R * c * 10) / 10;
 };
 
+// Find closest quarry hub among BENGS_HUBS for given target lat, lng
+const getClosestHub = (targetLat, targetLng) => {
+  let minDistance = Infinity;
+  let closest = BENGS_HUBS[0];
+
+  BENGS_HUBS.forEach(hub => {
+    const dist = calculateDistanceKm(hub.lat, hub.lng, targetLat, targetLng);
+    if (dist < minDistance) {
+      minDistance = dist;
+      closest = hub;
+    }
+  });
+
+  return { hub: closest, distance: minDistance };
+};
+
 // Map coordinates and distance to DELIVERY_ZONES
 const resolveZoneByCoords = (lat, lng, distKm) => {
   if (distKm <= 12) {
@@ -139,12 +155,25 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     };
   }, []);
 
-  // Recalculate distance and zone strictly from quarry hubs (excluding office)
-  const updateLocation = (lat, lng, addressName = '', targetHubId = selectedHubId) => {
-    const found = BENGS_HUBS.find(h => h.id === targetHubId) || BENGS_HUBS[0];
-    const dist = calculateDistanceKm(found.lat, found.lng, lat, lng);
+  // Update location and auto-detect closest quarry or use override quarry
+  const updateLocation = (lat, lng, addressName = '', overrideHubId = null) => {
+    let effectiveHub = BENGS_HUBS[0];
+    let dist = 0;
 
-    setActiveHub(found);
+    if (overrideHubId) {
+      // User manually selected from dropdown or clicked a specific quarry marker
+      effectiveHub = BENGS_HUBS.find(h => h.id === overrideHubId) || BENGS_HUBS[0];
+      dist = calculateDistanceKm(effectiveHub.lat, effectiveHub.lng, lat, lng);
+      setSelectedHubId(effectiveHub.id);
+    } else {
+      // Automatically detect closest quarry on map click / drag / address search
+      const closest = getClosestHub(lat, lng);
+      effectiveHub = closest.hub;
+      dist = closest.distance;
+      setSelectedHubId(closest.hub.id);
+    }
+
+    setActiveHub(effectiveHub);
     setActiveCoords({ lat, lng });
     setCalculatedDistance(dist);
     const finalName = addressName || `Точка на карті (${lat.toFixed(4)}, ${lng.toFixed(4)})`;
@@ -157,7 +186,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       addressName: finalName,
       lat,
       lng,
-      hubName: found.shortName
+      hubName: effectiveHub.shortName
     });
 
     if (mapInstanceRef.current && window.L) {
@@ -167,7 +196,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
             <strong style="color: #15803d; font-size: 14px;">Точка доставки:</strong><br/>
             <b>${finalName}</b><br/>
-            <span style="color: #64748b;">Відстань від кар'єра/бази (${found.shortName}): <b>${dist} км</b></span>
+            <span style="color: #64748b;">Найближчий кар'єр (${effectiveHub.shortName}): <b>${dist} км</b></span>
           </div>
         `;
         const popup = userMarkerRef.current.getPopup();
@@ -180,7 +209,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
 
       if (lineRef.current) {
         lineRef.current.setLatLngs([
-          [found.lat, found.lng],
+          [effectiveHub.lat, effectiveHub.lng],
           [lat, lng]
         ]);
       }
@@ -221,7 +250,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
         <strong style="color: #334155; font-size: 14px;">${OFFICE_COORDS.name}</strong><br/>
         <span style="color: #64748b;">${OFFICE_COORDS.address}</span><br/>
-        <small style="color: #94a3b8;">Розрахунок доставки здійснюється від кар'єрів/баз</small>
+        <small style="color: #94a3b8;">Розрахунок доставки здійснюється від найближчого кар'єра</small>
       </div>
     `);
 
@@ -244,7 +273,6 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       `);
 
       marker.on('click', () => {
-        setSelectedHubId(hub.id);
         updateLocation(activeCoords.lat, activeCoords.lng, currentAddressName, hub.id);
       });
 
@@ -288,7 +316,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     ).addTo(map);
     lineRef.current = line;
 
-    updateLocation(initialLat, initialLng, currentAddressName, BENGS_HUBS[0].id);
+    updateLocation(initialLat, initialLng, currentAddressName);
 
     return () => {
       map.remove();
@@ -299,7 +327,6 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
   // Handle Hub selection change from UI dropdown
   const handleHubSelectChange = (e) => {
     const hubId = e.target.value;
-    setSelectedHubId(hubId);
     updateLocation(activeCoords.lat, activeCoords.lng, currentAddressName, hubId);
   };
 
@@ -366,7 +393,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       <div className="quarry-select-card">
         <div className="qsc-header">
           <Warehouse size={16} className="text-green" />
-          <span className="qsc-title">Кар'єр / База відвантаження (звідки рахувати доставку):</span>
+          <span className="qsc-title">Кар'єр / База відвантаження (автоматично найближча):</span>
         </div>
         <div className="qsc-select-wrapper">
           <select
@@ -428,7 +455,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           <div>
             <div className="mc-address">{currentAddressName}</div>
             <div className="mc-details">
-              Відстань від кар'єра/бази (<strong>{activeHub.shortName}</strong>): <strong>{calculatedDistance} км</strong> • Зона: <strong className="text-green">{selectedZone.name.split('(')[0]}</strong>
+              Відстань від найближчого кар'єра (<strong>{activeHub.shortName}</strong>): <strong>{calculatedDistance} км</strong> • Зона: <strong className="text-green">{selectedZone.name.split('(')[0]}</strong>
             </div>
           </div>
         </div>
