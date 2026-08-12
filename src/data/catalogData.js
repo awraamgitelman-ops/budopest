@@ -464,13 +464,13 @@ export const ALL_PRODUCTS = [
     price: 180,
     priceUnit: "грн/т",
     priceM3: 240,
-    fractions: ["котлованний"],
+    fractions: ["котлованний / суглинок"],
     strength: "Підсипка",
     frost: "F-",
     flakiness: "масив",
     density: "1.40 т/м3",
-    image: "/images/img_91fe97e7af.jpg",
-    description: "Ґрунт для зворотного засипання котлованів, вирівнювання рельєфу та підняття рівня ділянки."
+    image: "/images/img_suhlynok.jpg",
+    description: "Щільний котлованний суглинок (планувальний ґрунт) для підняття рівня ділянки, зворотного засипання котлованів, фундаментів та вирівнювання рельєфу."
   },
   {
     id: "grunt-bigbeg",
