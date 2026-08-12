@@ -60,7 +60,7 @@ export const MAIN_SECTIONS = [
     name: "Керамзит",
     price: "від 1 450 грн/м³",
     priceM3: "від 1 450 грн/м³",
-    image: "/images/img_ad97ca335b.jpg",
+    image: "/images/img_keramzyt_20_40.jpg",
     itemsCount: 4,
     description: "Легкий утеплювач і заповнювач для стяжок, перекриттів та покрівель."
   },
@@ -739,7 +739,7 @@ export const ALL_PRODUCTS = [
     frost: "F50",
     flakiness: "легкий",
     density: "0.35 т/м3",
-    image: "/images/img_e850e60075.jpg",
+    image: "/images/img_keramzyt_20_40.jpg",
     description: "Найдрібніша насипна щільність. Найкращий утеплювач для засипки стін, перекриттів і підвалів."
   },
   {
