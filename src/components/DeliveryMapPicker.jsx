@@ -211,13 +211,19 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     if (mapInstanceRef.current && window.L) {
       if (userMarkerRef.current) {
         userMarkerRef.current.setLatLng([lat, lng]);
-        userMarkerRef.current.getPopup().setContent(`
+        const popupContent = `
           <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
             <strong style="color: #15803d; font-size: 14px;">📍 Точка доставки:</strong><br/>
             <b>${finalName}</b><br/>
             <span style="color: #64748b;">Відстань від бази (${effectiveHub.shortName}): <b>${dist} км</b></span>
           </div>
-        `);
+        `;
+        const popup = userMarkerRef.current.getPopup();
+        if (popup) {
+          popup.setContent(popupContent);
+        } else {
+          userMarkerRef.current.bindPopup(popupContent);
+        }
       }
 
       if (lineRef.current) {
