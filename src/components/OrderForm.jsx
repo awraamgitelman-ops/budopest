@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ShieldCheck, PhoneCall, Clock } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, PhoneCall, Clock, AlertCircle } from 'lucide-react';
+import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 
 export const OrderForm = () => {
   const [formData, setFormData] = useState({
@@ -11,16 +12,38 @@ export const OrderForm = () => {
     comment: ''
   });
 
+  const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    let formattedVal = value;
+    if (name === 'phone') {
+      formattedVal = formatPhoneInput(value);
+    }
+    setFormData(prev => ({ ...prev, [name]: formattedVal }));
+
+    // Clear error on user edit
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: null }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const nameErr = validateName(formData.name);
+    const phoneErr = validatePhone(formData.phone);
+
+    if (nameErr || phoneErr) {
+      setErrors({
+        name: nameErr,
+        phone: phoneErr
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -115,16 +138,20 @@ export const OrderForm = () => {
 
                   <div className="form-row-2">
                     <div className="form-group">
-                      <label>Ваше ім'я</label>
+                      <label>Ваше ім'я <span className="req">*</span></label>
                       <input
                         type="text"
                         name="name"
-                        required
                         placeholder="Олександр"
                         value={formData.name}
                         onChange={handleChange}
-                        className="form-input"
+                        className={`form-input ${errors.name ? 'input-error' : ''}`}
                       />
+                      {errors.name && (
+                        <span className="field-error-text">
+                          <AlertCircle size={13} /> {errors.name}
+                        </span>
+                      )}
                     </div>
 
                     <div className="form-group">
@@ -132,12 +159,16 @@ export const OrderForm = () => {
                       <input
                         type="tel"
                         name="phone"
-                        required
                         placeholder="+380 (__) ___-__-__"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="form-input"
+                        className={`form-input ${errors.phone ? 'input-error' : ''}`}
                       />
+                      {errors.phone && (
+                        <span className="field-error-text">
+                          <AlertCircle size={13} /> {errors.phone}
+                        </span>
+                      )}
                     </div>
                   </div>
 

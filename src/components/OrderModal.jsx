@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2 } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle } from 'lucide-react';
+import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 
 export const OrderModal = ({ isOpen, onClose, initialData }) => {
   const [name, setName] = useState('');
@@ -7,6 +8,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
   const [product, setProduct] = useState('');
   const [volume, setVolume] = useState('25 тонн');
   const [address, setAddress] = useState('');
+  const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -19,13 +21,37 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
     if (initialData?.phone) {
       setPhone(initialData.phone);
     }
+    setErrors({});
     setIsSuccess(false);
   }, [initialData, isOpen]);
 
   if (!isOpen) return null;
 
+  const handlePhoneChange = (e) => {
+    const formatted = formatPhoneInput(e.target.value);
+    setPhone(formatted);
+    if (errors.phone) setErrors(prev => ({ ...prev, phone: null }));
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    if (errors.name) setErrors(prev => ({ ...prev, name: null }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const nameErr = validateName(name);
+    const phoneErr = validatePhone(phone);
+
+    if (nameErr || phoneErr) {
+      setErrors({
+        name: nameErr,
+        phone: phoneErr
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -38,7 +64,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
           product: product || initialData?.name || 'Нерудні матеріали',
           quantity: volume,
           address: address,
-          details: initialData?.details || null,
+          details: initialData?.details || initialData?.calcDetails || null,
           page: window.location.hash || 'Модальне вікно замовлення',
           source: initialData?.name ? `Швидке замовлення (${initialData.name})` : 'Швидке замовлення на сайті'
         })
@@ -98,27 +124,35 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
 
             <form onSubmit={handleSubmit} className="modal-form">
               <div className="form-group">
-                <label>Ваше ім'я</label>
+                <label>Ваше ім'я <span className="req">*</span></label>
                 <input
                   type="text"
-                  required
                   placeholder="Олексій"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="modal-input"
+                  onChange={handleNameChange}
+                  className={`modal-input ${errors.name ? 'input-error' : ''}`}
                 />
+                {errors.name && (
+                  <span className="field-error-text">
+                    <AlertCircle size={13} /> {errors.name}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
                 <label>Номер телефону <span className="req">*</span></label>
                 <input
                   type="tel"
-                  required
                   placeholder="+380 (__) ___-__-__"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="modal-input"
+                  onChange={handlePhoneChange}
+                  className={`modal-input ${errors.phone ? 'input-error' : ''}`}
                 />
+                {errors.phone && (
+                  <span className="field-error-text">
+                    <AlertCircle size={13} /> {errors.phone}
+                  </span>
+                )}
               </div>
 
               <div className="form-row-modal">

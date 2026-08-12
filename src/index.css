@@ -348,3 +348,27 @@ img {
     margin-bottom: 24px;
   }
 }
+
+/* Validation & Form Error Styles */
+.input-error {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.field-error-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #dc2626;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 4px;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+span.req {
+  color: #ef4444;
+  font-weight: 700;
+  margin-left: 2px;
+}
