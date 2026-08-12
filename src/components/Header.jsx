@@ -129,6 +129,11 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               navigate('#/');
             }}
           >
+            <img
+              src="/images/logo_rud_monolit.png"
+              alt="РУД МОНОЛІТ"
+              className="header-logo-img"
+            />
             <div className="brand-text">
               <span className="brand-title">РУД МОНОЛІТ</span>
               <span className="brand-sub">НЕРУДНІ МАТЕРІАЛИ • ДНІПРО</span>
@@ -470,7 +475,11 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           text-decoration: none;
         }
 
-        .logo-svg {
+        .header-logo-img {
+          width: 44px;
+          height: 44px;
+          object-fit: contain;
+          border-radius: 6px;
           flex-shrink: 0;
         }
 
