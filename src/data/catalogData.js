@@ -330,7 +330,7 @@ export const ALL_PRODUCTS = [
     frost: "F200",
     flakiness: "до 10%",
     density: "1.37 т/м3",
-    image: "/images/img_e55fdaa58f.jpg",
+    image: "/images/img_mytyj_sheben.jpg",
     description: "Повністю очищений від глини та пилоподібних часток матеріал для відповідальних бетонних розчинів та дренажу."
   },
   {
@@ -360,7 +360,7 @@ export const ALL_PRODUCTS = [
     frost: "F300",
     flakiness: "колотий / окатаний",
     density: "1.45 т/м3",
-    image: "/images/img_ed6040e4c2.jpg",
+    image: "/images/img_sheben_gabiony.webp",
     description: "Відбірний гранітний камінь для сітчастих габіонних конструкцій, захисних бар'єрів та берегоукріплення."
   },
   {
