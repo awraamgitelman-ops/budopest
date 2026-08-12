@@ -1552,3 +1552,21 @@ span.req {
   box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15) !important;
 }
 
+/* Fix Address Input Pin Icon & Text Overlap */
+.address-input-bar-embedded .addr-left-pin-icon {
+  position: absolute !important;
+  left: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: var(--c-green-dark) !important;
+  pointer-events: none !important;
+  z-index: 5 !important;
+}
+
+input.form-input.addr-input-with-button,
+input.modal-input.addr-input-with-button,
+.addr-input-with-button {
+  padding-left: 42px !important;
+  padding-right: 100px !important;
+}
+
