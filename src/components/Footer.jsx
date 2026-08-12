@@ -1,7 +1,7 @@
 import React from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Building2, Briefcase, FileText, Shield, CheckCircle2 } from 'lucide-react';
 
-export const Footer = () => {
+export const Footer = ({ onOpenLegalModal, onOpenCareerModal }) => {
   return (
     <footer id="contacts" className="site-footer">
       <div className="container">
@@ -33,60 +33,90 @@ export const Footer = () => {
 
               <div className="footer-contact-item address">
                 <MapPin size={16} />
-                <span>ТОВ "БЕНГС" (ЄДРПОУ 41963896, засн. 2018 р.), Україна, м. Дніпро, вул. Журналістів, 9</span>
+                <span>ТОВ "БЕНГС" (ЄДРПОУ 41963896, засн. 2018 р.), м. Дніпро, вул. Журналістів, 9</span>
               </div>
             </div>
 
             <div className="footer-sub-links">
-              <a href="#warehouses">Схема проїзду</a>
-              <a href="#catalog">Карта сайту</a>
+              <button onClick={() => onOpenLegalModal('requisites')} className="footer-btn-link">
+                <Building2 size={13} />
+                <span>Реквізити ТОВ "БЕНГС"</span>
+              </button>
+              <button onClick={() => onOpenCareerModal()} className="footer-btn-link career-highlight">
+                <Briefcase size={13} />
+                <span>Вакансії (робота у Дніпрі)</span>
+              </button>
             </div>
           </div>
 
-          {/* Col 2: Розділи */}
+          {/* Col 2: Каталог продукції */}
           <div className="footer-col">
-            <h4 className="footer-heading">Розділи</h4>
+            <h4 className="footer-heading">Каталог матеріалів</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog">Каталог щебеню</a></li>
-              <li><a href="#prices">Прайс-лист</a></li>
-              <li><a href="#services">Послуги спецтехніки</a></li>
-              <li><a href="#delivery">Доставка та оплата</a></li>
-              <li><a href="#about">Про ТОВ «БЕНГС»</a></li>
-              <li><a href="#articles">Статті</a></li>
-              <li><a href="#contacts">Контакти</a></li>
+              <li><a href="#catalog-items">Гранітний щебінь (5-20, 20-40)</a></li>
+              <li><a href="#catalog-items">Шлаковий щебінь (доменний)</a></li>
+              <li><a href="#catalog-items">Річковий пісок (Дніпро, митий)</a></li>
+              <li><a href="#catalog-items">ЩПС С5, С7 (щебенево-піщана суміш)</a></li>
+              <li><a href="#catalog-items">ПГС та ОПГС для бетону</a></li>
+              <li><a href="#catalog-items">Чорнозем та родючий ґрунт</a></li>
+              <li><a href="#catalog-items">Керамзит утеплювач</a></li>
+              <li><a href="#catalog-items">Річкова галька та бутовий камінь</a></li>
             </ul>
           </div>
 
-          {/* Col 3: Нерудні матеріали */}
+          {/* Col 3: Послуги та клієнтам */}
           <div className="footer-col">
-            <h4 className="footer-heading">Нерудні матеріали</h4>
+            <h4 className="footer-heading">Клієнтам та партнерам</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog">Гранітний щебінь</a></li>
-              <li><a href="#catalog">Шлаковий щебінь</a></li>
-              <li><a href="#catalog">Гранітний відсів (0-5 мм)</a></li>
-              <li><a href="#catalog">Гравійний щебінь</a></li>
-              <li><a href="#catalog">Бутовий камінь</a></li>
-              <li><a href="#catalog">Пісок річковий</a></li>
-              <li><a href="#catalog">ЩПС / ПГС</a></li>
-              <li><a href="#catalog">Вторинний щебінь</a></li>
+              <li><a href="#prices">Прайс-лист за тонну та м³</a></li>
+              <li><a href="#calculator">Калькулятор об'єму та ваги</a></li>
+              <li><a href="#delivery">Доставка самоскидами 10–40 т</a></li>
+              <li><a href="#warehouses">Перевалки та автоваги у Дніпрі</a></li>
+              <li><a href="#faq">Часті запитання (FAQ)</a></li>
+              <li>
+                <button onClick={() => onOpenCareerModal()} className="footer-nav-btn">
+                  Вакансії водіїв та менеджерів
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Col 4: Інші матеріали & Badge */}
+          {/* Col 4: Юридичний блок & Документи */}
           <div className="footer-col">
-            <h4 className="footer-heading">Інші матеріали</h4>
+            <h4 className="footer-heading">Правова інформація</h4>
             <ul className="footer-nav-list">
-              <li><a href="#catalog">Протиожеледні реагенти</a></li>
-              <li><a href="#catalog">Родючий ґрунт / Чорнозем</a></li>
-              <li><a href="#catalog">Кам'яне вугілля</a></li>
+              <li>
+                <button onClick={() => onOpenLegalModal('requisites')} className="footer-nav-btn">
+                  <Building2 size={14} className="f-icon" />
+                  <span>Реквізити та код ЄДРПОУ</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenLegalModal('offer')} className="footer-nav-btn">
+                  <FileText size={14} className="f-icon" />
+                  <span>Публічна оферта (Договір)</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenLegalModal('delivery')} className="footer-nav-btn">
+                  <CheckCircle2 size={14} className="f-icon" />
+                  <span>Правила відвантаження та ТТН</span>
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onOpenLegalModal('privacy')} className="footer-nav-btn">
+                  <Shield size={14} className="f-icon" />
+                  <span>Політика конфіденційності</span>
+                </button>
+              </li>
             </ul>
 
             <div className="portal-badge-card">
               <div className="pb-icon-box">
-                <div className="pb-square"></div>
+                <CheckCircle2 size={20} color="#80A541" />
               </div>
               <div className="pb-text">
-                ТОВ «БЕНГС» (ЄДРПОУ 41963896) — ВЕРИФІКОВАНИЙ ПОСТАЧАЛЬНИК PROZORRO
+                ТОВ «БЕНГС» (ЄДРПОУ 41963896) — ОФІЦІЙНИЙ ПЛАТНИК ПОДАТКІВ З 2018 РОКУ
               </div>
             </div>
           </div>
@@ -95,21 +125,31 @@ export const Footer = () => {
         {/* Bottom Bar */}
         <div className="footer-bottom-bar">
           <div className="fb-copyright">
-            © 2018–2026, ТОВ «БЕНГС» (ЄДРПОУ 41963896). Всі права захищені.
+            © 2018–2026, ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "БЕНГС" (ЄДРПОУ 41963896). Всі права захищені.
           </div>
-          <div className="fb-privacy">
-            <a href="#">Політика конфіденційності</a>
+          <div className="fb-privacy-links">
+            <button onClick={() => onOpenLegalModal('offer')} className="footer-mini-btn">
+              Публічна оферта
+            </button>
+            <span className="sep">•</span>
+            <button onClick={() => onOpenLegalModal('privacy')} className="footer-mini-btn">
+              Політика конфіденційності
+            </button>
+            <span className="sep">•</span>
+            <button onClick={() => onOpenLegalModal('requisites')} className="footer-mini-btn">
+              Реквізити
+            </button>
           </div>
         </div>
 
         <div className="footer-disclaimer">
-          Інформація та ціни на сайті мають ознайомчий характер та розраховуються індивідуально відповідно до обсягу та відстані доставки.
+          Офіційне постачання нерудних будівельних матеріалів з дотриманням нормативів ДСТУ Б В.2.7-75-98. Графік роботи перевалок та логістики: 09:00 — 20:00 щоденно.
         </div>
       </div>
 
       <style>{`
         .site-footer {
-          background-color: #1f1d1b;
+          background-color: #1a1918;
           color: #d1d5db;
           padding: 60px 0 24px;
           border-top: 4px solid var(--c-green);
@@ -117,9 +157,14 @@ export const Footer = () => {
 
         .footer-main-grid {
           display: grid;
-          grid-template-columns: 1.3fr 1fr 1fr 1.2fr;
-          gap: 40px;
-          margin-bottom: 48px;
+          grid-template-columns: 1.3fr 1.1fr 1fr 1.2fr;
+          gap: 36px;
+          margin-bottom: 40px;
+        }
+
+        .footer-brand-col {
+          display: flex;
+          flex-direction: column;
         }
 
         .footer-logo {
@@ -129,20 +174,25 @@ export const Footer = () => {
           margin-bottom: 20px;
         }
 
+        .brand-text {
+          display: flex;
+          flex-direction: column;
+        }
+
         .footer-brand-title {
-          font-size: 1.45rem;
+          font-size: 1.4rem;
           font-weight: 900;
-          letter-spacing: 1px;
-          color: #80A541;
-          display: block;
+          color: #ffffff;
+          letter-spacing: 0.5px;
           line-height: 1;
         }
 
         .footer-brand-sub {
-          font-size: 0.65rem;
+          font-size: 0.68rem;
           font-weight: 700;
-          color: #9ca3af;
-          letter-spacing: 1.5px;
+          color: var(--c-green);
+          letter-spacing: 0.8px;
+          margin-top: 3px;
         }
 
         .footer-contact-list {
@@ -156,114 +206,195 @@ export const Footer = () => {
           display: flex;
           align-items: flex-start;
           gap: 10px;
-          font-size: 0.9rem;
-          color: #e5e7eb;
+          font-size: 0.88rem;
+          color: #cbd5e1;
+          line-height: 1.4;
+          text-decoration: none;
           transition: color 0.15s;
         }
 
         .footer-contact-item.phone {
-          font-size: 1.15rem;
-          font-weight: 700;
+          font-size: 1.05rem;
+          font-weight: 800;
           color: #ffffff;
         }
 
-        .footer-contact-item.mail {
-          color: #80A541;
-          font-weight: 600;
+        .footer-contact-item.phone:hover,
+        .footer-contact-item.mail:hover {
+          color: var(--c-green);
         }
 
-        .footer-contact-item:hover {
-          color: #80A541;
+        .footer-contact-item svg {
+          color: var(--c-green);
+          flex-shrink: 0;
+          margin-top: 2px;
         }
 
         .footer-sub-links {
           display: flex;
-          gap: 18px;
+          flex-direction: column;
+          gap: 8px;
+          margin-top: auto;
+        }
+
+        .footer-btn-link {
+          background: transparent;
+          border: 1px solid #334155;
+          color: #94a3b8;
           font-size: 0.82rem;
+          font-weight: 700;
+          padding: 8px 12px;
+          border-radius: 6px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+          transition: all 0.15s;
+          text-align: left;
         }
 
-        .footer-sub-links a {
-          color: #9ca3af;
-          text-decoration: underline;
-        }
-
-        .footer-sub-links a:hover {
+        .footer-btn-link:hover {
           color: #ffffff;
+          border-color: var(--c-green);
+          background: rgba(133, 180, 42, 0.1);
+        }
+
+        .footer-btn-link.career-highlight {
+          color: #ffffff;
+          border-color: var(--c-green);
+          background: rgba(133, 180, 42, 0.15);
         }
 
         .footer-heading {
-          font-size: 1.05rem;
+          font-size: 0.95rem;
           font-weight: 800;
-          color: #80A541;
+          color: #ffffff;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
           margin-bottom: 18px;
+          position: relative;
+          padding-bottom: 8px;
+        }
+
+        .footer-heading::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 30px;
+          height: 2px;
+          background-color: var(--c-green);
         }
 
         .footer-nav-list {
           list-style: none;
+          padding: 0;
+          margin: 0;
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 9px;
         }
 
         .footer-nav-list a {
-          font-size: 0.9rem;
-          color: #cbd5e1;
+          color: #94a3b8;
+          font-size: 0.85rem;
+          text-decoration: none;
           transition: all 0.15s;
+          display: block;
         }
 
         .footer-nav-list a:hover {
-          color: #80A541;
-          padding-left: 4px;
+          color: #ffffff;
+          transform: translateX(3px);
+        }
+
+        .footer-nav-btn {
+          background: transparent;
+          border: none;
+          color: #94a3b8;
+          font-size: 0.85rem;
+          padding: 0;
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          transition: all 0.15s;
+          text-align: left;
+        }
+
+        .footer-nav-btn:hover {
+          color: #ffffff;
+          transform: translateX(3px);
+        }
+
+        .f-icon {
+          color: var(--c-green);
+          flex-shrink: 0;
         }
 
         .portal-badge-card {
-          margin-top: 24px;
-          background: #ffffff;
-          color: #0f172a;
+          margin-top: 20px;
+          padding: 12px;
+          background: #262422;
+          border: 1px solid #383532;
           border-radius: 8px;
-          padding: 14px 18px;
           display: flex;
           align-items: center;
-          gap: 12px;
-        }
-
-        .pb-square {
-          width: 34px;
-          height: 34px;
-          border: 4px solid #0284c7;
-          border-radius: 4px;
+          gap: 10px;
         }
 
         .pb-text {
           font-size: 0.72rem;
-          font-weight: 800;
-          line-height: 1.25;
-          letter-spacing: 0.5px;
-          color: #1e293b;
+          font-weight: 700;
+          color: #cbd5e1;
+          line-height: 1.3;
         }
 
         .footer-bottom-bar {
-          border-top: 1px solid #332f2c;
           padding-top: 24px;
-          margin-bottom: 12px;
+          border-top: 1px solid #2d2b28;
           display: flex;
+          align-items: center;
           justify-content: space-between;
           font-size: 0.82rem;
-          color: #9ca3af;
+          color: #64748b;
+          flex-wrap: wrap;
+          gap: 12px;
         }
 
-        .fb-privacy a {
-          color: #9ca3af;
+        .fb-copyright {
+          font-weight: 600;
+        }
+
+        .fb-privacy-links {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .footer-mini-btn {
+          background: transparent;
+          border: none;
+          color: #94a3b8;
+          font-size: 0.82rem;
+          cursor: pointer;
+          padding: 0;
           transition: color 0.15s;
         }
 
-        .fb-privacy a:hover {
-          color: #ffffff;
+        .footer-mini-btn:hover {
+          color: var(--c-green);
+          text-decoration: underline;
+        }
+
+        .sep {
+          color: #475569;
         }
 
         .footer-disclaimer {
-          font-size: 0.72rem;
-          color: #6b7280;
+          margin-top: 14px;
+          font-size: 0.76rem;
+          color: #475569;
           text-align: center;
           line-height: 1.4;
         }
@@ -271,17 +402,18 @@ export const Footer = () => {
         @media (max-width: 1024px) {
           .footer-main-grid {
             grid-template-columns: 1fr 1fr;
-            gap: 32px;
+            gap: 30px;
           }
         }
 
         @media (max-width: 640px) {
           .footer-main-grid {
             grid-template-columns: 1fr;
+            gap: 28px;
           }
           .footer-bottom-bar {
             flex-direction: column;
-            gap: 8px;
+            align-items: flex-start;
           }
         }
       `}</style>

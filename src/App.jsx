@@ -15,12 +15,17 @@ import { OrderForm } from './components/OrderForm';
 import { Footer } from './components/Footer';
 import { OrderModal } from './components/OrderModal';
 import { SearchModal } from './components/SearchModal';
+import { LegalModal } from './components/LegalModal';
+import { CareerModal } from './components/CareerModal';
 import { MobileNav } from './components/MobileNav';
 
 export function App() {
   const [selectedSection, setSelectedSection] = useState('sheben');
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const [legalModalOpen, setLegalModalOpen] = useState(false);
+  const [legalTab, setLegalTab] = useState('requisites');
+  const [careerModalOpen, setCareerModalOpen] = useState(false);
   const [modalInitialData, setModalInitialData] = useState(null);
 
   const handleOpenOrder = (productData = {}) => {
@@ -30,6 +35,15 @@ export function App() {
 
   const handleOpenSearch = () => {
     setSearchModalOpen(true);
+  };
+
+  const handleOpenLegal = (tab = 'requisites') => {
+    setLegalTab(tab);
+    setLegalModalOpen(true);
+  };
+
+  const handleOpenCareer = () => {
+    setCareerModalOpen(true);
   };
 
   const handleSelectProductFromSearch = (product) => {
@@ -42,6 +56,8 @@ export function App() {
       <Header
         onOpenOrderModal={handleOpenOrder}
         onOpenSearchModal={handleOpenSearch}
+        onOpenLegalModal={handleOpenLegal}
+        onOpenCareerModal={handleOpenCareer}
       />
 
       <main>
@@ -71,7 +87,10 @@ export function App() {
         <OrderForm />
       </main>
 
-      <Footer />
+      <Footer
+        onOpenLegalModal={handleOpenLegal}
+        onOpenCareerModal={handleOpenCareer}
+      />
 
       <MobileNav
         onOpenOrderModal={handleOpenOrder}
@@ -88,6 +107,18 @@ export function App() {
         isOpen={searchModalOpen}
         onClose={() => setSearchModalOpen(false)}
         onSelectProduct={handleSelectProductFromSearch}
+      />
+
+      <LegalModal
+        isOpen={legalModalOpen}
+        onClose={() => setLegalModalOpen(false)}
+        initialTab={legalTab}
+      />
+
+      <CareerModal
+        isOpen={careerModalOpen}
+        onClose={() => setCareerModalOpen(false)}
+        onOpenOrderModal={handleOpenOrder}
       />
     </div>
   );
