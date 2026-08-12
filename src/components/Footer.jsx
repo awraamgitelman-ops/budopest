@@ -150,25 +150,25 @@ export const Footer = ({ onOpenLegalModal }) => {
             <h4 className="footer-heading">Інформація</h4>
             <ul className="footer-nav-list">
               <li>
-                <button onClick={() => onOpenLegalModal && onOpenLegalModal('requisites')} className="footer-nav-btn">
+                <button onClick={() => navigate('#/legal/requisites')} className="footer-nav-btn">
                   <Building2 size={14} className="f-icon" />
                   <span>Реквізити компанії</span>
                 </button>
               </li>
               <li>
-                <button onClick={() => onOpenLegalModal && onOpenLegalModal('offer')} className="footer-nav-btn">
+                <button onClick={() => navigate('#/legal/offer')} className="footer-nav-btn">
                   <FileText size={14} className="f-icon" />
                   <span>Публічна оферта (Договір)</span>
                 </button>
               </li>
               <li>
-                <button onClick={() => onOpenLegalModal && onOpenLegalModal('delivery')} className="footer-nav-btn">
+                <button onClick={() => navigate('#/legal/delivery')} className="footer-nav-btn">
                   <CheckCircle2 size={14} className="f-icon" />
                   <span>Правила відвантаження та ТТН</span>
                 </button>
               </li>
               <li>
-                <button onClick={() => onOpenLegalModal && onOpenLegalModal('privacy')} className="footer-nav-btn">
+                <button onClick={() => navigate('#/legal/privacy')} className="footer-nav-btn">
                   <Shield size={14} className="f-icon" />
                   <span>Політика конфіденційності</span>
                 </button>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, FileText, Shield, Building2, Truck, CheckCircle2 } from 'lucide-react';
+import { X, FileText, Shield, Building2, Truck, CheckCircle2, ExternalLink } from 'lucide-react';
 
 export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
   const [activeTab, setActiveTab] = useState(initialTab);
@@ -18,9 +18,20 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
               <p>ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "БЕНГС"</p>
             </div>
           </div>
-          <button className="legal-close-btn" onClick={onClose}>
-            <X size={20} />
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <a
+              href={`#/legal/${activeTab}`}
+              onClick={onClose}
+              className="modal-full-screen-link"
+              title="Відкрити на окремій сторінці"
+            >
+              <ExternalLink size={13} />
+              <span>На окремій сторінці</span>
+            </a>
+            <button className="legal-close-btn" onClick={onClose}>
+              <X size={20} />
+            </button>
+          </div>
         </div>
 
         {/* Tabs */}

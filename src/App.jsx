@@ -23,6 +23,7 @@ import { ArticlesPage } from './pages/ArticlesPage';
 import { ArticleDetailPage } from './pages/ArticleDetailPage';
 import { ContactsPage } from './pages/ContactsPage';
 import { OrderPage } from './pages/OrderPage';
+import { LegalPage } from './pages/LegalPage';
 
 function AppContent() {
   const { pageType, navigate } = useRouter();
@@ -86,6 +87,8 @@ function AppContent() {
       case 'order':
       case 'checkout':
         return <OrderPage onOpenLegalModal={handleOpenLegal} />;
+      case 'legal':
+        return <LegalPage onOpenOrderModal={handleOpenOrder} />;
       case 'home':
       default:
         return (

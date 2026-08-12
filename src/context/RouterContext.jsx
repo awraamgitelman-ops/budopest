@@ -78,6 +78,10 @@ export const RouterProvider = ({ children }) => {
     pageType = 'order';
   } else if (pathSegments[0] === 'certificates' || pathSegments[0] === 'quality') {
     pageType = 'certificates';
+  } else if (pathSegments[0] === 'legal' || pathSegments[0] === 'requisites' || pathSegments[0] === 'offer' || pathSegments[0] === 'privacy' || pathSegments[0] === 'delivery-rules') {
+    pageType = 'legal';
+    routeParams.tab = pathSegments[1] || (pathSegments[0] === 'legal' ? 'requisites' : pathSegments[0]);
+    if (routeParams.tab === 'delivery-rules') routeParams.tab = 'delivery';
   }
 
   // Compute breadcrumbs
