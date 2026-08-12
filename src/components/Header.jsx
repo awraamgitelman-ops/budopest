@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, Clock, Search, ChevronDown, Menu, X, FileText, Send } from 'lucide-react';
 import { MegaMenu } from './MegaMenu';
 
-export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, onOpenCareerModal }) => {
+export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }) => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -143,10 +143,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
               <div className="submenu">
                 <a href="#about">Про ТОВ «БЕНГС»</a>
                 <button onClick={() => onOpenLegalModal && onOpenLegalModal('requisites')} className="submenu-btn-item">
-                  Реквізити (ЄДРПОУ 41963896)
-                </button>
-                <button onClick={() => onOpenCareerModal && onOpenCareerModal()} className="submenu-btn-item">
-                  Вакансії та кар'єра
+                  Реквізити компанії
                 </button>
                 <a href="#quality">Якість та ДСТУ</a>
                 <a href="#reviews">Відгуки клієнтів</a>
@@ -234,15 +231,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal, 
               }}
             >
               🏛️ Реквізити ТОВ "БЕНГС"
-            </button>
-            <button
-              className="mob-link text-left"
-              onClick={() => {
-                setIsMobileMenuOpen(false);
-                onOpenCareerModal && onOpenCareerModal();
-              }}
-            >
-              💼 Вакансії (робота у Дніпрі)
             </button>
             <a
               href="#contacts"

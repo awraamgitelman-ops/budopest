@@ -1,7 +1,7 @@
 import React from 'react';
 import { Phone, Mail, MapPin, Clock, Building2, Briefcase, FileText, Shield, CheckCircle2 } from 'lucide-react';
 
-export const Footer = ({ onOpenLegalModal, onOpenCareerModal }) => {
+export const Footer = ({ onOpenLegalModal }) => {
   return (
     <footer id="contacts" className="site-footer">
       <div className="container">
@@ -68,15 +68,10 @@ export const Footer = ({ onOpenLegalModal, onOpenCareerModal }) => {
             <ul className="footer-nav-list">
               <li><a href="#prices">Прайс-лист за тонну та м³</a></li>
               <li><a href="#calculator">Калькулятор об'єму та доставки</a></li>
+              <li><a href="#delivery">Доставка самоскидами 10–40 т</a></li>
               <li><a href="#warehouses">Перевалки та автоваги у Дніпрі</a></li>
               <li><a href="#quality">Відповідність нормам ДСТУ</a></li>
               <li><a href="#faq">Часті запитання (FAQ)</a></li>
-              <li>
-                <button onClick={() => onOpenCareerModal && onOpenCareerModal()} className="footer-nav-btn">
-                  <Briefcase size={14} className="f-icon" />
-                  <span>Вакансії компанії</span>
-                </button>
-              </li>
             </ul>
           </div>
 

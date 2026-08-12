@@ -16,7 +16,6 @@ import { Footer } from './components/Footer';
 import { OrderModal } from './components/OrderModal';
 import { SearchModal } from './components/SearchModal';
 import { LegalModal } from './components/LegalModal';
-import { CareerModal } from './components/CareerModal';
 import { MobileNav } from './components/MobileNav';
 
 export function App() {
@@ -25,7 +24,6 @@ export function App() {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [legalModalOpen, setLegalModalOpen] = useState(false);
   const [legalTab, setLegalTab] = useState('requisites');
-  const [careerModalOpen, setCareerModalOpen] = useState(false);
   const [modalInitialData, setModalInitialData] = useState(null);
 
   const handleOpenOrder = (productData = {}) => {
@@ -42,10 +40,6 @@ export function App() {
     setLegalModalOpen(true);
   };
 
-  const handleOpenCareer = () => {
-    setCareerModalOpen(true);
-  };
-
   const handleSelectProductFromSearch = (product) => {
     setSearchModalOpen(false);
     handleOpenOrder(product);
@@ -57,7 +51,6 @@ export function App() {
         onOpenOrderModal={handleOpenOrder}
         onOpenSearchModal={handleOpenSearch}
         onOpenLegalModal={handleOpenLegal}
-        onOpenCareerModal={handleOpenCareer}
       />
 
       <main>
@@ -89,7 +82,6 @@ export function App() {
 
       <Footer
         onOpenLegalModal={handleOpenLegal}
-        onOpenCareerModal={handleOpenCareer}
       />
 
       <MobileNav
@@ -113,12 +105,6 @@ export function App() {
         isOpen={legalModalOpen}
         onClose={() => setLegalModalOpen(false)}
         initialTab={legalTab}
-      />
-
-      <CareerModal
-        isOpen={careerModalOpen}
-        onClose={() => setCareerModalOpen(false)}
-        onOpenOrderModal={handleOpenOrder}
       />
     </div>
   );
