@@ -4,6 +4,7 @@ import { validateName, validatePhone, formatPhoneInput } from '../utils/validati
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from './GoogleMapPicker';
 import { CustomMaterialPicker } from './CustomMaterialPicker';
+import { sendTelegramOrderNotification } from '../utils/telegram';
 
 export const OrderModal = ({ isOpen, onClose, initialData }) => {
   const [name, setName] = useState('');
@@ -103,19 +104,15 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
       : currentProductObj.name;
 
     try {
-      await fetch('/api/send-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          product: fullProductName,
-          quantity: `${tonnage} тонн`,
-          address: address || 'м. Дніпро (уточнюється)',
-          details: initialData?.details || initialData?.calcDetails || null,
-          page: window.location.hash || 'Модальне вікно замовлення',
-          source: initialData?.name ? `Швидке замовлення (${initialData.name})` : 'Швидке замовлення на сайті'
-        })
+      await sendTelegramOrderNotification({
+        name: name,
+        phone: phone,
+        product: fullProductName,
+        quantity: `${tonnage} тонн`,
+        address: address || 'м. Дніпро (уточнюється)',
+        details: initialData?.details || initialData?.calcDetails || null,
+        page: window.location.hash || 'Модальне вікно замовлення',
+        source: initialData?.name ? `Швидке замовлення (${initialData.name})` : 'Швидке замовлення на сайті'
       });
     } catch (err) {
       console.error('Modal order send error:', err);

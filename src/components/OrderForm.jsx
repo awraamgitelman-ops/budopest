@@ -4,6 +4,7 @@ import { validateName, validatePhone, formatPhoneInput } from '../utils/validati
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from './GoogleMapPicker';
 import { CustomMaterialPicker } from './CustomMaterialPicker';
+import { sendTelegramOrderNotification } from '../utils/telegram';
 
 export const OrderForm = ({ compact = false }) => {
   const [formData, setFormData] = useState({
@@ -74,19 +75,15 @@ export const OrderForm = ({ compact = false }) => {
       : currentProductObj.name;
 
     try {
-      await fetch('/api/send-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          product: fullProductName,
-          quantity: `${tonnage} тонн`,
-          address: formData.address || 'м. Дніпро (уточнюється)',
-          comment: formData.comment,
-          page: window.location.hash || 'Форма розрахунку на сторінці',
-          source: compact ? 'Форма на сторінці контактів' : 'Головна форма розрахунку вартості'
-        })
+      await sendTelegramOrderNotification({
+        name: formData.name,
+        phone: formData.phone,
+        product: fullProductName,
+        quantity: `${tonnage} тонн`,
+        address: formData.address || 'м. Дніпро (уточнюється)',
+        comment: formData.comment,
+        page: window.location.hash || 'Форма розрахунку на сторінці',
+        source: compact ? 'Форма на сторінці контактів' : 'Головна форма розрахунку вартості'
       });
     } catch (err) {
       console.error('Order send error:', err);

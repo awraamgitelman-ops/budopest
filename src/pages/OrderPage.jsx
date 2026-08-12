@@ -4,6 +4,7 @@ import { validateName, validatePhone, formatPhoneInput } from '../utils/validati
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from '../components/GoogleMapPicker';
 import { CustomMaterialPicker } from '../components/CustomMaterialPicker';
+import { sendTelegramOrderNotification } from '../utils/telegram';
 
 export const OrderPage = ({ onOpenLegalModal }) => {
   const [formData, setFormData] = useState({
@@ -73,19 +74,15 @@ export const OrderPage = ({ onOpenLegalModal }) => {
       : currentProductObj.name;
 
     try {
-      await fetch('/api/send-order', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          product: fullProductName,
-          quantity: `${tonnage} тонн`,
-          address: formData.address || 'м. Дніпро (уточнюється)',
-          comment: formData.comment,
-          page: 'Окрема сторінка замовлення (#/order)',
-          source: 'Окремий екран оформлення заявки'
-        })
+      await sendTelegramOrderNotification({
+        name: formData.name,
+        phone: formData.phone,
+        product: fullProductName,
+        quantity: `${tonnage} тонн`,
+        address: formData.address || 'м. Дніпро (уточнюється)',
+        comment: formData.comment,
+        page: 'Окрема сторінка замовлення (#/order)',
+        source: 'Окремий екран оформлення заявки'
       });
     } catch (err) {
       console.error('Order send error:', err);
