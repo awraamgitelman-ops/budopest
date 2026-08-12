@@ -466,6 +466,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           display: flex;
           align-items: center;
           justify-content: space-between;
+          gap: 20px;
         }
 
         .brand-logo {
@@ -473,6 +474,8 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           align-items: center;
           gap: 12px;
           text-decoration: none;
+          flex-shrink: 0;
+          margin-right: 24px;
         }
 
         .header-logo-img {
@@ -486,28 +489,32 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         .brand-text {
           display: flex;
           flex-direction: column;
+          white-space: nowrap;
         }
 
         .brand-title {
-          font-size: 1.5rem;
+          font-size: 1.32rem;
           font-weight: 900;
           color: #0f172a;
-          line-height: 1;
-          letter-spacing: -0.4px;
+          line-height: 1.1;
+          letter-spacing: -0.2px;
+          white-space: nowrap;
         }
 
         .brand-sub {
-          font-size: 0.68rem;
+          font-size: 0.62rem;
           font-weight: 700;
           color: var(--c-green-dark);
-          letter-spacing: 0.6px;
+          letter-spacing: 0.5px;
           margin-top: 3px;
+          white-space: nowrap;
         }
 
         .desktop-nav {
           display: flex;
           align-items: center;
           gap: 6px;
+          flex-shrink: 0;
         }
 
         .nav-item {
