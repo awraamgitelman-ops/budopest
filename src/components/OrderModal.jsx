@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, AlertCircle, MapPin, Navigation, Minus, Plus, Map } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, MapPin, Minus, Plus, Map } from 'lucide-react';
 import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 
 export const OrderModal = ({ isOpen, onClose, initialData }) => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState(initialData?.phone || '');
+  const [phone, setPhone] = useState('');
   const [product, setProduct] = useState('Гранітний щебінь 5-20 мм');
   const [tonnage, setTonnage] = useState(25);
   const [address, setAddress] = useState('');
   const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isLocating, setIsLocating] = useState(false);
   const [showMapPicker, setShowMapPicker] = useState(false);
 
   const POPULAR_MATERIALS = [
@@ -32,41 +31,37 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
     { num: 40, label: "40 т (Тягач)" }
   ];
 
-  const DISTRICT_PRESETS = [
-    "📍 Лівий берег",
-    "📍 Правий берег",
-    "📍 Підгородне",
-    "📍 Новоолександрівка",
-    "📍 Слобожанське",
-    "📍 Кам'янське",
-    "📍 Обухівка"
-  ];
-
   const MAP_ZONES = [
-    { id: 'left', name: 'Лівий берег (вул. Журналістів / АНД)', address: 'м. Дніпро, Лівий берег (вул. Журналістів)' },
-    { id: 'right', name: 'Правий берег (Набережна Заводська / Перемога)', address: 'м. Дніпро, Правий берег (Набережна Заводська)' },
-    { id: 'podgorod', name: 'м. Підгородне (Північний виїзд)', address: 'м. Підгородне, Дніпровський район' },
-    { id: 'novool', name: 'смт Новоолександрівка (Запорізьке шосе)', address: 'смт Новоолександрівка' },
-    { id: 'slobozhan', name: 'смт Слобожанське (Донецьке шосе)', address: 'смт Слобожанське' },
-    { id: 'kamyanske', name: 'м. Кам\'янське (Західний термінал)', address: 'м. Кам\'янське, Дніпропетровська обл.' }
+    { id: 'left', name: 'Лівий берег (вул. Журналістів)', address: 'м. Дніпро, Лівий берег (вул. Журналістів)' },
+    { id: 'right', name: 'Правий берег (Набережна Заводська)', address: 'м. Дніпро, Правий берег (Набережна Заводська)' },
+    { id: 'podgorod', name: 'м. Підгородне', address: 'м. Підгородне, Дніпровський р-н' },
+    { id: 'novool', name: 'смт Новоолександрівка', address: 'смт Новоолександрівка' },
+    { id: 'slobozhan', name: 'смт Слобожанське', address: 'смт Слобожанське' },
+    { id: 'kamyanske', name: 'м. Кам\'янське', address: 'м. Кам\'янське, Дніпропетровська обл.' }
   ];
 
   useEffect(() => {
     if (initialData?.name) {
-      let raw = initialData.name;
-      // If title looks like discount/banner text, default to clean material
-      if (raw.toLowerCase().includes('знижка') || raw.toLowerCase().includes('акція') || raw.toLowerCase().includes('машину')) {
+      const raw = initialData.name;
+      if (typeof raw === 'string' && (raw.toLowerCase().includes('знижка') || raw.toLowerCase().includes('акція') || raw.toLowerCase().includes('машину'))) {
         setProduct('Гранітний щебінь 5-20 мм');
-      } else {
+      } else if (typeof raw === 'string') {
         setProduct(raw.replace(/^Замовлення:\s*/i, ''));
+      } else {
+        setProduct('Гранітний щебінь 5-20 мм');
       }
+    } else if (initialData?.product && typeof initialData.product === 'string') {
+      setProduct(initialData.product);
     } else {
       setProduct('Гранітний щебінь 5-20 мм');
     }
 
-    if (initialData?.phone) {
+    if (initialData?.phone && typeof initialData.phone === 'string') {
       setPhone(initialData.phone);
+    } else {
+      setPhone('');
     }
+
     setErrors({});
     setIsSuccess(false);
     setShowMapPicker(false);
@@ -83,41 +78,6 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
   const handleNameChange = (e) => {
     setName(e.target.value);
     if (errors.name) setErrors(prev => ({ ...prev, name: null }));
-  };
-
-  const handleGetLocation = () => {
-    if (!navigator.geolocation) {
-      alert("Геолокація не підтримкається у вашому браузері. Оберіть район зі списку нижче.");
-      return;
-    }
-    setIsLocating(true);
-    navigator.geolocation.getCurrentPosition(
-      async (pos) => {
-        const { latitude, longitude } = pos.coords;
-        try {
-          const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`);
-          const data = await resp.json();
-          if (data && data.address) {
-            const city = data.address.city || data.address.town || data.address.village || 'Дніпро';
-            const road = data.address.road || '';
-            const house = data.address.house_number || '';
-            const fullAddr = [city, road, house].filter(Boolean).join(', ');
-            setAddress(fullAddr || `м. Дніпро (${latitude.toFixed(4)}, ${longitude.toFixed(4)})`);
-          } else {
-            setAddress(`м. Дніпро (${latitude.toFixed(4)}, ${longitude.toFixed(4)})`);
-          }
-        } catch (e) {
-          setAddress(`м. Дніпро (Координати: ${latitude.toFixed(3)}, ${longitude.toFixed(3)})`);
-        } finally {
-          setIsLocating(false);
-        }
-      },
-      () => {
-        setAddress('м. Дніпро — Дніпропетровська обл.');
-        setIsLocating(false);
-      },
-      { timeout: 6000 }
-    );
   };
 
   const handleSubmit = async (e) => {
@@ -187,7 +147,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
               <p className="modal-subtitle">
                 {initialData?.calcDetails
                   ? `За розрахунком: ${initialData.calcDetails.grandTotal} (${initialData.calcDetails.volume})`
-                  : 'Заповніть контакти або виберіть район доставки у 1 клік'}
+                  : 'Заповніть контактні дані для узгодження доставки'}
               </p>
             </div>
 
@@ -206,41 +166,39 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
 
             <form onSubmit={handleSubmit} className="modal-form">
               {/* Row 1: Name & Phone */}
-              <div className="form-row-2">
-                <div className="form-group">
-                  <label>Ваше ім'я <span className="req">*</span></label>
-                  <input
-                    type="text"
-                    placeholder="Олексій"
-                    value={name}
-                    onChange={handleNameChange}
-                    className={`modal-input ${errors.name ? 'input-error' : ''}`}
-                  />
-                  {errors.name && (
-                    <span className="field-error-text">
-                      <AlertCircle size={13} /> {errors.name}
-                    </span>
-                  )}
-                </div>
-
-                <div className="form-group">
-                  <label>Номер телефону <span className="req">*</span></label>
-                  <input
-                    type="tel"
-                    placeholder="+380 (__) ___-__-__"
-                    value={phone}
-                    onChange={handlePhoneChange}
-                    className={`modal-input ${errors.phone ? 'input-error' : ''}`}
-                  />
-                  {errors.phone && (
-                    <span className="field-error-text">
-                      <AlertCircle size={13} /> {errors.phone}
-                    </span>
-                  )}
-                </div>
+              <div className="form-group">
+                <label>Ваше ім'я <span className="req">*</span></label>
+                <input
+                  type="text"
+                  placeholder="Кирило"
+                  value={name}
+                  onChange={handleNameChange}
+                  className={`modal-input ${errors.name ? 'input-error' : ''}`}
+                />
+                {errors.name && (
+                  <span className="field-error-text">
+                    <AlertCircle size={13} /> {errors.name}
+                  </span>
+                )}
               </div>
 
-              {/* Material Dropdown / Custom input */}
+              <div className="form-group">
+                <label>Номер телефону <span className="req">*</span></label>
+                <input
+                  type="tel"
+                  placeholder="+380 (__) ___-__-__"
+                  value={phone}
+                  onChange={handlePhoneChange}
+                  className={`modal-input ${errors.phone ? 'input-error' : ''}`}
+                />
+                {errors.phone && (
+                  <span className="field-error-text">
+                    <AlertCircle size={13} /> {errors.phone}
+                  </span>
+                )}
+              </div>
+
+              {/* Material Dropdown */}
               <div className="form-group">
                 <label>Матеріал</label>
                 <select
@@ -254,7 +212,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                 </select>
               </div>
 
-              {/* Tonnage UI Selector (No typing needed) */}
+              {/* Tonnage UI Selector */}
               <div className="form-group">
                 <div className="field-label-row">
                   <label>Об'єм (тоннаж)</label>
@@ -306,60 +264,35 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                 </div>
               </div>
 
-              {/* Address & Interactive Map Picker */}
+              {/* Address */}
               <div className="form-group">
                 <div className="field-label-row">
-                  <label>Пункт доставки / Адреса</label>
-                  <div className="address-actions-row">
-                    <button
-                      type="button"
-                      className="addr-geo-btn"
-                      onClick={handleGetLocation}
-                      disabled={isLocating}
-                    >
-                      <Navigation size={13} className={isLocating ? 'spin-icon' : ''} />
-                      <span>{isLocating ? 'Визначаємо...' : 'Моє GPS'}</span>
-                    </button>
-                    <button
-                      type="button"
-                      className="addr-geo-btn alt"
-                      onClick={() => setShowMapPicker(!showMapPicker)}
-                    >
-                      <Map size={13} />
-                      <span>{showMapPicker ? 'Сховати карту' : 'Карта Дніпра'}</span>
-                    </button>
-                  </div>
+                  <label>Адреса об'єкта / Пункт доставки</label>
+                  <button
+                    type="button"
+                    className="addr-geo-btn alt"
+                    onClick={() => setShowMapPicker(!showMapPicker)}
+                  >
+                    <Map size={13} />
+                    <span>{showMapPicker ? 'Сховати карту' : 'Карта Дніпра'}</span>
+                  </button>
                 </div>
 
                 <div className="input-with-icon">
                   <MapPin size={16} className="input-left-icon" />
                   <input
                     type="text"
-                    placeholder="Введіть або виберіть район у 1 клік"
+                    placeholder="м. Дніпро або район області"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     className="modal-input pl-10"
                   />
                 </div>
 
-                {/* Quick District Chips */}
-                <div className="quick-chips-row mt-2">
-                  {DISTRICT_PRESETS.map((dist, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      className={`chip-btn ${address === dist.replace('📍 ', '') ? 'active' : ''}`}
-                      onClick={() => setAddress(dist.replace('📍 ', ''))}
-                    >
-                      {dist}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Interactive Map Picker Box */}
+                {/* Map Picker Box */}
                 {showMapPicker && (
                   <div className="interactive-map-box animate-fade">
-                    <div className="imb-header">Оберіть найближчий термінал / район:</div>
+                    <div className="imb-header">Оберіть район відвантаження на карті Дніпра:</div>
                     <div className="imb-zones-grid">
                       {MAP_ZONES.map((z) => (
                         <button

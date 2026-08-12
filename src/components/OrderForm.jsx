@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, ShieldCheck, PhoneCall, Clock, AlertCircle, MapPin, Navigation, Minus, Plus, Map } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, PhoneCall, Clock, AlertCircle, MapPin, Minus, Plus, Map } from 'lucide-react';
 import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 
 export const OrderForm = () => {
@@ -15,7 +15,6 @@ export const OrderForm = () => {
   const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isLocating, setIsLocating] = useState(false);
   const [showMapPicker, setShowMapPicker] = useState(false);
 
   const POPULAR_MATERIALS = [
@@ -34,16 +33,6 @@ export const OrderForm = () => {
     { num: 15, label: "15 т (КамАЗ)" },
     { num: 25, label: "25 т (3-вісний)" },
     { num: 40, label: "40 т (Тягач)" }
-  ];
-
-  const DISTRICT_PRESETS = [
-    "📍 Лівий берег",
-    "📍 Правий берег",
-    "📍 Підгородне",
-    "📍 Новоолександрівка",
-    "📍 Слобожанське",
-    "📍 Кам'янське",
-    "📍 Обухівка"
   ];
 
   const MAP_ZONES = [
@@ -66,41 +55,6 @@ export const OrderForm = () => {
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: null }));
     }
-  };
-
-  const handleGetLocation = () => {
-    if (!navigator.geolocation) {
-      alert("Геолокація не підтримується у вашому браузері. Оберіть район зі списку нижче.");
-      return;
-    }
-    setIsLocating(true);
-    navigator.geolocation.getCurrentPosition(
-      async (pos) => {
-        const { latitude, longitude } = pos.coords;
-        try {
-          const resp = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&zoom=16&addressdetails=1`);
-          const data = await resp.json();
-          if (data && data.address) {
-            const city = data.address.city || data.address.town || data.address.village || 'Дніпро';
-            const road = data.address.road || '';
-            const house = data.address.house_number || '';
-            const fullAddr = [city, road, house].filter(Boolean).join(', ');
-            setFormData(prev => ({ ...prev, address: fullAddr || `м. Дніпро (${latitude.toFixed(4)}, ${longitude.toFixed(4)})` }));
-          } else {
-            setFormData(prev => ({ ...prev, address: `м. Дніпро (${latitude.toFixed(4)}, ${longitude.toFixed(4)})` }));
-          }
-        } catch (e) {
-          setFormData(prev => ({ ...prev, address: `м. Дніпро (Координати: ${latitude.toFixed(3)}, ${longitude.toFixed(3)})` }));
-        } finally {
-          setIsLocating(false);
-        }
-      },
-      () => {
-        setFormData(prev => ({ ...prev, address: 'м. Дніпро — Дніпропетровська обл.' }));
-        setIsLocating(false);
-      },
-      { timeout: 6000 }
-    );
   };
 
   const handleSubmit = async (e) => {
@@ -318,25 +272,14 @@ export const OrderForm = () => {
                   <div className="form-group">
                     <div className="field-label-row">
                       <label>Адреса об'єкта / Район доставки</label>
-                      <div className="address-actions-row">
-                        <button
-                          type="button"
-                          className="addr-geo-btn"
-                          onClick={handleGetLocation}
-                          disabled={isLocating}
-                        >
-                          <Navigation size={13} className={isLocating ? 'spin-icon' : ''} />
-                          <span>{isLocating ? 'Визначаємо...' : 'Моє GPS'}</span>
-                        </button>
-                        <button
-                          type="button"
-                          className="addr-geo-btn alt"
-                          onClick={() => setShowMapPicker(!showMapPicker)}
-                        >
-                          <Map size={13} />
-                          <span>{showMapPicker ? 'Сховати карту' : 'Карта Дніпра'}</span>
-                        </button>
-                      </div>
+                      <button
+                        type="button"
+                        className="addr-geo-btn alt"
+                        onClick={() => setShowMapPicker(!showMapPicker)}
+                      >
+                        <Map size={13} />
+                        <span>{showMapPicker ? 'Сховати карту' : 'Карта Дніпра'}</span>
+                      </button>
                     </div>
 
                     <div className="input-with-icon">
@@ -344,25 +287,11 @@ export const OrderForm = () => {
                       <input
                         type="text"
                         name="address"
-                        placeholder="Оберіть район нижче або вкажіть адресу"
+                        placeholder="м. Дніпро або район області"
                         value={formData.address}
                         onChange={handleChange}
                         className="form-input pl-10"
                       />
-                    </div>
-
-                    {/* District Presets */}
-                    <div className="quick-chips-row mt-2">
-                      {DISTRICT_PRESETS.map((dist, idx) => (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`chip-btn ${formData.address === dist.replace('📍 ', '') ? 'active' : ''}`}
-                          onClick={() => setFormData(prev => ({ ...prev, address: dist.replace('📍 ', '') }))}
-                        >
-                          {dist}
-                        </button>
-                      ))}
                     </div>
 
                     {/* Interactive Map Selector Box */}
