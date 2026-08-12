@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, CheckCircle2, AlertCircle, MapPin, Minus, Plus, Map } from 'lucide-react';
+import { X, CheckCircle2, AlertCircle, MapPin, Minus, Plus, Map, Layers } from 'lucide-react';
 import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from './GoogleMapPicker';
@@ -7,7 +7,8 @@ import { GoogleMapPicker } from './GoogleMapPicker';
 export const OrderModal = ({ isOpen, onClose, initialData }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [product, setProduct] = useState('Гранітний щебінь 5-20 мм');
+  const [selectedProductId, setSelectedProductId] = useState('granitnyj');
+  const [selectedFraction, setSelectedFraction] = useState('5-20 мм');
   const [tonnage, setTonnage] = useState(25);
   const [address, setAddress] = useState('');
   const [errors, setErrors] = useState({});
@@ -22,20 +23,28 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
     { num: 40, label: "40 т (Тягач)" }
   ];
 
+  const currentProductObj = ALL_PRODUCTS.find(p => p.id === selectedProductId) || ALL_PRODUCTS[1];
+
   useEffect(() => {
     if (initialData?.name) {
-      const raw = initialData.name;
-      if (typeof raw === 'string' && (raw.toLowerCase().includes('знижка') || raw.toLowerCase().includes('акція') || raw.toLowerCase().includes('машину'))) {
-        setProduct('Гранітний щебінь 5-20 мм');
-      } else if (typeof raw === 'string') {
-        setProduct(raw.replace(/^Замовлення:\s*/i, ''));
-      } else {
-        setProduct('Гранітний щебінь 5-20 мм');
+      const raw = typeof initialData.name === 'string' ? initialData.name : '';
+      const matched = ALL_PRODUCTS.find(p => raw.toLowerCase().includes(p.name.toLowerCase()));
+      if (matched) {
+        setSelectedProductId(matched.id);
+        if (matched.fractions && matched.fractions.length > 0) {
+          const matchedFrac = matched.fractions.find(f => raw.toLowerCase().includes(f.toLowerCase()));
+          setSelectedFraction(matchedFrac || matched.fractions[0]);
+        }
       }
-    } else if (initialData?.product && typeof initialData.product === 'string') {
-      setProduct(initialData.product);
-    } else {
-      setProduct('Гранітний щебінь 5-20 мм');
+    } else if (initialData?.product) {
+      const raw = typeof initialData.product === 'string' ? initialData.product : '';
+      const matched = ALL_PRODUCTS.find(p => raw.toLowerCase().includes(p.name.toLowerCase()));
+      if (matched) {
+        setSelectedProductId(matched.id);
+        if (matched.fractions && matched.fractions.length > 0) {
+          setSelectedFraction(matched.fractions[0]);
+        }
+      }
     }
 
     if (initialData?.phone && typeof initialData.phone === 'string') {
@@ -50,6 +59,17 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
   }, [initialData, isOpen]);
 
   if (!isOpen) return null;
+
+  const handleProductSelectChange = (e) => {
+    const prodId = e.target.value;
+    setSelectedProductId(prodId);
+    const prodObj = ALL_PRODUCTS.find(p => p.id === prodId);
+    if (prodObj && prodObj.fractions && prodObj.fractions.length > 0) {
+      setSelectedFraction(prodObj.fractions[0]);
+    } else {
+      setSelectedFraction('');
+    }
+  };
 
   const handlePhoneChange = (e) => {
     const formatted = formatPhoneInput(e.target.value);
@@ -77,6 +97,9 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
     }
 
     setIsSubmitting(true);
+    const fullProductName = selectedFraction 
+      ? `${currentProductObj.name} (фр. ${selectedFraction})` 
+      : currentProductObj.name;
 
     try {
       await fetch('/api/send-order', {
@@ -85,7 +108,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
         body: JSON.stringify({
           name: name,
           phone: phone,
-          product: product,
+          product: fullProductName,
           quantity: `${tonnage} тонн`,
           address: address || 'м. Дніпро (уточнюється)',
           details: initialData?.details || initialData?.calcDetails || null,
@@ -100,6 +123,10 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
       setIsSuccess(true);
     }
   };
+
+  const fullProductNameDisplay = selectedFraction 
+    ? `${currentProductObj.name} (фр. ${selectedFraction})` 
+    : currentProductObj.name;
 
   return (
     <>
@@ -116,7 +143,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
               </div>
               <h3 className="modal-title">Заявку прийнято!</h3>
               <p className="modal-subtitle">
-                Ми зв'яжемося з вами за номером <strong>{phone}</strong> протягом 5 хвилин для підтвердження часу доставки ({tonnage} тонн {product}).
+                Ми зв'яжемося з вами за номером <strong>{phone}</strong> протягом 5 хвилин для підтвердження часу доставки ({tonnage} тонн {fullProductNameDisplay}).
               </p>
               <button onClick={onClose} className="btn btn-primary btn-block">
                 Зрозуміло, дякую
@@ -181,12 +208,12 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                   )}
                 </div>
 
-                {/* Complete Catalog Material Selection Dropdown */}
+                {/* Step 1: Clean Material Dropdown */}
                 <div className="form-group">
-                  <label>Обрати матеріал (повний асортимент компанії)</label>
+                  <label>Оберіть матеріал</label>
                   <select
-                    value={product}
-                    onChange={(e) => setProduct(e.target.value)}
+                    value={selectedProductId}
+                    onChange={handleProductSelectChange}
                     className="modal-input modal-select"
                   >
                     {MAIN_SECTIONS.map((sec) => {
@@ -194,19 +221,38 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                       if (secProducts.length === 0) return null;
                       return (
                         <optgroup key={sec.id} label={`── ${sec.name.toUpperCase()} ──`}>
-                          {secProducts.map((p) => {
-                            const valStr = `${p.name}${p.fractions && p.fractions.length > 0 ? ` (${p.fractions.join(', ')})` : ''}`;
-                            return (
-                              <option key={p.id} value={valStr}>
-                                {p.name} {p.fractions ? `[${p.fractions.join(', ')}]` : ''} — {p.price} {p.priceUnit || 'грн/т'}
-                              </option>
-                            );
-                          })}
+                          {secProducts.map((p) => (
+                            <option key={p.id} value={p.id}>
+                              {p.name} — від {p.price} {p.priceUnit || 'грн/т'}
+                            </option>
+                          ))}
                         </optgroup>
                       );
                     })}
                   </select>
                 </div>
+
+                {/* Step 2: Interactive Fraction Pill Chips */}
+                {currentProductObj.fractions && currentProductObj.fractions.length > 0 && (
+                  <div className="form-group">
+                    <div className="field-label-row">
+                      <label>Розмір фракції</label>
+                      <span className="tonnage-badge">{selectedFraction}</span>
+                    </div>
+                    <div className="quick-chips-row mt-1">
+                      {currentProductObj.fractions.map((f) => (
+                        <button
+                          key={f}
+                          type="button"
+                          className={`chip-btn ${selectedFraction === f ? 'active' : ''}`}
+                          onClick={() => setSelectedFraction(f)}
+                        >
+                          {f}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Tonnage UI Selector */}
                 <div className="form-group">

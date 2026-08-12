@@ -8,11 +8,12 @@ export const OrderForm = ({ compact = false }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    product: 'Гранітний щебінь 5-20 мм',
     address: '',
     comment: ''
   });
 
+  const [selectedProductId, setSelectedProductId] = useState('granitnyj');
+  const [selectedFraction, setSelectedFraction] = useState('5-20 мм');
   const [tonnage, setTonnage] = useState(25);
   const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
@@ -25,6 +26,19 @@ export const OrderForm = ({ compact = false }) => {
     { num: 25, label: "25 т (3-вісний)" },
     { num: 40, label: "40 т (Тягач)" }
   ];
+
+  const currentProductObj = ALL_PRODUCTS.find(p => p.id === selectedProductId) || ALL_PRODUCTS[1];
+
+  const handleProductSelectChange = (e) => {
+    const prodId = e.target.value;
+    setSelectedProductId(prodId);
+    const prodObj = ALL_PRODUCTS.find(p => p.id === prodId);
+    if (prodObj && prodObj.fractions && prodObj.fractions.length > 0) {
+      setSelectedFraction(prodObj.fractions[0]);
+    } else {
+      setSelectedFraction('');
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,6 +68,9 @@ export const OrderForm = ({ compact = false }) => {
     }
 
     setIsSubmitting(true);
+    const fullProductName = selectedFraction 
+      ? `${currentProductObj.name} (фр. ${selectedFraction})` 
+      : currentProductObj.name;
 
     try {
       await fetch('/api/send-order', {
@@ -62,7 +79,7 @@ export const OrderForm = ({ compact = false }) => {
         body: JSON.stringify({
           name: formData.name,
           phone: formData.phone,
-          product: formData.product,
+          product: fullProductName,
           quantity: `${tonnage} тонн`,
           address: formData.address || 'м. Дніпро (уточнюється)',
           comment: formData.comment,
@@ -78,6 +95,10 @@ export const OrderForm = ({ compact = false }) => {
     }
   };
 
+  const fullProductNameDisplay = selectedFraction 
+    ? `${currentProductObj.name} (фр. ${selectedFraction})` 
+    : currentProductObj.name;
+
   const renderFormContent = () => (
     <div className="of-form-card">
       {isSuccess ? (
@@ -87,7 +108,7 @@ export const OrderForm = ({ compact = false }) => {
           </div>
           <h3 className="success-title">Дякуємо за заявку!</h3>
           <p className="success-desc">
-            Ми отримали ваш запит на <strong>{formData.product}</strong> ({tonnage} тонн). Менеджер зв'яжеться з вами за номером <strong>{formData.phone}</strong> протягом 5 хвилин.
+            Ми отримали ваш запит на <strong>{fullProductNameDisplay}</strong> ({tonnage} тонн). Менеджер зв'яжеться з вами за номером <strong>{formData.phone}</strong> протягом 5 хвилин.
           </p>
           <button
             onClick={() => {
@@ -95,10 +116,11 @@ export const OrderForm = ({ compact = false }) => {
               setFormData({
                 name: '',
                 phone: '',
-                product: 'Гранітний щебінь 5-20 мм',
                 address: '',
                 comment: ''
               });
+              setSelectedProductId('granitnyj');
+              setSelectedFraction('5-20 мм');
               setTonnage(25);
             }}
             className="btn btn-outline"
@@ -147,13 +169,12 @@ export const OrderForm = ({ compact = false }) => {
             </div>
           </div>
 
-          {/* Material Selector - Full Catalog */}
+          {/* Step 1: Clean Material Dropdown */}
           <div className="form-group">
             <label>Оберіть матеріал</label>
             <select
-              name="product"
-              value={formData.product}
-              onChange={handleChange}
+              value={selectedProductId}
+              onChange={handleProductSelectChange}
               className="form-input modal-select"
             >
               {MAIN_SECTIONS.map((sec) => {
@@ -161,19 +182,38 @@ export const OrderForm = ({ compact = false }) => {
                 if (secProducts.length === 0) return null;
                 return (
                   <optgroup key={sec.id} label={`── ${sec.name.toUpperCase()} ──`}>
-                    {secProducts.map((p) => {
-                      const valStr = `${p.name}${p.fractions && p.fractions.length > 0 ? ` (${p.fractions.join(', ')})` : ''}`;
-                      return (
-                        <option key={p.id} value={valStr}>
-                          {p.name} {p.fractions ? `[${p.fractions.join(', ')}]` : ''} — {p.price} {p.priceUnit || 'грн/т'}
-                        </option>
-                      );
-                    })}
+                    {secProducts.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.name} — від {p.price} {p.priceUnit || 'грн/т'}
+                      </option>
+                    ))}
                   </optgroup>
                 );
               })}
             </select>
           </div>
+
+          {/* Step 2: Interactive Fraction Pill Chips */}
+          {currentProductObj.fractions && currentProductObj.fractions.length > 0 && (
+            <div className="form-group">
+              <div className="field-label-row">
+                <label>Розмір фракції</label>
+                <span className="tonnage-badge">{selectedFraction}</span>
+              </div>
+              <div className="quick-chips-row mt-1">
+                {currentProductObj.fractions.map((f) => (
+                  <button
+                    key={f}
+                    type="button"
+                    className={`chip-btn ${selectedFraction === f ? 'active' : ''}`}
+                    onClick={() => setSelectedFraction(f)}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Tonnage Stepper */}
           <div className="form-group">
