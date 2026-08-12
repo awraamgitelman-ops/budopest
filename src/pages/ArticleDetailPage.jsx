@@ -88,10 +88,10 @@ const renderArticleContent = (content) => {
       return (
         <div key={idx} className="art-formula-card">
           <div className="art-formula-header">
-            <span className="art-formula-badge">🧮 Формула розрахунку</span>
+            <span className="art-formula-badge">Формула розрахунку</span>
           </div>
-          <div className="art-formula-content">
-            <code>{formulaText}</code>
+          <div className="art-formula-text">
+            {formatInline(formulaText)}
           </div>
         </div>
       );
