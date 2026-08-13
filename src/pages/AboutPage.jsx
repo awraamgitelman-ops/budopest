@@ -72,7 +72,7 @@ export const AboutPage = ({ onOpenOrderModal, onOpenLegalModal }) => {
                 onClick={() => navigate('#/legal/requisites')}
                 className="btn btn-outline"
               >
-                <span>Юридичні реквізити (ЄДРПОУ 41963896)</span>
+                <span>Реєстраційні дані (ЄДРПОУ 41963896)</span>
               </button>
               <button
                 onClick={() => navigate('#/warehouses')}

@@ -149,7 +149,7 @@ export const Footer = ({ onOpenLegalModal }) => {
               <li>
                 <button onClick={() => navigate('#/legal/requisites')} className="footer-nav-btn">
                   <FileText size={14} className="f-icon" />
-                  <span>Реквізити компанії</span>
+                  <span>Реєстраційні дані</span>
                 </button>
               </li>
               <li>
@@ -194,7 +194,7 @@ export const Footer = ({ onOpenLegalModal }) => {
             </a>
             <span className="sep">•</span>
             <a href="#/legal/requisites" className="footer-mini-link">
-              Реквізити
+              Реєстраційні дані
             </a>
             <span className="sep">•</span>
             <a href="#/legal/delivery" className="footer-mini-link">

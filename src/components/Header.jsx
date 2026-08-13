@@ -193,8 +193,8 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               </button>
               <div className="submenu">
                 <button onClick={() => navigate('#/about')} className="submenu-btn-item">Про ТОВ «БЕНГС»</button>
-                <button onClick={() => onOpenLegalModal && onOpenLegalModal('requisites')} className="submenu-btn-item">
-                  Реквізити (ЄДРПОУ 41963896)
+                <button onClick={() => navigate('#/legal/requisites')} className="submenu-btn-item">
+                  Реєстраційні дані (ЄДРПОУ 41963896)
                 </button>
                 <button onClick={() => navigate('#/certificates')} className="submenu-btn-item">Якість та ДСТУ</button>
                 <button onClick={() => navigate('#/warehouses')} className="submenu-btn-item">Кар'єри та перевалки</button>
@@ -313,7 +313,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                 navigate('#/legal/requisites');
               }}
             >
-              Реквізити ТОВ "БЕНГС"
+              Реєстраційні дані ТОВ "БЕНГС"
             </button>
             <button
               className="mob-link"

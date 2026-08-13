@@ -131,7 +131,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                     }}
                     className="btn btn-outline btn-sm mt-2"
                   >
-                    Повні реквізити (ЄДРПОУ 41963896)
+                    Реєстраційні дані (ЄДРПОУ 41963896)
                   </button>
                 </div>
               </div>

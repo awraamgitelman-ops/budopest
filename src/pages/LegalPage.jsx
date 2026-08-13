@@ -47,7 +47,7 @@ export const LegalPage = ({ onOpenOrderModal }) => {
             onClick={() => handleTabChange('requisites')}
           >
             <FileText size={18} />
-            <span>Реквізити компанії</span>
+            <span>Реєстраційні дані</span>
           </button>
 
           <button

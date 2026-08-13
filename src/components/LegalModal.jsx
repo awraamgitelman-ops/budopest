@@ -41,7 +41,7 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
             onClick={() => setActiveTab('requisites')}
           >
             <FileText size={16} />
-            <span>Реквізити компанії</span>
+            <span>Реєстраційні дані</span>
           </button>
 
           <button
