@@ -29,13 +29,6 @@ export const BENGS_HUBS = [
   }
 ];
 
-const OFFICE_COORDS = {
-  lat: 48.50605934737478,
-  lng: 35.09528947686363,
-  name: 'Головний офіс «РУД МОНОЛІТ» (ТОВ «БЕНГС»)',
-  address: 'м. Дніпро, вул. Журналістів, 3 (бухгалтерія та кабінети)'
-};
-
 // Haversine formula to compute distance in km
 const calculateDistanceKm = (lat1, lon1, lat2, lon2) => {
   const R = 6371;
@@ -240,23 +233,6 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
     }).addTo(map);
     tileLayerRef.current = tileLayer;
 
-    // Draw Office Marker (Informational slate SVG badge on вул. Журналістів, 3)
-    const officeIcon = L.divIcon({
-      className: 'custom-office-marker',
-      html: `<div style="background: #1e293b; color: #ffffff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.45); font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em;">Офіс</div>`,
-      iconSize: [38, 38],
-      iconAnchor: [19, 19]
-    });
-    const officeMarker = L.marker([OFFICE_COORDS.lat, OFFICE_COORDS.lng], { icon: officeIcon, zIndexOffset: 1000 }).addTo(map);
-    officeMarker.bindPopup(`
-      <div style="font-family: sans-serif; font-size: 13px; line-height: 1.4;">
-        <strong style="color: #1e293b; font-size: 14px;">🏢 Головний офіс «РУД МОНОЛІТ» (ТОВ «БЕНГС»)</strong><br/>
-        <b>м. Дніпро, вул. Журналістів, 3</b><br/>
-        <span style="color: #64748b;">(бухгалтерія та кабінети)</span><br/>
-        <small style="color: #94a3b8;">Розрахунок доставки здійснюється від кар'єрів/баз</small>
-      </div>
-    `);
-
     // Draw Quarry & Terminal Hub Markers on Map (Green SVG Badges)
     hubMarkersRef.current = BENGS_HUBS.map((hub, idx) => {
       const hubIcon = L.divIcon({
@@ -282,12 +258,17 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
       return marker;
     });
 
-    // Customer Destination Marker (Red Location Pin)
+    // Customer Destination Marker (Red Geolocation Pin Icon)
     const userIcon = L.divIcon({
       className: 'custom-user-marker',
-      html: `<div style="background: #ef4444; color: #fff; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; border: 3px solid #ffffff; box-shadow: 0 4px 14px rgba(0,0,0,0.35);">Ціль</div>`,
-      iconSize: [36, 36],
-      iconAnchor: [18, 18]
+      html: `<div style="background: linear-gradient(135deg, #ef4444, #dc2626); color: #ffffff; width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #ffffff; box-shadow: 0 4px 16px rgba(239, 68, 68, 0.45); cursor: grab;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="12" cy="10" r="3" fill="#ffffff"/>
+        </svg>
+      </div>`,
+      iconSize: [38, 38],
+      iconAnchor: [19, 19]
     });
 
     const initialLat = activeCoords.lat;
