@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from '../context/RouterContext';
-import { Phone, Mail, MapPin, Clock, FileText, MessageSquare } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
 import { OrderForm } from '../components/OrderForm';
 
 export const ContactsPage = ({ onOpenLegalModal }) => {
@@ -120,7 +120,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
               </div>
 
               <div className="cic-item">
-                <FileText size={18} className="icon-green" />
+                <MapPin size={18} className="icon-green" />
                 <div>
                   <strong>Юридична адреса:</strong>
                   <p className="cic-addr">Україна, 49051, м. Дніпро, вул. Калинова, буд. 1</p>
