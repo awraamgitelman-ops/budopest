@@ -666,12 +666,14 @@ span.req {
   justify-content: space-between !important;
   margin-bottom: 16px !important;
   width: 100% !important;
+  gap: 10px !important;
 }
 
 .modal-top-actions {
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
 }
 
 .modal-full-screen-link {
@@ -685,6 +687,7 @@ span.req {
   background: var(--c-green-light) !important;
   padding: 6px 12px !important;
   border-radius: 8px !important;
+  white-space: nowrap !important;
   transition: all 0.15s ease !important;
 }
 
@@ -704,6 +707,7 @@ span.req {
   border: 1px solid #cbd5e1 !important;
   color: #64748b !important;
   cursor: pointer !important;
+  flex-shrink: 0 !important;
   transition: all 0.15s ease !important;
 }
 
@@ -719,11 +723,33 @@ span.req {
   color: var(--c-green-dark) !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
-  padding: 2px 10px !important;
+  padding: 4px 10px !important;
   border-radius: 12px !important;
-  margin-bottom: 6px !important;
+  margin-bottom: 0 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+@media (max-width: 520px) {
+  .modal-full-screen-link span {
+    display: none !important;
+  }
+  .modal-full-screen-link {
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    justify-content: center !important;
+  }
+  .modal-tag {
+    font-size: 0.7rem !important;
+    padding: 3px 8px !important;
+  }
+  .modal-top-row {
+    margin-bottom: 12px !important;
+  }
 }
 
 .modal-title {
