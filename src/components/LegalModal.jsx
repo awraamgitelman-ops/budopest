@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, FileText, Shield, Building2, Truck, CheckCircle2, ExternalLink } from 'lucide-react';
+import { X, FileText, Shield, Truck, CheckCircle2, ExternalLink } from 'lucide-react';
 
 export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
   const [activeTab, setActiveTab] = useState(initialTab);
@@ -12,7 +12,7 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
         {/* Header */}
         <div className="legal-modal-header">
           <div className="legal-header-title">
-            <Building2 size={22} className="legal-icon" />
+            <FileText size={22} className="legal-icon" />
             <div>
               <h3>Правова інформація та реквізити</h3>
               <p>ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "БЕНГС"</p>
@@ -40,7 +40,7 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
             className={`legal-tab ${activeTab === 'requisites' ? 'active' : ''}`}
             onClick={() => setActiveTab('requisites')}
           >
-            <Building2 size={16} />
+            <FileText size={16} />
             <span>Реквізити компанії</span>
           </button>
 

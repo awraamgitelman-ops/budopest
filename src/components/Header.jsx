@@ -310,10 +310,10 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               className="mob-link text-left"
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                onOpenLegalModal && onOpenLegalModal('requisites');
+                navigate('#/legal/requisites');
               }}
             >
-              🏛️ Реквізити ТОВ "БЕНГС"
+              Реквізити ТОВ "БЕНГС"
             </button>
             <button
               className="mob-link"

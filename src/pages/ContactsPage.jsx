@@ -1,8 +1,11 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, Building2, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { useRouter } from '../context/RouterContext';
+import { Phone, Mail, MapPin, Clock, FileText, MessageSquare } from 'lucide-react';
 import { OrderForm } from '../components/OrderForm';
 
 export const ContactsPage = ({ onOpenLegalModal }) => {
+  const { navigate } = useRouter();
+
   return (
     <div className="contacts-page-wrapper">
       <div className="contacts-hero">
@@ -93,7 +96,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
               <h3 className="cic-title">Адреса офісу та майданчиків відвантаження</h3>
 
               <div className="cic-item">
-                <Building2 size={18} className="icon-green" />
+                <MapPin size={18} className="icon-green" />
                 <div>
                   <strong>Головний офіс «РУД МОНОЛІТ» (ТОВ «БЕНГС»):</strong>
                   <p className="cic-addr">м. Дніпро, вул. Журналістів, 3 (відділ продажів, договори)</p>
@@ -117,12 +120,15 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
               </div>
 
               <div className="cic-item">
-                <Building2 size={18} className="icon-green" />
+                <FileText size={18} className="icon-green" />
                 <div>
                   <strong>Юридична адреса:</strong>
                   <p className="cic-addr">Україна, 49051, м. Дніпро, вул. Калинова, буд. 1</p>
                   <button
-                    onClick={() => onOpenLegalModal && onOpenLegalModal('requisites')}
+                    onClick={() => {
+                      if (navigate) navigate('#/legal/requisites');
+                      else if (onOpenLegalModal) onOpenLegalModal('requisites');
+                    }}
                     className="btn btn-outline btn-sm mt-2"
                   >
                     Повні реквізити (ЄДРПОУ 41963896)

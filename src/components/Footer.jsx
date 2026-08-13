@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from '../context/RouterContext';
-import { Phone, Mail, MapPin, Clock, Building2, FileText, Shield, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, FileText, Shield, CheckCircle2 } from 'lucide-react';
 
 export const Footer = ({ onOpenLegalModal }) => {
   const { navigate } = useRouter();
@@ -148,7 +148,7 @@ export const Footer = ({ onOpenLegalModal }) => {
             <ul className="footer-nav-list">
               <li>
                 <button onClick={() => navigate('#/legal/requisites')} className="footer-nav-btn">
-                  <Building2 size={14} className="f-icon" />
+                  <FileText size={14} className="f-icon" />
                   <span>Реквізити компанії</span>
                 </button>
               </li>

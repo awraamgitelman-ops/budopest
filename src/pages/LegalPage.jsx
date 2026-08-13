@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from '../context/RouterContext';
-import { Building2, FileText, Truck, Shield, CheckCircle2, Download, ExternalLink, ArrowRight } from 'lucide-react';
+import { FileText, Truck, Shield, CheckCircle2, Download, ExternalLink, ArrowRight } from 'lucide-react';
 
 export const LegalPage = ({ onOpenOrderModal }) => {
   const { routeParams, navigate } = useRouter();
@@ -46,7 +46,7 @@ export const LegalPage = ({ onOpenOrderModal }) => {
             className={`legal-nav-tab ${activeTab === 'requisites' ? 'active' : ''}`}
             onClick={() => handleTabChange('requisites')}
           >
-            <Building2 size={18} />
+            <FileText size={18} />
             <span>Реквізити компанії</span>
           </button>
 

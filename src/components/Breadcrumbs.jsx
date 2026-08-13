@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from '../context/RouterContext';
-import { ChevronRight, Home } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 export const Breadcrumbs = () => {
   const { breadcrumbs, navigate } = useRouter();
@@ -31,7 +31,6 @@ export const Breadcrumbs = () => {
                     }}
                     className="crumb-link"
                   >
-                    {idx === 0 && <Home size={13} className="home-icon" />}
                     <span>{crumb.label}</span>
                   </a>
                 )}

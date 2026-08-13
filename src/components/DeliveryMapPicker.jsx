@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { DELIVERY_ZONES } from '../data/catalogData';
-import { Search, MapPin, CheckCircle2, ExternalLink, Layers, Building2, Warehouse } from 'lucide-react';
+import { Search, MapPin, CheckCircle2, ExternalLink, Layers, Warehouse } from 'lucide-react';
 
 export const BENGS_HUBS = [
   {
