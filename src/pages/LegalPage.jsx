@@ -122,16 +122,6 @@ export const LegalPage = ({ onOpenOrderModal }) => {
                   </div>
                 </div>
               </div>
-
-              <div className="legal-bank-box mt-6">
-                <h3>Банківські реквізити для безначу з ПДВ</h3>
-                <p>Розрахунковий рахунок в форматі IBAN для відвантажень з ПДВ надається менеджером після узгодження специфікації поставки.</p>
-                <div className="bank-actions">
-                  <button onClick={() => onOpenOrderModal({ name: 'Запит рахунку та реквізитів з ПДВ' })} className="btn btn-primary">
-                    Запросити рахунок з ПДВ
-                  </button>
-                </div>
-              </div>
             </div>
           )}
 
