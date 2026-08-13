@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CheckCircle2, ShieldCheck, PhoneCall, Clock, AlertCircle, MapPin, Minus, Plus, Map, ShoppingBag, Truck, FileText } from 'lucide-react';
-import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
+import { validateName, validatePhone, formatPhoneInput, sanitizeNameInput } from '../utils/validation';
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from '../components/GoogleMapPicker';
 import { CustomMaterialPicker } from '../components/CustomMaterialPicker';
@@ -46,6 +46,12 @@ export const OrderPage = ({ onOpenLegalModal }) => {
     let formattedVal = value;
     if (name === 'phone') {
       formattedVal = formatPhoneInput(value);
+    } else if (name === 'name') {
+      formattedVal = sanitizeNameInput(value);
+    } else if (name === 'address') {
+      formattedVal = value.slice(0, 120);
+    } else if (name === 'comment') {
+      formattedVal = value.slice(0, 250);
     }
     setFormData(prev => ({ ...prev, [name]: formattedVal }));
 
@@ -182,6 +188,7 @@ export const OrderPage = ({ onOpenLegalModal }) => {
                       placeholder="Олександр"
                       value={formData.name}
                       onChange={handleChange}
+                      maxLength={40}
                       className={`form-input ${errors.name ? 'input-error' : ''}`}
                     />
                     {errors.name && (
@@ -199,6 +206,7 @@ export const OrderPage = ({ onOpenLegalModal }) => {
                       placeholder="+380 (__) ___-__-__"
                       value={formData.phone}
                       onChange={handleChange}
+                      maxLength={19}
                       className={`form-input ${errors.phone ? 'input-error' : ''}`}
                     />
                     {errors.phone && (
@@ -300,6 +308,7 @@ export const OrderPage = ({ onOpenLegalModal }) => {
                       placeholder="Введіть адресу або виберіть на карті..."
                       value={formData.address}
                       onChange={handleChange}
+                      maxLength={120}
                       className="form-input addr-input-with-button"
                     />
                     <button
@@ -322,6 +331,7 @@ export const OrderPage = ({ onOpenLegalModal }) => {
                     placeholder="Вкажіть особливості під'їзду, бажаний час доставки або розрахунок з ПДВ..."
                     value={formData.comment}
                     onChange={handleChange}
+                    maxLength={250}
                     className="form-textarea"
                   ></textarea>
                 </div>

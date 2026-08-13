@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, AlertCircle, MapPin, Minus, Plus, Map, Layers, ExternalLink } from 'lucide-react';
-import { validateName, validatePhone, formatPhoneInput } from '../utils/validation';
+import { validateName, validatePhone, formatPhoneInput, sanitizeNameInput } from '../utils/validation';
 import { ALL_PRODUCTS, MAIN_SECTIONS } from '../data/catalogData';
 import { GoogleMapPicker } from './GoogleMapPicker';
 import { CustomMaterialPicker } from './CustomMaterialPicker';
@@ -50,7 +50,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
     }
 
     if (initialData?.phone && typeof initialData.phone === 'string') {
-      setPhone(initialData.phone);
+      setPhone(formatPhoneInput(initialData.phone));
     } else {
       setPhone('');
     }
@@ -80,7 +80,8 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
   };
 
   const handleNameChange = (e) => {
-    setName(e.target.value);
+    const sanitized = sanitizeNameInput(e.target.value);
+    setName(sanitized);
     if (errors.name) setErrors(prev => ({ ...prev, name: null }));
   };
 
@@ -204,6 +205,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                     placeholder="Кирило"
                     value={name}
                     onChange={handleNameChange}
+                    maxLength={40}
                     className={`modal-input ${errors.name ? 'input-error' : ''}`}
                   />
                   {errors.name && (
@@ -220,6 +222,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                     placeholder="+380 (__) ___-__-__"
                     value={phone}
                     onChange={handlePhoneChange}
+                    maxLength={19}
                     className={`modal-input ${errors.phone ? 'input-error' : ''}`}
                   />
                   {errors.phone && (
@@ -323,6 +326,7 @@ export const OrderModal = ({ isOpen, onClose, initialData }) => {
                       placeholder="Введіть адресу або виберіть на карті..."
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
+                      maxLength={120}
                       className="modal-input addr-input-with-button"
                     />
                     <button

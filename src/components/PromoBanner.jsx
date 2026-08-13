@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, ArrowRight, Tag } from 'lucide-react';
+import { formatPhoneInput } from '../utils/validation';
 
 export const PromoBanner = ({ onOpenOrderModal }) => {
   const [phone, setPhone] = useState('');
@@ -39,7 +40,8 @@ export const PromoBanner = ({ onOpenOrderModal }) => {
                     type="tel"
                     placeholder="+380 (__) ___-__-__"
                     value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
+                    onChange={(e) => setPhone(formatPhoneInput(e.target.value))}
+                    maxLength={19}
                     className="promo-input"
                     required
                   />
