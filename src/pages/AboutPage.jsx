@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from '../context/RouterContext';
-import { ShieldCheck, Scale, Award, Truck, Users, CheckCircle2, Phone, FileText } from 'lucide-react';
+import { ShieldCheck, Scale, Award, Truck, Users, CheckCircle2, Phone } from 'lucide-react';
 import { Certificates } from '../components/Certificates';
 
 export const AboutPage = ({ onOpenOrderModal, onOpenLegalModal }) => {
@@ -72,7 +72,6 @@ export const AboutPage = ({ onOpenOrderModal, onOpenLegalModal }) => {
                 onClick={() => navigate('#/legal/requisites')}
                 className="btn btn-outline"
               >
-                <FileText size={16} />
                 <span>Юридичні реквізити (ЄДРПОУ 41963896)</span>
               </button>
               <button
