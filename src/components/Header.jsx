@@ -742,6 +742,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           text-decoration: none;
           color: inherit;
           flex-shrink: 0;
+          margin-right: 32px;
         }
 
         .header-logo-img {
@@ -1262,6 +1263,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         }
 
         @media (max-width: 1024px) {
+          .brand-logo {
+            margin-right: 0;
+          }
           .ht-info-item {
             display: none;
           }
@@ -1269,7 +1273,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
             display: none;
           }
           .mobile-menu-toggle {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           }
         }
 
