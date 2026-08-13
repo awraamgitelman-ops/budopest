@@ -30,7 +30,7 @@ export const ServiceDetailPage = ({ onOpenOrderModal }) => {
 
             <div className="sd-order-card">
               <h3>Замовити послугу</h3>
-              <p>Подача техніки у будь-який район Дніпра протягом 2–3 годин після узгодження заявки.</p>
+              <p>Подача спецтехніки у будь-який район Дніпра після узгодження заявки.</p>
               
               <div className="sd-btn-stack">
                 <button

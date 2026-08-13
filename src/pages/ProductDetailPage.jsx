@@ -61,7 +61,7 @@ export const ProductDetailPage = ({ onOpenOrderModal }) => {
                 <Truck size={20} className="icon-green" />
                 <div>
                   <strong>Доставка самоскидами 10–40 т</strong>
-                  <p>Оперативна подача від 2–3 годин по Дніпру та області</p>
+                  <p>Доставка власними машинами по Дніпру та області</p>
                 </div>
               </div>
             </div>

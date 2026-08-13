@@ -10,30 +10,27 @@ export const DeliveryPage = ({ onOpenOrderModal }) => {
       name: "Самоскиди 10–15 тонн (7–10 м³)",
       models: "КамАЗ / МАЗ / DAF 2-вісні",
       purpose: "Приватний сектор, дачі, вузькі вулички, обмежений радіус розвороту",
-      minOrder: "від 10 тонн",
-      time: "від 2 годин"
+      minOrder: "від 10 тонн"
     },
     {
       name: "Самоскиди 25–30 тонн (16–20 м³)",
       models: "MAN / Scania / HOWO 3-вісні та 4-вісні",
       purpose: "Будівельні майданчики, монолітні фундаменти, котеджні містечка",
-      minOrder: "від 25 тонн",
-      time: "від 2–3 годин"
+      minOrder: "від 25 тонн"
     },
     {
       name: "Самоскидні напівпричепи 35–40 тонн (26–32 м³)",
       models: "Тягачі MAN TGX / Scania з самоскидними напівпричепами Wielton",
       purpose: "Великі промислові об'єкти, дорожнє будівництво, оптові поставки",
-      minOrder: "від 35 тонн",
-      time: "за узгодженим графіком"
+      minOrder: "від 35 тонн"
     }
   ];
 
   const zones = [
-    { name: "Зона 1: Дніпро — Лівий берег", areas: "Індустріальний, АНД, Самарський, Слобожанське, вул. Журналістів, Калинова", time: "від 2 годин" },
-    { name: "Зона 2: Дніпро — Правий берег", areas: "Центральний, Шевченківський, Соборний, Перемога, Тополя, Набережна Заводська", time: "від 2.5 годин" },
-    { name: "Зона 3: Передмістя Дніпра", areas: "Підгородне, Обухівка, Новоолександрівка, Сурсько-Литовське, Любимівка", time: "від 3 годин" },
-    { name: "Зона 4: Область", areas: "м. Кам'янське, м. Новомосковськ, Синельникове, Солоне, Царичанка", time: "за графіком" }
+    { name: "Зона 1: Дніпро — Лівий берег", areas: "Індустріальний, АНД, Самарський, Слобожанське, вул. Журналістів, Калинова" },
+    { name: "Зона 2: Дніпро — Правий берег", areas: "Центральний, Шевченківський, Соборний, Перемога, Тополя, Набережна Заводська" },
+    { name: "Зона 3: Передмістя Дніпра", areas: "Підгородне, Обухівка, Новоолександрівка, Сурсько-Литовське, Любимівка" },
+    { name: "Зона 4: Область", areas: "м. Кам'янське, м. Новомосковськ, Синельникове, Солоне, Царичанка" }
   ];
 
   return (
@@ -48,8 +45,8 @@ export const DeliveryPage = ({ onOpenOrderModal }) => {
 
           <div className="delivery-quick-highlights">
             <div className="dq-item">
-              <Clock size={18} className="icon-green" />
-              <span>Подача авто від 2 годин</span>
+              <Truck size={18} className="icon-green" />
+              <span>Доставка власними самоскидами</span>
             </div>
             <div className="dq-item">
               <Scale size={18} className="icon-green" />
@@ -82,7 +79,6 @@ export const DeliveryPage = ({ onOpenOrderModal }) => {
               <p className="fc-purpose">{item.purpose}</p>
 
               <div className="fc-bottom">
-                <span className="fc-time">Термін подачі: <strong>{item.time}</strong></span>
                 <button
                   onClick={() => onOpenOrderModal({ name: `Замовлення машини: ${item.name}` })}
                   className="btn btn-primary btn-sm btn-block"
@@ -140,7 +136,6 @@ export const DeliveryPage = ({ onOpenOrderModal }) => {
                   <h4>{zone.name}</h4>
                 </div>
                 <p className="zi-areas">{zone.areas}</p>
-                <span className="zi-time">Час доставки: <strong>{zone.time}</strong></span>
               </div>
             ))}
           </div>

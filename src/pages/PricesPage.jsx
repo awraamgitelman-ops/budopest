@@ -143,7 +143,7 @@ export const PricesPage = ({ onOpenOrderModal }) => {
           <div className="vd-card">
             <div className="vd-tier">Роздріб (10–30 тонн)</div>
             <div className="vd-desc">Базова ціна прайсу для приватного будівництва та невеликих об'єктів</div>
-            <div className="vd-benefit">Доставка у день замовлення від 2 годин</div>
+            <div className="vd-benefit">Доставка власними самоскидами 10–40 т</div>
           </div>
           <div className="vd-card highlight">
             <div className="vd-tier">Опт (30–150 тонн)</div>

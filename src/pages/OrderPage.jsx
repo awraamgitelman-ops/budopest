@@ -389,8 +389,8 @@ export const OrderPage = ({ onOpenLegalModal }) => {
                     <span>Точна вага на електронних вагах</span>
                   </div>
                   <div className="op-perk-mini">
-                    <Clock size={16} className="icon-green" />
-                    <span>Подача машин від 2 годин</span>
+                    <CheckCircle2 size={16} className="icon-green" />
+                    <span>Офіційний договір та ТТН</span>
                   </div>
                 </div>
               </div>

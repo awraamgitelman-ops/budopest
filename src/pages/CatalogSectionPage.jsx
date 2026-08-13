@@ -44,7 +44,7 @@ export const CatalogSectionPage = ({ onOpenOrderModal }) => {
                 </div>
                 <div className="sq-stat">
                   <span className="sq-label">Доставка:</span>
-                  <span className="sq-val">від 2 годин самоскидами</span>
+                  <span className="sq-val">самоскидами 10–40 т</span>
                 </div>
               </div>
 

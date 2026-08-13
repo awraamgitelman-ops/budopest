@@ -48,7 +48,7 @@ export const Hero = ({ onOpenOrderModal }) => {
             <div className="hero-usps">
               <div className="h-usp">
                 <Truck size={18} className="usp-icon" />
-                <span>Доставка від 2 годин</span>
+                <span>Доставка самоскидами 10–40 т</span>
               </div>
               <div className="h-usp">
                 <ShieldCheck size={18} className="usp-icon" />
