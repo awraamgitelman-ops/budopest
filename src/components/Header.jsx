@@ -400,13 +400,25 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           background: #bbf7d0;
         }
 
-        .ht-email, .ht-info-item {
+        .ht-email, .ht-info-item, .ht-item {
           display: flex;
           align-items: center;
           gap: 7px;
           text-decoration: none;
           color: inherit;
+          font-size: 0.83rem;
+          line-height: 1.2;
+          white-space: nowrap;
           transition: color 0.15s;
+        }
+
+        .ht-item svg,
+        .ht-info-item svg,
+        .ht-email svg,
+        .ht-phone svg {
+          flex-shrink: 0;
+          display: inline-block;
+          vertical-align: middle;
         }
 
         .ht-info-item.clickable {
