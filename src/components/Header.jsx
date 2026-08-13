@@ -582,6 +582,9 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           z-index: 990;
           box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
           background-color: #ffffff;
+          width: 100%;
+          max-width: 100vw;
+          overflow-x: clip;
         }
 
         .header-top {
@@ -590,18 +593,23 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           font-size: 0.83rem;
           color: #475569;
           padding: 8px 0;
+          width: 100%;
+          max-width: 100vw;
+          overflow: hidden;
         }
 
         .header-top-inner {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          width: 100%;
+          max-width: 100%;
         }
 
         .ht-left, .ht-right {
           display: flex;
           align-items: center;
-          gap: 20px;
+          gap: 16px;
         }
 
         .ht-phone {
@@ -612,7 +620,13 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           font-weight: 700;
           color: #0f172a;
           text-decoration: none;
+          white-space: nowrap !important;
+          flex-shrink: 0;
           transition: color 0.15s;
+        }
+
+        .ht-phone span {
+          white-space: nowrap !important;
         }
 
         .ht-phone:hover {
@@ -1266,8 +1280,16 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           .brand-logo {
             margin-right: 0;
           }
-          .ht-info-item {
-            display: none;
+          .ht-right {
+            display: none !important;
+          }
+          .ht-email {
+            display: none !important;
+          }
+          .ht-left {
+            width: 100%;
+            justify-content: space-between;
+            gap: 8px;
           }
           .desktop-nav {
             display: none;
@@ -1280,14 +1302,66 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
         }
 
         @media (max-width: 640px) {
-          .ht-email {
-            display: none;
+          .header-top {
+            padding: 6px 0;
+          }
+          .ht-phone {
+            font-size: 0.82rem;
+            gap: 5px;
+          }
+          .ht-messengers {
+            gap: 6px;
+          }
+          .msg-btn {
+            padding: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .msg-btn span {
+            display: none !important;
+          }
+          .msg-btn svg {
+            width: 15px;
+            height: 15px;
           }
           .btn-kp {
             display: none;
           }
+          .header-logo-img {
+            height: 38px;
+            max-width: 95px;
+          }
           .brand-title {
-            font-size: 1.25rem;
+            font-size: 1.12rem;
+            white-space: nowrap;
+          }
+          .brand-sub {
+            font-size: 0.58rem;
+            white-space: nowrap;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .ht-phone {
+            font-size: 0.76rem;
+            gap: 4px;
+          }
+          .ht-messengers {
+            gap: 4px;
+          }
+          .msg-btn {
+            width: 26px;
+            height: 26px;
+          }
+          .brand-title {
+            font-size: 1.02rem;
+          }
+          .brand-sub {
+            font-size: 0.52rem;
           }
         }
       `}</style>
