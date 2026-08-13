@@ -14,7 +14,18 @@ export const useRouter = () => {
 };
 
 export const RouterProvider = ({ children }) => {
-  const [hash, setHash] = useState(() => window.location.hash || '#/');
+  const getInitialPath = () => {
+    if (window.location.hash && window.location.hash !== '#/') {
+      return window.location.hash;
+    }
+    const path = window.location.pathname;
+    if (path && path !== '/' && path !== '/index.html') {
+      return '#' + (path.startsWith('/') ? path : '/' + path);
+    }
+    return '#/';
+  };
+
+  const [hash, setHash] = useState(getInitialPath);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -23,8 +34,16 @@ export const RouterProvider = ({ children }) => {
       window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
+    const handlePopState = () => {
+      setHash(getInitialPath());
+    };
+
     window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handlePopState);
+    };
   }, []);
 
   const navigate = (path) => {
