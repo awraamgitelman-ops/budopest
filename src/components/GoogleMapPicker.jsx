@@ -146,7 +146,7 @@ export const GoogleMapPicker = ({ onSelectAddress, onClose, initialAddress }) =>
             <MapPin size={22} className="icon-green" />
             <div>
               <h4>Вкажіть потрібний будинок / точку на Google Карті</h4>
-              <p>Натисніть точно на потрібну будівлю, щоб встановити адреси доставки 📍</p>
+              <p>Натисніть точно на потрібну будівлю, щоб встановити адресу доставки</p>
             </div>
           </div>
           <button type="button" onClick={onClose} className="gmap-close-btn">

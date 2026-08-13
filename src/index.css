@@ -957,6 +957,48 @@ span.req {
   flex-shrink: 0;
 }
 
+@media (max-width: 640px) {
+  .gmap-picker-backdrop {
+    padding: 12px !important;
+  }
+  .gmap-picker-window {
+    height: 88vh !important;
+    max-height: 88vh !important;
+    border-radius: 16px !important;
+  }
+  .gmap-header {
+    padding: 12px 14px !important;
+  }
+  .gmap-title h4 {
+    font-size: 0.95rem !important;
+    line-height: 1.25 !important;
+  }
+  .gmap-title p {
+    font-size: 0.76rem !important;
+  }
+  .gmap-footer {
+    padding: 12px 14px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  .gmap-address-display {
+    width: 100% !important;
+  }
+  .gmap-actions {
+    display: flex !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+  .gmap-actions .btn {
+    flex: 1 !important;
+    padding: 11px 10px !important;
+    font-size: 0.88rem !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
+}
+
 /* Embedded Address Input Bar & Map Button */
 .address-input-bar-embedded {
   position: relative !important;
