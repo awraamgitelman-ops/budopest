@@ -857,19 +857,35 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           transform: rotate(180deg);
         }
 
+        .has-dropdown {
+          position: relative;
+          padding-top: 4px;
+          padding-bottom: 8px;
+        }
+
         .submenu {
           position: absolute;
-          top: calc(100% + 8px);
+          top: 100%;
           left: 0;
-          min-width: 240px;
+          min-width: 250px;
           background: #ffffff;
           border-radius: var(--radius-sm);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
           border: 1px solid #e2e8f0;
-          padding: 6px 0;
+          padding: 8px 0;
           display: none;
-          z-index: 100;
+          z-index: 1000;
           animation: slideDown 0.15s ease;
+        }
+
+        .submenu::before {
+          content: '';
+          position: absolute;
+          top: -14px;
+          left: 0;
+          right: 0;
+          height: 14px;
+          background: transparent;
         }
 
         .has-dropdown:hover .submenu {
