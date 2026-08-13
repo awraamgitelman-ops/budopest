@@ -102,7 +102,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               </a>
 
               <a
-                href="viber://chat?number=%2B380988612938"
+                href="viber://chat?number=380988612938"
                 className="msg-btn msg-viber"
                 title="Написати у Viber"
               >
@@ -305,7 +305,7 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                   <span>Telegram</span>
                 </a>
                 <a
-                  href="viber://chat?number=%2B380988612938"
+                  href="viber://chat?number=380988612938"
                   className="md-msg-item md-msg-vb"
                   title="Viber"
                 >

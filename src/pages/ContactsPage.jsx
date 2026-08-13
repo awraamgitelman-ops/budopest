@@ -52,7 +52,7 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                     </a>
                     <span>•</span>
                     <a
-                      href="viber://chat?number=%2B380988612938"
+                      href="viber://chat?number=380988612938"
                       className="cic-link"
                       style={{ color: '#7360f2', fontWeight: 600 }}
                     >
