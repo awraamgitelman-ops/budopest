@@ -81,7 +81,7 @@ export const LegalPage = ({ onOpenOrderModal }) => {
           {activeTab === 'requisites' && (
             <div className="legal-section">
               <div className="legal-section-header">
-                <h2>Офіційні реєстраційні дані ТОВ "БЕНГС"</h2>
+                <h2>Реєстраційні дані ТОВ "БЕНГС"</h2>
                 <p>Юридичні відомості для укладання договорів поставки нерудних будівельних матеріалів.</p>
               </div>
 

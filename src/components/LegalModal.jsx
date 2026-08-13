@@ -73,7 +73,7 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
         <div className="legal-content-body">
           {activeTab === 'requisites' && (
             <div className="legal-tab-pane">
-              <h4>Офіційні реєстраційні дані підприємства</h4>
+              <h4>Реєстраційні дані ТОВ "БЕНГС"</h4>
               <div className="requisites-grid">
                 <div className="req-item">
                   <span className="req-label">Повне найменування:</span>
