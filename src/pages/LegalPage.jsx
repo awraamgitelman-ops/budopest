@@ -81,68 +81,44 @@ export const LegalPage = ({ onOpenOrderModal }) => {
           {activeTab === 'requisites' && (
             <div className="legal-section">
               <div className="legal-section-header">
-                <h2>Офіційні реєстраційні дані та банківські реквізити ТОВ "БЕНГС"</h2>
-                <p>Юридичні та банківські реквізити для укладання договорів поставки нерудних будівельних матеріалів.</p>
+                <h2>Офіційні реєстраційні дані ТОВ "БЕНГС"</h2>
+                <p>Юридичні відомості для укладання договорів поставки нерудних будівельних матеріалів.</p>
               </div>
 
-              <div className="legal-grid-2col">
-                <div className="legal-info-card">
-                  <h3 className="card-subheading">Реєстраційні відомості</h3>
-                  <div className="legal-data-list">
-                    <div className="data-row">
-                      <span className="data-label">Повне найменування:</span>
-                      <strong className="data-val">ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "БЕНГС"</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Скорочена назва:</span>
-                      <strong className="data-val">ТОВ "БЕНГС" (BENGS LLC)</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Код ЄДРПОУ:</span>
-                      <strong className="data-val highlight-green">41963896</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Дата державної реєстрації:</span>
-                      <strong className="data-val">26.02.2018</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Керівник (Директор):</span>
-                      <strong className="data-val">Морозова Галина Олександрівна</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Основний вид діяльності (КВЕД):</span>
-                      <strong className="data-val">46.49, 46.73, 46.77, 46.90 Оптова торгівля нерудними та будівельними матеріалами</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Система оподаткування:</span>
-                      <strong className="data-val">Загальна система оподаткування (ПДВ 20%)</strong>
-                    </div>
+              <div className="legal-info-card">
+                <h3 className="card-subheading">Реєстраційні відомості</h3>
+                <div className="legal-data-list">
+                  <div className="data-row">
+                    <span className="data-label">Повне найменування:</span>
+                    <strong className="data-val">ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "БЕНГС"</strong>
                   </div>
-                </div>
-
-                <div className="legal-info-card">
-                  <h3 className="card-subheading">Адреси та контакти</h3>
-                  <div className="legal-data-list">
-                    <div className="data-row">
-                      <span className="data-label">Юридична адреса:</span>
-                      <strong className="data-val">Україна, 49051, Дніпропетровська обл., м. Дніпро, вул. Калинова, буд. 1</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Фактична адреса перевалки:</span>
-                      <strong className="data-val">Україна, 49051, м. Дніпро, вул. Журналістів, 3</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Контактний телефон:</span>
-                      <strong className="data-val">+380 (98) 861-29-38</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Електронна пошта (Email):</span>
-                      <strong className="data-val">rudmonolit@gmail.com</strong>
-                    </div>
-                    <div className="data-row">
-                      <span className="data-label">Режим роботи перевалки:</span>
-                      <strong className="data-val">Пн–Нд: 09:00 — 20:00 (прийом заявок цілодобово)</strong>
-                    </div>
+                  <div className="data-row">
+                    <span className="data-label">Скорочена назва:</span>
+                    <strong className="data-val">ТОВ "БЕНГС"</strong>
+                  </div>
+                  <div className="data-row">
+                    <span className="data-label">Код ЄДРПОУ:</span>
+                    <strong className="data-val highlight-green">41963896</strong>
+                  </div>
+                  <div className="data-row">
+                    <span className="data-label">Юридична адреса:</span>
+                    <strong className="data-val">Україна, 49051, Дніпропетровська обл., м. Дніпро, вул. Калинова, буд. 1</strong>
+                  </div>
+                  <div className="data-row">
+                    <span className="data-label">Фактична адреса перевалки:</span>
+                    <strong className="data-val">Україна, 49051, м. Дніпро, вул. Журналістів, 3</strong>
+                  </div>
+                  <div className="data-row">
+                    <span className="data-label">Контактний телефон:</span>
+                    <strong className="data-val">+380 (98) 861-29-38</strong>
+                  </div>
+                  <div className="data-row">
+                    <span className="data-label">Електронна пошта (Email):</span>
+                    <strong className="data-val">rudmonolit@gmail.com</strong>
+                  </div>
+                  <div className="data-row">
+                    <span className="data-label">Режим роботи перевалки:</span>
+                    <strong className="data-val">Пн–Нд: 09:00 — 20:00 (прийом заявок цілодобово)</strong>
                   </div>
                 </div>
               </div>

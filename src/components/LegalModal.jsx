@@ -81,27 +81,11 @@ export const LegalModal = ({ isOpen, onClose, initialTab = 'requisites' }) => {
                 </div>
                 <div className="req-item">
                   <span className="req-label">Скорочена назва:</span>
-                  <span className="req-val">ТОВ "БЕНГС" (BENGS LLC)</span>
+                  <span className="req-val">ТОВ "БЕНГС"</span>
                 </div>
                 <div className="req-item">
                   <span className="req-label">Код ЄДРПОУ:</span>
                   <span className="req-val req-highlight">41963896</span>
-                </div>
-                <div className="req-item">
-                  <span className="req-label">Дата державної реєстрації:</span>
-                  <span className="req-val">26.02.2018</span>
-                </div>
-                <div className="req-item">
-                  <span className="req-label">Керівник (Директор):</span>
-                  <span className="req-val">Морозова Галина Олександрівна</span>
-                </div>
-                <div className="req-item">
-                  <span className="req-label">Основний вид діяльності (КВЕД):</span>
-                  <span className="req-val">46.49, 46.73, 46.77, 46.90 Оптова торгівля нерудними та будівельними матеріалами</span>
-                </div>
-                <div className="req-item">
-                  <span className="req-label">Система оподаткування:</span>
-                  <span className="req-val">Загальна система оподаткування</span>
                 </div>
                 <div className="req-item">
                   <span className="req-label">Юридична адреса:</span>
