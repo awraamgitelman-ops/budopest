@@ -60,6 +60,23 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
     }, 250);
   };
 
+  const handleViberClick = (e) => {
+    e.preventDefault();
+    const phone = '380988612938';
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = `viber://chat?number=${phone}`;
+      setTimeout(() => {
+        window.location.href = `https://viber.click/${phone}`;
+      }, 500);
+    } else {
+      window.location.href = `viber://chat?number=%2B${phone}`;
+      setTimeout(() => {
+        window.open(`https://viber.click/${phone}`, '_blank');
+      }, 500);
+    }
+  };
+
   return (
     <header className="site-header">
       {/* Top Info Bar */}
@@ -102,7 +119,10 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
               </a>
 
               <a
-                href="viber://chat?number=380988612938"
+                href="https://viber.click/380988612938"
+                onClick={handleViberClick}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="msg-btn msg-viber"
                 title="Написати у Viber"
               >
@@ -305,7 +325,10 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                   <span>Telegram</span>
                 </a>
                 <a
-                  href="viber://chat?number=380988612938"
+                  href="https://viber.click/380988612938"
+                  onClick={handleViberClick}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="md-msg-item md-msg-vb"
                   title="Viber"
                 >

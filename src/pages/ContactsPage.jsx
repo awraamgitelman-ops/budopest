@@ -6,6 +6,23 @@ import { OrderForm } from '../components/OrderForm';
 export const ContactsPage = ({ onOpenLegalModal }) => {
   const { navigate } = useRouter();
 
+  const handleViberClick = (e) => {
+    e.preventDefault();
+    const phone = '380988612938';
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = `viber://chat?number=${phone}`;
+      setTimeout(() => {
+        window.location.href = `https://viber.click/${phone}`;
+      }, 500);
+    } else {
+      window.location.href = `viber://chat?number=%2B${phone}`;
+      setTimeout(() => {
+        window.open(`https://viber.click/${phone}`, '_blank');
+      }, 500);
+    }
+  };
+
   return (
     <div className="contacts-page-wrapper">
       <div className="contacts-hero">
@@ -52,7 +69,10 @@ export const ContactsPage = ({ onOpenLegalModal }) => {
                     </a>
                     <span>•</span>
                     <a
-                      href="viber://chat?number=380988612938"
+                      href="https://viber.click/380988612938"
+                      onClick={handleViberClick}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="cic-link"
                       style={{ color: '#7360f2', fontWeight: 600 }}
                     >
