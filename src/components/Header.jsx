@@ -602,8 +602,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
           display: flex;
           align-items: center;
           justify-content: space-between;
-          width: 100%;
-          max-width: 100%;
         }
 
         .ht-left, .ht-right {
