@@ -538,6 +538,14 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
             width: 100%;
             justify-content: center;
           }
+          .map-calc-result-badge {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+          }
+          .mc-info-left {
+            align-items: flex-start;
+          }
         }
       `}</style>
     </div>

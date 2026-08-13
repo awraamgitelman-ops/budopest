@@ -341,7 +341,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                     onClick={() => toggleAccordion('catalog')}
                   >
                     <span className="md-acc-title">
-                      <span className="md-acc-icon">📦</span>
                       <span>Каталог матеріалів</span>
                     </span>
                     <ChevronDown size={18} className={`md-acc-chevron ${expandedAccordion.catalog ? 'rotate' : ''}`} />
@@ -383,7 +382,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                   }}
                 >
                   <span className="md-link-left">
-                    <span className="md-acc-icon">💰</span>
                     <span>Прайс-лист</span>
                   </span>
                   <ChevronRight size={16} className="md-link-arrow" />
@@ -398,7 +396,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                   }}
                 >
                   <span className="md-link-left">
-                    <span className="md-acc-icon">🧮</span>
                     <span>Калькулятор доставки</span>
                   </span>
                   <ChevronRight size={16} className="md-link-arrow" />
@@ -413,7 +410,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                   }}
                 >
                   <span className="md-link-left">
-                    <span className="md-acc-icon">🚚</span>
                     <span>Доставка самоскидами 10–40 т</span>
                   </span>
                   <ChevronRight size={16} className="md-link-arrow" />
@@ -426,7 +422,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                     onClick={() => toggleAccordion('services')}
                   >
                     <span className="md-acc-title">
-                      <span className="md-acc-icon">🚜</span>
                       <span>Послуги спецтехніки</span>
                     </span>
                     <ChevronDown size={18} className={`md-acc-chevron ${expandedAccordion.services ? 'rotate' : ''}`} />
@@ -480,7 +475,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                     onClick={() => toggleAccordion('about')}
                   >
                     <span className="md-acc-title">
-                      <span className="md-acc-icon">🏢</span>
                       <span>Про компанію</span>
                     </span>
                     <ChevronDown size={18} className={`md-acc-chevron ${expandedAccordion.about ? 'rotate' : ''}`} />
@@ -536,7 +530,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                   }}
                 >
                   <span className="md-link-left">
-                    <span className="md-acc-icon">📚</span>
                     <span>Статті та база знань</span>
                   </span>
                   <ChevronRight size={16} className="md-link-arrow" />
@@ -551,7 +544,6 @@ export const Header = ({ onOpenOrderModal, onOpenSearchModal, onOpenLegalModal }
                   }}
                 >
                   <span className="md-link-left">
-                    <span className="md-acc-icon">📞</span>
                     <span>Контакти та адреси</span>
                   </span>
                   <ChevronRight size={16} className="md-link-arrow" />

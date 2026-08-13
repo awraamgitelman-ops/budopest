@@ -661,6 +661,68 @@ export const Calculator = ({ onOpenOrderModal }) => {
             grid-template-columns: repeat(2, 1fr);
           }
         }
+
+        @media (max-width: 640px) {
+          .calc-params {
+            padding: 18px 14px;
+          }
+          .calc-summary {
+            padding: 20px 14px;
+          }
+          .calc-label-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+          }
+          .volume-slider-box {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+          }
+          .volume-display {
+            justify-content: center;
+            padding: 6px 12px;
+          }
+          .grand-total-box {
+            padding: 16px 12px;
+          }
+          .gt-value {
+            font-size: 1.85rem;
+          }
+          .product-selector-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+          }
+          .prod-select-btn {
+            padding: 8px 10px;
+          }
+          .ps-name {
+            font-size: 0.8rem;
+          }
+          .ps-price {
+            font-size: 0.72rem;
+          }
+          .calc-order-btn {
+            font-size: 0.95rem;
+            padding: 12px;
+          }
+          .calc-guarantee {
+            font-size: 0.75rem;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .product-selector-grid {
+            grid-template-columns: 1fr;
+          }
+          .frac-chip {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+          }
+          .gt-value {
+            font-size: 1.65rem;
+          }
+        }
       `}</style>
     </section>
   );

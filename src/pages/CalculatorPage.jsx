@@ -154,6 +154,27 @@ export const CalculatorPage = ({ onOpenOrderModal }) => {
         .custom-table tr:hover td {
           background: #f8fafc;
         }
+
+        .table-responsive {
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 640px) {
+          .calc-hero {
+            padding: 32px 0 24px;
+          }
+          .calc-hero-title {
+            font-size: 1.55rem;
+          }
+          .calc-hero-subtitle {
+            font-size: 0.92rem;
+          }
+          .calc-density-info-card {
+            padding: 18px 14px;
+          }
+        }
       `}</style>
     </div>
   );
