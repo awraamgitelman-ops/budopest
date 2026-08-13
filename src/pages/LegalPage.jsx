@@ -118,7 +118,7 @@ export const LegalPage = ({ onOpenOrderModal }) => {
                   </div>
                   <div className="data-row">
                     <span className="data-label">Режим роботи перевалки:</span>
-                    <strong className="data-val">Пн–Нд: 09:00 — 20:00 (прийом заявок цілодобово)</strong>
+                    <strong className="data-val">Пн–Нд: 09:00 — 20:00</strong>
                   </div>
                 </div>
               </div>
