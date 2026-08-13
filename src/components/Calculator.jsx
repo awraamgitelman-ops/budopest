@@ -652,10 +652,10 @@ export const Calculator = ({ onOpenOrderModal }) => {
           .calc-params {
             border-right: none;
             border-bottom: 1px solid #f1f5f9;
-            padding: 24px;
+            padding: 20px 16px;
           }
           .calc-summary {
-            padding: 24px;
+            padding: 20px 16px;
           }
           .product-selector-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -663,64 +663,128 @@ export const Calculator = ({ onOpenOrderModal }) => {
         }
 
         @media (max-width: 640px) {
+          .calculator-section {
+            padding: 20px 0 40px;
+          }
+          .section-header {
+            margin-bottom: 16px;
+          }
+          .section-title {
+            font-size: 1.4rem;
+          }
+          .section-subtitle {
+            font-size: 0.88rem;
+          }
+          .calc-group {
+            margin-bottom: 16px;
+          }
+          .calc-label {
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+          }
           .calc-params {
-            padding: 18px 14px;
+            padding: 14px 12px;
           }
           .calc-summary {
-            padding: 20px 14px;
-          }
-          .calc-label-row {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-          }
-          .volume-slider-box {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 12px;
-          }
-          .volume-display {
-            justify-content: center;
-            padding: 6px 12px;
-          }
-          .grand-total-box {
             padding: 16px 12px;
           }
+          .calc-label-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+            margin-bottom: 6px;
+          }
+          .unit-btn {
+            padding: 3px 8px;
+            font-size: 0.72rem;
+          }
+          .volume-slider-box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 8px;
+          }
+          .volume-display {
+            padding: 3px 8px;
+          }
+          .volume-input {
+            width: 52px;
+            font-size: 1.05rem;
+          }
+          .volume-unit-label {
+            font-size: 0.75rem;
+          }
+          .volume-hint {
+            font-size: 0.72rem;
+            margin-top: 4px;
+          }
+          .grand-total-box {
+            padding: 12px 10px;
+            margin-bottom: 14px;
+          }
+          .gt-label {
+            font-size: 0.75rem;
+          }
           .gt-value {
-            font-size: 1.85rem;
+            font-size: 1.75rem;
+          }
+          .gt-note {
+            font-size: 0.72rem;
           }
           .product-selector-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr) !important;
             gap: 6px;
           }
           .prod-select-btn {
-            padding: 8px 10px;
+            padding: 7px 8px;
+            border-radius: 8px;
           }
           .ps-name {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
+            line-height: 1.2;
           }
           .ps-price {
-            font-size: 0.72rem;
-          }
-          .calc-order-btn {
-            font-size: 0.95rem;
-            padding: 12px;
-          }
-          .calc-guarantee {
-            font-size: 0.75rem;
-          }
-        }
-
-        @media (max-width: 420px) {
-          .product-selector-grid {
-            grid-template-columns: 1fr;
+            font-size: 0.7rem;
+            margin-top: 2px;
           }
           .frac-chip {
-            padding: 6px 12px;
+            padding: 5px 10px;
+            font-size: 0.78rem;
+          }
+          .calc-order-btn {
+            font-size: 0.9rem;
+            padding: 11px;
+          }
+          .calc-guarantee {
+            font-size: 0.72rem;
+            margin-top: 10px;
+          }
+          .truck-box {
+            padding: 8px 10px;
+            gap: 8px;
+            margin-bottom: 14px;
+          }
+          .tb-title {
+            font-size: 0.7rem;
+          }
+          .tb-desc {
             font-size: 0.8rem;
           }
-          .gt-value {
-            font-size: 1.65rem;
+          .summary-header {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+          }
+          .summary-title {
+            font-size: 1.05rem;
+          }
+          .summary-rows {
+            gap: 6px;
+            margin-bottom: 14px;
+          }
+          .sum-row {
+            font-size: 0.82rem;
           }
         }
       `}</style>

@@ -421,7 +421,7 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
 
       {/* Google Maps Container */}
       <div className="leaflet-map-wrapper">
-        <div ref={mapContainerRef} className="leaflet-map-container" style={{ height: '360px', width: '100%' }} />
+        <div ref={mapContainerRef} className="leaflet-map-container" style={{ width: '100%' }} />
         {!mapLoaded && (
           <div className="map-loading-overlay">
             <span>Завантаження Google Карт Дніпра...</span>
@@ -527,9 +527,28 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           gap: 10px;
           margin-bottom: 12px;
         }
+        .leaflet-map-container {
+          height: 320px;
+        }
         @media (max-width: 640px) {
+          .leaflet-map-container {
+            height: 200px !important;
+          }
+          .quarry-select-card {
+            padding: 8px 10px;
+            margin-bottom: 8px;
+          }
+          .qsc-header {
+            margin-bottom: 4px;
+          }
+          .qsc-select {
+            padding: 8px 32px 8px 10px;
+            font-size: 0.85rem;
+          }
           .map-search-bar-row {
             flex-direction: column;
+            gap: 6px;
+            margin-bottom: 8px;
           }
           .map-search-bar-row .map-search-form {
             width: 100%;
@@ -541,10 +560,18 @@ export const DeliveryMapPicker = ({ onSelectZone, selectedZone }) => {
           .map-calc-result-badge {
             flex-direction: column;
             align-items: stretch;
-            gap: 10px;
+            gap: 8px;
+            padding: 8px 10px;
           }
           .mc-info-left {
             align-items: flex-start;
+            gap: 6px;
+          }
+          .mc-address {
+            font-size: 0.82rem;
+          }
+          .mc-details {
+            font-size: 0.74rem;
           }
         }
       `}</style>

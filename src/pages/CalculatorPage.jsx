@@ -162,17 +162,20 @@ export const CalculatorPage = ({ onOpenOrderModal }) => {
         }
 
         @media (max-width: 640px) {
+          .calculator-page-wrapper {
+            padding-bottom: 95px;
+          }
           .calc-hero {
-            padding: 32px 0 24px;
+            padding: 28px 0 20px;
           }
           .calc-hero-title {
-            font-size: 1.55rem;
+            font-size: 1.45rem;
           }
           .calc-hero-subtitle {
-            font-size: 0.92rem;
+            font-size: 0.88rem;
           }
           .calc-density-info-card {
-            padding: 18px 14px;
+            padding: 16px 12px;
           }
         }
       `}</style>
